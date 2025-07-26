@@ -1,0 +1,94 @@
+name: "FastAPI Todo App Webhook Handler"
+nodes:
+  - parameters:
+      httpMethod: "POST"
+      path: "workflow1"
+      responseMode: "responseNode"
+      options: {}
+    id: "webhook-trigger"
+    name: "Webhook Trigger"
+    type: "n8n-nodes-base.webhook"
+    typeVersion: 1
+    position: [250, 300]
+    webhookId: "fastapi-todo-webhook"
+
+  - parameters:
+      keepOnlySet: false
+      values:
+        string:
+          - name: "processedAt"
+            value: "={{$now.toISO()}}"
+          - name: "workflowName"
+            value: "FastAPI Todo Webhook Handler"
+        number:
+          - name: "itemsCount"
+            value: "={{$json.items ? $json.items.length : 0}}"
+        boolean:
+          - name: "receivedData"
+            value: true
+      options: {}
+    id: "process-data"
+    name: "Process Webhook Data"
+    type: "n8n-nodes-base.set"
+    typeVersion: 2
+    position: [450, 300]
+
+  - parameters:
+      content: |
+        ## Webhook Data Received
+
+        **Timestamp:** {{$json.timestamp}}
+        **Source:** {{$json.source}}
+        **Action:** {{$json.action}}
+        
+        ### Processed Information:
+        - Workflow executed at: {{$node["Process Webhook Data"].json.processedAt}}
+        - Data received: {{$node["Process Webhook Data"].json.receivedData}}
+      additionalFields: {}
+    id: "prepare-response"
+    name: "Prepare Response"
+    type: "n8n-nodes-base.markdown"
+    typeVersion: 1
+    position: [650, 300]
+
+  - parameters:
+      options:
+        responseCode: 200
+        responseHeaders:
+          entries:
+            - name: "Content-Type"
+              value: "application/json"
+      respondWith: "json"
+      responseBody:
+        success: true
+        message: "Workflow executed successfully"
+        workflowId: "={{$workflow.id}}"
+        executionId: "={{$execution.id}}"
+        receivedData: "={{$node[\"Webhook Trigger\"].json}}"
+        processedAt: "={{$node[\"Process Webhook Data\"].json.processedAt}}"
+        summary: "={{$node[\"Prepare Response\"].json.content}}"
+    id: "respond-webhook"
+    name: "Respond to Webhook"
+    type: "n8n-nodes-base.respondToWebhook"
+    typeVersion: 1
+    position: [850, 300]
+
+connections:
+  "Webhook Trigger":
+    main:
+      - - node: "Process Webhook Data"
+          type: "main"
+          index: 0
+  "Process Webhook Data":
+    main:
+      - - node: "Prepare Response"
+          type: "main"
+          index: 0
+  "Prepare Response":
+    main:
+      - - node: "Respond to Webhook"
+          type: "main"
+          index: 0
+
+settings:
+  executionOrder: "v1"

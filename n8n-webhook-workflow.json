@@ -1,0 +1,162 @@
+{
+  "name": "FastAPI Todo App Webhook Handler",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "workflow1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "e8b8e4a5-d57a-4c8b-b7e1-0b3f9c5d4e2a",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "98765432-1234-5678-90ab-cdef12345678"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": false,
+        "values": {
+          "string": [
+            {
+              "name": "processedAt",
+              "value": "={{$now.toISO()}}"
+            },
+            {
+              "name": "workflowName",
+              "value": "FastAPI Todo Webhook Handler"
+            }
+          ],
+          "number": [
+            {
+              "name": "executionNumber",
+              "value": "={{$execution.id}}"
+            }
+          ],
+          "boolean": [
+            {
+              "name": "receivedData",
+              "value": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f9c9f5b6-e68b-5d9c-c8f2-1c4g0d6e5f3b",
+      "name": "Process Webhook Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.example.com/log",
+        "method": "POST",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "event",
+              "value": "workflow_triggered"
+            },
+            {
+              "name": "source",
+              "value": "={{$json.source}}"
+            },
+            {
+              "name": "timestamp",
+              "value": "={{$json.timestamp}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000,
+          "ignoreSSLIssues": false
+        }
+      },
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Log to External API (Optional)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [650, 300],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        },
+        "respondWith": "json",
+        "responseBody": {
+          "success": true,
+          "message": "Workflow executed successfully",
+          "workflowId": "={{$workflow.id}}",
+          "executionId": "={{$execution.id}}",
+          "receivedData": "={{$node[\"Webhook Trigger\"].json}}",
+          "processedAt": "={{$node[\"Process Webhook Data\"].json.processedAt}}",
+          "timestamp": "={{$now.toISO()}}"
+        }
+      },
+      "id": "d4e5f6a7-b8c9-0def-1234-567890abcdef",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Process Webhook Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Webhook Data": {
+      "main": [
+        [
+          {
+            "node": "Log to External API (Optional)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log to External API (Optional)": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "01234567-89ab-cdef-0123-456789abcdef",
+  "id": "fastapi-todo-webhook-workflow",
+  "meta": {
+    "instanceId": "n8n-instance-id"
+  },
+  "tags": []
+}

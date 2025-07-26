@@ -69,9 +69,21 @@ def delete_item(item_id: int):
 @app.post("/api/workflow/execute")
 async def execute_workflow():
     try:
+        # Replace with your actual n8n webhook URL
+        # Example: "https://your-n8n-instance.com/webhook/abc123/workflow1"
+        N8N_WEBHOOK_URL = "https://myhost.com/workflows/workflow1/"
+        
+        # You can send data to the workflow
+        workflow_data = {
+            "timestamp": datetime.now().isoformat(),
+            "source": "FastAPI Todo App",
+            "action": "manual_trigger"
+        }
+        
         async with httpx.AsyncClient() as client:
             response = await client.post(
-                "https://myhost.com/workflows/workflow1/",
+                N8N_WEBHOOK_URL,
+                json=workflow_data,
                 timeout=30.0
             )
             return {
