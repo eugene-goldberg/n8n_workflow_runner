@@ -1,0 +1,14 @@
+[Unit]
+Description=FastAPI app
+After=network.target
+
+[Service]
+Type=simple
+User=your-username
+WorkingDirectory=/home/your-username/n8n_workflow_runner/fastapi-react-app/backend
+Environment="PATH=/home/your-username/n8n_workflow_runner/fastapi-react-app/backend/venv/bin"
+ExecStart=/home/your-username/n8n_workflow_runner/fastapi-react-app/backend/venv/bin/python main.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
