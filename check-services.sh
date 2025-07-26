@@ -44,10 +44,18 @@ fi
 
 echo ""
 echo "5. Testing nginx proxy..."
-if curl -s -o /dev/null -w "%{http_code}" http://localhost/api/ | grep -q "200"; then
+if curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/ | grep -q "200"; then
     echo "   ✓ Nginx proxy to API is working"
 else
     echo "   ✗ Nginx proxy is not working"
+fi
+
+echo ""
+echo "6. Testing frontend..."
+if curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/ | grep -q "200"; then
+    echo "   ✓ Frontend is accessible"
+else
+    echo "   ✗ Frontend is not accessible"
 fi
 
 echo "========================================="
