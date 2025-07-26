@@ -69,8 +69,9 @@ def delete_item(item_id: int):
 @app.post("/api/workflow/execute")
 async def execute_workflow():
     try:
-        # Replace with your actual n8n webhook URL
+        # Replace with your actual n8n PRODUCTION webhook URL (not test URL)
         # Example: "https://your-n8n-instance.com/webhook/abc123/workflow1"
+        # Make sure to use /webhook/ not /webhook-test/
         N8N_WEBHOOK_URL = "https://myhost.com/workflows/workflow1/"
         
         # You can send data to the workflow
