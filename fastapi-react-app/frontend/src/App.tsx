@@ -10,7 +10,7 @@ interface Item {
   created_at?: string;
 }
 
-const API_URL = 'http://localhost:8000';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
 function App() {
   const [items, setItems] = useState<Item[]>([]);
