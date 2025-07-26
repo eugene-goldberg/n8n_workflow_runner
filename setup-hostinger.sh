@@ -73,7 +73,7 @@ fi
 # Create nginx configuration
 cat > /etc/nginx/sites-available/fastapi-react-app << EOF
 server {
-    listen 80;
+    listen 8080;
     server_name $SERVER_NAME;
 
     # Serve React frontend
