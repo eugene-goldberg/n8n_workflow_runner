@@ -124,18 +124,20 @@ See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed instructions.
 
 1. Import the workflow:
    - Open n8n
-   - Import `n8n-ai-chat-workflow.json`
+   - Import `n8n-ai-chat-workflow-working.json`
    
 2. Configure the workflow:
-   - Add your AI service (OpenAI, Claude, etc.)
-   - Note the webhook URL
+   - Add your AI service (OpenAI, Claude, etc.) if needed
+   - Note the webhook URL from the Webhook Trigger node
    
 3. Update the backend:
-   - Edit `backend/main.py`
+   - Edit `backend/main_with_websocket.py`
    - Set `N8N_WEBHOOK_URL` to your webhook URL
-   - Set `CALLBACK_BASE_URL` to your server URL
+   - Set `CALLBACK_BASE_URL = "http://172.17.0.1:8000"` (Docker bridge)
    
 4. Activate the workflow in n8n
+
+**Important**: The workflow uses `items[0].json.body` to access webhook data and prepares the callback payload in the Process Message node.
 
 ## 💬 Chat Features
 
