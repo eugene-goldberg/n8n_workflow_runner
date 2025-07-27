@@ -1,0 +1,12 @@
+{
+  "parameters": {
+    "mode": "expression",
+    "output": 5,
+    "outputIndex": "={{ (() => { const intentMap = { 'TECHNICAL_SUPPORT': 0, 'BILLING_QUESTION': 1, 'FEATURE_REQUEST': 2, 'COMPLAINT': 3 }; return intentMap[$json.intent] ?? 4; })() }}"
+  },
+  "id": "intent-router",
+  "name": "Route by Intent",
+  "type": "n8n-nodes-base.switch",
+  "typeVersion": 3,
+  "position": [640, 0]
+}
