@@ -122,12 +122,28 @@ See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed instructions.
 
 ## 🔄 n8n Workflow Setup
 
-1. Import the workflow:
+### Available Workflows
+
+1. **Basic Chat** (`n8n-ai-chat-workflow-working.json`)
+   - Simulated AI responses for testing
+   - No AI service required
+
+2. **OpenAI Integration** (`n8n-ai-chat-workflow-with-agent.json`)
+   - Real AI responses using OpenAI API
+   - Configurable model and parameters
+
+3. **Intent Evaluation** (`n8n-intent-evaluation-fixed.json`)
+   - LangChain agent for intent analysis
+   - Returns structured JSON with intent classification
+
+### Setup Steps
+
+1. Import the desired workflow:
    - Open n8n
-   - Import `n8n-ai-chat-workflow-working.json`
+   - Choose and import one of the workflow JSON files
    
 2. Configure the workflow:
-   - Add your AI service (OpenAI, Claude, etc.) if needed
+   - For AI workflows: Add your OpenAI API credentials
    - Note the webhook URL from the Webhook Trigger node
    
 3. Update the backend:
@@ -137,7 +153,10 @@ See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed instructions.
    
 4. Activate the workflow in n8n
 
-**Important**: The workflow uses `items[0].json.body` to access webhook data and prepares the callback payload in the Process Message node.
+**Key Technical Notes**:
+- Webhook data accessed via `items[0].json.body`
+- LangChain agents require `chatInput` field
+- Callback payload prepared in Process/Format nodes
 
 ## 💬 Chat Features
 
