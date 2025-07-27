@@ -16,8 +16,55 @@ h1 {
   margin-bottom: 30px;
 }
 
-.workflow-section {
+.app-controls {
+  display: flex;
+  gap: 20px;
   margin-bottom: 30px;
+  align-items: center;
+}
+
+.chat-toggle-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.chat-toggle-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-wrapper {
+  width: 100%;
+  margin-bottom: 40px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-section {
+  width: 100%;
+  max-width: 800px;
+}
+
+.workflow-section {
+  display: inline-block;
 }
 
 .workflow-button {
