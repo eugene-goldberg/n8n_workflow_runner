@@ -34,7 +34,7 @@ tracker = RequestTracker()
 
 # Configuration
 N8N_WEBHOOK_URL = "https://myhost.com/workflows/workflow1/"  # Update with your n8n webhook URL
-CALLBACK_BASE_URL = "http://srv928466.hstgr.cloud:8080"  # Update with your server URL
+CALLBACK_BASE_URL = "http://172.17.0.1:8000"  # Docker bridge network address for n8n container
 
 # Existing models
 class Item(BaseModel):

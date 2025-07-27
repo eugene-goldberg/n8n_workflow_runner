@@ -1,0 +1,46 @@
+{
+  "name": "Diagnostic Webhook Test",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "diagnostic-webhook",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Let's see exactly what we're getting\nconst allItems = $input.all();\nconsole.log('Number of items:', allItems.length);\n\n// Log the structure\nif (allItems.length > 0) {\n  console.log('First item structure:', JSON.stringify(allItems[0], null, 2));\n  console.log('Keys in first item:', Object.keys(allItems[0]));\n  \n  if (allItems[0].json) {\n    console.log('Keys in json:', Object.keys(allItems[0].json));\n  }\n}\n\n// Try different access methods\nconst results = [];\n\n// Method 1: Direct from $input.all()\nif (allItems.length > 0) {\n  results.push({\n    method: 'Using $input.all()[0].json',\n    data: allItems[0].json,\n    hasCallbackUrl: !!(allItems[0].json && allItems[0].json.callback_url)\n  });\n}\n\n// Method 2: Check if data is in body\nif (allItems.length > 0 && allItems[0].json && allItems[0].json.body) {\n  results.push({\n    method: 'Data might be in body',\n    bodyType: typeof allItems[0].json.body,\n    bodyContent: allItems[0].json.body\n  });\n}\n\n// Method 3: Check if data is in query\nif (allItems.length > 0 && allItems[0].json && allItems[0].json.query) {\n  results.push({\n    method: 'Data might be in query',\n    queryContent: allItems[0].json.query\n  });\n}\n\n// Return diagnostic info\nreturn [{\n  json: {\n    diagnosticResults: results,\n    rawFirstItem: allItems.length > 0 ? allItems[0] : 'No items',\n    recommendation: 'Check console logs for detailed structure'\n  }\n}];"
+      },
+      "id": "diagnostic",
+      "name": "Diagnostic Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [450, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Diagnostic Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "id": "diagnostic-webhook"
+}
