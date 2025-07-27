@@ -1,10 +1,11 @@
-# FastAPI + React + n8n Project Summary
+# FastAPI + React + n8n AI Chat Project Summary
 
 ## Quick Start Guide
 
 ### Access the Application
 - **Live URL**: http://srv928466.hstgr.cloud:8080
 - **API Docs**: http://srv928466.hstgr.cloud:8080/api/docs
+- **WebSocket**: ws://srv928466.hstgr.cloud:8080/ws/{user_id}
 
 ### What Was Built
 
@@ -13,14 +14,22 @@
    - React TypeScript frontend
    - Real-time CRUD operations
 
-2. **n8n Workflow Integration**
-   - "Execute Workflow" button
-   - Webhook trigger system
-   - JSON data exchange
+2. **AI Chat System** ✨ NEW
+   - WebSocket-based real-time chat
+   - Asynchronous n8n workflow integration
+   - Correlation ID tracking for requests
+   - Multiple message types (user, bot, system)
+   - Auto-reconnection on disconnect
 
-3. **Production Deployment**
+3. **n8n Workflow Integration**
+   - HTTP webhook triggers
+   - Callback mechanism for async responses
+   - Support for long-running AI workflows
+   - No timeout issues
+
+4. **Production Deployment**
    - Ubuntu 24.04 VPS on Hostinger
-   - Nginx reverse proxy
+   - Nginx with WebSocket support
    - Systemd service management
    - Automated deployment scripts
 
@@ -47,6 +56,12 @@ n8n_workflow_runner/
 
 ### On Hostinger Server
 
+**Deploy Async Chat Update**
+```bash
+git pull
+sudo ./deploy-async-chat.sh
+```
+
 **Check Status**
 ```bash
 ./check-services.sh
@@ -63,6 +78,8 @@ systemctl restart fastapi
 ```bash
 journalctl -u fastapi -f    # Backend logs
 journalctl -u nginx -f      # Nginx logs
+# Watch WebSocket connections
+journalctl -u fastapi -f | grep -i websocket
 ```
 
 **Restart Services**
@@ -103,6 +120,7 @@ npm start
 
 ## Workflow Integration
 
+### Basic Webhook (Todo App)
 1. **Setup n8n Webhook**
    - Import `n8n-webhook-workflow.json` into n8n
    - Get webhook URL from trigger node
@@ -114,6 +132,33 @@ npm start
     "timestamp": "ISO date string",
     "source": "FastAPI Todo App",
     "action": "manual_trigger"
+}
+```
+
+### AI Chat Workflow ✨ NEW
+1. **Setup AI Chat Webhook**
+   - Import `n8n-ai-chat-workflow.json` into n8n
+   - Configure AI service (OpenAI, Claude, etc.)
+   - Get webhook URL from trigger node
+   - Update `N8N_WEBHOOK_URL` in backend
+
+2. **Chat Webhook Payload**
+```json
+{
+    "correlation_id": "unique-id",
+    "user_id": "user-identifier",
+    "message": "user's message",
+    "timestamp": "ISO date string",
+    "callback_url": "http://your-server/api/n8n-callback"
+}
+```
+
+3. **Callback Response**
+```json
+{
+    "correlation_id": "unique-id",
+    "user_id": "user-identifier",
+    "result": "AI response text"
 }
 ```
 

@@ -1,27 +1,32 @@
-# FastAPI + React + n8n Workflow Runner Deployment Guide
+# FastAPI + React + n8n AI Chat Deployment Guide
 
-This document details the complete setup and deployment process for the FastAPI + React application with n8n webhook integration on Hostinger VPS.
+This document details the complete setup and deployment process for the FastAPI + React application with AI chat functionality and asynchronous n8n workflow integration on Hostinger VPS.
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Local Development Setup](#local-development-setup)
 3. [Application Architecture](#application-architecture)
 4. [Hostinger VPS Deployment](#hostinger-vps-deployment)
-5. [n8n Webhook Integration](#n8n-webhook-integration)
-6. [Troubleshooting](#troubleshooting)
-7. [Maintenance](#maintenance)
+5. [WebSocket Configuration](#websocket-configuration)
+6. [n8n Webhook Integration](#n8n-webhook-integration)
+7. [AI Chat Setup](#ai-chat-setup)
+8. [Troubleshooting](#troubleshooting)
+9. [Maintenance](#maintenance)
 
 ## Project Overview
 
 This project consists of:
-- **Backend**: FastAPI application with REST API endpoints
-- **Frontend**: React TypeScript application with todo management
-- **Integration**: n8n webhook trigger for workflow automation
-- **Deployment**: Nginx reverse proxy on Hostinger VPS (Ubuntu 24.04)
+- **Backend**: FastAPI application with REST API and WebSocket support
+- **Frontend**: React TypeScript application with todo management and AI chat
+- **Integration**: Asynchronous n8n webhook integration with callback mechanism
+- **Deployment**: Nginx reverse proxy with WebSocket support on Hostinger VPS (Ubuntu 24.04)
 
 ### Key Features
 - Todo CRUD operations (Create, Read, Update, Delete)
-- "Execute Workflow" button that triggers n8n workflows via webhooks
+- AI-powered chat interface with real-time WebSocket communication
+- Asynchronous workflow execution without timeout issues
+- Correlation ID tracking for multiple concurrent requests
+- Auto-reconnection and error handling
 - Production-ready deployment with systemd and nginx
 
 ## Local Development Setup
@@ -102,8 +107,14 @@ Frontend uses `REACT_APP_API_URL` to configure the backend URL:
 ### Deployment Architecture
 ```
 Internet → Nginx (port 8080) → FastAPI (port 8000)
-              ↓
-         React Static Files
+              ↓                    ↓
+         React Static Files    WebSocket
+                                  ↓
+                              n8n Webhook
+                                  ↓
+                              AI Service
+                                  ↓
+                              Callback to FastAPI
 ```
 
 ### Initial Server Setup
@@ -206,13 +217,43 @@ Frontend files are served from `/var/www/fastapi-react-app` to avoid nginx permi
 ./fix-nginx-permissions.sh
 ```
 
+## WebSocket Configuration
+
+### Nginx WebSocket Support
+The application requires special nginx configuration for WebSocket connections:
+
+```nginx
+# WebSocket support for chat
+location /ws/ {
+    proxy_pass http://127.0.0.1:8000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    
+    # WebSocket specific settings
+    proxy_read_timeout 86400s;
+    proxy_send_timeout 86400s;
+    proxy_connect_timeout 60s;
+    proxy_buffering off;
+}
+```
+
+### Update Nginx
+```bash
+./update-nginx-websocket.sh
+```
+
 ## n8n Webhook Integration
 
-### Webhook Configuration
-The application integrates with n8n workflows through webhooks:
+### Basic Webhook (Todo App)
+The original webhook integration for the todo app:
 
 1. **Backend Endpoint**: `/api/workflow/execute`
-2. **Webhook Data Sent**:
+2. **Webhook Data**:
 ```json
 {
     "timestamp": "2025-07-26T21:45:00.000Z",
@@ -221,25 +262,106 @@ The application integrates with n8n workflows through webhooks:
 }
 ```
 
+### AI Chat Webhook (Async)
+The new asynchronous webhook integration for AI chat:
+
+1. **Backend Endpoint**: Triggered via WebSocket
+2. **Webhook Data with Callback**:
+```json
+{
+    "correlation_id": "unique-request-id",
+    "user_id": "user-identifier",
+    "message": "user's chat message",
+    "timestamp": "2025-07-26T21:45:00.000Z",
+    "callback_url": "http://srv928466.hstgr.cloud:8080/api/n8n-callback"
+}
+```
+
+3. **Callback Response**:
+```json
+{
+    "correlation_id": "unique-request-id",
+    "user_id": "user-identifier",
+    "result": "AI generated response"
+}
+```
+
 ### n8n Workflow Setup
 
-1. **Import Workflow**: Use `n8n-webhook-workflow.json`
-2. **Workflow Components**:
-   - Webhook Trigger (POST method)
-   - Process Webhook Data
-   - Optional External API Call
-   - Respond to Webhook
-
+1. **For Basic Webhook**: Import `n8n-webhook-workflow.json`
+2. **For AI Chat**: Import `n8n-ai-chat-workflow.json`
 3. **Configuration Steps**:
-   - Import the workflow JSON into n8n
+   - Import the appropriate workflow JSON into n8n
+   - Add your AI service (OpenAI, Claude, etc.) to the workflow
    - Get the webhook URL from the trigger node
    - Update `N8N_WEBHOOK_URL` in backend `main.py`
+   - Update `CALLBACK_BASE_URL` with your server URL
+   - Activate the workflow
    - Restart FastAPI service
 
-### Updating Webhook URL
+### Updating Configuration
 ```python
 # In main.py
-N8N_WEBHOOK_URL = "https://your-n8n-instance.com/webhook/abc123/workflow1"
+N8N_WEBHOOK_URL = "https://your-n8n-instance.com/webhook/abc123/ai-chat"
+CALLBACK_BASE_URL = "http://srv928466.hstgr.cloud:8080"
+```
+
+## AI Chat Setup
+
+### Backend Components
+
+1. **WebSocket Manager** (`websocket_manager.py`):
+   - Manages multiple concurrent WebSocket connections
+   - Maps user IDs to connection IDs
+   - Handles message broadcasting and disconnections
+
+2. **Request Tracker** (`request_tracker.py`):
+   - Tracks requests with correlation IDs
+   - Manages request lifecycle (pending, processing, completed, failed)
+   - Implements timeout handling
+   - Provides request cleanup
+
+3. **WebSocket Endpoint** (`/ws/{user_id}`):
+   - Accepts WebSocket connections
+   - Handles chat messages
+   - Manages connection lifecycle
+
+4. **Callback Endpoint** (`/api/n8n-callback`):
+   - Receives results from n8n workflows
+   - Routes responses to correct users via WebSocket
+
+### Frontend Components
+
+1. **useWebSocket Hook**:
+   - Manages WebSocket connection
+   - Auto-reconnection logic
+   - Message handling
+   - Connection state management
+
+2. **Chat Component**:
+   - Real-time chat interface
+   - Message history
+   - Connection status indicator
+   - Multiple message types
+
+### Deployment Steps
+
+1. **Backend Migration**:
+```bash
+cd /root/n8n_workflow_runner/fastapi-react-app/backend
+./migrate_to_websocket.sh
+```
+
+2. **Frontend Migration**:
+```bash
+cd /root/n8n_workflow_runner/fastapi-react-app/frontend
+./migrate_to_chat.sh
+```
+
+3. **Complete Deployment**:
+```bash
+cd /root/n8n_workflow_runner
+sudo ./deploy-async-chat.sh
 ```
 
 ## Troubleshooting
@@ -276,6 +398,23 @@ tail -f /var/log/nginx/error.log
 4. **Frontend Not Updating**
    - Clear browser cache
    - Rebuild frontend: `./rebuild-frontend.sh`
+
+5. **WebSocket Connection Failed**
+   - Check nginx WebSocket configuration
+   - Verify WebSocket URL in frontend `.env.production`
+   - Check FastAPI logs for connection errors
+   - Ensure nginx has WebSocket headers configured
+
+6. **AI Chat Not Responding**
+   - Verify n8n workflow is active
+   - Check callback URL is accessible
+   - Monitor correlation IDs in logs
+   - Check n8n execution history
+
+7. **Timeout Issues**
+   - Increase nginx timeout settings
+   - Check n8n workflow timeout configuration
+   - Monitor request tracker for timeout status
 
 ## Maintenance
 
