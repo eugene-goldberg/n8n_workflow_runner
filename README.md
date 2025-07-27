@@ -136,6 +136,11 @@ See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed instructions.
    - LangChain agent for intent analysis
    - Returns structured JSON with intent classification
 
+4. **Intent-Based Routing** (`n8n-intent-routing-workflow.json`)
+   - Complete AI-powered routing system
+   - Classifies and routes to 6 different handlers
+   - Priority escalation for urgent issues
+
 ### Setup Steps
 
 1. Import the desired workflow:

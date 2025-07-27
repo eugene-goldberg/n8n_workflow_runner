@@ -120,27 +120,34 @@ npm start
 
 ## Workflow Integration
 
-### Basic Webhook (Todo App)
-1. **Setup n8n Webhook**
-   - Import `n8n-webhook-workflow.json` into n8n
-   - Get webhook URL from trigger node
-   - Update `N8N_WEBHOOK_URL` in backend
+### Available n8n Workflows
 
-2. **Webhook Payload**
-```json
-{
-    "timestamp": "ISO date string",
-    "source": "FastAPI Todo App",
-    "action": "manual_trigger"
-}
-```
+1. **Basic Chat Workflow** (`n8n-ai-chat-workflow-working.json`)
+   - Testing workflow with simulated responses
+   - No AI service required
 
-### AI Chat Workflow ✨ NEW
-1. **Setup AI Chat Webhook**
-   - Import `n8n-ai-chat-workflow.json` into n8n
-   - Configure AI service (OpenAI, Claude, etc.)
-   - Get webhook URL from trigger node
-   - Update `N8N_WEBHOOK_URL` in backend
+2. **AI Integration Workflow** (`n8n-ai-chat-workflow-with-agent.json`)
+   - Real AI responses via OpenAI
+   - Requires API credentials
+
+3. **Intent Evaluation** (`n8n-intent-evaluation-fixed.json`)
+   - LangChain-based intent analysis
+   - Returns structured JSON
+
+4. **Intent-Based Routing** (`n8n-intent-routing-workflow.json`) ✨ NEW
+   - AI classifies user intent
+   - Routes to 6 specialized handlers
+   - Priority escalation for urgent issues
+
+### Webhook Setup
+1. **Import workflow** into n8n
+2. **Configure AI service** (if needed)
+3. **Get webhook URL** from trigger node
+4. **Update backend**:
+   ```python
+   N8N_WEBHOOK_URL = "your-webhook-url"
+   CALLBACK_BASE_URL = "http://172.17.0.1:8000"  # Docker bridge
+   ```
 
 2. **Chat Webhook Payload**
 ```json

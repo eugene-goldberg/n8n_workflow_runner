@@ -288,11 +288,21 @@ The new asynchronous webhook integration for AI chat:
 
 ### n8n Workflow Setup
 
-1. **For Basic Webhook**: Import `n8n-webhook-workflow.json`
-2. **For AI Chat**: Import `n8n-ai-chat-workflow-working.json` (recommended)
-3. **Configuration Steps**:
+1. **Basic Chat**: Import `n8n-ai-chat-workflow-working.json`
+   - For testing without AI services
+
+2. **AI Integration**: Import `n8n-ai-chat-workflow-with-agent.json`
+   - For OpenAI-powered responses
+
+3. **Intent Analysis**: Import `n8n-intent-evaluation-fixed.json`
+   - For structured intent classification
+
+4. **Intent Routing**: Import `n8n-intent-routing-workflow.json`
+   - For complete AI-powered routing system
+
+### Configuration Steps:
    - Import the appropriate workflow JSON into n8n
-   - Add your AI service (OpenAI, Claude, etc.) to the workflow
+   - Add your AI service credentials (OpenAI, etc.) if needed
    - Get the webhook URL from the trigger node
    - Update `N8N_WEBHOOK_URL` in backend `main_with_websocket.py`
    - Set `CALLBACK_BASE_URL = "http://172.17.0.1:8000"` (Docker bridge network)
@@ -305,6 +315,7 @@ The new asynchronous webhook integration for AI chat:
 2. **Callback URL**: Use Docker bridge network address `172.17.0.1:8000`
 3. **JSON Body**: Use expression mode or prepare payload in Code node
 4. **Template Evaluation**: Avoid `{{}}` syntax in JSON body strings
+5. **Switch Node**: For routing, use Expression mode with proper output count
 
 ### Updating Configuration
 ```python
