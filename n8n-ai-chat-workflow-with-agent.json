@@ -1,0 +1,201 @@
+{
+  "name": "AI Chat Workflow with Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ai-chat-webhook",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "c695b66e-7fc3-404a-9053-ccb087cde5c8",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        224
+      ],
+      "webhookId": "1b518608-05a9-4abf-a753-f15986cac23a"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get all input items from webhook\nconst items = $input.all();\n\n// Get the body from the first (and likely only) item from the webhook\nconst webhookData = items[0].json.body;\n\n// Log to debug\nconsole.log('Full webhook body data:', JSON.stringify(webhookData));\n\n// Extract values\nconst userMessage = webhookData.message || \"No message provided\";\nconst correlationId = webhookData.correlation_id || \"no-correlation-id\";\nconst userId = webhookData.user_id || \"anonymous\";\nconst callbackUrl = webhookData.callback_url || \"\";\n\nconsole.log('Extracted callback_url:', callbackUrl);\nconsole.log('Extracted correlation_id:', correlationId);\n\n// Prepare data for AI Agent instead of simulated response\nreturn [{\n  json: {\n    correlation_id: correlationId,\n    user_id: userId,\n    user_message: userMessage,\n    callback_url: callbackUrl,\n    processed_at: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "c315e5a9-e62c-40c4-ac4d-08474a12cc80",
+      "name": "Process Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        144,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-3.5-turbo",
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a helpful AI assistant integrated with an n8n workflow. Provide concise, helpful responses to user queries."
+          },
+          {
+            "role": "user",
+            "content": "={{$json.user_message}}"
+          }
+        ],
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 500
+        }
+      },
+      "id": "ai-agent-node",
+      "name": "AI Agent",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        336,
+        224
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI API"
+        }
+      },
+      "notesInFlow": true,
+      "notes": "Configure your AI service here:\n- OpenAI\n- Claude\n- Local LLM\n- Other AI services"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get AI response and original data\nconst aiResponse = $input.first().json;\nconst originalData = $node[\"Process Message\"].json;\n\n// Extract the AI message content\nconst aiMessage = aiResponse.choices?.[0]?.message?.content || aiResponse.text || aiResponse.response || \"No response from AI\";\n\n// Create analysis\nconst analysis = {\n  messageLength: originalData.user_message ? originalData.user_message.length : 0,\n  wordCount: originalData.user_message ? originalData.user_message.split(' ').length : 0,\n  sentiment: originalData.user_message && originalData.user_message.includes('!') ? 'excited' : 'neutral',\n  processingTime: '2.3s',\n  model: aiResponse.model || 'unknown'\n};\n\n// Prepare callback payload\nconst callbackPayload = {\n  correlation_id: originalData.correlation_id,\n  user_id: originalData.user_id,\n  result: `${aiMessage}\\n\\n**Analysis:**\\n- Message length: ${analysis.messageLength} characters\\n- Word count: ${analysis.wordCount} words\\n- Sentiment: ${analysis.sentiment}\\n- Processing time: ${analysis.processingTime}\\n- Model: ${analysis.model}`\n};\n\n// Return formatted data\nreturn [{\n  json: {\n    correlation_id: originalData.correlation_id,\n    user_id: originalData.user_id,\n    original_message: originalData.user_message,\n    ai_response: aiMessage,\n    analysis: analysis,\n    callback_url: originalData.callback_url,\n    callback_payload: callbackPayload,\n    processed_at: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "format-ai-response",
+      "name": "Format AI Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://172.17.0.1:8000/api/n8n-callback",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{$json.callback_payload}}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "df2474a3-829e-46f0-9716-a931e14b2a24",
+      "name": "Send Callback",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        224
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": {
+          "success": true,
+          "correlation_id": "={{$json.correlation_id}}",
+          "message": "AI processing completed",
+          "timestamp": "={{new Date().toISOString()}}",
+          "ai_model": "={{$json.analysis.model}}"
+        },
+        "options": {}
+      },
+      "id": "cc672d9c-9440-47e9-979c-488b28d79aa3",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        912,
+        224
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Process Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Message": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Format AI Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format AI Response": {
+      "main": [
+        [
+          {
+            "node": "Send Callback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Callback": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ai-agent-v1",
+  "meta": {
+    "instanceId": "2dd0f09077cf7af158dfada424a1d28458c79600db8c8ae5f72ff0a3bbbebb50"
+  },
+  "id": "ai-chat-with-agent",
+  "tags": []
+}
