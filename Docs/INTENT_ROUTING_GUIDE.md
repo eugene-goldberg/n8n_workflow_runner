@@ -118,6 +118,21 @@ if (urgency === 'HIGH' &&
 }
 ```
 
+## Advanced Features
+
+### Memory Integration
+The memory-enhanced workflow (`n8n-intent-routing-workflow-with-memory.json`) adds:
+- Conversation history tracking per user
+- Context-aware intent classification
+- Automatic escalation for recurring issues
+
+### Tool Integration
+The tool-enhanced workflow (`n8n-intent-routing-workflow-with-tools-v2.json`) includes:
+- Knowledge Base search for technical support
+- AI agent that autonomously calls tools
+- Immediate solutions for common problems
+- Structured JSON output enforcement
+
 ## Integration Tips
 
 1. **Ticket Systems**: Replace mock ticket IDs with actual API calls

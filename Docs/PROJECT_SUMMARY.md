@@ -134,10 +134,21 @@ npm start
    - LangChain-based intent analysis
    - Returns structured JSON
 
-4. **Intent-Based Routing** (`n8n-intent-routing-workflow.json`) ✨ NEW
+4. **Intent-Based Routing** (`n8n-intent-routing-workflow.json`)
    - AI classifies user intent
    - Routes to 6 specialized handlers
    - Priority escalation for urgent issues
+
+5. **Memory-Enhanced Routing** (`n8n-intent-routing-workflow-with-memory.json`)
+   - Includes conversation history tracking
+   - Per-user session management
+   - Context-aware responses
+
+6. **Tool-Enhanced Routing** (`n8n-intent-routing-workflow-with-tools-v2.json`) ✨ NEW
+   - Knowledge Base search integration
+   - AI agent can call tools autonomously
+   - Structured JSON output enforcement
+   - Immediate solutions for common issues
 
 ### Webhook Setup
 1. **Import workflow** into n8n
