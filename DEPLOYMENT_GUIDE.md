@@ -300,6 +300,11 @@ The new asynchronous webhook integration for AI chat:
 4. **Intent Routing**: Import `n8n-intent-routing-workflow.json`
    - For complete AI-powered routing system
 
+5. **Intent Routing with Memory**: Import `n8n-intent-routing-workflow-with-memory.json`
+   - For context-aware routing with conversation history
+   - Requires Buffer Memory node configuration
+   - Provides intelligent escalation and follow-up detection
+
 ### Configuration Steps:
    - Import the appropriate workflow JSON into n8n
    - Add your AI service credentials (OpenAI, etc.) if needed

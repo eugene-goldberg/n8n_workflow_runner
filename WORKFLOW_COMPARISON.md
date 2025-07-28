@@ -10,6 +10,7 @@ This guide helps you choose the right workflow for your use case.
 | AI Integration | Simple AI responses | Yes (OpenAI) | Medium | General chatbot |
 | Intent Evaluation | Intent classification only | Yes (OpenAI) | Medium | Understanding requests |
 | Intent Routing | Full routing system | Yes (OpenAI) | High | Production systems |
+| Intent Routing + Memory | Context-aware routing | Yes (OpenAI) | Very High | Enterprise support |
 
 ## Detailed Comparison
 
@@ -94,6 +95,32 @@ This guide helps you choose the right workflow for your use case.
 - General Inquiries → General support
 - Urgent Complaints → Executive escalation
 
+### 5. Intent Routing with Memory
+**File**: `n8n-intent-routing-workflow-with-memory.json`
+
+**Features**:
+- All features of Intent Routing PLUS:
+- Conversation history tracking
+- Context-aware intent classification
+- Follow-up detection
+- Pattern recognition for chronic issues
+- Automatic escalation based on history
+- Per-user memory isolation
+
+**Use When**:
+- Enterprise customer support
+- Need conversation continuity
+- Complex multi-touch support cases
+- Want to reduce customer frustration
+- Need intelligent escalation
+
+**Memory Features**:
+- 10-message context window
+- Session-based memory (per user)
+- Related ticket tracking
+- Intent evolution detection
+- Contextual understanding ("it", "that", etc.)
+
 ## Decision Tree
 
 ```
@@ -103,7 +130,9 @@ Need AI responses?
          ├─ No → AI Integration Workflow
          └─ Yes → Need routing?
                   ├─ No → Intent Evaluation Workflow
-                  └─ Yes → Intent Routing Workflow
+                  └─ Yes → Need conversation memory?
+                           ├─ No → Intent Routing Workflow
+                           └─ Yes → Intent Routing + Memory
 ```
 
 ## Migration Path
@@ -115,12 +144,13 @@ Need AI responses?
 
 ## Performance Considerations
 
-| Workflow | Response Time | API Calls | Cost |
-|----------|--------------|-----------|------|
-| Basic Chat | ~100ms | 0 | Free |
-| AI Integration | ~2-3s | 1 | Low |
-| Intent Evaluation | ~2-3s | 1 | Low |
-| Intent Routing | ~3-4s | 1 | Low |
+| Workflow | Response Time | API Calls | Cost | Memory Usage |
+|----------|--------------|-----------|------|--------------|
+| Basic Chat | ~100ms | 0 | Free | None |
+| AI Integration | ~2-3s | 1 | Low | None |
+| Intent Evaluation | ~2-3s | 1 | Low | None |
+| Intent Routing | ~3-4s | 1 | Low | None |
+| Intent + Memory | ~3-5s | 1 | Low | ~2KB/user |
 
 ## Customization Difficulty
 
@@ -140,16 +170,30 @@ Need AI responses?
    - Modify escalation logic
    - Integrate with external systems
 
+5. **Intent + Memory**: ⭐⭐⭐⭐⭐ (Expert)
+   - Configure memory retention
+   - Tune escalation patterns
+   - Design context strategies
+   - Optimize performance
+
 ## Recommendations
 
 ### For Startups
 Start with **AI Integration**, then upgrade to **Intent Routing** as you grow.
 
 ### For Enterprises
-Go directly to **Intent Routing** for comprehensive handling.
+Consider **Intent Routing + Memory** for superior customer experience and intelligent escalation.
 
 ### For Developers
 Use **Basic Chat** for development, test with **Intent Evaluation**.
 
 ### For Support Teams
-**Intent Routing** provides the best customer experience with proper escalation.
+- Small teams: **Intent Routing** for organized handling
+- Large teams: **Intent + Memory** for context-aware support
+
+### For High-Touch Industries
+**Intent + Memory** is essential for:
+- Healthcare support
+- Financial services
+- Enterprise B2B
+- Premium subscriptions
