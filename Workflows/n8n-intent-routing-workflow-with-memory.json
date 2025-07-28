@@ -1,5 +1,5 @@
 {
-  "name": "Intent-Based Routing with Memory",
+  "name": "n8n-intent-routing-workflow-with-memory",
   "nodes": [
     {
       "parameters": {
@@ -8,25 +8,31 @@
         "responseMode": "responseNode",
         "options": {}
       },
-      "id": "webhook-trigger",
+      "id": "e43e0c05-2c9e-4623-b030-c7015e0d015c",
       "name": "Webhook Trigger",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
-      "position": [-288, 0]
+      "position": [
+        -2448,
+        -384
+      ],
+      "webhookId": "125cb2a9-3166-4ae3-8453-442758f70a9a"
     },
     {
       "parameters": {
         "jsCode": "// Extract webhook data\nconst items = $input.all();\nconst webhookData = items[0].json.body;\n\nconst userMessage = webhookData.message || \"No message provided\";\nconst correlationId = webhookData.correlation_id || \"no-correlation-id\";\nconst userId = webhookData.user_id || \"anonymous\";\nconst callbackUrl = webhookData.callback_url || \"\";\n\nreturn [{\n  json: {\n    chatInput: userMessage,\n    correlation_id: correlationId,\n    user_id: userId,\n    user_message: userMessage,\n    callback_url: callbackUrl,\n    processed_at: new Date().toISOString()\n  }\n}];"
       },
-      "id": "process-message",
+      "id": "7db61501-83d2-4893-8095-0e3728351426",
       "name": "Process Message",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [-80, 0]
+      "position": [
+        -2240,
+        -384
+      ]
     },
     {
       "parameters": {
-        "prompt": "={{ $json.chatInput }}",
         "hasOutputParser": true,
         "options": {
           "systemMessage": "You are an intent classification assistant with memory of past interactions.\n\nIMPORTANT: Consider the conversation history when classifying intent:\n- If user references previous issues (e.g., \"my previous issue\", \"as I mentioned\"), check history\n- If user says \"same problem\" or \"still not working\", relate to past tickets\n- Track issue evolution (e.g., technical issue → complaint if unresolved)\n- Remember user patterns and preferences\n\nYou MUST output a JSON object with this structure:\n{\n  \"intent\": \"one of: TECHNICAL_SUPPORT, BILLING_QUESTION, FEATURE_REQUEST, GENERAL_INQUIRY, COMPLAINT\",\n  \"confidence\": 0.0-1.0,\n  \"entities\": [\"list of key entities mentioned\"],\n  \"urgency\": \"LOW, MEDIUM, HIGH\",\n  \"suggestedAction\": \"brief description of recommended action\",\n  \"contextFromHistory\": \"relevant past context if any\",\n  \"relatedTickets\": [\"list of related ticket IDs from history\"],\n  \"isFollowUp\": true/false,\n  \"escalationReason\": \"if escalating, explain why\"\n}"
@@ -34,101 +40,131 @@
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.1,
-      "position": [160, 0],
-      "id": "evaluate-intent",
+      "position": [
+        -2000,
+        -384
+      ],
+      "id": "b35eac6c-1dba-4302-bfa8-59de96ab4f81",
       "name": "Evaluate User Intent"
     },
     {
       "parameters": {
         "jsCode": "// Parse intent evaluation and prepare for routing\nconst aiResponse = $input.first().json;\nconst originalData = $node[\"Process Message\"].json;\n\n// Extract intent evaluation\nlet intentData = {};\ntry {\n  const aiText = aiResponse.text || aiResponse.output || aiResponse.response || \"{}\";\n  intentData = typeof aiText === 'string' ? JSON.parse(aiText) : aiText;\n} catch (e) {\n  console.error('Failed to parse intent:', e);\n  intentData = { intent: 'GENERAL_INQUIRY', confidence: 0.5 };\n}\n\n// Log for debugging\nconsole.log('Parsed intent data:', intentData);\nconsole.log('Intent:', intentData.intent);\nconsole.log('Urgency:', intentData.urgency);\nconsole.log('Is Follow-up:', intentData.isFollowUp);\nconsole.log('Related Tickets:', intentData.relatedTickets);\n\n// Prepare data for routing\nreturn [{\n  json: {\n    ...originalData,\n    intentEvaluation: intentData,\n    intent: intentData.intent || 'GENERAL_INQUIRY',\n    confidence: intentData.confidence || 0.5,\n    urgency: intentData.urgency || 'MEDIUM',\n    entities: intentData.entities || [],\n    suggestedAction: intentData.suggestedAction || 'Route to general support',\n    contextFromHistory: intentData.contextFromHistory || '',\n    relatedTickets: intentData.relatedTickets || [],\n    isFollowUp: intentData.isFollowUp || false,\n    escalationReason: intentData.escalationReason || ''\n  }\n}];"
       },
-      "id": "prepare-routing",
+      "id": "32fa0beb-6d13-474e-887e-3ca63f70b78b",
       "name": "Prepare for Routing",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [400, 0]
+      "position": [
+        -1584,
+        -384
+      ]
     },
     {
       "parameters": {
         "mode": "expression",
-        "output": 6,
-        "outputIndex": "={{ (() => { const intent = $json.intent; const urgency = $json.urgency; const isFollowUp = $json.isFollowUp; const relatedTickets = $json.relatedTickets || []; if (isFollowUp && urgency === 'HIGH') { return 5; } if (intent === 'COMPLAINT' && relatedTickets.length > 2) { return 5; } if (intent === 'COMPLAINT' && urgency === 'HIGH') { return 5; } const intentMap = { 'TECHNICAL_SUPPORT': 0, 'BILLING_QUESTION': 1, 'FEATURE_REQUEST': 2, 'COMPLAINT': 3 }; return intentMap[intent] ?? 4; })() }}"
+        "numberOutputs": 6,
+        "output": "={{ (() => {\n    const intent = $json.intent;\n    const urgency = $json.urgency;\n    const isFollowUp = $json.isFollowUp;\n    const relatedTickets = $json.relatedTickets || [];\n\n    if (isFollowUp && urgency === 'HIGH') { return 5; }\n    if (intent === 'COMPLAINT' && relatedTickets.length > 2) { return 5; }\n    if (intent === 'COMPLAINT' && urgency === 'HIGH') { return 5; }\n\n    const intentMap = {\n      'TECHNICAL_SUPPORT': 0,\n      'BILLING_QUESTION': 1,\n      'FEATURE_REQUEST': 2,\n      'COMPLAINT': 3\n    };\n\n    return intentMap[intent] ?? 4;\n  })() }}"
       },
-      "id": "intent-router",
+      "id": "51d241c3-cf84-4f0d-a88b-4a37335bea80",
       "name": "Route by Intent",
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
-      "position": [640, 0]
+      "position": [
+        -1264,
+        -416
+      ]
     },
     {
       "parameters": {
         "jsCode": "// Technical Support Handler with Context\nconst data = $input.first().json;\n\n// Build context-aware message\nlet contextMessage = '';\nif (data.isFollowUp && data.relatedTickets.length > 0) {\n  contextMessage = `\\n\\n**Previous Issues:** This appears to be related to ${data.relatedTickets.join(', ')}. ${data.contextFromHistory}`;\n}\n\n// Process technical support request\nconst response = {\n  ...data,\n  handled_by: 'technical_support',\n  actions_taken: [\n    'Searched knowledge base for: ' + (data.entities || []).join(', '),\n    data.isFollowUp ? 'Reviewed previous tickets: ' + data.relatedTickets.join(', ') : 'Created new support ticket',\n    data.urgency === 'HIGH' ? 'Escalated to senior tech team' : 'Assigned to tech team',\n    'Sent acknowledgment to user'\n  ],\n  response_message: `We've received your technical support request. ${data.isFollowUp ? 'We see this is related to your previous issue.' : 'A support ticket has been created.'} Our technical team will assist you shortly. Your ticket ID is: TECH-${Date.now()}${contextMessage}`\n};\n\nreturn [{ json: response }];"
       },
-      "id": "tech-support-handler",
+      "id": "aaf73769-1351-4b4c-98bf-da0185f7f214",
       "name": "Handle Tech Support",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [880, -400]
+      "position": [
+        -912,
+        -816
+      ]
     },
     {
       "parameters": {
         "jsCode": "// Billing Questions Handler with Context\nconst data = $input.first().json;\n\n// Build context-aware response\nlet contextMessage = '';\nif (data.contextFromHistory) {\n  contextMessage = `\\n\\n**Context:** ${data.contextFromHistory}`;\n}\n\n// Process billing question\nconst response = {\n  ...data,\n  handled_by: 'billing_department',\n  actions_taken: [\n    'Checked account status',\n    data.isFollowUp ? 'Reviewed conversation history' : 'Reviewed payment history',\n    'Prepared billing summary',\n    'Forwarded to finance team'\n  ],\n  response_message: `Thank you for your billing inquiry. ${data.isFollowUp ? 'Following up on your previous question,' : ''} Our finance team will review your account and respond within 24 hours. Reference number: BILL-${Date.now()}${contextMessage}`\n};\n\nreturn [{ json: response }];"
       },
-      "id": "billing-handler",
+      "id": "61646c92-ad65-4f95-b3fb-ec5462314dc9",
       "name": "Handle Billing",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [880, -200]
+      "position": [
+        -912,
+        -624
+      ]
     },
     {
       "parameters": {
         "jsCode": "// Feature Request Handler\nconst data = $input.first().json;\n\n// Process feature request\nconst response = {\n  ...data,\n  handled_by: 'product_team',\n  actions_taken: [\n    'Logged feature request',\n    'Assessed feasibility',\n    'Added to product backlog',\n    'Sent thank you message'\n  ],\n  response_message: `Thank you for your feature suggestion! We've logged your request and our product team will review it. You'll receive updates on its status. Request ID: FEAT-${Date.now()}`\n};\n\nreturn [{ json: response }];"
       },
-      "id": "feature-handler",
+      "id": "61579c9d-d387-4b5c-90d3-446de3e25576",
       "name": "Handle Feature Request",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [880, 0]
+      "position": [
+        -912,
+        -416
+      ]
     },
     {
       "parameters": {
         "jsCode": "// Complaint Handler with Escalation Context\nconst data = $input.first().json;\n\n// Determine if this needs escalation based on history\nconst needsEscalation = data.relatedTickets.length > 1 || data.escalationReason;\n\n// Process complaint\nconst response = {\n  ...data,\n  handled_by: needsEscalation ? 'senior_customer_service' : 'customer_service',\n  actions_taken: [\n    'Logged complaint with high priority',\n    needsEscalation ? 'ESCALATED to senior management' : 'Created incident report',\n    data.relatedTickets.length > 0 ? `Linked to previous issues: ${data.relatedTickets.join(', ')}` : 'First complaint from user',\n    'Assigned to customer service manager',\n    'Sent apology and acknowledgment'\n  ],\n  response_message: `We sincerely apologize for your experience. ${needsEscalation ? 'Due to the recurring nature of this issue, we have escalated it to senior management.' : 'Your complaint has been logged.'} A ${needsEscalation ? 'senior' : ''} customer service manager will contact you within ${needsEscalation ? '2' : '4'} hours. Incident ID: COMP-${Date.now()}\\n\\n${data.escalationReason ? `Escalation reason: ${data.escalationReason}` : ''}`\n};\n\nreturn [{ json: response }];"
       },
-      "id": "complaint-handler",
+      "id": "8c71c150-d187-4f57-b5db-d1c7e40fa1e9",
       "name": "Handle Complaint",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [880, 200]
+      "position": [
+        -912,
+        -224
+      ]
     },
     {
       "parameters": {
         "jsCode": "// General Inquiry / Fallback Handler\nconst data = $input.first().json;\n\n// Process general inquiry\nconst response = {\n  ...data,\n  handled_by: 'general_support',\n  actions_taken: [\n    'Checked FAQ database',\n    'Prepared general information',\n    'Identified best team for routing',\n    'Sent standard response'\n  ],\n  response_message: `Thank you for contacting us. We've received your inquiry and will route it to the appropriate team. You'll receive a response within 24-48 hours. Reference: GEN-${Date.now()}`\n};\n\nreturn [{ json: response }];"
       },
-      "id": "general-handler",
+      "id": "4c4c51de-333d-4d1a-9281-fd5633aa024b",
       "name": "Handle General Inquiry",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [880, 400]
+      "position": [
+        -912,
+        -16
+      ]
     },
     {
       "parameters": {
         "jsCode": "// HIGH PRIORITY Escalation Handler - For repeated issues or high urgency follow-ups\nconst data = $input.first().json;\n\n// Build escalation context\nconst escalationContext = [];\nif (data.isFollowUp) escalationContext.push('Unresolved follow-up issue');\nif (data.relatedTickets.length > 2) escalationContext.push(`Pattern of ${data.relatedTickets.length} related issues`);\nif (data.escalationReason) escalationContext.push(data.escalationReason);\n\n// Process high-priority escalation\nconst response = {\n  ...data,\n  handled_by: 'executive_escalation',\n  priority: 'CRITICAL',\n  actions_taken: [\n    'IMMEDIATE ESCALATION TRIGGERED',\n    'Notified executive team',\n    'Created priority incident with full history',\n    `Linked previous tickets: ${data.relatedTickets.join(', ')}`,\n    'Initiated emergency response protocol',\n    'Assigned senior manager',\n    'Scheduled immediate callback'\n  ],\n  response_message: `We take your concern extremely seriously. This has been immediately escalated to our executive team due to: ${escalationContext.join(', ')}. A senior manager will contact you within 30 minutes.\\n\\nPriority Case ID: URGENT-${Date.now()}\\n\\nRelated Issues: ${data.relatedTickets.join(', ')}\\n\\nWe apologize for the continued difficulties and are committed to resolving this immediately.`\n};\n\n// Could also trigger additional actions like:\n// - Send SMS to management\n// - Create Slack alert\n// - Email executive team\n\nreturn [{ json: response }];"
       },
-      "id": "urgent-complaint-handler",
+      "id": "43a056db-703b-4a60-a307-4e31728abca3",
       "name": "Handle URGENT Escalation",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [880, 600]
+      "position": [
+        -912,
+        192
+      ]
     },
     {
       "parameters": {
         "jsCode": "// Merge all responses and send final callback\nconst response = $input.first().json;\n\n// Prepare enhanced callback payload with context\nconst callbackPayload = {\n  correlation_id: response.correlation_id,\n  user_id: response.user_id,\n  result: response.response_message + `\\n\\n**Processing Details:**\\n- Intent: ${response.intent}\\n- Confidence: ${(response.confidence * 100).toFixed(1)}%\\n- Urgency: ${response.urgency}\\n- Handled by: ${response.handled_by}\\n- Actions taken: ${response.actions_taken.length}\\n- Is follow-up: ${response.isFollowUp ? 'Yes' : 'No'}\\n- Related tickets: ${response.relatedTickets.length > 0 ? response.relatedTickets.join(', ') : 'None'}`\n};\n\nreturn [{\n  json: {\n    ...response,\n    callback_payload: callbackPayload\n  }\n}];"
       },
-      "id": "prepare-callback",
+      "id": "0bb1f11a-8e12-4742-81f8-c6b1d6d96096",
       "name": "Prepare Callback",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [1120, 100]
+      "position": [
+        -672,
+        -320
+      ]
     },
     {
       "parameters": {
@@ -150,11 +186,14 @@
           "timeout": 10000
         }
       },
-      "id": "send-callback",
+      "id": "bf36aa71-86c6-4143-bcad-5224cc96e492",
       "name": "Send Callback",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
-      "position": [1320, 100]
+      "position": [
+        -464,
+        -320
+      ]
     },
     {
       "parameters": {
@@ -171,97 +210,268 @@
         },
         "options": {}
       },
-      "id": "respond-webhook",
+      "id": "d1e4505b-9d8f-4122-9adc-40f2eabfa88a",
       "name": "Respond to Webhook",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
-      "position": [1520, 100]
+      "position": [
+        -272,
+        -320
+      ]
     },
     {
       "parameters": {
         "model": {
           "__rl": true,
+          "value": "gpt-3.5-turbo",
           "mode": "list",
-          "value": "gpt-4-mini"
+          "cachedResultName": "gpt-3.5-turbo"
         },
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
-      "position": [160, 200],
-      "id": "openai-model",
-      "name": "OpenAI Chat Model"
+      "position": [
+        -2000,
+        -192
+      ],
+      "id": "3b9bca85-af5e-424d-9faa-214b3f22023b",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "zYR7ed2XQSB0ybXm",
+          "name": "OpenAi account 2"
+        }
+      }
     },
     {
       "parameters": {
-        "sessionKey": "={{ $json.user_id }}",
+        "sessionIdType": "customKey",
+        "sessionKey": "test-user",
         "contextWindowLength": 10
       },
-      "id": "buffer-memory",
+      "id": "69a46f15-c209-4a2e-bb4e-fb8ea8343de2",
       "name": "Buffer Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.2,
-      "position": [160, 360]
+      "position": [
+        -1936,
+        -32
+      ]
     }
   ],
+  "pinData": {},
   "connections": {
     "Webhook Trigger": {
-      "main": [[{ "node": "Process Message", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Process Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Process Message": {
-      "main": [[{ "node": "Evaluate User Intent", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Evaluate User Intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Evaluate User Intent": {
-      "main": [[{ "node": "Prepare for Routing", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Prepare for Routing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Prepare for Routing": {
-      "main": [[{ "node": "Route by Intent", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Route by Intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Route by Intent": {
       "main": [
-        [{ "node": "Handle Tech Support", "type": "main", "index": 0 }],
-        [{ "node": "Handle Billing", "type": "main", "index": 0 }],
-        [{ "node": "Handle Feature Request", "type": "main", "index": 0 }],
-        [{ "node": "Handle Complaint", "type": "main", "index": 0 }],
-        [{ "node": "Handle General Inquiry", "type": "main", "index": 0 }],
-        [{ "node": "Handle URGENT Escalation", "type": "main", "index": 0 }]
+        [
+          {
+            "node": "Handle Tech Support",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle Billing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle Feature Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle Complaint",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle General Inquiry",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle URGENT Escalation",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Handle Tech Support": {
-      "main": [[{ "node": "Prepare Callback", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Prepare Callback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Handle Billing": {
-      "main": [[{ "node": "Prepare Callback", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Prepare Callback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Handle Feature Request": {
-      "main": [[{ "node": "Prepare Callback", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Prepare Callback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Handle Complaint": {
-      "main": [[{ "node": "Prepare Callback", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Prepare Callback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Handle General Inquiry": {
-      "main": [[{ "node": "Prepare Callback", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Prepare Callback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Handle URGENT Escalation": {
-      "main": [[{ "node": "Prepare Callback", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Prepare Callback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Prepare Callback": {
-      "main": [[{ "node": "Send Callback", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Send Callback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Send Callback": {
-      "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "OpenAI Chat Model": {
-      "ai_languageModel": [[{ "node": "Evaluate User Intent", "type": "ai_languageModel", "index": 0 }]]
+      "ai_languageModel": [
+        [
+          {
+            "node": "Evaluate User Intent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Buffer Memory": {
-      "ai_memory": [[{ "node": "Evaluate User Intent", "type": "ai_memory", "index": 0 }]]
+      "ai_memory": [
+        [
+          {
+            "node": "Evaluate User Intent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "id": "intent-routing-memory",
+  "versionId": "2ad90d56-963c-4998-a8c5-8194a92eebe3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2dd0f09077cf7af158dfada424a1d28458c79600db8c8ae5f72ff0a3bbbebb50"
+  },
+  "id": "fe7Ag8ev71qBqIh1",
   "tags": []
 }
