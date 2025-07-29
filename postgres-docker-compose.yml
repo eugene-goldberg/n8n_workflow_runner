@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    container_name: n8n_postgres_memory
+    environment:
+      POSTGRES_USER: n8n_memory
+      POSTGRES_PASSWORD: your_secure_password
+      POSTGRES_DB: chat_memory
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U n8n_memory"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - root_default
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  root_default:
+    external: true

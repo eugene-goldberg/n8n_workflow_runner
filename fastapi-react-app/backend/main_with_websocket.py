@@ -33,7 +33,7 @@ manager = ConnectionManager()
 tracker = RequestTracker()
 
 # Configuration
-N8N_WEBHOOK_URL = "https://myhost.com/workflows/workflow1/"  # Update with your n8n webhook URL
+N8N_WEBHOOK_URL = "https://n8n.srv928466.hstgr.cloud/webhook/ai-chat-webhook"  # Production webhook URL
 CALLBACK_BASE_URL = "http://172.17.0.1:8000"  # Docker bridge network address for n8n container
 
 # Existing models
