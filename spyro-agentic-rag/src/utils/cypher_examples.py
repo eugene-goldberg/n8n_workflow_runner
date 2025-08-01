@@ -52,6 +52,66 @@ ORDER BY count DESC"""
 MATCH (c:Customer)-[:HAS_SLA]->(sla:SLA)
 MATCH (c)-[:SUBSCRIBES_TO]->(s:SaaSSubscription)-[:GENERATES]->(arr:AnnualRecurringRevenue)
 RETURN sum(arr.amount) as revenue_at_risk"""
+    },
+    {
+        "question": "Which features were promised to customers and what is their delivery status?",
+        "cypher": """
+MATCH (c:Customer)-[:HAS_FEATURE_PROMISE]->(fp:FeaturePromise)
+RETURN c.name as customer, fp.name as feature, fp.status as status,
+       fp.expected_date as expected_date, fp.delivery_date as delivery_date
+ORDER BY c.name, fp.expected_date"""
+    },
+    {
+        "question": "What are the top customer concerns?",
+        "cypher": """
+MATCH (c:Customer)-[:HAS_CONCERN]->(cc:CustomerConcern)
+RETURN cc.type as concern_type, cc.priority as priority, 
+       count(cc) as count, collect(c.name)[0..3] as sample_customers
+ORDER BY count DESC"""
+    },
+    {
+        "question": "Which teams have the highest impact on customer success scores?",
+        "cypher": """
+MATCH (t:Team)-[:IMPROVES_SUCCESS]->(css:CustomerSuccessScore)
+WITH t, count(css) as customers_impacted, avg(css.score) as avg_score
+MATCH (t)-[:SUPPORTS]->(p:Product)
+RETURN t.name as team, customers_impacted, avg_score, 
+       t.revenue_supported as revenue_supported, collect(p.name) as products
+ORDER BY customers_impacted DESC"""
+    },
+    {
+        "question": "What is the cost-per-customer for each product by region?",
+        "cypher": """
+MATCH (p:Product)-[:HAS_REGIONAL_COST]->(rc:RegionalCost)-[:IN_REGION]->(r:Region)
+MATCH (c:Customer)-[:LOCATED_IN]->(r)
+MATCH (c)-[:USES]->(p)
+WITH p, r, rc, count(c) as customer_count
+RETURN p.name as product, r.name as region, 
+       rc.base_cost_per_customer * rc.cost_multiplier as cost_per_customer,
+       customer_count
+ORDER BY p.name, r.name"""
+    },
+    {
+        "question": "Which features drive the most value for enterprise customers?",
+        "cypher": """
+MATCH (c:Customer)-[:VALUES_FEATURE]->(f:Feature)<-[:HAS_FEATURE]-(p:Product)
+WHERE c.size = 'Enterprise' OR c.name IN ['TechCorp', 'FinanceHub', 'CloudFirst']
+MATCH (f)-[:HAS_USAGE]->(fu:FeatureUsage)
+RETURN f.name as feature, p.name as product, 
+       avg(fu.value_score) as avg_value_score,
+       fu.adoption_rate as adoption_rate,
+       count(c) as enterprise_customers_using
+ORDER BY avg_value_score DESC"""
+    },
+    {
+        "question": "Which customers have unmet SLA commitments in the last quarter?",
+        "cypher": """
+MATCH (c:Customer)-[:HAS_SLA]->(sla:SLA)-[:HAS_PERFORMANCE]->(sp:SLAPerformance)
+WHERE sp.month >= date() - duration({months: 3}) AND sp.met = false
+RETURN c.name as customer, count(sp) as violations, 
+       sum(sp.penalty_applied) as total_penalty_percentage,
+       collect(sp.month) as violation_months
+ORDER BY violations DESC"""
     }
 ]
 
