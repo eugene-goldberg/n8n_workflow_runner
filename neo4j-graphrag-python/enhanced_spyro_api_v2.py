@@ -38,42 +38,58 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     raise ValueError("OPENAI_API_KEY environment variable is not set")
 
-# SpyroSolutions schema for Text2Cypher
+# SpyroSolutions schema for Text2Cypher - Updated to match semantic model
 SPYRO_SCHEMA = """
 Node properties:
-Customer {name: STRING}
+Customer {name: STRING, industry: STRING}
 Product {name: STRING, description: STRING}
 Project {name: STRING, status: STRING}
 Team {name: STRING, size: INTEGER}
-SaaSSubscription {plan: STRING, ARR: STRING}
-CustomerSuccessScore {score: FLOAT}
-Risk {level: STRING}
-Event {impact: STRING}
+SaaSSubscription {plan: STRING, period: STRING}
+AnnualRecurringRevenue {amount: STRING, year: INTEGER}
+CustomerSuccessScore {score: FLOAT, health_status: STRING}
+Risk {level: STRING, type: STRING, description: STRING}
+Event {type: STRING, date: STRING, impact: STRING}
 SLA {metric: STRING, guarantee: STRING}
 OperationalStatistics {metric: STRING, value: STRING}
-OperationalCost {cost: STRING}
-Profitability {impact: STRING}
+OperationalCost {cost: STRING, category: STRING}
+Profitability {impact: STRING, margin: STRING}
+CompanyObjective {name: STRING, target: STRING}
+Feature {name: STRING, priority: STRING}
+Roadmap {name: STRING, quarter: STRING}
 
 The relationships:
+(:Product)-[:ASSIGNED_TO_TEAM]->(:Team)
+(:Product)-[:HAS_SLA]->(:SLA)
+(:Product)-[:HAS_OPERATIONAL_STATS]->(:OperationalStatistics)
+(:Product)-[:HAS_ROADMAP]->(:Roadmap)
+(:Product)-[:USED_BY]->(:Customer)
 (:Customer)-[:SUBSCRIBES_TO]->(:SaaSSubscription)
 (:Customer)-[:HAS_SUCCESS_SCORE]->(:CustomerSuccessScore)
 (:Customer)-[:HAS_RISK]->(:Risk)
 (:Customer)-[:AFFECTED_BY_EVENT]->(:Event)
-(:Product)-[:USED_BY]->(:Customer)
-(:Product)-[:ASSIGNED_TO_TEAM]->(:Team)
-(:Product)-[:HAS_SLA]->(:SLA)
-(:Product)-[:HAS_OPERATIONAL_STATS]->(:OperationalStatistics)
+(:CustomerSuccessScore)-[:INFLUENCED_BY]->(:Event)
+(:SaaSSubscription)-[:GENERATES]->(:AnnualRecurringRevenue)
+(:Project)-[:DELIVERS_FEATURE]->(:Feature)
 (:Project)-[:HAS_OPERATIONAL_COST]->(:OperationalCost)
 (:Project)-[:CONTRIBUTES_TO_PROFITABILITY]->(:Profitability)
+(:Feature)-[:PART_OF]->(:Project)
+(:Feature)-[:COMMITTED_TO]->(:Customer)
+(:Roadmap)-[:HAS_FEATURE]->(:Feature)
+(:OperationalCost)-[:AFFECTS]->(:Profitability)
+(:Profitability)-[:SUPPORTS]->(:CompanyObjective)
+(:Risk)-[:IMPACTS]->(:CompanyObjective)
 """
 
-# Examples for Text2Cypher
+# Examples for Text2Cypher - Updated with new relationships
 EXAMPLES = [
-    "USER INPUT: 'Show customer subscriptions' QUERY: MATCH (c:Customer)-[:SUBSCRIBES_TO]->(s:SaaSSubscription) RETURN DISTINCT c.name as customer, s.plan as plan, s.ARR as arr",
-    "USER INPUT: 'Which products are managed by which teams?' QUERY: MATCH (p:Product)-[:ASSIGNED_TO_TEAM]->(t:Team) RETURN DISTINCT p.name as product, t.name as team, t.size as team_size",
-    "USER INPUT: 'Customer risk levels' QUERY: MATCH (c:Customer)-[:HAS_RISK]->(r:Risk) RETURN DISTINCT c.name as customer, r.level as risk_level",
-    "USER INPUT: 'Project costs' QUERY: MATCH (p:Project)-[:HAS_OPERATIONAL_COST]->(c:OperationalCost) RETURN DISTINCT p.name as project, c.cost as cost",
-    "USER INPUT: 'Customers at risk with revenue' QUERY: MATCH (c:Customer)-[:HAS_RISK]->(r:Risk), (c)-[:SUBSCRIBES_TO]->(s:SaaSSubscription) RETURN DISTINCT c.name as customer, r.level as risk_level, s.ARR as revenue"
+    "USER INPUT: 'Show customer subscriptions and revenue' QUERY: MATCH (c:Customer)-[:SUBSCRIBES_TO]->(s:SaaSSubscription)-[:GENERATES]->(arr:AnnualRecurringRevenue) RETURN c.name as customer, s.plan as plan, arr.amount as revenue",
+    "USER INPUT: 'Which features are committed to customers?' QUERY: MATCH (f:Feature)-[:COMMITTED_TO]->(c:Customer) RETURN f.name as feature, c.name as customer, f.priority as priority",
+    "USER INPUT: 'Show project costs and profitability' QUERY: MATCH (p:Project)-[:HAS_OPERATIONAL_COST]->(oc:OperationalCost), (p)-[:CONTRIBUTES_TO_PROFITABILITY]->(prof:Profitability) RETURN p.name as project, oc.cost as cost, prof.impact as profit_impact",
+    "USER INPUT: 'What events affected customer success scores?' QUERY: MATCH (css:CustomerSuccessScore)-[:INFLUENCED_BY]->(e:Event)<-[:AFFECTED_BY_EVENT]-(c:Customer) RETURN c.name as customer, css.score as score, e.type as event_type, e.impact as impact",
+    "USER INPUT: 'Show risks impacting company objectives' QUERY: MATCH (r:Risk)-[:IMPACTS]->(co:CompanyObjective) RETURN r.type as risk_type, r.level as risk_level, co.name as objective, co.target as target",
+    "USER INPUT: 'How does profitability support objectives?' QUERY: MATCH (p:Profitability)-[:SUPPORTS]->(co:CompanyObjective) RETURN p.impact as profit_impact, co.name as objective, co.target as target",
+    "USER INPUT: 'Show cost impact on profitability' QUERY: MATCH (oc:OperationalCost)-[:AFFECTS]->(p:Profitability) RETURN oc.cost as cost, oc.category as category, p.impact as profit_impact, p.margin as margin"
 ]
 
 # Global RAG system instance

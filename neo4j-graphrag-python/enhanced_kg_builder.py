@@ -11,187 +11,174 @@ Addresses issues with SimpleKGPipeline by adding:
 from typing import List, Dict, Any, Optional
 import logging
 from neo4j import GraphDatabase
-from neo4j_graphrag.experimental.components.kg_writer import Neo4jWriter
-from neo4j_graphrag.experimental.components.schema import (
-    SchemaBuilder,
-    SchemaEntity,
-    SchemaRelation,
-    SchemaProperty
-)
-from neo4j_graphrag.experimental.components.entity_relation_extractor import (
-    LLMEntityRelationExtractor,
-    OnError
-)
-from neo4j_graphrag.experimental.pipeline import Pipeline
+from neo4j_graphrag.experimental.pipeline.kg_builder import SimpleKGPipeline
+from neo4j_graphrag.experimental.components.text_splitters.fixed_size_splitter import FixedSizeSplitter
 from neo4j_graphrag.llm import OpenAILLM
 from neo4j_graphrag.embeddings import OpenAIEmbeddings
 import os
 from dotenv import load_dotenv
+import re
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-class SpyroSchemaBuilder:
-    """Build a strict schema for SpyroSolutions entities"""
-    
-    @staticmethod
-    def build_schema():
-        # Define entities with required properties
-        entities = [
-            SchemaEntity(
-                label="Customer",
-                properties=[
-                    SchemaProperty(name="name", type="STRING", required=True),
-                    SchemaProperty(name="industry", type="STRING", required=False)
-                ]
-            ),
-            SchemaEntity(
-                label="Product",
-                properties=[
-                    SchemaProperty(name="name", type="STRING", required=True),
-                    SchemaProperty(name="description", type="STRING", required=False)
-                ]
-            ),
-            SchemaEntity(
-                label="Project",
-                properties=[
-                    SchemaProperty(name="name", type="STRING", required=True),
-                    SchemaProperty(name="status", type="STRING", required=False)
-                ]
-            ),
-            SchemaEntity(
-                label="Team",
-                properties=[
-                    SchemaProperty(name="name", type="STRING", required=True),
-                    SchemaProperty(name="size", type="INTEGER", required=False)
-                ]
-            ),
-            SchemaEntity(
-                label="SaaSSubscription",
-                properties=[
-                    SchemaProperty(name="plan", type="STRING", required=True),
-                    SchemaProperty(name="ARR", type="STRING", required=True)
-                ]
-            ),
-            SchemaEntity(
-                label="Risk",
-                properties=[
-                    SchemaProperty(name="level", type="STRING", required=True),
-                    SchemaProperty(name="type", type="STRING", required=False),
-                    SchemaProperty(name="description", type="STRING", required=False)
-                ]
-            ),
-            SchemaEntity(
-                label="OperationalCost",
-                properties=[
-                    SchemaProperty(name="amount", type="STRING", required=True)
-                ]
-            ),
-            SchemaEntity(
-                label="CustomerSuccessScore",
-                properties=[
-                    SchemaProperty(name="score", type="FLOAT", required=True),
-                    SchemaProperty(name="health_status", type="STRING", required=False)
-                ]
-            )
-        ]
-        
-        # Define relationships
-        relations = [
-            SchemaRelation(
-                label="SUBSCRIBES_TO",
-                source="Customer",
-                target="SaaSSubscription"
-            ),
-            SchemaRelation(
-                label="HAS_RISK",
-                source="Customer", 
-                target="Risk"
-            ),
-            SchemaRelation(
-                label="USES",
-                source="Customer",
-                target="Product"
-            ),
-            SchemaRelation(
-                label="ASSIGNED_TO_TEAM",
-                source="Product",
-                target="Team"
-            ),
-            SchemaRelation(
-                label="HAS_OPERATIONAL_COST",
-                source="Project",
-                target="OperationalCost"
-            ),
-            SchemaRelation(
-                label="HAS_SUCCESS_SCORE",
-                source="Customer",
-                target="CustomerSuccessScore"
-            )
-        ]
-        
-        return SchemaBuilder(entities=entities, relations=relations)
+# Define schema based on SpyroSolutions model - Updated to match semantic model
+ENTITY_TYPES = [
+    {"label": "Customer", "description": "Customer organization with name and industry"},
+    {"label": "Product", "description": "Product or service with name and description"},
+    {"label": "Project", "description": "Development project with name and status"},
+    {"label": "Team", "description": "Internal team with name and size"},
+    {"label": "SaaSSubscription", "description": "SaaS subscription with plan and period"},
+    {"label": "AnnualRecurringRevenue", "description": "Annual Recurring Revenue with amount and year"},
+    {"label": "Risk", "description": "Risk with level, type and description"},
+    {"label": "OperationalCost", "description": "Cost with amount and category"},
+    {"label": "CustomerSuccessScore", "description": "Score 0-100 with health status"},
+    {"label": "Event", "description": "Event with type, date and impact"},
+    {"label": "SLA", "description": "Service Level Agreement with metric and guarantee"},
+    {"label": "OperationalStatistics", "description": "Operational metrics with value"},
+    {"label": "Profitability", "description": "Financial profitability with impact and margin"},
+    {"label": "CompanyObjective", "description": "Strategic objective with target"},
+    {"label": "Feature", "description": "Product feature with priority"},
+    {"label": "Roadmap", "description": "Product roadmap with quarter"}
+]
+
+RELATION_TYPES = [
+    "SUBSCRIBES_TO",
+    "HAS_RISK", 
+    "USES",
+    "USED_BY",
+    "ASSIGNED_TO_TEAM",
+    "HAS_OPERATIONAL_COST",
+    "HAS_SUCCESS_SCORE",
+    "CONTRIBUTES_TO_PROFITABILITY",
+    "AFFECTED_BY_EVENT",
+    "INFLUENCED_BY",
+    "GENERATES",
+    "DELIVERS_FEATURE",
+    "PART_OF",
+    "COMMITTED_TO",
+    "HAS_FEATURE",
+    "AFFECTS",
+    "SUPPORTS",
+    "IMPACTS",
+    "HAS_SLA",
+    "HAS_OPERATIONAL_STATS",
+    "HAS_ROADMAP"
+]
 
 
-class EntityResolutionWriter(Neo4jWriter):
-    """Custom writer that performs entity resolution before writing"""
+class EntityResolution:
+    """Handles entity resolution and deduplication after KG creation"""
     
-    def __init__(self, driver, neo4j_database: Optional[str] = None):
-        super().__init__(driver, neo4j_database)
-        
-    async def run(self, graph: Any) -> Any:
-        """Override run to add entity resolution"""
-        # First, write the graph normally
-        result = await super().run(graph)
-        
-        # Then perform entity resolution
-        with self.driver.session(database=self.neo4j_database) as session:
-            # Merge duplicate entities based on name
-            merge_queries = [
-                # Merge Customers
-                """
+    def __init__(self, driver):
+        self.driver = driver
+    
+    def merge_duplicate_entities(self):
+        """Merge entities with the same name"""
+        with self.driver.session() as session:
+            # Merge duplicate Customers - simpler approach
+            result = session.run("""
                 MATCH (c:Customer)
                 WITH c.name as name, collect(c) as customers
                 WHERE size(customers) > 1
-                WITH head(customers) as main, tail(customers) as duplicates
-                UNWIND duplicates as dup
-                MATCH (dup)-[r]->(n)
-                MERGE (main)-[r2:SUBSCRIBES_TO|HAS_RISK|USES|HAS_SUCCESS_SCORE]->(n)
-                DELETE r, dup
-                """,
-                
-                # Merge Products
-                """
+                WITH name, head(customers) as keep, tail(customers) as remove_list
+                UNWIND remove_list as remove
+                // Transfer outgoing relationships
+                OPTIONAL MATCH (remove)-[r:SUBSCRIBES_TO]->(target)
+                FOREACH (_ IN CASE WHEN r IS NOT NULL THEN [1] ELSE [] END |
+                    MERGE (keep)-[:SUBSCRIBES_TO]->(target)
+                )
+                WITH name, keep, remove, collect(r) as rels1
+                OPTIONAL MATCH (remove)-[r:HAS_RISK]->(target)
+                FOREACH (_ IN CASE WHEN r IS NOT NULL THEN [1] ELSE [] END |
+                    MERGE (keep)-[:HAS_RISK]->(target)
+                )
+                WITH name, keep, remove, rels1, collect(r) as rels2
+                OPTIONAL MATCH (remove)-[r:USES]->(target)
+                FOREACH (_ IN CASE WHEN r IS NOT NULL THEN [1] ELSE [] END |
+                    MERGE (keep)-[:USES]->(target)
+                )
+                WITH name, keep, remove, rels1, rels2, collect(r) as rels3
+                OPTIONAL MATCH (remove)-[r:HAS_SUCCESS_SCORE]->(target)
+                FOREACH (_ IN CASE WHEN r IS NOT NULL THEN [1] ELSE [] END |
+                    MERGE (keep)-[:HAS_SUCCESS_SCORE]->(target)
+                )
+                WITH name, keep, remove
+                DETACH DELETE remove
+                RETURN name, count(remove) as removed_count
+            """)
+            
+            for record in result:
+                if record['removed_count'] > 0:
+                    logger.info(f"Removed {record['removed_count']} duplicate customers named '{record['name']}'")
+            
+            # Merge duplicate Products - simpler approach
+            result = session.run("""
                 MATCH (p:Product)
                 WITH p.name as name, collect(p) as products
                 WHERE size(products) > 1
-                WITH head(products) as main, tail(products) as duplicates
-                UNWIND duplicates as dup
-                MATCH (dup)-[r]->(n)
-                MERGE (main)-[:ASSIGNED_TO_TEAM|HAS_SLA|HAS_OPERATIONAL_STATS]->(n)
-                DELETE r, dup
-                """,
-                
-                # Merge duplicate Risk nodes for same customer
-                """
-                MATCH (c:Customer)-[:HAS_RISK]->(r:Risk)
-                WITH c, r.level as level, collect(r) as risks
-                WHERE size(risks) > 1
-                WITH c, level, head(risks) as main, tail(risks) as duplicates
-                UNWIND duplicates as dup
-                DELETE dup
-                """
-            ]
+                WITH name, head(products) as keep, tail(products) as remove_list
+                UNWIND remove_list as remove
+                // Transfer outgoing relationships
+                OPTIONAL MATCH (remove)-[r:ASSIGNED_TO_TEAM]->(target)
+                FOREACH (_ IN CASE WHEN r IS NOT NULL THEN [1] ELSE [] END |
+                    MERGE (keep)-[:ASSIGNED_TO_TEAM]->(target)
+                )
+                WITH name, keep, remove
+                // Transfer incoming relationships
+                OPTIONAL MATCH (source)-[r:USES]->(remove)
+                FOREACH (_ IN CASE WHEN r IS NOT NULL THEN [1] ELSE [] END |
+                    MERGE (source)-[:USES]->(keep)
+                )
+                WITH name, keep, remove
+                DETACH DELETE remove
+                RETURN name, count(remove) as removed_count
+            """)
             
-            for query in merge_queries:
-                try:
-                    session.run(query)
-                    logger.info(f"Executed merge query successfully")
-                except Exception as e:
-                    logger.warning(f"Merge query failed: {e}")
-        
-        return result
+            for record in result:
+                if record['removed_count'] > 0:
+                    logger.info(f"Removed {record['removed_count']} duplicate products named '{record['name']}'")
+            
+            # Merge duplicate Teams - simpler approach
+            result = session.run("""
+                MATCH (t:Team)
+                WITH t.name as name, collect(t) as teams
+                WHERE size(teams) > 1
+                // Keep the team with the highest size or the first one
+                WITH name, 
+                     head([t IN teams WHERE t.size IS NOT NULL | t] + teams) as keep,
+                     tail(teams) as remove_list
+                UNWIND remove_list as remove
+                // Skip if remove is the same as keep
+                WITH name, keep, remove WHERE remove <> keep
+                // Transfer incoming relationships
+                OPTIONAL MATCH (source)-[r:ASSIGNED_TO_TEAM]->(remove)
+                FOREACH (_ IN CASE WHEN r IS NOT NULL THEN [1] ELSE [] END |
+                    MERGE (source)-[:ASSIGNED_TO_TEAM]->(keep)
+                )
+                WITH name, keep, remove
+                DETACH DELETE remove
+                RETURN name, count(remove) as removed_count
+            """)
+            
+            for record in result:
+                if record['removed_count'] > 0:
+                    logger.info(f"Removed {record['removed_count']} duplicate teams named '{record['name']}'")
+    
+    def remove_duplicate_relationships(self):
+        """Remove duplicate relationships between the same nodes"""
+        with self.driver.session() as session:
+            result = session.run("""
+                MATCH (a)-[r]->(b)
+                WITH a, b, type(r) AS rel_type, collect(r) AS rels
+                WHERE size(rels) > 1
+                FOREACH (r IN tail(rels) | DELETE r)
+                RETURN count(*) as removed_count
+            """)
+            
+            removed = result.single()['removed_count']
+            logger.info(f"Removed {removed} duplicate relationships")
 
 
 class EnhancedKGBuilder:
@@ -201,62 +188,30 @@ class EnhancedKGBuilder:
         self.driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_user, neo4j_password))
         self.llm = OpenAILLM(
             model_name="gpt-4o",
-            model_params={
-                "temperature": 0,
-                "response_format": {"type": "json_object"}
-            }
+            model_params={"temperature": 0}
         )
         self.embedder = OpenAIEmbeddings()
+        self.entity_resolution = EntityResolution(self.driver)
         
     def create_pipeline(self):
-        """Create an enhanced pipeline with entity resolution"""
+        """Create SimpleKGPipeline with custom configuration"""
         
-        # Create schema
-        schema_builder = SpyroSchemaBuilder.build_schema()
+        # Create text splitter
+        text_splitter = FixedSizeSplitter(
+            chunk_size=500,
+            chunk_overlap=50
+        )
         
-        # Create custom prompt for better extraction
-        extraction_prompt = """
-        Extract entities and relationships from the text following this schema strictly:
-        
-        Entities:
-        - Customer: Must have 'name' property
-        - Product: Must have 'name' property  
-        - Project: Must have 'name' property
-        - Team: Must have 'name' and 'size' (integer) properties
-        - SaaSSubscription: Must have 'plan' and 'ARR' properties
-        - Risk: Must have 'level' (High/Medium/Low) property
-        - OperationalCost: Must have 'amount' property (use $ format)
-        - CustomerSuccessScore: Must have 'score' (float 0-100) property
-        
-        Important:
-        - Extract exact values from the text
-        - For costs/revenue, preserve the $ format (e.g., "$5M")
-        - For scores, extract numeric values
-        - Avoid creating duplicate entities with the same name
-        """
-        
-        # Create entity extractor with custom prompt
-        entity_extractor = LLMEntityRelationExtractor(
+        # Create pipeline with explicit entity and relation types
+        pipeline = SimpleKGPipeline(
             llm=self.llm,
-            prompt_template=extraction_prompt,
-            on_error=OnError.RAISE
-        )
-        
-        # Create writer with entity resolution
-        writer = EntityResolutionWriter(
             driver=self.driver,
-            neo4j_database=None
+            embedder=self.embedder,
+            entities=ENTITY_TYPES,
+            relations=RELATION_TYPES,
+            from_pdf=False,
+            text_splitter=text_splitter
         )
-        
-        # Build pipeline
-        pipeline = Pipeline()
-        pipeline.add_component(schema_builder, "schema")
-        pipeline.add_component(entity_extractor, "extractor") 
-        pipeline.add_component(writer, "writer")
-        
-        # Connect components
-        pipeline.connect("schema", "extractor", {"schema": "schema"})
-        pipeline.connect("extractor", "writer", {"graph": "graph"})
         
         return pipeline
     
@@ -291,22 +246,33 @@ class EnhancedKGBuilder:
             
             logger.info("Post-processing completed")
     
-    def build_from_text(self, text: str):
+    async def build_from_text(self, text: str):
         """Build knowledge graph from text with enhanced processing"""
         pipeline = self.create_pipeline()
         
         # Run pipeline
         logger.info("Running enhanced KG pipeline...")
-        result = pipeline.run({"text": text})
+        try:
+            # SimpleKGPipeline uses run_async
+            result = await pipeline.run_async(text=text)
+            logger.info(f"Pipeline result: {result}")
+        except Exception as e:
+            logger.error(f"Pipeline error: {e}")
+            raise
         
         # Post-process
         logger.info("Post-processing graph...")
         self.post_process_graph()
         
+        # Entity resolution
+        logger.info("Performing entity resolution...")
+        self.entity_resolution.merge_duplicate_entities()
+        self.entity_resolution.remove_duplicate_relationships()
+        
         # Create indexes
         self._create_indexes()
         
-        return result
+        return {"status": "completed", "result": result}
     
     def _create_indexes(self):
         """Create indexes for better query performance"""
@@ -325,7 +291,7 @@ class EnhancedKGBuilder:
                     logger.warning(f"Index creation: {e}")
 
 
-def main():
+async def main():
     """Example usage"""
     
     # Sample text
@@ -352,7 +318,7 @@ def main():
     )
     
     # Build graph
-    result = builder.build_from_text(text)
+    result = await builder.build_from_text(text)
     logger.info("Enhanced KG building completed")
     
     # Verify results
@@ -365,7 +331,11 @@ def main():
         print("\nCustomer Subscriptions:")
         for record in result:
             print(f"  {record['customer']}: {record['plan']} - {record['arr']}")
+    
+    # Close driver
+    builder.driver.close()
 
 
 if __name__ == "__main__":
-    main()
+    import asyncio
+    asyncio.run(main())

@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+VENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
+test_results/
+*.log
+logs/
+node_modules/
+webapp/node_modules/
+webapp/build/
+webapp/.env.local
+
+# Data
+*.db
+*.sqlite
+data_gap_analysis/*.json
+data_gap_analysis/*.txt
+!data_gap_analysis/COMPLETE_DATA_GAPS_ANALYSIS.md

@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Logs
+*.log
+logs/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Environment
+.env
+.env.local
+
+# Test coverage
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Database
+*.db
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.bak
+~*
+
+# Archives
+*.tar.gz
+*.zip
+
+# API logs
+api_v2.log
+backend.log
+frontend.log

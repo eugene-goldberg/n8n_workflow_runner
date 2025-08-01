@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Connection Test</h1>
+    <button onclick="testAPI()">Test API</button>
+    <pre id="result"></pre>
+    
+    <script>
+        async function testAPI() {
+            const resultEl = document.getElementById('result');
+            
+            try {
+                // Test health endpoint
+                const healthResponse = await fetch('http://localhost:8000/health');
+                resultEl.textContent += 'Health endpoint: ' + healthResponse.status + '\n';
+                
+                // Test query endpoint with API key
+                const queryResponse = await fetch('http://localhost:8000/query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': 'spyro-secret-key-123'
+                    },
+                    body: JSON.stringify({
+                        question: 'test'
+                    })
+                });
+                
+                resultEl.textContent += 'Query endpoint: ' + queryResponse.status + '\n';
+                
+                if (queryResponse.ok) {
+                    const data = await queryResponse.json();
+                    resultEl.textContent += 'Response: ' + JSON.stringify(data, null, 2);
+                } else {
+                    const error = await queryResponse.text();
+                    resultEl.textContent += 'Error: ' + error;
+                }
+                
+            } catch (error) {
+                resultEl.textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Service Workers</title>
+</head>
+<body>
+    <h1>Clear Service Workers</h1>
+    <button onclick="clearServiceWorkers()">Clear All Service Workers</button>
+    <pre id="result"></pre>
+    
+    <script>
+        async function clearServiceWorkers() {
+            const resultEl = document.getElementById('result');
+            
+            try {
+                // Unregister all service workers
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                for (let registration of registrations) {
+                    const success = await registration.unregister();
+                    resultEl.textContent += `Unregistered: ${registration.scope} - ${success}\n`;
+                }
+                
+                // Clear all caches
+                const cacheNames = await caches.keys();
+                for (let name of cacheNames) {
+                    await caches.delete(name);
+                    resultEl.textContent += `Deleted cache: ${name}\n`;
+                }
+                
+                resultEl.textContent += '\nAll service workers and caches cleared!\n';
+                resultEl.textContent += 'Please close this tab and refresh the main app.';
+                
+            } catch (error) {
+                resultEl.textContent = 'Error: ' + error.message;
+            }
+        }
+        
+        // Auto-run on load
+        window.onload = clearServiceWorkers;
+    </script>
+</body>
+</html>

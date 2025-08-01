@@ -1,0 +1,78 @@
+{
+  "timestamp": "2025-08-01T07:51:52.425641",
+  "criteria_status": {
+    "Autonomous Operation": true,
+    "Tool Selection Accuracy": true,
+    "Performance (<3s)": false,
+    "Reliability (<0.1%)": true,
+    "Answer Quality (>90%)": false
+  },
+  "passed": 3,
+  "total": 5,
+  "details": {
+    "autonomous": true,
+    "tool_accuracy": [
+      {
+        "query": "Which customers have subscriptions over $5M?",
+        "expected": "GraphQuery",
+        "actual": "GraphQuery",
+        "correct": true
+      },
+      {
+        "query": "Count active subscriptions",
+        "expected": "GraphQuery",
+        "actual": "GraphQuery",
+        "correct": true
+      },
+      {
+        "query": "Show me all teams",
+        "expected": "GraphQuery",
+        "actual": "GraphQuery",
+        "correct": true
+      },
+      {
+        "query": "What are SpyroCloud features?",
+        "expected": "HybridSearch",
+        "actual": "HybridSearch",
+        "correct": true
+      },
+      {
+        "query": "Tell me about SpyroAI capabilities",
+        "expected": "HybridSearch",
+        "actual": "HybridSearch",
+        "correct": true
+      },
+      {
+        "query": "SpyroSecure security features",
+        "expected": "HybridSearch",
+        "actual": "HybridSearch",
+        "correct": true
+      },
+      {
+        "query": "What makes our products unique?",
+        "expected": "VectorSearch",
+        "actual": "VectorSearch",
+        "correct": true
+      },
+      {
+        "query": "How do we help enterprises?",
+        "expected": "VectorSearch",
+        "actual": "VectorSearch",
+        "correct": true
+      }
+    ],
+    "performance": [
+      4.524496793746948,
+      13.238094806671143,
+      7.79916787147522,
+      3.7016310691833496,
+      14.88823390007019
+    ],
+    "errors": [],
+    "quality_scores": [
+      100,
+      50,
+      100
+    ]
+  }
+}
