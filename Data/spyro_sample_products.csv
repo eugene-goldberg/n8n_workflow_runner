@@ -1,0 +1,4 @@
+entity_type,id,name,description,category,base_price
+Product,prod_001,SpyroSuite,Complete AI automation platform,SaaS,5000
+Product,prod_002,SpyroAnalytics,Advanced analytics and reporting,Analytics,3000
+Product,prod_003,SpyroConnect,Integration hub for third-party services,Integration,2000

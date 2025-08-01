@@ -1,0 +1,217 @@
+{
+  "meta": {
+    "templateName": "SpyroSolutions GraphRAG with Neo4j-GraphRAG-Python Integration",
+    "templateId": "spyro-graphrag-neo4j-integration-v1",
+    "templateVersion": "1.0.0",
+    "templateCreatedDate": "2024-12-06T00:00:00.000Z",
+    "templateUpdatedDate": "2024-12-06T00:00:00.000Z",
+    "description": "Complete workflow for SpyroSolutions using neo4j-graphrag-python library with deterministic routing"
+  },
+  "nodes": [
+    {
+      "parameters": {
+        "path": "query",
+        "options": {
+          "responseData": "allEntries",
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "webhook-entry",
+      "name": "Webhook Entry",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "spyro-graphrag-query"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SPYRO_API_URL || 'http://localhost:8000' }}/query",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ message: $json.query, top_k: $json.top_k || 5 }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "call-graphrag-api",
+      "name": "Call GraphRAG API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Enhanced response formatter with tool display\n\n// Helper function to determine retriever purpose\nfunction getRetrieverPurpose(retrieverType) {\n  const purposes = {\n    'vector': '🔍 Semantic Search - Finding conceptually similar content',\n    'graph': '🕸️ Graph Traversal - Exploring entity relationships',\n    'hybrid_sequential': '🔄 Sequential Hybrid - Vector search followed by graph exploration',\n    'hybrid_parallel': '⚡ Parallel Hybrid - Simultaneous vector and graph search',\n    'text2cypher': '💬 Natural Language to Cypher - Converting questions to graph queries',\n    'no_retrieval': '🤖 Direct Response - No retrieval needed'\n  };\n  return purposes[retrieverType] || '❓ Unknown retrieval method';\n}\n\n// Parse the API response\nconst apiResponse = $input.first().json;\n\n// Format the enhanced response\nconst formattedResponse = {\n  success: true,\n  timestamp: new Date().toISOString(),\n  \n  // Main response\n  response: apiResponse.response,\n  \n  // Retrieval metadata\n  retrieval_info: {\n    retriever_used: apiResponse.retriever_used,\n    purpose: getRetrieverPurpose(apiResponse.retriever_used),\n    confidence: apiResponse.confidence,\n    context_items_count: apiResponse.context_items\n  },\n  \n  // Query metadata\n  query_metadata: {\n    original_query: $('webhook-entry').first().json.query,\n    processing_time_ms: Date.now() - new Date($('webhook-entry').first().json.timestamp).getTime(),\n    top_k_requested: $('webhook-entry').first().json.top_k || 5\n  },\n  \n  // Tool usage summary\n  tool_summary: {\n    strategy: apiResponse.retriever_used,\n    description: `The system used ${apiResponse.retriever_used} retrieval based on query pattern analysis`,\n    confidence_level: apiResponse.confidence > 0.8 ? 'High' : apiResponse.confidence > 0.6 ? 'Medium' : 'Low'\n  },\n  \n  // Optional debugging info\n  debug_info: {\n    router_version: 'neo4j-graphrag-python-v1',\n    api_endpoint: $('call-graphrag-api').first().json.url,\n    workflow_execution_id: $execution.id\n  }\n};\n\n// Add performance insights\nif (formattedResponse.query_metadata.processing_time_ms > 5000) {\n  formattedResponse.performance_warning = 'Query took longer than expected. Consider optimizing indexes.';\n}\n\n// Add retrieval insights\nif (apiResponse.context_items === 0) {\n  formattedResponse.retrieval_warning = 'No context items found. Consider refining the query.';\n}\n\nreturn formattedResponse;"
+      },
+      "id": "format-enhanced-response",
+      "name": "Format Enhanced Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.success }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "check-success",
+      "name": "Check Success",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log successful query for monitoring\nconst logEntry = {\n  timestamp: new Date().toISOString(),\n  query: $json.query_metadata.original_query,\n  retriever: $json.retrieval_info.retriever_used,\n  confidence: $json.retrieval_info.confidence,\n  context_items: $json.retrieval_info.context_items_count,\n  processing_time_ms: $json.query_metadata.processing_time_ms,\n  success: true\n};\n\n// In production, this would send to a logging service\nconsole.log('Query Log:', JSON.stringify(logEntry));\n\n// Pass through the response\nreturn $json;"
+      },
+      "id": "log-success",
+      "name": "Log Success",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [1050, 250]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Handle API errors gracefully\nconst error = $input.first().json.error || $input.first().json;\n\nconst errorResponse = {\n  success: false,\n  timestamp: new Date().toISOString(),\n  error: {\n    message: error.message || 'An unexpected error occurred',\n    type: error.name || 'UnknownError',\n    details: error.description || error.details || null\n  },\n  query_metadata: {\n    original_query: $('webhook-entry').first().json.query,\n    processing_time_ms: Date.now() - new Date($('webhook-entry').first().json.timestamp).getTime()\n  },\n  fallback_response: 'I apologize, but I encountered an error processing your query. Please try rephrasing your question or contact support if the issue persists.',\n  debug_info: {\n    workflow_execution_id: $execution.id,\n    error_node: $node.name,\n    api_endpoint: $('call-graphrag-api').first().json.url\n  }\n};\n\n// Log error for monitoring\nconsole.error('Query Error:', JSON.stringify({\n  timestamp: errorResponse.timestamp,\n  query: errorResponse.query_metadata.original_query,\n  error: errorResponse.error.message,\n  execution_id: errorResponse.debug_info.workflow_execution_id\n}));\n\nreturn errorResponse;"
+      },
+      "id": "handle-error",
+      "name": "Handle Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [1050, 350]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "webhook-response",
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1250, 300]
+    }
+  ],
+  "connections": {
+    "webhook-entry": {
+      "main": [
+        [
+          {
+            "node": "call-graphrag-api",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "call-graphrag-api": {
+      "main": [
+        [
+          {
+            "node": "format-enhanced-response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "handle-error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "format-enhanced-response": {
+      "main": [
+        [
+          {
+            "node": "check-success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check-success": {
+      "main": [
+        [
+          {
+            "node": "log-success",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "handle-error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "log-success": {
+      "main": [
+        [
+          {
+            "node": "webhook-response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "handle-error": {
+      "main": [
+        [
+          {
+            "node": "webhook-response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 60
+  },
+  "staticData": null,
+  "pinData": {},
+  "versionId": "neo4j-graphrag-python-v1",
+  "triggerCount": 0,
+  "tags": [
+    {
+      "name": "graphrag",
+      "createdAt": "2024-12-06T00:00:00.000Z"
+    },
+    {
+      "name": "spyrosolutions",
+      "createdAt": "2024-12-06T00:00:00.000Z"
+    },
+    {
+      "name": "neo4j",
+      "createdAt": "2024-12-06T00:00:00.000Z"
+    }
+  ]
+}

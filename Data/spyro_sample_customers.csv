@@ -1,0 +1,6 @@
+entity_type,id,name,tier,mrr,success_score,product_id,risk_level
+Customer,cust_001,EA,Enterprise,50000,85,prod_001,medium
+Customer,cust_002,Nintendo,Enterprise,75000,92,prod_001,low
+Customer,cust_003,Disney,Enterprise,100000,78,prod_002,high
+Customer,cust_004,Netflix,Professional,35000,88,prod_002,low
+Customer,cust_005,Spotify,Professional,25000,71,prod_001,medium

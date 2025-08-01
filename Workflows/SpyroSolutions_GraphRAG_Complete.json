@@ -1,0 +1,211 @@
+{
+  "name": "SpyroSolutions_GraphRAG_Complete",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi! I'm the SpyroSolutions Graph RAG assistant. I can help you understand customer relationships, revenue risks, project commitments, and team performance. What would you like to know?",
+        "options": {}
+      },
+      "id": "chat_trigger",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "spyro-graphrag-chat"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an entity extraction specialist for SpyroSolutions. Extract relevant entities and their types from the user query.\n\nUser Query: {{ $json.chatInput }}\n\nReturn a JSON object with:\n{\n  \"entities\": [\n    {\"name\": \"entity_name\", \"type\": \"Customer|Product|Team|Project|Risk|Feature\"}\n  ],\n  \"query_type\": \"revenue_risk|commitments|relationships|performance|general\",\n  \"metrics_needed\": [\"mrr\", \"risk_score\", \"sla_compliance\", \"success_score\"]\n}\n\nBe specific with entity names (e.g., 'EA', 'Nintendo', 'SpyroSuite') and identify the main intent of the query.",
+        "hasOutputParser": true
+      },
+      "id": "extract_entities",
+      "name": "Extract Entities",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "options": {
+          "temperature": 0,
+          "responseFormat": {
+            "type": "json_object"
+          }
+        }
+      },
+      "id": "llm_model",
+      "name": "OpenAI Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [450, 500],
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse extraction results and build Cypher query\nconst extraction = JSON.parse($json.output);\nconst entities = extraction.entities || [];\nconst queryType = extraction.query_type || 'general';\n\nlet cypherQuery = '';\nlet description = '';\n\nswitch(queryType) {\n  case 'revenue_risk':\n    const customerNames = entities.filter(e => e.type === 'Customer').map(e => e.name);\n    cypherQuery = `\n      MATCH (c:Customer)-[sub:HAS_SUBSCRIPTION]->(p:Product)\n      ${customerNames.length > 0 ? `WHERE c.name IN [${customerNames.map(n => `'${n}'`).join(', ')}]` : ''}\n      OPTIONAL MATCH (c)-[:HAS_RISK]->(r:Risk)\n      OPTIONAL MATCH (c)-[:HAS_SLA]->(sla:SLA)\n      RETURN c.name AS customer,\n             c.tier AS tier,\n             p.name AS product,\n             sub.mrr AS monthly_revenue,\n             c.success_score AS success_score,\n             r.description AS risk_description,\n             r.impact_factor AS risk_factor,\n             r.severity AS risk_severity,\n             sub.mrr * COALESCE(r.impact_factor, 0) AS revenue_at_risk,\n             sla.compliance AS sla_compliance\n      ORDER BY revenue_at_risk DESC\n    `;\n    description = 'Analyzing revenue risk for customers';\n    break;\n    \n  case 'commitments':\n    const commitmentCustomers = entities.filter(e => e.type === 'Customer').map(e => e.name);\n    cypherQuery = `\n      MATCH (c:Customer)-[sub:HAS_SUBSCRIPTION]->(p:Product)\n      ${commitmentCustomers.length > 0 ? `WHERE c.name IN [${commitmentCustomers.map(n => `'${n}'`).join(', ')}]` : ''}\n      OPTIONAL MATCH (c)<-[:DELIVERS_FEATURE]-(proj:Project)\n      OPTIONAL MATCH (proj)<-[:WORKS_ON]-(t:Team)\n      OPTIONAL MATCH (proj)-[:HAS_RISK]->(r:Risk)\n      WITH c, sub, p, proj, t, r\n      ORDER BY c.name, proj.deadline\n      RETURN c.name AS customer,\n             c.tier AS tier,\n             sub.mrr AS revenue,\n             collect(DISTINCT {\n               project: proj.name,\n               status: proj.status,\n               deadline: proj.deadline,\n               team: t.name,\n               risk: r.description\n             }) AS commitments\n    `;\n    description = 'Retrieving customer commitments and project status';\n    break;\n    \n  case 'relationships':\n    const allEntityNames = entities.map(e => e.name);\n    cypherQuery = `\n      MATCH path = (start)-[*1..3]-(end)\n      WHERE start.name IN [${allEntityNames.map(n => `'${n}'`).join(', ')}]\n        AND start <> end\n      WITH start, end, path, length(path) AS distance\n      ORDER BY distance\n      LIMIT 50\n      RETURN DISTINCT start.name AS source,\n             labels(start)[0] AS source_type,\n             [rel in relationships(path) | type(rel)] AS relationships,\n             end.name AS target,\n             labels(end)[0] AS target_type,\n             distance\n    `;\n    description = 'Mapping entity relationships';\n    break;\n    \n  case 'performance':\n    const teams = entities.filter(e => e.type === 'Team').map(e => e.name);\n    cypherQuery = `\n      MATCH (t:Team)-[:WORKS_ON]->(proj:Project)\n      ${teams.length > 0 ? `WHERE t.name IN [${teams.map(n => `'${n}'`).join(', ')}]` : ''}\n      OPTIONAL MATCH (proj)-[:DELIVERS_FEATURE]->(c:Customer)\n      OPTIONAL MATCH (c)-[sub:HAS_SUBSCRIPTION]->(p:Product)\n      WITH t, proj, c, sub\n      RETURN t.name AS team,\n             t.department AS department,\n             count(DISTINCT proj) AS active_projects,\n             collect(DISTINCT {\n               project: proj.name,\n               status: proj.status,\n               customer: c.name,\n               revenue_impact: sub.mrr\n             }) AS project_details\n    `;\n    description = 'Analyzing team performance';\n    break;\n    \n  default:\n    // General query - get overview\n    cypherQuery = `\n      MATCH (c:Customer)-[sub:HAS_SUBSCRIPTION]->(p:Product)\n      WITH count(DISTINCT c) AS total_customers,\n           sum(sub.mrr) AS total_mrr,\n           avg(c.success_score) AS avg_success_score\n      MATCH (r:Risk)\n      WITH total_customers, total_mrr, avg_success_score,\n           count(r) AS total_risks\n      MATCH (proj:Project)\n      WHERE proj.status = 'In Progress'\n      RETURN total_customers,\n             total_mrr,\n             round(avg_success_score, 2) AS avg_success_score,\n             total_risks,\n             count(proj) AS active_projects\n    `;\n    description = 'Getting SpyroSolutions overview';\n}\n\nreturn {\n  cypherQuery,\n  queryType,\n  description,\n  entities\n};"
+      },
+      "id": "build_cypher",
+      "name": "Build Cypher Query",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ $json.cypherQuery }}",
+        "options": {}
+      },
+      "id": "neo4j_query",
+      "name": "Neo4j Query",
+      "type": "n8n-nodes-neo4j.neo4j",
+      "typeVersion": 1,
+      "position": [850, 300],
+      "credentials": {
+        "neo4jCredentialsApi": {
+          "id": "new",
+          "name": "SpyroSolutions Neo4j"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format Neo4j results for LLM\nconst queryInfo = $('build_cypher').item.json;\nconst results = $input.all();\n\nconst formattedResults = {\n  query_type: queryInfo.queryType,\n  description: queryInfo.description,\n  entities_searched: queryInfo.entities,\n  result_count: results.length,\n  data: results.map(r => r.json)\n};\n\nreturn [{\n  json: {\n    userQuery: $('chat_trigger').item.json.chatInput,\n    queryResults: formattedResults\n  }\n}];"
+      },
+      "id": "format_results",
+      "name": "Format Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a helpful assistant for SpyroSolutions. Based on the graph database query results, provide a clear and insightful answer to the user's question.\n\nUser Question: {{ $json.userQuery }}\n\nQuery Results:\n{{ JSON.stringify($json.queryResults, null, 2) }}\n\nProvide a natural language response that:\n1. Directly answers the user's question\n2. Includes specific metrics and numbers when available\n3. Highlights any risks or important relationships\n4. Provides actionable insights\n5. Suggests follow-up questions if relevant\n\nFormat your response in a conversational tone, using bullet points or lists when appropriate for clarity."
+      },
+      "id": "generate_response",
+      "name": "Generate Response",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [1250, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "response_llm",
+      "name": "Response Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [1250, 500],
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "chat_response",
+      "name": "Chat Response",
+      "type": "@n8n/n8n-nodes-langchain.chatReply",
+      "typeVersion": 1,
+      "position": [1450, 300]
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.sessionId }}",
+        "contextWindowLength": 10
+      },
+      "id": "chat_memory",
+      "name": "Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [1250, 600]
+    }
+  ],
+  "connections": {
+    "Chat Trigger": {
+      "main": [[{
+        "node": "Extract Entities",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Extract Entities": {
+      "main": [[{
+        "node": "Build Cypher Query",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "OpenAI Model": {
+      "ai_languageModel": [[{
+        "node": "Extract Entities",
+        "type": "ai_languageModel",
+        "index": 0
+      }]]
+    },
+    "Build Cypher Query": {
+      "main": [[{
+        "node": "Neo4j Query",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Neo4j Query": {
+      "main": [[{
+        "node": "Format Results",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Format Results": {
+      "main": [[{
+        "node": "Generate Response",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Generate Response": {
+      "main": [[{
+        "node": "Chat Response",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Response Model": {
+      "ai_languageModel": [[{
+        "node": "Generate Response",
+        "type": "ai_languageModel",
+        "index": 0
+      }]]
+    },
+    "Chat Memory": {
+      "ai_memory": [[{
+        "node": "Generate Response",
+        "type": "ai_memory",
+        "index": 0
+      }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "description": "Complete Graph RAG implementation for SpyroSolutions using Neo4j"
+  }
+}

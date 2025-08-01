@@ -1,0 +1,245 @@
+{
+  "name": "SpyroSolutions_GraphRAG_Query_Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Hi! I'm the SpyroSolutions Graph RAG assistant. I can help you understand customer relationships, revenue risks, and project commitments. What would you like to know?",
+        "options": {}
+      },
+      "id": "chat_trigger",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "spyro-chat"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "messages": {
+          "values": [
+            {
+              "content": "You are an entity extraction specialist. Extract relevant entities and their types from the user query. Return JSON format:\n{\n  \"entities\": [\n    {\"name\": \"entity_name\", \"type\": \"Customer|Product|Team|Project|Risk\"}\n  ],\n  \"query_type\": \"revenue_risk|commitments|relationships|general\",\n  \"metrics_needed\": [\"mrr\", \"risk_score\", \"sla_compliance\"]\n}"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0,
+          "responseFormat": {
+            "values": {
+              "type": "json_object"
+            }
+          }
+        }
+      },
+      "id": "extract_entities",
+      "name": "Extract Entities",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [450, 300],
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build Neo4j Cypher query based on extracted entities\nconst extraction = JSON.parse($json.choices[0].message.content);\nconst entities = extraction.entities;\nconst queryType = extraction.query_type;\n\nlet cypherQuery = '';\nlet parameters = {};\n\nswitch(queryType) {\n  case 'revenue_risk':\n    cypherQuery = `\n      MATCH (c:Customer)-[sub:HAS_SUBSCRIPTION]->(p:Product)\n      WHERE c.name IN $customerNames\n      OPTIONAL MATCH (c)-[:HAS_RISK]->(r:Risk)\n      OPTIONAL MATCH (c)-[:HAS_SLA]->(sla:SLA)\n      RETURN c.name AS customer,\n             sub.mrr AS monthly_revenue,\n             r.impact_factor AS risk_factor,\n             sub.mrr * COALESCE(r.impact_factor, 0) AS revenue_at_risk,\n             sla.compliance AS sla_compliance\n    `;\n    parameters.customerNames = entities.filter(e => e.type === 'Customer').map(e => e.name);\n    break;\n    \n  case 'commitments':\n    cypherQuery = `\n      MATCH (c:Customer)-[sub:HAS_SUBSCRIPTION]->(p:Product)\n      WHERE c.name IN $customerNames\n      OPTIONAL MATCH (c)-[:COMMITTED_FEATURE]->(f:Feature)\n      OPTIONAL MATCH (f)-[:HAS_RISK]->(r:Risk)\n      RETURN c.name AS customer,\n             sub.mrr AS revenue,\n             collect(DISTINCT {feature: f.name, deadline: f.deadline}) AS commitments,\n             collect(DISTINCT r.description) AS risks\n    `;\n    parameters.customerNames = entities.filter(e => e.type === 'Customer').map(e => e.name);\n    break;\n    \n  case 'relationships':\n    cypherQuery = `\n      MATCH path = (start)-[*1..3]-(end)\n      WHERE start.name IN $entityNames\n      RETURN start.name AS source,\n             [rel in relationships(path) | type(rel)] AS relationship_types,\n             end.name AS target,\n             labels(end)[0] AS target_type,\n             length(path) AS distance\n      ORDER BY distance\n      LIMIT 20\n    `;\n    parameters.entityNames = entities.map(e => e.name);\n    break;\n    \n  default:\n    // Vector similarity search for general queries\n    cypherQuery = `\n      CALL db.index.vector.queryNodes('document_embeddings', 10, $queryEmbedding)\n      YIELD node AS doc, score\n      WHERE score > 0.7\n      MATCH (doc)-[:MENTIONS]->(e:Entity)\n      RETURN doc.content, e.name, labels(e)[0] AS entity_type, score\n      ORDER BY score DESC\n    `;\n    // Note: queryEmbedding will be added in the next node\n}\n\nreturn {\n  cypherQuery,\n  parameters,\n  queryType,\n  needsEmbedding: queryType === 'general'\n};"
+      },
+      "id": "build_query",
+      "name": "Build Cypher Query",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.needsEmbedding }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "needs_embedding",
+      "name": "Needs Embedding?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "text": "={{ $('chat_trigger').item.json.chatInput }}",
+        "options": {}
+      },
+      "id": "create_query_embedding",
+      "name": "Create Query Embedding",
+      "type": "@n8n/n8n-nodes-langchain.embeddings",
+      "typeVersion": 1,
+      "position": [1050, 200],
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://neo4j:7474/db/neo4j/tx/commit",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"statements\": [\n    {\n      \"statement\": \"{{ $json.cypherQuery }}\",\n      \"parameters\": {{ JSON.stringify($json.parameters) }}\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "execute_neo4j_query",
+      "name": "Execute Neo4j Query",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1250, 300],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "neo4j_auth",
+          "name": "Neo4j Basic Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Merge embedding with query if needed\nconst queryData = $('build_query').item.json;\nconst embedding = $json;\n\nif (queryData.needsEmbedding) {\n  queryData.parameters.queryEmbedding = embedding;\n}\n\nreturn queryData;"
+      },
+      "id": "merge_embedding",
+      "name": "Merge Embedding",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4",
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a helpful assistant for SpyroSolutions. Based on the graph database query results, provide a clear and concise answer to the user's question.\n\nUser Question: {{ $('chat_trigger').item.json.chatInput }}\n\nQuery Type: {{ $('build_query').item.json.queryType }}\n\nGraph Query Results:\n{{ JSON.stringify($json.results[0].data, null, 2) }}\n\nProvide a natural language response that:\n1. Directly answers the user's question\n2. Includes specific metrics and numbers when available\n3. Highlights any risks or important relationships\n4. Suggests follow-up actions if appropriate"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "generate_response",
+      "name": "Generate Response",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.3,
+      "position": [1450, 300],
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "respond_to_chat",
+      "name": "Respond to Chat",
+      "type": "@n8n/n8n-nodes-langchain.chatReply",
+      "typeVersion": 1,
+      "position": [1650, 300]
+    }
+  ],
+  "connections": {
+    "Chat Trigger": {
+      "main": [[{
+        "node": "Extract Entities",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Extract Entities": {
+      "main": [[{
+        "node": "Build Cypher Query",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Build Cypher Query": {
+      "main": [[{
+        "node": "Needs Embedding?",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Needs Embedding?": {
+      "main": [
+        [{
+          "node": "Create Query Embedding",
+          "type": "main",
+          "index": 0
+        }],
+        [{
+          "node": "Execute Neo4j Query",
+          "type": "main",
+          "index": 0
+        }]
+      ]
+    },
+    "Create Query Embedding": {
+      "main": [[{
+        "node": "Merge Embedding",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Merge Embedding": {
+      "main": [[{
+        "node": "Execute Neo4j Query",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Execute Neo4j Query": {
+      "main": [[{
+        "node": "Generate Response",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Generate Response": {
+      "main": [[{
+        "node": "Respond to Chat",
+        "type": "main",
+        "index": 0
+      }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateId": "spyro-graphrag-query"
+  },
+  "pinData": {}
+}

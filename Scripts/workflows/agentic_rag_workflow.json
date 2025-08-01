@@ -1,0 +1,90 @@
+{
+  "name": "SpyroSolutions_Agentic_RAG",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "spyro-agentic-rag",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://spyro_rag_api:8058/chat",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"message\": $json.body.query, \"session_id\": $json.body.session_id || \"default\" } }}",
+        "options": {}
+      },
+      "id": "call_rag_api",
+      "name": "Call Agentic RAG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract and format the response\nconst ragResponse = $json;\n\n// Build enhanced response with tool usage\nconst response = {\n  answer: ragResponse.message,\n  tools_used: ragResponse.tools_used || [],\n  session_id: ragResponse.session_id,\n  timestamp: new Date().toISOString(),\n  metadata: {\n    search_type: ragResponse.metadata?.search_type || 'unknown'\n  }\n};\n\n// Add tool details for transparency\nif (ragResponse.tools_used && ragResponse.tools_used.length > 0) {\n  response.tool_details = ragResponse.tools_used.map(tool => ({\n    tool: tool.tool_name,\n    query: tool.args?.query || tool.args?.entity || 'N/A',\n    tool_call_id: tool.tool_call_id\n  }));\n}\n\n// Add sources if available\nif (ragResponse.sources && ragResponse.sources.length > 0) {\n  response.sources = ragResponse.sources;\n}\n\nreturn [{ json: response }];"
+      },
+      "id": "format_response",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [850, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{
+        "node": "Call Agentic RAG",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Call Agentic RAG": {
+      "main": [[{
+        "node": "Format Response",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Format Response": {
+      "main": [[{
+        "node": "Respond",
+        "type": "main",
+        "index": 0
+      }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

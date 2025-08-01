@@ -1,0 +1,63 @@
+{
+  "name": "SpyroSolutions_Neo4j_Native_Test",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual_trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "MATCH (c:Customer)-[:HAS_SUBSCRIPTION]->(p:Product)\nRETURN c.name AS customer, p.name AS product, c.tier AS tier\nLIMIT 5",
+        "options": {}
+      },
+      "id": "neo4j_node",
+      "name": "Neo4j Query",
+      "type": "n8n-nodes-neo4j.neo4j",
+      "typeVersion": 1,
+      "position": [450, 300],
+      "credentials": {
+        "neo4jCredentialsApi": {
+          "id": "new",
+          "name": "Neo4j Credentials"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process Neo4j results\nconst items = $input.all();\n\nreturn items.map(item => {\n  return {\n    json: {\n      customer: item.json.customer,\n      product: item.json.product,\n      tier: item.json.tier,\n      processed_at: new Date().toISOString()\n    }\n  };\n});"
+      },
+      "id": "process_results",
+      "name": "Process Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{
+        "node": "Neo4j Query",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Neo4j Query": {
+      "main": [[{
+        "node": "Process Results",
+        "type": "main",
+        "index": 0
+      }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "description": "Test workflow using native Neo4j node"
+  }
+}

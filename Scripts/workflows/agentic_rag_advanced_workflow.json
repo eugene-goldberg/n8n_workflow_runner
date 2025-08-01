@@ -1,0 +1,128 @@
+{
+  "name": "SpyroSolutions_Agentic_RAG_Advanced",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "spyro-rag-advanced",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [150, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Validate input\nconst query = $json.body.query || $json.body.message || $json.body.question;\nif (!query) {\n  throw new Error('Missing required field: query, message, or question');\n}\n\n// Extract optional parameters\nconst sessionId = $json.body.session_id || $json.body.sessionId || 'default';\nconst maxTokens = $json.body.max_tokens || 1000;\nconst temperature = $json.body.temperature || 0.7;\n\nreturn [{\n  json: {\n    query: query,\n    session_id: sessionId,\n    max_tokens: maxTokens,\n    temperature: temperature,\n    original_request: $json.body\n  }\n}];"
+      },
+      "id": "validate_input",
+      "name": "Validate Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [350, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://spyro_rag_api:8058/chat",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"message\": $json.query, \"session_id\": $json.session_id } }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "call_rag_api",
+      "name": "Call Agentic RAG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [550, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract and enhance the response\nconst ragResponse = $json;\nconst originalRequest = $node[\"Validate Input\"].json.original_request;\n\n// Build comprehensive response\nconst response = {\n  success: true,\n  answer: ragResponse.message,\n  session_id: ragResponse.session_id,\n  timestamp: new Date().toISOString(),\n  metadata: {\n    search_type: ragResponse.metadata?.search_type || 'unknown',\n    response_time_ms: Date.now() - new Date($execution.startedAt).getTime(),\n    tools_used_count: ragResponse.tools_used?.length || 0\n  },\n  tools_used: []\n};\n\n// Process tool usage for transparency\nif (ragResponse.tools_used && ragResponse.tools_used.length > 0) {\n  response.tools_used = ragResponse.tools_used.map(tool => ({\n    name: tool.tool_name,\n    purpose: getPurpose(tool.tool_name),\n    query: tool.args?.query || tool.args?.entity || 'N/A',\n    call_id: tool.tool_call_id\n  }));\n}\n\n// Add sources if available\nif (ragResponse.sources && ragResponse.sources.length > 0) {\n  response.sources = ragResponse.sources.map(source => ({\n    title: source.title || 'Unknown',\n    score: source.score || 0,\n    excerpt: source.content?.substring(0, 200) + '...' || ''\n  }));\n}\n\n// Helper function to describe tool purpose\nfunction getPurpose(toolName) {\n  const purposes = {\n    'vector_search': 'Semantic search in knowledge base',\n    'graph_search': 'Graph traversal for relationships',\n    'entity_search': 'Find specific entities',\n    'hybrid_search': 'Combined vector and keyword search'\n  };\n  return purposes[toolName] || 'General search';\n}\n\nreturn [{ json: response }];"
+      },
+      "id": "format_success",
+      "name": "Format Success Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [750, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Handle errors gracefully\nconst error = $json.error || {};\nconst errorMessage = error.message || 'An unexpected error occurred';\nconst errorCode = error.code || 'UNKNOWN_ERROR';\n\nconst response = {\n  success: false,\n  error: {\n    code: errorCode,\n    message: errorMessage,\n    timestamp: new Date().toISOString()\n  },\n  session_id: $node[\"Validate Input\"]?.json?.session_id || 'default',\n  suggestion: getSuggestion(errorCode)\n};\n\n// Provide helpful suggestions based on error type\nfunction getSuggestion(code) {\n  const suggestions = {\n    'MISSING_FIELD': 'Please provide a query in your request',\n    'TIMEOUT': 'The request took too long. Try a simpler query',\n    'RATE_LIMIT': 'Too many requests. Please wait a moment',\n    'UNKNOWN_ERROR': 'Please try again or contact support'\n  };\n  return suggestions[code] || suggestions['UNKNOWN_ERROR'];\n}\n\nreturn [{ json: response }];"
+      },
+      "id": "format_error",
+      "name": "Format Error Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [750, 500]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "responseCode": "={{ $json.success ? 200 : ($json.error.code === 'MISSING_FIELD' ? 400 : 500) }}",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [950, 400]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{
+        "node": "Validate Input",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Validate Input": {
+      "main": [[{
+        "node": "Call Agentic RAG",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Call Agentic RAG": {
+      "main": [[{
+        "node": "Format Success Response",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Format Success Response": {
+      "main": [[{
+        "node": "Respond",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Format Error Response": {
+      "main": [[{
+        "node": "Respond",
+        "type": "main",
+        "index": 0
+      }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "errorWorkflow": "format_error"
+  }
+}

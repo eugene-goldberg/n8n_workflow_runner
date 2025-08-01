@@ -1,0 +1,96 @@
+{
+  "name": "SpyroSolutions_GraphRAG_Simple",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "spyro-graphrag",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "spyro-graphrag"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract query from webhook\nconst query = $json.body?.query || $json.query || 'Show all customers';\nconst queryType = $json.body?.type || 'general';\n\n// Build Cypher query based on input\nlet cypherQuery = '';\n\nif (query.toLowerCase().includes('revenue') && query.toLowerCase().includes('risk')) {\n  cypherQuery = `\n    MATCH (c:Customer)-[sub:HAS_SUBSCRIPTION]->(p:Product)\n    OPTIONAL MATCH (c)-[:HAS_RISK]->(r:Risk)\n    WITH c, p, sub, collect(r) AS risks\n    RETURN c.name AS customer,\n           c.tier AS tier,\n           p.name AS product,\n           sub.mrr AS monthly_revenue,\n           size(risks) AS risk_count,\n           reduce(total = 0, risk IN risks | total + sub.mrr * risk.impact_factor) AS revenue_at_risk\n    ORDER BY revenue_at_risk DESC\n  `;\n} else if (query.toLowerCase().includes('customer')) {\n  cypherQuery = `\n    MATCH (c:Customer)-[sub:HAS_SUBSCRIPTION]->(p:Product)\n    RETURN c.name AS customer, c.tier AS tier, p.name AS product, sub.mrr AS revenue\n    ORDER BY sub.mrr DESC\n  `;\n} else if (query.toLowerCase().includes('project')) {\n  cypherQuery = `\n    MATCH (t:Team)-[:WORKS_ON]->(proj:Project)\n    OPTIONAL MATCH (proj)-[:DELIVERS_FEATURE]->(c:Customer)\n    RETURN t.name AS team, proj.name AS project, proj.status AS status, \n           collect(c.name) AS customers\n  `;\n} else {\n  // Default overview query\n  cypherQuery = `\n    MATCH (c:Customer) WITH count(c) AS total_customers\n    MATCH (p:Product) WITH total_customers, count(p) AS total_products\n    MATCH (t:Team) WITH total_customers, total_products, count(t) AS total_teams\n    MATCH (r:Risk) WITH total_customers, total_products, total_teams, count(r) AS total_risks\n    RETURN total_customers, total_products, total_teams, total_risks\n  `;\n}\n\nreturn [{\n  json: {\n    query: query,\n    cypherQuery: cypherQuery\n  }\n}];"
+      },
+      "id": "build_query",
+      "name": "Build Query",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ $json.cypherQuery }}",
+        "options": {}
+      },
+      "id": "neo4j",
+      "name": "Neo4j",
+      "type": "n8n-nodes-neo4j.neo4j",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format results for response\nconst originalQuery = $('build_query').item.json.query;\nconst results = $input.all();\n\n// Build response\nconst response = {\n  query: originalQuery,\n  resultCount: results.length,\n  data: results.map(r => r.json),\n  timestamp: new Date().toISOString()\n};\n\n// Add summary based on query type\nif (originalQuery.toLowerCase().includes('revenue') && originalQuery.toLowerCase().includes('risk')) {\n  const totalAtRisk = results.reduce((sum, r) => sum + (r.json.revenue_at_risk || 0), 0);\n  response.summary = `Total revenue at risk: $${totalAtRisk.toLocaleString()}`;\n} else if (originalQuery.toLowerCase().includes('customer')) {\n  const totalRevenue = results.reduce((sum, r) => sum + (r.json.revenue || 0), 0);\n  response.summary = `Total monthly revenue: $${totalRevenue.toLocaleString()}`;\n}\n\nreturn [{ json: response }];"
+      },
+      "id": "format_response",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1050, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{
+        "node": "Build Query",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Build Query": {
+      "main": [[{
+        "node": "Neo4j",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Neo4j": {
+      "main": [[{
+        "node": "Format Response",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Format Response": {
+      "main": [[{
+        "node": "Respond",
+        "type": "main",
+        "index": 0
+      }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

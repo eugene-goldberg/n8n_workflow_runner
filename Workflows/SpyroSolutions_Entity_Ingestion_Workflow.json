@@ -1,0 +1,167 @@
+{
+  "name": "SpyroSolutions_Entity_Ingestion_Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "read",
+        "fileName": "={{ $json.filepath }}"
+      },
+      "id": "read_csv",
+      "name": "Read Entity CSV",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "options": {
+          "delimiter": ",",
+          "includeEmptyRows": false,
+          "columnsUnescape": true
+        }
+      },
+      "id": "parse_csv",
+      "name": "Parse CSV",
+      "type": "n8n-nodes-base.csv",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare data for Neo4j ingestion\nconst items = $input.all();\nconst processedItems = [];\n\nfor (const item of items) {\n  const entityType = item.json.entity_type || 'Entity';\n  const textForEmbedding = [];\n  \n  // Build text for embedding from all properties\n  for (const [key, value] of Object.entries(item.json)) {\n    if (key !== 'entity_type' && value) {\n      textForEmbedding.push(`${key}: ${value}`);\n    }\n  }\n  \n  processedItems.push({\n    ...item.json,\n    entity_type: entityType,\n    text_for_embedding: textForEmbedding.join(', ')\n  });\n}\n\nreturn processedItems;"
+      },
+      "id": "prepare_entities",
+      "name": "Prepare Entities",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "model": "text-embedding-3-small",
+        "options": {}
+      },
+      "id": "create_embeddings",
+      "name": "Create Embeddings",
+      "type": "@n8n/n8n-nodes-langchain.embeddings",
+      "typeVersion": 1,
+      "position": [850, 300],
+      "credentials": {
+        "openAiApi": {
+          "id": "1",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://neo4j:7474/db/neo4j/tx/commit",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"statements\": [\n    {\n      \"statement\": \"UNWIND $items AS item CREATE (n:{{ $json.entity_type }}) SET n = item.properties, n.embedding = item.embedding RETURN n\",\n      \"parameters\": {\n        \"items\": {{ JSON.stringify($items.map(item => ({\n          properties: Object.fromEntries(\n            Object.entries(item.json).filter(([k]) => !['entity_type', 'text_for_embedding', 'embedding'].includes(k))\n          ),\n          embedding: item.json.embedding\n        }))) }}\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "create_nodes",
+      "name": "Create Neo4j Nodes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1050, 300],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "neo4j_auth",
+          "name": "Neo4j Basic Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://neo4j:7474/db/neo4j/tx/commit",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"statements\": [\n    {\n      \"statement\": \"MATCH (c:Customer), (p:Product) WHERE c.product_id = p.id CREATE (c)-[:HAS_SUBSCRIPTION {since: datetime()}]->(p)\"\n    },\n    {\n      \"statement\": \"MATCH (t:Team), (proj:Project) WHERE t.project_id = proj.id CREATE (t)-[:WORKS_ON]->(proj)\"\n    },\n    {\n      \"statement\": \"MATCH (proj:Project), (c:Customer) WHERE proj.customer_id = c.id CREATE (proj)-[:DELIVERS_FEATURE]->(c)\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "create_relationships",
+      "name": "Create Relationships",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1250, 300],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "neo4j_auth",
+          "name": "Neo4j Basic Auth"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Read Entity CSV": {
+      "main": [[{
+        "node": "Parse CSV",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Parse CSV": {
+      "main": [[{
+        "node": "Prepare Entities",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Prepare Entities": {
+      "main": [[{
+        "node": "Create Embeddings",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Create Embeddings": {
+      "main": [[{
+        "node": "Create Neo4j Nodes",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Create Neo4j Nodes": {
+      "main": [[{
+        "node": "Create Relationships",
+        "type": "main",
+        "index": 0
+      }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateId": "spyro-entity-ingestion"
+  },
+  "pinData": {}
+}

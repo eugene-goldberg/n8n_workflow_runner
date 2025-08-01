@@ -1,0 +1,59 @@
+{
+  "name": "SpyroSolutions_Agentic_RAG_Stream",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "spyro-agentic-rag-stream",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare streaming response info\nconst streamUrl = 'http://spyro_rag_api:8058/chat/stream';\nconst payload = {\n  message: $json.body.query,\n  session_id: $json.body.session_id || 'default'\n};\n\n// Return streaming URL and instructions for client\nreturn [{\n  json: {\n    stream_url: streamUrl,\n    payload: payload,\n    instructions: 'Use EventSource or similar to consume SSE stream',\n    example_code: `\n// JavaScript example:\nconst eventSource = new EventSource('${streamUrl}');\neventSource.onmessage = (event) => {\n  const data = JSON.parse(event.data);\n  console.log(data.content);\n};\n    `.trim()\n  }\n}];"
+      },
+      "id": "prepare_stream",
+      "name": "Prepare Stream Info",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{
+        "node": "Prepare Stream Info",
+        "type": "main",
+        "index": 0
+      }]]
+    },
+    "Prepare Stream Info": {
+      "main": [[{
+        "node": "Respond",
+        "type": "main",
+        "index": 0
+      }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

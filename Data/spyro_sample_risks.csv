@@ -1,0 +1,5 @@
+entity_type,id,description,impact_factor,severity,customer_id
+Risk,risk_001,SLA breach - uptime below 99.5%,0.3,high,cust_003
+Risk,risk_002,Feature delay - Q1 deliverables,0.2,medium,cust_001
+Risk,risk_003,Integration issues with legacy systems,0.15,medium,cust_005
+Risk,risk_004,Performance degradation during peak hours,0.25,high,cust_003
