@@ -1,0 +1,165 @@
+# Semantic Relationship Patterns Configuration
+
+semantic_mining:
+  # NLP model settings
+  spacy_model: "en_core_web_sm"
+  
+  # Confidence threshold for extracted relationships
+  confidence_threshold: 0.7
+  
+  # LLM settings
+  llm_enabled: true
+  llm_model: "gpt-4"
+  llm_temperature: 0.3
+  batch_size: 10
+  
+  # Context window around entity mentions
+  context_window: 50
+  
+  # Extraction methods to use
+  relationship_patterns:
+    enable_pattern_matching: true
+    enable_dependency_parsing: true
+    enable_llm_extraction: true
+    
+  # Performance settings
+  performance:
+    max_text_length: 10000
+    cache_extractions: true
+    
+# Relationship extraction patterns
+extraction_patterns:
+  # Work relationships
+  work_relationships:
+    - pattern: '(\w+)\s+(works?\s+with|collaborates?\s+with)\s+(\w+)'
+      type: "WORKS_WITH"
+      bidirectional: true
+      confidence: 0.9
+      
+    - pattern: '(\w+)\s+(manages?|leads?|supervises?)\s+(\w+)'
+      type: "MANAGES"
+      bidirectional: false
+      confidence: 0.85
+      
+    - pattern: '(\w+)\s+(reports?\s+to|works?\s+for)\s+(\w+)'
+      type: "REPORTS_TO"
+      bidirectional: false
+      confidence: 0.85
+      
+    - pattern: '(\w+)\s+and\s+(\w+)\s+(?:are\s+)?(?:working|collaborating)\s+(?:together|on)'
+      type: "COLLABORATES_WITH"
+      bidirectional: true
+      confidence: 0.8
+      
+  # Responsibility relationships
+  responsibility_relationships:
+    - pattern: '(\w+)\s+(?:is\s+)?responsible\s+for\s+(\w+)'
+      type: "RESPONSIBLE_FOR"
+      bidirectional: false
+      confidence: 0.9
+      
+    - pattern: '(\w+)\s+owns?\s+(\w+)'
+      type: "OWNS"
+      bidirectional: false
+      confidence: 0.85
+      
+    - pattern: '(\w+)\s+(?:is\s+)?(?:in\s+)?charge\s+of\s+(\w+)'
+      type: "RESPONSIBLE_FOR"
+      bidirectional: false
+      confidence: 0.8
+      
+  # Impact relationships
+  impact_relationships:
+    - pattern: '(\w+)\s+(impacts?|affects?|influences?)\s+(\w+)'
+      type: "IMPACTS"
+      bidirectional: false
+      confidence: 0.8
+      
+    - pattern: '(\w+)\s+(depends?\s+on|relies?\s+on)\s+(\w+)'
+      type: "DEPENDS_ON"
+      bidirectional: false
+      confidence: 0.85
+      
+    - pattern: '(\w+)\s+(?:is\s+)?(?:critical|important|essential)\s+(?:to|for)\s+(\w+)'
+      type: "IMPACTS"
+      bidirectional: false
+      confidence: 0.75
+      
+  # Communication relationships
+  communication_relationships:
+    - pattern: '(\w+)\s+(communicates?\s+with|talks?\s+to|meets?\s+with)\s+(\w+)'
+      type: "WORKS_WITH"
+      bidirectional: true
+      confidence: 0.7
+      
+    - pattern: '(\w+)\s+(?:has\s+)?(?:regular\s+)?(?:meetings?|discussions?)\s+with\s+(\w+)'
+      type: "WORKS_WITH"
+      bidirectional: true
+      confidence: 0.7
+      
+  # General relationships
+  general_relationships:
+    - pattern: '(\w+)\s+(?:is\s+)?(?:related|connected|linked)\s+to\s+(\w+)'
+      type: "RELATED_TO"
+      bidirectional: true
+      confidence: 0.6
+      
+    - pattern: '(\w+)\s+(?:is\s+)?(?:associated|affiliated)\s+with\s+(\w+)'
+      type: "RELATED_TO"
+      bidirectional: true
+      confidence: 0.6
+
+# Dependency parsing rules
+dependency_rules:
+  # Subject-verb-object patterns
+  verb_patterns:
+    manages: "MANAGES"
+    leads: "MANAGES"
+    supervises: "MANAGES"
+    reports: "REPORTS_TO"
+    works: "WORKS_WITH"
+    owns: "OWNS"
+    impacts: "IMPACTS"
+    affects: "IMPACTS"
+    influences: "INFLUENCES"
+    depends: "DEPENDS_ON"
+    relies: "DEPENDS_ON"
+    
+  # Prepositional patterns
+  prep_patterns:
+    with: "WORKS_WITH"
+    alongside: "COLLABORATES_WITH"
+    under: "REPORTS_TO"
+    for: "RESPONSIBLE_FOR"
+    to: "REPORTS_TO"
+    on: "DEPENDS_ON"
+
+# Entity mention variations
+entity_variations:
+  # Common variations for entity names
+  abbreviations:
+    corporation: ["corp", "co"]
+    incorporated: ["inc"]
+    limited: ["ltd"]
+    technologies: ["tech"]
+    
+  # Title variations
+  titles:
+    - ["mr", "mr.", "mister"]
+    - ["mrs", "mrs."]
+    - ["ms", "ms."]
+    - ["dr", "dr.", "doctor"]
+    
+# Contextual clues for relationship inference
+contextual_clues:
+  collaboration:
+    keywords: ["together", "jointly", "partnership", "collaboration", "team"]
+    boost_confidence: 0.1
+    
+  hierarchy:
+    keywords: ["reports", "manages", "supervises", "under", "oversees"]
+    boost_confidence: 0.15
+    
+  dependency:
+    keywords: ["requires", "needs", "depends", "relies", "based on"]
+    boost_confidence: 0.1

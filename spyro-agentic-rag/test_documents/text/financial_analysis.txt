@@ -1,0 +1,111 @@
+SPYROSOLUTIONS FINANCIAL PERFORMANCE ANALYSIS
+Fiscal Year 2024 - Profitability & Cost Report
+==============================================
+
+PRODUCT PROFITABILITY OVERVIEW
+
+Total Annual Revenue: $77.5M
+Total Annual Operating Costs: $41.4M
+Overall Profit Margin: 46.6%
+
+PRODUCT LINE ANALYSIS
+
+SpyroCloud
+- Annual Revenue: $45.5M (58.7% of total)
+- Annual Operating Costs: $18.0M
+  * Infrastructure: $9.6M
+  * Support: $2.4M
+  * Development: $6.0M
+- Profit Margin: 60.4%
+- Cost per Customer: $2.0M annually
+- Revenue per Customer: $5.06M annually
+
+SpyroAI
+- Annual Revenue: $21.3M (27.5% of total)
+- Annual Operating Costs: $13.8M
+  * Compute Resources: $7.2M
+  * Research & Development: $4.8M
+  * Licensing: $1.8M
+- Profit Margin: 35.2%
+- Cost per Customer: $2.76M annually
+- Revenue per Customer: $4.26M annually
+
+SpyroSecure
+- Annual Revenue: $10.7M (13.8% of total)
+- Annual Operating Costs: $9.0M
+  * Security Operations: $3.6M
+  * Compliance: $2.4M
+  * Infrastructure: $3.0M
+- Profit Margin: 15.9%
+- Cost per Customer: $3.0M annually
+- Revenue per Customer: $3.57M annually
+
+REGIONAL COST ANALYSIS
+
+North America
+- Revenue: $44.9M
+- Operating Costs: $22.0M
+- Profit Margin: 51.0%
+
+Europe
+- Revenue: $23.3M
+- Operating Costs: $12.5M
+- Profit Margin: 46.4%
+
+Asia Pacific
+- Revenue: $9.3M
+- Operating Costs: $6.9M
+- Profit Margin: 25.8%
+
+TEAM COST ALLOCATION
+
+Engineering Teams (Total: $16.2M annually)
+- Cloud Platform Team: $5.4M
+- AI Research Team: $4.56M
+- Security Team: $3.84M
+- DevOps Team: $3.36M
+
+Support & Success Teams (Total: $8.64M annually)
+- Support Team: $3.6M
+- Customer Success Team: $3.0M
+- Product Management: $2.4M
+
+COST OPTIMIZATION OPPORTUNITIES
+
+1. Infrastructure Costs
+   - SpyroCloud infrastructure costs could be reduced by 15% through better resource utilization
+   - Potential savings: $1.44M annually
+
+2. Support Efficiency
+   - High support costs for low-success customers
+   - DataSync support costs: $180K annually for $2.5M revenue (7.2% ratio)
+   - Industry benchmark: 3-4%
+
+3. Research ROI
+   - AI Research spending $4.8M annually
+   - Only 65% adoption rate for AI features
+   - Need to improve feature-market fit
+
+PROFITABILITY BY CUSTOMER SEGMENT
+
+Enterprise Customers (>$5M ARR)
+- Average Profit Margin: 52.3%
+- Cost to Serve: $2.1M
+- Average Revenue: $7.2M
+
+Mid-Market Customers ($2M-$5M ARR)
+- Average Profit Margin: 41.7%
+- Cost to Serve: $1.8M
+- Average Revenue: $3.1M
+
+SMB Customers (<$2M ARR)
+- Average Profit Margin: 28.5%
+- Cost to Serve: $1.2M
+- Average Revenue: $1.68M
+
+KEY INSIGHTS
+
+1. SpyroSecure has the lowest profit margin despite high customer satisfaction
+2. Enterprise customers are 83% more profitable than SMB customers
+3. Support costs are disproportionately high for at-risk customers
+4. Infrastructure costs represent 31% of total operating expenses

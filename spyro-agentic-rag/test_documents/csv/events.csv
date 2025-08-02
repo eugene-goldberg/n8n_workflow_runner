@@ -1,0 +1,16 @@
+event_id,customer_name,event_type,impact,severity,description,timestamp,affected_score_change
+EVT-001,StartupXYZ,service_outage,negative,high,Major API outage affecting core services,2024-11-15,-10
+EVT-002,StartupXYZ,support_escalation,negative,medium,Multiple support tickets about performance issues,2024-12-01,-5
+EVT-003,StartupXYZ,payment_delay,negative,medium,Payment delayed by 30 days,2024-12-15,-3
+EVT-004,EduTech,feature_request,neutral,medium,Customer requested advanced analytics dashboard,2024-10-20,0
+EVT-005,EduTech,performance_issue,negative,high,Slow response times reported during peak hours,2024-11-10,-8
+EVT-006,EduTech,security_incident,negative,critical,Security vulnerability exploited,2024-12-05,-15
+EVT-007,DataSync,support_escalation,negative,medium,Performance degradation complaints,2024-11-20,-5
+EVT-008,DataSync,training_completed,positive,low,Customer team completed advanced training,2024-10-15,+3
+EVT-009,FinanceHub,contract_renewal,positive,high,Customer renewed contract with 20% expansion,2024-09-01,+10
+EVT-010,FinanceHub,positive_feedback,positive,low,Customer praised new features in review,2024-11-01,+2
+EVT-011,CloudFirst,feature_adoption,positive,medium,Successfully adopted new AI features,2024-10-10,+5
+EVT-012,CloudFirst,expansion_request,positive,high,Requested additional licenses,2024-11-25,+7
+EVT-013,TechCorp,executive_meeting,positive,medium,Positive quarterly business review,2024-10-30,+3
+EVT-014,HealthNet,compliance_success,positive,high,Passed security audit with flying colors,2024-09-15,+5
+EVT-015,RetailPlus,competitor_evaluation,negative,high,Actively evaluating competitor solutions,2024-12-10,-7

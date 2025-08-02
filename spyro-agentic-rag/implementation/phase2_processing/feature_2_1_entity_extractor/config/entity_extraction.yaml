@@ -1,0 +1,130 @@
+# Entity Extraction Configuration
+
+extraction:
+  # Validation settings
+  validation:
+    strict_mode: false
+    auto_fix_errors: true
+    required_fields:
+      Customer: ["id", "name"]
+      Product: ["id", "name", "category"]
+      Subscription: ["id", "customer_id", "product_id"]
+      Team: ["id", "name"]
+      Risk: ["id", "title", "severity"]
+      Objective: ["id", "title"]
+  
+  # Multi-source resolution settings
+  resolution:
+    similarity_threshold: 0.85
+    use_llm_validation: false
+    merge_strategy: "most_complete"  # most_complete, most_recent, weighted
+    source_weights:
+      salesforce: 0.9
+      gainsight: 0.85
+      hubspot: 0.8
+      manual: 0.7
+      unknown: 0.5
+  
+  # Enrichment settings
+  enrichment:
+    enable_industry_context: true
+    enable_derived_fields: true
+    enable_categorization: true
+    enable_temporal_context: true
+    cache_enrichments: true
+    cache_ttl_seconds: 3600
+  
+  # Performance settings
+  performance:
+    batch_size: 100
+    max_concurrent_operations: 10
+    cache_size: 1000
+    timeout_seconds: 30
+
+# Entity type specific configurations
+entity_types:
+  Customer:
+    validation:
+      field_formats:
+        email: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        website: '^https?://.*'
+      field_ranges:
+        arr:
+          min: 0
+        employee_count:
+          min: 1
+          max: 1000000
+    
+    enrichment:
+      derived_fields:
+        - estimated_clv
+        - customer_tier
+        - health_score
+      
+      categorization:
+        size_thresholds:
+          small: 50
+          medium: 500
+          large: 5000
+  
+  Product:
+    validation:
+      allowed_categories:
+        - "platform"
+        - "integration"
+        - "analytics"
+        - "security"
+        - "support"
+    
+    enrichment:
+      derived_fields:
+        - delivery_model
+        - product_tier
+  
+  Subscription:
+    validation:
+      field_ranges:
+        value:
+          min: 0
+    
+    enrichment:
+      derived_fields:
+        - mrr
+        - days_to_renewal
+        - renewal_risk
+        - subscription_age_months
+  
+  Risk:
+    validation:
+      allowed_severities:
+        - "low"
+        - "medium"
+        - "high"
+        - "critical"
+      
+      field_ranges:
+        probability:
+          min: 0.0
+          max: 1.0
+        impact:
+          min: 0
+          max: 10
+    
+    enrichment:
+      derived_fields:
+        - risk_score
+        - risk_category
+        - days_open
+        - is_overdue
+
+# Detection patterns configuration
+detection:
+  patterns_file: "config/entity_patterns.yaml"
+  use_default_patterns: true
+  confidence_threshold: 0.7
+  
+  llm_detection:
+    enabled: false
+    model: "gpt-4"
+    temperature: 0.1
+    max_tokens: 500

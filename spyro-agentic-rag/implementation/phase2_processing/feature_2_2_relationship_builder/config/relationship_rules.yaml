@@ -1,0 +1,168 @@
+# Explicit Relationship Rules
+
+explicit_rules:
+  # Customer relationships
+  - source_type: "Subscription"
+    field: "customer_id"
+    target_type: "Customer"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: true
+    
+  - source_type: "Ticket"
+    field: "customer_id"
+    target_type: "Customer"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: true
+    
+  - source_type: "Contract"
+    field: "customer_id"
+    target_type: "Customer"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: true
+    
+  # Team relationships
+  - source_type: "Team"
+    field: "manager_id"
+    target_type: "Person"
+    relationship: "MANAGED_BY"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Person"
+    field: "team_id"
+    target_type: "Team"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Project"
+    field: "team_id"
+    target_type: "Team"
+    relationship: "ASSIGNED_TO"
+    bidirectional: false
+    required: true
+    
+  # Product relationships
+  - source_type: "Subscription"
+    field: "product_id"
+    target_type: "Product"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: true
+    
+  - source_type: "Feature"
+    field: "product_id"
+    target_type: "Product"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: true
+    
+  # Risk relationships
+  - source_type: "Risk"
+    field: "customer_id"
+    target_type: "Customer"
+    relationship: "IMPACTS"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Risk"
+    field: "project_id"
+    target_type: "Project"
+    relationship: "IMPACTS"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Risk"
+    field: "owner_id"
+    target_type: "Person"
+    relationship: "OWNED_BY"
+    bidirectional: false
+    required: false
+    
+  # Objective relationships
+  - source_type: "Objective"
+    field: "owner_team_id"
+    target_type: "Team"
+    relationship: "OWNED_BY"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Objective"
+    field: "parent_objective_id"
+    target_type: "Objective"
+    relationship: "CHILD_OF"
+    bidirectional: false
+    required: false
+    
+  - source_type: "KeyResult"
+    field: "objective_id"
+    target_type: "Objective"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: true
+    
+  # Hierarchical relationships
+  - source_type: "Team"
+    field: "parent_team_id"
+    target_type: "Team"
+    relationship: "CHILD_OF"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Organization"
+    field: "parent_org_id"
+    target_type: "Organization"
+    relationship: "CHILD_OF"
+    bidirectional: false
+    required: false
+    
+  # Cross-functional relationships
+  - source_type: "Project"
+    field: "customer_id"
+    target_type: "Customer"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Ticket"
+    field: "assigned_to"
+    target_type: "Person"
+    relationship: "ASSIGNED_TO"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Task"
+    field: "assigned_to"
+    target_type: "Person"
+    relationship: "ASSIGNED_TO"
+    bidirectional: false
+    required: false
+    
+  - source_type: "Task"
+    field: "project_id"
+    target_type: "Project"
+    relationship: "BELONGS_TO"
+    bidirectional: false
+    required: true
+
+# Field mapping variations
+field_variations:
+  customer_id: ["customerId", "customer", "account_id", "accountId"]
+  team_id: ["teamId", "team", "department_id", "departmentId"]
+  product_id: ["productId", "product", "service_id", "serviceId"]
+  manager_id: ["managerId", "manager", "supervisor_id", "supervisorId"]
+  owner_id: ["ownerId", "owner", "assigned_to", "assignedTo"]
+
+# Relationship type mappings
+relationship_type_mappings:
+  # Map external relationship names to internal types
+  "has": "OWNS"
+  "contains": "PARENT_OF"
+  "belongsTo": "BELONGS_TO"
+  "manages": "MANAGES"
+  "reports_to": "REPORTS_TO"
+  "affects": "IMPACTS"
+  "uses": "DEPENDS_ON"

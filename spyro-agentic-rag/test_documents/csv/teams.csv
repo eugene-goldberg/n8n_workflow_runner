@@ -1,0 +1,11 @@
+team_name,department,size,focus_area,supporting_product,operational_cost_monthly,projects_count
+Cloud Platform Team,Engineering,25,Platform Development,SpyroCloud,450000,5
+AI Research Team,R&D,15,ML/AI Innovation,SpyroAI,380000,4
+Security Team,Security,20,Security & Compliance,SpyroSecure,320000,3
+Customer Success Team,Customer Success,18,Customer Retention,All Products,250000,8
+DevOps Team,Operations,12,Infrastructure,SpyroCloud,280000,6
+Data Science Team,Analytics,10,Analytics & Insights,SpyroAI,220000,3
+Compliance Team,Legal,8,Regulatory Compliance,SpyroSecure,180000,2
+Product Management,Product,14,Product Strategy,All Products,200000,7
+Quality Assurance,Engineering,16,Testing & Quality,All Products,240000,5
+Support Team,Support,22,Customer Support,All Products,300000,10

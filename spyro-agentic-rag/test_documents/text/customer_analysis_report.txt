@@ -1,0 +1,44 @@
+SPYROSOLUTIONS CUSTOMER ANALYSIS REPORT
+Q4 2024 Executive Summary
+========================
+
+REVENUE AT RISK ANALYSIS
+
+Our analysis indicates that approximately $11.8M in annual recurring revenue is currently at risk across our customer base. This represents 15.2% of our total ARR of $77.5M. The primary drivers of this risk are:
+
+1. Customer Success Score Deterioration
+   - 6 customers have success scores below 60 (critical threshold)
+   - Combined ARR of at-risk customers: $11.8M
+   - Most affected: StartupXYZ ($2M), EduTech ($1.5M), DataSync ($2.5M)
+
+2. High-Risk Customer Profiles
+   - StartupXYZ (45 score, declining): Has experienced 3 negative events in the past 90 days including a major service outage. Churn probability: 70%
+   - EduTech (35 score, declining): Critical security incident last month dropped their score by 15 points. Churn probability: 80%
+   - DataSync (52 score, declining): Performance issues leading to high support ticket volume. Churn probability: 60%
+
+CUSTOMER SUCCESS PATTERNS
+
+Top Performing Customers:
+- HealthNet (92 score): Recently passed security audit, strong adoption of SpyroSecure
+- CloudFirst (88 score): Expanding usage, requested additional licenses
+- TechCorp (85 score): Stable with $8M ARR, our largest customer
+
+Success Score Distribution:
+- Above 80: 5 customers (32.5% of ARR)
+- 60-80: 4 customers (36.4% of ARR)
+- Below 60: 6 customers (31.1% of ARR)
+
+PRODUCT-CUSTOMER ALIGNMENT
+
+SpyroCloud customers show the highest variability in success scores, with 5 of 9 SpyroCloud customers below 70. This suggests potential product-market fit issues in certain segments. SpyroSecure customers demonstrate the highest average success score (81.7), indicating strong product-market fit in the security compliance space.
+
+REGIONAL ANALYSIS
+
+North America accounts for 58% of total revenue but also 65% of at-risk revenue. European customers show more stable success scores, with an average trend of "improving" compared to "declining" in other regions.
+
+RECOMMENDATIONS
+
+1. Immediate intervention required for StartupXYZ and EduTech
+2. Accelerate delivery of roadmap items affecting at-risk customers
+3. Consider dedicated success resources for customers below 60 score
+4. Investigate SpyroCloud product-market fit issues

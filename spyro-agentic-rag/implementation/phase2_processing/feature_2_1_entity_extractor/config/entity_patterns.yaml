@@ -1,0 +1,105 @@
+# Entity Detection Patterns
+
+patterns:
+  Customer:
+    - regex: '\b(?:customer|client|account)\s+([A-Z]\w+(?:\s+[A-Z]\w+)*)'
+      confidence: 0.8
+      description: "Customer/client/account followed by capitalized name"
+    
+    - regex: '([A-Z]\w+(?:\s+[A-Z]\w+)*)\s+(?:Inc|Corp|LLC|Ltd|Limited|Company|Co\.?)\b'
+      confidence: 0.9
+      description: "Company name with corporate suffix"
+    
+    - keywords: 
+        - "customer"
+        - "client"
+        - "account"
+      context_required: ["new", "existing", "prospective", "key"]
+      confidence: 0.7
+  
+  Team:
+    - regex: '(?:the\s+)?(\w+)\s+(?:team|department|group|division)\b'
+      confidence: 0.85
+      description: "Team/department/group names"
+    
+    - keywords:
+        - "engineering"
+        - "sales"
+        - "marketing"
+        - "support"
+        - "platform"
+        - "infrastructure"
+        - "data"
+        - "product"
+        - "design"
+        - "finance"
+      context_required: ["team", "department", "group"]
+      confidence: 0.7
+  
+  Product:
+    - regex: '\b(?:product|service|offering|solution)\s+([A-Z]\w+(?:\s+\w+)*)'
+      confidence: 0.75
+      description: "Product/service followed by name"
+    
+    - regex: '\b([A-Z]\w+(?:Cloud|Platform|Suite|Pro|Enterprise|Service))\b'
+      confidence: 0.8
+      description: "Product names with common suffixes"
+    
+    - keywords:
+        - "SpyroCloud"
+        - "SpyroAnalytics"
+        - "SpyroIntegrations"
+        - "SpyroSecurity"
+      confidence: 0.95
+  
+  Risk:
+    - regex: '(?:risk|threat|vulnerability|issue|concern)(?:\s+(?:of|with|regarding))?\s+([^.!?]+)'
+      confidence: 0.8
+      context_required: ["identified", "mitigated", "addressed", "high", "critical", "low"]
+      description: "Risk/threat descriptions"
+    
+    - keywords:
+        - "churn risk"
+        - "security risk"
+        - "compliance risk"
+        - "operational risk"
+        - "financial risk"
+      confidence: 0.9
+  
+  Objective:
+    - regex: '(?:objective|goal|target|milestone)\s+(?:to\s+)?([^.!?]+)'
+      confidence: 0.75
+      description: "Objective/goal descriptions"
+    
+    - regex: '(?:Q[1-4]|FY\d{2,4})\s+(?:revenue|growth|expansion|retention)'
+      confidence: 0.85
+      description: "Quarterly/yearly objectives"
+    
+    - keywords:
+        - "increase revenue"
+        - "reduce churn"
+        - "improve retention"
+        - "expand market"
+        - "launch product"
+      confidence: 0.8
+  
+  Subscription:
+    - regex: '(?:subscription|contract|agreement)\s+(?:#|ID:?\s*)?([A-Z0-9-]+)'
+      confidence: 0.8
+      description: "Subscription/contract IDs"
+    
+    - regex: '\b(SUB-\d+|CONT-\d+|AGR-\d+)\b'
+      confidence: 0.95
+      description: "Formatted subscription IDs"
+  
+  Project:
+    - regex: '(?:project|initiative|program)\s+([A-Z]\w+(?:\s+\w+)*)'
+      confidence: 0.75
+      description: "Project names"
+    
+    - keywords:
+        - "migration project"
+        - "implementation project"
+        - "integration project"
+        - "upgrade project"
+      confidence: 0.8

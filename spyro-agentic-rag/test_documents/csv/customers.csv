@@ -1,0 +1,16 @@
+customer_name,industry,size,region,success_score,trend,arr_value,risk_level,primary_product
+TechCorp,Technology,Enterprise,North America,85,stable,$8M,low,SpyroCloud
+FinanceHub,Financial Services,Enterprise,Europe,75,improving,$5M,medium,SpyroAI
+StartupXYZ,Technology,SMB,North America,45,declining,$2M,high,SpyroCloud
+RetailPlus,Retail,Mid-Market,Asia Pacific,58,declining,$3M,medium,SpyroCloud
+HealthNet,Healthcare,Enterprise,North America,92,stable,$6M,low,SpyroSecure
+EduTech,Education,Mid-Market,Europe,35,declining,$1.5M,critical,SpyroAI
+LogiCorp,Logistics,Enterprise,North America,68,stable,$4M,medium,SpyroCloud
+MediaFlow,Media,Mid-Market,Europe,78,improving,$3.5M,low,SpyroAI
+DataSync,Technology,SMB,Asia Pacific,52,declining,$2.5M,high,SpyroCloud
+CloudFirst,Technology,Enterprise,North America,88,improving,$7M,low,SpyroCloud
+GlobalRetail,Retail,Enterprise,Global,72,stable,$9M,medium,SpyroCloud
+FinTech Pro,Financial Services,Mid-Market,Europe,81,improving,$4.5M,low,SpyroSecure
+HealthTech Solutions,Healthcare,SMB,North America,41,declining,$1.8M,high,SpyroAI
+EnergyCore,Energy,Enterprise,Middle East,77,stable,$6.5M,medium,SpyroCloud
+AutoDrive,Automotive,Enterprise,Asia Pacific,83,improving,$7.5M,low,SpyroAI

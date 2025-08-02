@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
+import { questionsByCategory } from './businessQuestions';
 
 interface QueryMetadata {
   agent_type: string;
@@ -229,17 +230,30 @@ function App() {
         </div>
 
         <div className="info-section">
-          <h3>Example Queries</h3>
-          <div className="example-queries">
-            <button onClick={() => setQuery("What features does SpyroCloud include?")}>
-              🔍 Vector Search Example
-            </button>
-            <button onClick={() => setQuery("Which customers have subscriptions over $5M?")}>
-              🕸️ Graph Search Example
-            </button>
-            <button onClick={() => setQuery("Tell me about SpyroAI capabilities")}>
-              🔄 Hybrid Search Example
-            </button>
+          <h3>Business Questions</h3>
+          <div className="business-questions-container">
+            {Object.entries(questionsByCategory).map(([category, subcategories]) => (
+              <div key={category} className="question-category">
+                <h4 className="category-title">{category}</h4>
+                {Object.entries(subcategories).map(([subcategory, questions]) => (
+                  <div key={subcategory} className="subcategory">
+                    <h5 className="subcategory-title">{subcategory}</h5>
+                    <div className="questions-list">
+                      {questions.map((question, index) => (
+                        <button
+                          key={index}
+                          className="question-button"
+                          onClick={() => setQuery(question)}
+                          title={question}
+                        >
+                          {question}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
 
           <h3>How It Works</h3>

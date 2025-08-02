@@ -1,0 +1,11 @@
+roadmap_id,product_name,title,status,estimated_completion,priority,responsible_team,dependent_commitments
+RM-001,SpyroCloud,Multi-region deployment,behind_schedule,2025-03-31,high,Cloud Platform Team,3
+RM-002,SpyroCloud,Auto-scaling improvements,in_progress,2025-06-30,high,DevOps Team,2
+RM-003,SpyroCloud,Advanced monitoring dashboard,behind_schedule,2025-05-15,medium,Cloud Platform Team,1
+RM-004,SpyroAI,AI Enhancement Phase 2,behind_schedule,2025-07-31,critical,AI Research Team,4
+RM-005,SpyroAI,Real-time prediction engine,in_progress,2025-09-30,high,Data Science Team,2
+RM-006,SpyroAI,Custom model training,planned,2025-12-31,medium,AI Research Team,1
+RM-007,SpyroSecure,Zero-trust architecture,in_progress,2025-08-31,critical,Security Team,3
+RM-008,SpyroSecure,Compliance automation,planned,2025-10-31,high,Compliance Team,2
+RM-009,SpyroCloud,Performance optimization,completed,2025-01-31,high,Cloud Platform Team,0
+RM-010,SpyroAI,Natural language interface,planned,2025-11-30,medium,AI Research Team,1

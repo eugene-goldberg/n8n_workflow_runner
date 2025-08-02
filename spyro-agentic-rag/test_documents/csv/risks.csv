@@ -1,0 +1,16 @@
+risk_id,type,severity,description,probability,impact_amount,status,related_entity_type,related_entity_name
+RISK-001,churn,high,Low success score and declining trend - StartupXYZ,0.7,2000000,active,Customer,StartupXYZ
+RISK-002,churn,critical,Very low success score - EduTech,0.8,1500000,active,Customer,EduTech
+RISK-003,competitive,medium,Evaluating competitor solutions - RetailPlus,0.5,1500000,monitoring,Customer,RetailPlus
+RISK-004,performance,high,Performance not meeting expectations - DataSync,0.6,1250000,active,Customer,DataSync
+RISK-005,technical,high,Legacy system integration challenges,0.3,5000000,active,Objective,Market Expansion
+RISK-006,market,medium,Increased competition in AI space,0.4,3000000,monitoring,Product,SpyroAI
+RISK-007,delivery,high,Multi-region deployment behind schedule,0.6,4000000,active,Roadmap,Multi-region deployment
+RISK-008,payment,medium,Late payments in last quarter - StartupXYZ,0.4,500000,active,Customer,StartupXYZ
+RISK-009,feature_gap,high,Missing critical features - EduTech,0.6,750000,active,Customer,EduTech
+RISK-010,integration,low,Integration challenges with legacy systems - RetailPlus,0.3,300000,monitoring,Customer,RetailPlus
+RISK-011,support,medium,High support ticket volume - DataSync,0.5,400000,active,Customer,DataSync
+RISK-012,staffing,high,Key technical talent shortage,0.4,2000000,active,Team,AI Research Team
+RISK-013,sla,critical,Potential SLA breach - FinanceHub,0.3,750000,monitoring,Customer,FinanceHub
+RISK-014,security,high,Security vulnerability in SpyroSecure,0.2,10000000,mitigated,Product,SpyroSecure
+RISK-015,scalability,medium,Scalability concerns for SpyroCloud,0.4,3000000,active,Product,SpyroCloud

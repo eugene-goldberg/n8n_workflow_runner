@@ -1,0 +1,13 @@
+commitment_id,customer_name,description,due_date,status,dependent_roadmap_item,risk_level,revenue_impact
+COM-001,TechCorp,Multi-region deployment by Q2,2025-06-30,at_risk,RM-001,high,800000
+COM-002,TechCorp,Custom API integration,2025-04-30,at_risk,RM-002,medium,400000
+COM-003,FinanceHub,Compliance reporting features,2025-05-31,on_track,RM-008,low,250000
+COM-004,FinanceHub,Advanced encryption implementation,2025-07-31,planned,RM-007,medium,300000
+COM-005,EduTech,Performance improvements,2025-03-31,at_risk,RM-009,high,150000
+COM-006,EduTech,User interface redesign,2025-08-31,planned,None,low,75000
+COM-007,GlobalRetail,Multi-region support,2025-06-30,at_risk,RM-001,high,900000
+COM-008,AutoDrive,Real-time ML predictions,2025-09-30,on_track,RM-005,medium,600000
+COM-009,HealthNet,Enhanced security features,2025-08-31,on_track,RM-007,low,300000
+COM-010,CloudFirst,Auto-scaling capabilities,2025-06-30,on_track,RM-002,medium,500000
+COM-011,MediaFlow,AI model customization,2025-12-31,planned,RM-006,low,200000
+COM-012,StartupXYZ,Performance optimization,2025-02-28,critical,RM-009,critical,200000

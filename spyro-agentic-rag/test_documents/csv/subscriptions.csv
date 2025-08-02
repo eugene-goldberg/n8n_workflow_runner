@@ -1,0 +1,17 @@
+subscription_id,customer_name,product_name,value,start_date,end_date,status,renewal_probability,contract_length_months
+SUB-TC-001,TechCorp,SpyroCloud,$8M,2023-01-15,2025-01-14,Active,0.85,24
+SUB-FH-001,FinanceHub,SpyroAI,$3M,2023-06-01,2024-05-31,Active,0.90,12
+SUB-FH-002,FinanceHub,SpyroSecure,$2M,2023-06-01,2024-05-31,Active,0.90,12
+SUB-SX-001,StartupXYZ,SpyroCloud,$2M,2023-09-01,2024-08-31,At Risk,0.35,12
+SUB-RP-001,RetailPlus,SpyroCloud,$3M,2023-03-15,2025-03-14,Active,0.55,24
+SUB-HN-001,HealthNet,SpyroSecure,$6M,2023-02-01,2025-01-31,Active,0.92,24
+SUB-ET-001,EduTech,SpyroAI,$1.5M,2023-11-01,2024-10-31,At Risk,0.25,12
+SUB-LC-001,LogiCorp,SpyroCloud,$4M,2023-04-01,2025-03-31,Active,0.70,24
+SUB-MF-001,MediaFlow,SpyroAI,$3.5M,2023-07-15,2024-07-14,Active,0.78,12
+SUB-DS-001,DataSync,SpyroCloud,$2.5M,2023-08-01,2024-07-31,At Risk,0.45,12
+SUB-CF-001,CloudFirst,SpyroCloud,$7M,2023-01-01,2024-12-31,Active,0.88,24
+SUB-GR-001,GlobalRetail,SpyroCloud,$9M,2022-10-01,2024-09-30,Active,0.75,24
+SUB-FP-001,FinTech Pro,SpyroSecure,$4.5M,2023-05-01,2025-04-30,Active,0.82,24
+SUB-HS-001,HealthTech Solutions,SpyroAI,$1.8M,2023-12-01,2024-11-30,At Risk,0.30,12
+SUB-EC-001,EnergyCore,SpyroCloud,$6.5M,2023-03-01,2025-02-28,Active,0.77,24
+SUB-AD-001,AutoDrive,SpyroAI,$7.5M,2023-02-15,2025-02-14,Active,0.85,24

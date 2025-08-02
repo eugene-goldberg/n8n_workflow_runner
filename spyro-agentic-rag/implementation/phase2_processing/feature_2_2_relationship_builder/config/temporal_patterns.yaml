@@ -1,0 +1,108 @@
+# Temporal Relationship Patterns Configuration
+
+temporal_analysis:
+  # Time window for correlation analysis
+  correlation_window_days: 90
+  
+  # Minimum correlation coefficient to consider significant
+  min_correlation: 0.6
+  
+  # Causality testing method
+  causality_test: "granger"  # granger, transfer_entropy, ccm
+  
+  # Significance level for statistical tests
+  significance_level: 0.05
+  
+  # Minimum number of events required for analysis
+  min_events_required: 10
+  
+  # Lag detection settings
+  lag_detection:
+    max_lag_days: 30
+    lag_step_days: 1
+    
+  # Event aggregation settings
+  event_aggregation:
+    method: "daily"  # daily, weekly, monthly
+    fill_method: "forward"  # forward, zero, interpolate
+    
+# Temporal pattern definitions
+temporal_patterns:
+  # Risk cascade patterns
+  risk_cascade:
+    source_type: "Risk"
+    target_types: ["Customer", "Project", "Objective"]
+    typical_lag_days: 14
+    min_correlation: 0.7
+    
+  # Customer lifecycle patterns
+  customer_lifecycle:
+    patterns:
+      - name: "onboarding_to_active"
+        source_event: "customer_created"
+        target_event: "first_login"
+        expected_lag_days: 3
+        
+      - name: "trial_to_conversion"
+        source_event: "trial_started"
+        target_event: "subscription_created"
+        expected_lag_days: 14
+        
+      - name: "support_to_churn"
+        source_event: "support_ticket_spike"
+        target_event: "churn_event"
+        expected_lag_days: 30
+        
+  # Team performance patterns
+  team_performance:
+    patterns:
+      - name: "project_start_to_risk"
+        source_event: "project_created"
+        target_event: "risk_identified"
+        expected_lag_days: 7
+        
+      - name: "objective_to_completion"
+        source_event: "objective_created"
+        target_event: "objective_completed"
+        expected_lag_days: 90
+        
+# Event type mappings
+event_types:
+  customer_events:
+    - customer_created
+    - customer_updated
+    - subscription_created
+    - subscription_cancelled
+    - payment_received
+    - support_ticket_created
+    - feature_request_submitted
+    
+  team_events:
+    - team_created
+    - member_added
+    - member_removed
+    - project_assigned
+    - milestone_completed
+    
+  risk_events:
+    - risk_identified
+    - risk_mitigated
+    - risk_escalated
+    - risk_resolved
+    
+  product_events:
+    - feature_released
+    - bug_reported
+    - usage_spike
+    - performance_degradation
+
+# Temporal clustering settings
+temporal_clustering:
+  window_days: 7
+  min_cluster_size: 3
+  
+# Seasonality detection
+seasonality:
+  enable: true
+  periods_to_test: [7, 30, 90, 365]  # weekly, monthly, quarterly, yearly
+  min_periods: 2

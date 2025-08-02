@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpyroSolutions RAG - Schema Source Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .query-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .answer-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+        }
+        
+        .schema-info {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .schema-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .spyro-rag {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        .llamaindex {
+            background-color: #FF9800;
+            color: white;
+        }
+        
+        .both-schemas {
+            background-color: #9C27B0;
+            color: white;
+        }
+        
+        .schema-stats {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .schema-stats h4 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .entity-sample {
+            background: #f0f0f0;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .query-pattern {
+            display: inline-block;
+            background: #e0e0e0;
+            padding: 3px 8px;
+            margin: 2px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+        
+        .schema-indicator {
+            position: relative;
+            margin: 10px 0;
+        }
+        
+        .schema-bar {
+            height: 30px;
+            display: flex;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .schema-bar-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .metadata {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>SpyroSolutions RAG - Schema Source Visualization</h1>
+    
+    <!-- Example 1: Mixed Schema Query -->
+    <div class="query-container">
+        <h3>Query: "Show me all customers with their subscription values"</h3>
+        
+        <div class="answer-section">
+            <h4>Answer:</h4>
+            <p>Here are all customers with their subscription values:</p>
+            <ul>
+                <li><strong>TechCorp</strong> - $8M (SpyroCloud Enterprise)</li>
+                <li><strong>FinanceHub</strong> - $5M (SpyroAI Professional)</li>
+                <li><strong>InnovateTech Solutions</strong> - $12M (SpyroCloud Enterprise)</li>
+                <li><strong>Global Manufacturing Corp</strong> - $7.5M (SpyroAI Professional)</li>
+                <li><strong>CloudFirst</strong> - $3M (SpyroSecure Standard)</li>
+                <!-- ... more customers ... -->
+            </ul>
+        </div>
+        
+        <div class="schema-indicator">
+            <h4>Data Sources Used:</h4>
+            <div class="schema-bar">
+                <div class="schema-bar-segment spyro-rag" style="width: 60%;">
+                    Spyro RAG (60%)
+                </div>
+                <div class="schema-bar-segment llamaindex" style="width: 40%;">
+                    LlamaIndex (40%)
+                </div>
+            </div>
+        </div>
+        
+        <div class="schema-info">
+            <div class="schema-stats">
+                <h4><span class="schema-badge spyro-rag">Spyro RAG</span> Results</h4>
+                <p><strong>18 entities</strong> from original data</p>
+                <div class="entity-sample">
+                    <strong>Sample:</strong> TechCorp, FinanceHub, CloudFirst
+                </div>
+                <p>Labels: :Customer, :SaaSSubscription</p>
+            </div>
+            
+            <div class="schema-stats">
+                <h4><span class="schema-badge llamaindex">LlamaIndex</span> Results</h4>
+                <p><strong>12 entities</strong> from ingested documents</p>
+                <div class="entity-sample">
+                    <strong>Sample:</strong> InnovateTech Solutions, Global Manufacturing Corp
+                </div>
+                <p>Labels: :__Entity__:CUSTOMER, :__Entity__:SUBSCRIPTION</p>
+            </div>
+        </div>
+        
+        <div class="metadata">
+            <strong>Query Patterns:</strong>
+            <span class="query-pattern">Unified Search</span>
+            <span class="query-pattern">Graph Query (Cypher)</span>
+            | <strong>Execution Time:</strong> 0.42s
+            | <strong>Tokens Used:</strong> 1,245
+        </div>
+    </div>
+    
+    <!-- Example 2: Single Schema Query -->
+    <div class="query-container">
+        <h3>Query: "Tell me about InnovateTech Solutions"</h3>
+        
+        <div class="answer-section">
+            <h4>Answer:</h4>
+            <p>InnovateTech Solutions is a new enterprise customer that recently subscribed to SpyroCloud Enterprise 
+            with a $12M annual contract. They are in the technology sector and have shown strong adoption of our 
+            AI-powered features. Their customer success score is 85, indicating high satisfaction.</p>
+        </div>
+        
+        <div class="schema-indicator">
+            <h4>Data Source Used:</h4>
+            <div class="schema-bar">
+                <div class="schema-bar-segment llamaindex" style="width: 100%;">
+                    LlamaIndex (100%)
+                </div>
+            </div>
+        </div>
+        
+        <div class="schema-info">
+            <div class="schema-stats" style="max-width: 500px;">
+                <h4><span class="schema-badge llamaindex">LlamaIndex</span> Exclusive</h4>
+                <p>This entity was ingested from PDF reports using LlamaIndex</p>
+                <div class="entity-sample">
+                    <strong>Entity:</strong> InnovateTech Solutions<br>
+                    <strong>Labels:</strong> [:__Entity__, :__Node__, :CUSTOMER]
+                </div>
+            </div>
+        </div>
+        
+        <div class="metadata">
+            <strong>Query Pattern:</strong>
+            <span class="query-pattern">Graph Query (Cypher)</span>
+            | <strong>Execution Time:</strong> 0.18s
+        </div>
+    </div>
+    
+    <!-- Schema Legend -->
+    <div class="query-container">
+        <h3>Understanding Schema Sources</h3>
+        <div style="display: flex; gap: 30px; margin-top: 20px;">
+            <div>
+                <span class="schema-badge spyro-rag">Spyro RAG</span>
+                <p>Original data loaded during system setup. Uses standard Neo4j labels like :Customer, :Product</p>
+            </div>
+            <div>
+                <span class="schema-badge llamaindex">LlamaIndex</span>
+                <p>Data extracted from documents (PDFs, reports). Uses labels like :__Entity__:CUSTOMER</p>
+            </div>
+            <div>
+                <span class="schema-badge both-schemas">Both Schemas</span>
+                <p>Query accessed data from both sources for comprehensive results</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Example of how to call the enhanced API
+        async function queryWithSchemaTracking() {
+            const response = await fetch('http://localhost:8001/query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-API-Key': 'your-api-key'
+                },
+                body: JSON.stringify({
+                    question: "Show me all customers with their subscription values"
+                })
+            });
+            
+            const data = await response.json();
+            
+            // The response now includes schema_sources
+            console.log('Answer:', data.answer);
+            console.log('Schemas accessed:', data.schema_sources.schemas_accessed);
+            console.log('Entity distribution:', data.schema_sources.entity_count_by_schema);
+            console.log('Sample entities:', data.schema_sources.sample_entities);
+        }
+    </script>
+</body>
+</html>

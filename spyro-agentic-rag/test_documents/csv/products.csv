@@ -1,0 +1,4 @@
+product_name,type,market_focus,monthly_operational_cost,features,sla_uptime_target,adoption_rate
+SpyroCloud,Platform,Enterprise SaaS,1500000,"Multi-tenant;Scalable;API-first;Real-time analytics;Auto-scaling;Global deployment",99.9,78%
+SpyroAI,AI/ML,AI-driven automation,1150000,"AutoML;NLP;Computer Vision;Predictive Analytics;Real-time inference;Custom models",99.5,65%
+SpyroSecure,Security,Security & Compliance,750000,"Zero Trust;Compliance Automation;Threat Detection;Data Encryption;Access Control;Audit Logs",99.95,82%

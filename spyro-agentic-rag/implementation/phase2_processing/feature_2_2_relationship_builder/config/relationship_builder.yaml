@@ -1,0 +1,59 @@
+# Relationship Builder Configuration
+
+relationship_discovery:
+  # Explicit ID-based relationships
+  explicit:
+    enable: true
+    rules_file: "config/relationship_rules.yaml"
+    
+  # Semantic text-based relationships
+  semantic:
+    enable: true
+    confidence_threshold: 0.7
+    llm_model: "gpt-4"
+    batch_size: 10
+    
+  # Temporal correlation relationships
+  temporal:
+    enable: true
+    correlation_window_days: 90
+    min_correlation: 0.6
+    causality_test: "granger"
+    
+  # Multi-hop path relationships
+  multi_hop:
+    enable: true
+    max_hops: 3
+    min_path_strength: 0.5
+    
+  # Graph pattern relationships
+  patterns:
+    enable: true
+    detect_hubs: true
+    detect_communities: true
+    min_community_size: 3
+    
+  # Relationship deduplication
+  deduplication:
+    enable: true
+    merge_strategy: "highest_confidence"  # highest_confidence, merge_evidence
+    
+# Performance settings
+performance:
+  parallel_workers: 4
+  cache_relationships: true
+  cache_ttl_seconds: 3600
+  batch_size: 100
+  batch_llm_calls: true
+  
+# Filtering and thresholds
+filtering:
+  min_confidence: 0.5
+  exclude_self_relationships: true
+  max_relationships_per_entity: 100
+  
+# Output settings
+output:
+  include_evidence: true
+  include_metadata: true
+  format: "json"  # json, csv, graph

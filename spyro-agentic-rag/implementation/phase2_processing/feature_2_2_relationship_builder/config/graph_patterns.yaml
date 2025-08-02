@@ -1,0 +1,152 @@
+# Graph Pattern Recognition Configuration
+
+pattern_detection:
+  # Hub detection settings
+  hub_detection:
+    enable: true
+    min_connections: 5
+    centrality_threshold: 0.7
+    centrality_measures:
+      degree_weight: 0.4
+      betweenness_weight: 0.4
+      closeness_weight: 0.2
+      
+  # Community detection settings
+  community_detection:
+    enable: true
+    min_community_size: 3
+    algorithm: "louvain"  # louvain, girvan_newman, label_propagation
+    resolution: 1.0  # For louvain algorithm
+    
+  # Triangle detection (collaboration patterns)
+  triangle_detection:
+    enable: true
+    min_triangle_strength: 0.5
+    collaboration_indicators:
+      - "WORKS_WITH"
+      - "COLLABORATES_WITH"
+      - "ASSIGNED_TO"
+      
+  # Chain detection (sequential dependencies)
+  chain_detection:
+    enable: true
+    min_chain_length: 3
+    max_chain_length: 10
+    chain_types:
+      - dependency_chain
+      - approval_chain
+      - escalation_chain
+      
+  # Star pattern detection
+  star_detection:
+    enable: true
+    min_spokes: 4
+    leaf_ratio: 0.7  # Percentage of neighbors that should be leaves
+    
+# Pattern scoring weights
+scoring:
+  centrality_weight: 0.4
+  density_weight: 0.3
+  strength_weight: 0.3
+  
+# Performance settings
+performance:
+  cache_patterns: true
+  parallel_detection: true
+  max_clique_size: 5  # Limit for clique enumeration
+  
+# Pattern type definitions
+pattern_types:
+  # Hub patterns
+  hub_patterns:
+    customer_hub:
+      central_type: "Customer"
+      min_connections: 5
+      typical_spokes: ["Subscription", "Ticket", "Team", "Risk"]
+      
+    team_hub:
+      central_type: "Team"
+      min_connections: 4
+      typical_spokes: ["Person", "Project", "Customer"]
+      
+    project_hub:
+      central_type: "Project"
+      min_connections: 4
+      typical_spokes: ["Task", "Team", "Risk", "Objective"]
+      
+  # Community patterns
+  community_patterns:
+    team_cluster:
+      min_size: 3
+      expected_types: ["Team", "Person", "Project"]
+      cohesion_threshold: 0.6
+      
+    customer_ecosystem:
+      min_size: 4
+      expected_types: ["Customer", "Subscription", "Product", "Team"]
+      cohesion_threshold: 0.5
+      
+    risk_network:
+      min_size: 3
+      expected_types: ["Risk", "Project", "Team", "Customer"]
+      cohesion_threshold: 0.5
+      
+  # Collaboration triangles
+  collaboration_triangles:
+    customer_success_triangle:
+      entities: ["Customer", "CSM", "Product"]
+      strength_threshold: 0.7
+      
+    project_triangle:
+      entities: ["Project", "Team", "Team"]
+      strength_threshold: 0.6
+      
+    risk_mitigation_triangle:
+      entities: ["Risk", "Team", "Mitigation"]
+      strength_threshold: 0.8
+      
+  # Chain patterns
+  chain_patterns:
+    approval_chain:
+      min_length: 3
+      entity_types: ["Request", "Approver", "Approver", "Final_Approval"]
+      
+    escalation_chain:
+      min_length: 3
+      entity_types: ["Issue", "L1_Support", "L2_Support", "Engineering"]
+      
+    dependency_chain:
+      min_length: 3
+      relationship_types: ["DEPENDS_ON", "PRECEDES"]
+      
+# Pattern importance scoring
+importance_scores:
+  pattern_base_scores:
+    hub: 0.9
+    community: 0.8
+    triangle: 0.7
+    star: 0.7
+    chain: 0.6
+    
+  # Boost scores for specific patterns
+  pattern_boosts:
+    customer_hub: 0.1
+    risk_network: 0.15
+    customer_success_triangle: 0.1
+    
+# Graph metrics thresholds
+metrics:
+  density:
+    sparse: 0.1
+    moderate: 0.3
+    dense: 0.6
+    
+  clustering_coefficient:
+    low: 0.2
+    medium: 0.5
+    high: 0.7
+    
+  average_degree:
+    low: 2
+    medium: 5
+    high: 10

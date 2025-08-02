@@ -12,7 +12,7 @@ from fastapi import FastAPI, HTTPException, Depends, Header, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from ..agents.spyro_agent import create_agent, SpyroAgent
+from ..agents.spyro_agent_enhanced_fixed import SpyroAgentEnhanced as SpyroAgent, create_agent
 from ..utils.config import Config
 from ..utils.logging import setup_logging
 
@@ -48,7 +48,7 @@ async def lifespan(app: FastAPI):
 # Create FastAPI app
 app = FastAPI(
     title="SpyroSolutions Agentic RAG API",
-    description="LLM-powered agent that autonomously selects and executes retrieval strategies",
+    description="LLM-powered agent using LlamaIndex knowledge graph integration",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -268,19 +268,24 @@ async def get_capabilities():
     return {
         "system": "SpyroSolutions Agentic RAG",
         "version": "1.0.0",
-        "description": "LLM-powered agent with autonomous tool selection for intelligent information retrieval",
+        "description": "LLM-powered agent using LlamaIndex knowledge graph integration",
+        "schema": {
+            "format": "LlamaIndex",
+            "pattern": ":__Entity__:TYPE (e.g., :__Entity__:CUSTOMER)",
+            "description": "All entities use LlamaIndex labeling convention"
+        },
         "features": {
             "autonomous_tool_selection": {
                 "description": "Agent analyzes queries and selects appropriate tools",
                 "method": "LangChain with OpenAI Functions"
             },
             "retrieval_tools": {
-                "GraphQuery": "Direct graph queries for entities and relationships",
+                "GraphQuery": "Direct graph queries using LlamaIndex schema",
                 "HybridSearch": "Combined vector and keyword search",
                 "VectorSearch": "Semantic similarity search"
             },
             "conversation_memory": "Maintains context across multiple queries",
-            "parallel_execution": "Can execute multiple tools for comprehensive results"
+            "llamaindex_integration": "Native support for LlamaIndex document ingestion"
         },
         "knowledge_domains": [
             "Products (SpyroCloud, SpyroAI, SpyroSecure)",

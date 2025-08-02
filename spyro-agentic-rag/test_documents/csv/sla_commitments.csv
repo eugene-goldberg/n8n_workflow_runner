@@ -1,0 +1,11 @@
+sla_id,customer_name,metric,target,current_performance,penalty_percentage,measurement_period,status,monthly_credit_risk
+SLA-001,TechCorp,uptime,99.9,99.92,10,monthly,compliant,0
+SLA-002,FinanceHub,uptime,99.95,99.91,15,monthly,at_risk,62500
+SLA-003,HealthNet,response_time,200,185,5,monthly,compliant,0
+SLA-004,CloudFirst,uptime,99.9,99.94,10,monthly,compliant,0
+SLA-005,GlobalRetail,uptime,99.9,99.88,12,monthly,breached,90000
+SLA-006,FinTech Pro,uptime,99.95,99.96,10,monthly,compliant,0
+SLA-007,EnergyCore,response_time,250,240,8,monthly,compliant,0
+SLA-008,AutoDrive,uptime,99.9,99.93,10,monthly,compliant,0
+SLA-009,StartupXYZ,uptime,99.5,99.2,5,monthly,breached,8333
+SLA-010,EduTech,response_time,300,450,10,monthly,breached,12500
