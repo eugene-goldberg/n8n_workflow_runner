@@ -23,7 +23,7 @@ from neo4j_graphrag.llm import OpenAILLM
 
 from ..utils.config import Config
 from ..utils.schema_compatibility import get_unified_schema, get_compatible_cypher
-from ..utils.cypher_examples_enhanced import ENHANCED_CYPHER_EXAMPLES, ENHANCED_CYPHER_INSTRUCTIONS
+from ..utils.cypher_examples_enhanced_v2 import ENHANCED_CYPHER_EXAMPLES, ENHANCED_CYPHER_INSTRUCTIONS
 
 logger = logging.getLogger(__name__)
 
