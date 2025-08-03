@@ -1,0 +1,2029 @@
+{
+  "nodes": [
+    {
+      "labels": [
+        "Chunk",
+        "__Node__"
+      ],
+      "count": 143
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "count": 102
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "RISK"
+      ],
+      "count": 76
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "COST"
+      ],
+      "count": 65
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC"
+      ],
+      "count": 57
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "OBJECTIVE"
+      ],
+      "count": 50
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "PROJECT"
+      ],
+      "count": 50
+    },
+    {
+      "labels": [
+        "SupportTicket"
+      ],
+      "count": 50
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "count": 46
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "REVENUE"
+      ],
+      "count": 42
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "PERSON"
+      ],
+      "count": 40
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "OPERATIONAL_COST"
+      ],
+      "count": 35
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "count": 33
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "count": 31
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "ROADMAP_ITEM"
+      ],
+      "count": 30
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "ISSUE"
+      ],
+      "count": 26
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "OPERATIONAL_COST"
+      ],
+      "count": 25
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "SATISFACTION_SCORE"
+      ],
+      "count": 25
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "EXPANSION_OPPORTUNITY"
+      ],
+      "count": 24
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "EVENT"
+      ],
+      "count": 22
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "SUBSCRIPTION"
+      ],
+      "count": 19
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__"
+      ],
+      "count": 15
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER_SUCCESS_SCORE"
+      ],
+      "count": 15
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "PROFITABILITY"
+      ],
+      "count": 15
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "QUARTER"
+      ],
+      "count": 15
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "COMMITMENT"
+      ],
+      "count": 14
+    },
+    {
+      "labels": [
+        "Commitment"
+      ],
+      "count": 12
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "COMPANY"
+      ],
+      "count": 12
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "INFRASTRUCTURE"
+      ],
+      "count": 12
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "COMMITMENT"
+      ],
+      "count": 12
+    },
+    {
+      "labels": [
+        "RoadmapItem"
+      ],
+      "count": 12
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "DEADLINE"
+      ],
+      "count": 11
+    },
+    {
+      "labels": [
+        "FeatureRequest"
+      ],
+      "count": 10
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "REGION"
+      ],
+      "count": 9
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "COMPETITOR"
+      ],
+      "count": 8
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "SLA",
+        "__Node__"
+      ],
+      "count": 8
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "SLA"
+      ],
+      "count": 8
+    },
+    {
+      "labels": [
+        "Document"
+      ],
+      "count": 6
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "FINANCIAL_METRIC"
+      ],
+      "count": 6
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "DEPARTMENT"
+      ],
+      "count": 6
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "SYSTEM"
+      ],
+      "count": 6
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "PRICING_TIER"
+      ],
+      "count": 6
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "SATISFACTION_SCORE"
+      ],
+      "count": 6
+    },
+    {
+      "labels": [
+        "POC"
+      ],
+      "count": 6
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "MILESTONE"
+      ],
+      "count": 5
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "ARR"
+      ],
+      "count": 5
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "REGION"
+      ],
+      "count": 5
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "CONCERN"
+      ],
+      "count": 5
+    },
+    {
+      "labels": [
+        "Objective"
+      ],
+      "count": 5
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT",
+        "FEATURE"
+      ],
+      "count": 3
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC",
+        "SATISFACTION_SCORE"
+      ],
+      "count": 2
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "OBJECTIVE",
+        "REVENUE"
+      ],
+      "count": 1
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "QUARTER",
+        "REVENUE"
+      ],
+      "count": 1
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "INFRASTRUCTURE",
+        "COST"
+      ],
+      "count": 1
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "COST",
+        "PROFITABILITY"
+      ],
+      "count": 1
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT",
+        "DEPARTMENT"
+      ],
+      "count": 1
+    },
+    {
+      "labels": [
+        "__Entity__",
+        "__Node__",
+        "MILESTONE",
+        "ADOPTION_METRIC"
+      ],
+      "count": 1
+    }
+  ],
+  "relationships": [
+    {
+      "type": "MENTIONS",
+      "count": 771
+    },
+    {
+      "type": "HAS_OPERATIONAL_COST",
+      "count": 113
+    },
+    {
+      "type": "HAS_SUCCESS_SCORE",
+      "count": 85
+    },
+    {
+      "type": "HAS_RISK",
+      "count": 73
+    },
+    {
+      "type": "HAS_ADOPTION_RATE",
+      "count": 59
+    },
+    {
+      "type": "INCURS_COST",
+      "count": 54
+    },
+    {
+      "type": "TRACKS_METRIC",
+      "count": 54
+    },
+    {
+      "type": "HAS_COMMITMENT",
+      "count": 53
+    },
+    {
+      "type": "SUPPORTS",
+      "count": 52
+    },
+    {
+      "type": "HAS_ROADMAP",
+      "count": 48
+    },
+    {
+      "type": "HAS_SLA",
+      "count": 43
+    },
+    {
+      "type": "RESPONSIBLE_FOR",
+      "count": 38
+    },
+    {
+      "type": "WORKS_FOR",
+      "count": 33
+    },
+    {
+      "type": "OFFERS_FEATURE",
+      "count": 32
+    },
+    {
+      "type": "AFFECTS",
+      "count": 31
+    },
+    {
+      "type": "USES",
+      "count": 29
+    },
+    {
+      "type": "SCHEDULED_FOR",
+      "count": 24
+    },
+    {
+      "type": "HAS_EXPANSION_OPPORTUNITY",
+      "count": 24
+    },
+    {
+      "type": "SUBSCRIBES_TO",
+      "count": 23
+    },
+    {
+      "type": "HAS_REGIONAL_COST",
+      "count": 18
+    },
+    {
+      "type": "GENERATES_REVENUE",
+      "count": 17
+    },
+    {
+      "type": "GENERATES",
+      "count": 16
+    },
+    {
+      "type": "FOR_PRODUCT",
+      "count": 16
+    },
+    {
+      "type": "INFLUENCED_BY",
+      "count": 15
+    },
+    {
+      "type": "PROMISED_FEATURE",
+      "count": 15
+    },
+    {
+      "type": "DEPENDS_ON",
+      "count": 13
+    },
+    {
+      "type": "REPORTS",
+      "count": 10
+    },
+    {
+      "type": "IN_REGION",
+      "count": 10
+    },
+    {
+      "type": "HAS_COST",
+      "count": 9
+    },
+    {
+      "type": "COMPETES_WITH",
+      "count": 9
+    },
+    {
+      "type": "THREATENS",
+      "count": 9
+    },
+    {
+      "type": "IMPACTS",
+      "count": 9
+    },
+    {
+      "type": "MITIGATED_BY",
+      "count": 8
+    },
+    {
+      "type": "INVESTS_IN",
+      "count": 8
+    },
+    {
+      "type": "IMPLEMENTS",
+      "count": 8
+    },
+    {
+      "type": "DELIVERS",
+      "count": 7
+    },
+    {
+      "type": "HAS_PRICING",
+      "count": 7
+    },
+    {
+      "type": "DUE_BY",
+      "count": 6
+    },
+    {
+      "type": "HAS_SATISFACTION_SCORE",
+      "count": 6
+    },
+    {
+      "type": "HAS_CONCERN",
+      "count": 6
+    },
+    {
+      "type": "DEVELOPS",
+      "count": 5
+    },
+    {
+      "type": "EVALUATED_BY",
+      "count": 5
+    },
+    {
+      "type": "COSTS",
+      "count": 4
+    },
+    {
+      "type": "COLLABORATES_WITH",
+      "count": 4
+    },
+    {
+      "type": "OWNED_BY",
+      "count": 4
+    },
+    {
+      "type": "PROFITS_FROM",
+      "count": 4
+    },
+    {
+      "type": "WAITING_FOR",
+      "count": 4
+    },
+    {
+      "type": "HAS_PROFITABILITY",
+      "count": 3
+    },
+    {
+      "type": "PRODUCES",
+      "count": 3
+    },
+    {
+      "type": "AT_RISK",
+      "count": 2
+    },
+    {
+      "type": "LED_BY",
+      "count": 2
+    },
+    {
+      "type": "LOCATED_IN",
+      "count": 2
+    },
+    {
+      "type": "OCCURRED_ON",
+      "count": 2
+    },
+    {
+      "type": "EXPERIENCED",
+      "count": 2
+    },
+    {
+      "type": "FUNDED_BY",
+      "count": 1
+    },
+    {
+      "type": "COMPLETED_ON",
+      "count": 1
+    },
+    {
+      "type": "PROMISES_FEATURE",
+      "count": 1
+    }
+  ],
+  "patterns": [
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "count": 80
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC"
+      ],
+      "count": 74
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_OPERATIONAL_COST",
+      "to": [
+        "__Entity__",
+        "OPERATIONAL_COST"
+      ],
+      "count": 70
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COST"
+      ],
+      "count": 56
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PROJECT"
+      ],
+      "count": 50
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "OBJECTIVE"
+      ],
+      "count": 47
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PERSON"
+      ],
+      "count": 43
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "relationship": "SUPPORTS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "count": 42
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "RISK"
+      ],
+      "count": 42
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "count": 39
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_RISK",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "RISK"
+      ],
+      "count": 38
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "count": 32
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PERSON"
+      ],
+      "relationship": "WORKS_FOR",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COMPANY"
+      ],
+      "count": 31
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "relationship": "HAS_ADOPTION_RATE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC"
+      ],
+      "count": 27
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "REVENUE"
+      ],
+      "count": 27
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ISSUE"
+      ],
+      "count": 26
+    },
+    {
+      "from": [
+        "__Entity__",
+        "OPERATIONAL_COST"
+      ],
+      "relationship": "INCURS_COST",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "REGION"
+      ],
+      "count": 25
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "SATISFACTION_SCORE"
+      ],
+      "count": 25
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_COMMITMENT",
+      "to": [
+        "__Entity__",
+        "COMMITMENT"
+      ],
+      "count": 24
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_EXPANSION_OPPORTUNITY",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "EXPANSION_OPPORTUNITY"
+      ],
+      "count": 24
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "count": 23
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_ADOPTION_RATE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC"
+      ],
+      "count": 21
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ROADMAP_ITEM"
+      ],
+      "count": 20
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_REGIONAL_COST",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "OPERATIONAL_COST"
+      ],
+      "count": 18
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "QUARTER"
+      ],
+      "count": 18
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "USES",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "count": 17
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "SUBSCRIBES_TO",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "SUBSCRIPTION"
+      ],
+      "count": 17
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_SLA",
+      "to": [
+        "__Entity__",
+        "SLA"
+      ],
+      "count": 16
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_OPERATIONAL_COST",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "OPERATIONAL_COST"
+      ],
+      "count": 16
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "REGION"
+      ],
+      "relationship": "HAS_OPERATIONAL_COST",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COST"
+      ],
+      "count": 16
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "SUBSCRIPTION"
+      ],
+      "relationship": "FOR_PRODUCT",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "count": 16
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "SUBSCRIPTION"
+      ],
+      "relationship": "GENERATES",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "REVENUE"
+      ],
+      "count": 16
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "PROMISED_FEATURE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "count": 15
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_SUCCESS_SCORE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER_SUCCESS_SCORE"
+      ],
+      "count": 15
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER_SUCCESS_SCORE"
+      ],
+      "relationship": "INFLUENCED_BY",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "EVENT"
+      ],
+      "count": 15
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COMPANY"
+      ],
+      "count": 14
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_SUCCESS_SCORE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "SATISFACTION_SCORE"
+      ],
+      "count": 14
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "relationship": "TRACKS_METRIC",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC"
+      ],
+      "count": 13
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "TRACKS_METRIC",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC"
+      ],
+      "count": 13
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PROFITABILITY"
+      ],
+      "count": 13
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "INFRASTRUCTURE"
+      ],
+      "count": 12
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "REGION"
+      ],
+      "count": 12
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "OFFERS_FEATURE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "count": 12
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_COMMITMENT",
+      "to": [
+        "Commitment"
+      ],
+      "count": 12
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "RISK"
+      ],
+      "relationship": "AFFECTS",
+      "to": [
+        "Objective"
+      ],
+      "count": 11
+    },
+    {
+      "from": [
+        "Commitment"
+      ],
+      "relationship": "DEPENDS_ON",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ROADMAP_ITEM"
+      ],
+      "count": 11
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "DEADLINE"
+      ],
+      "count": 11
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COMMITMENT"
+      ],
+      "count": 11
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_ROADMAP",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ROADMAP_ITEM"
+      ],
+      "count": 11
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "OPERATIONAL_COST"
+      ],
+      "relationship": "IN_REGION",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "REGION"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COMPETITOR"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "relationship": "RESPONSIBLE_FOR",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ROADMAP_ITEM"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "__Entity__",
+        "OPERATIONAL_COST"
+      ],
+      "relationship": "INCURS_COST",
+      "to": [
+        "__Entity__",
+        "REGION"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PROJECT"
+      ],
+      "relationship": "SCHEDULED_FOR",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "QUARTER"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "OFFERS_FEATURE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "INCURS_COST",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COST"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "REPORTS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FINANCIAL_METRIC"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_SLA",
+      "to": [
+        "__Entity__",
+        "__Node__"
+      ],
+      "count": 10
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PROJECT"
+      ],
+      "relationship": "HAS_ROADMAP",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ROADMAP_ITEM"
+      ],
+      "count": 9
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_COST",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COST"
+      ],
+      "count": 9
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_COMMITMENT",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COMMITMENT"
+      ],
+      "count": 9
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "OBJECTIVE"
+      ],
+      "relationship": "HAS_ROADMAP",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "QUARTER"
+      ],
+      "count": 8
+    },
+    {
+      "from": [
+        "RoadmapItem"
+      ],
+      "relationship": "IMPLEMENTS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "count": 8
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "REGION"
+      ],
+      "relationship": "INCURS_COST",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COST"
+      ],
+      "count": 8
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "ISSUE"
+      ],
+      "relationship": "AFFECTS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "count": 8
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_RISK",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ISSUE"
+      ],
+      "count": 7
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT",
+        "FEATURE"
+      ],
+      "count": 7
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "MILESTONE"
+      ],
+      "count": 7
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "SLA",
+        "__Node__"
+      ],
+      "count": 7
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "GENERATES_REVENUE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "REVENUE"
+      ],
+      "count": 7
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "relationship": "SUPPORTS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT",
+        "FEATURE"
+      ],
+      "relationship": "HAS_ADOPTION_RATE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "relationship": "RESPONSIBLE_FOR",
+      "to": [
+        "RoadmapItem"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "SYSTEM"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PRICING_TIER"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "ISSUE"
+      ],
+      "relationship": "HAS_RISK",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "RISK"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "DEPARTMENT"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_SATISFACTION_SCORE",
+      "to": [
+        "__Entity__",
+        "SATISFACTION_SCORE"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_OPERATIONAL_COST",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COST"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FINANCIAL_METRIC"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_CONCERN",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "CONCERN"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "relationship": "RESPONSIBLE_FOR",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PROJECT"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "OPERATIONAL_COST"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "QUARTER"
+      ],
+      "relationship": "HAS_ROADMAP",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PROJECT"
+      ],
+      "count": 6
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "relationship": "DEVELOPS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "count": 5
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ARR"
+      ],
+      "count": 5
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "EVENT"
+      ],
+      "count": 5
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "relationship": "HAS_SUCCESS_SCORE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PROFITABILITY"
+      ],
+      "count": 5
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__"
+      ],
+      "count": 5
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "TEAM"
+      ],
+      "relationship": "HAS_SUCCESS_SCORE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "OPERATIONAL_COST"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_SUCCESS_SCORE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PROFITABILITY"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "HAS_RISK",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_SLA",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRICING_TIER"
+      ],
+      "relationship": "HAS_PRICING",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "PRICING_TIER"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_SUCCESS_SCORE",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "OBJECTIVE"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "MILESTONE",
+        "ADOPTION_METRIC"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "WAITING_FOR",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "FEATURE"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "Chunk",
+        "__Node__"
+      ],
+      "relationship": "MENTIONS",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "ADOPTION_METRIC",
+        "SATISFACTION_SCORE"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "CUSTOMER"
+      ],
+      "relationship": "HAS_SLA",
+      "to": [
+        "__Entity__",
+        "SLA",
+        "__Node__"
+      ],
+      "count": 4
+    },
+    {
+      "from": [
+        "__Entity__",
+        "__Node__",
+        "PRODUCT"
+      ],
+      "relationship": "COMPETES_WITH",
+      "to": [
+        "__Entity__",
+        "__Node__",
+        "COMPETITOR"
+      ],
+      "count": 4
+    }
+  ]
+}

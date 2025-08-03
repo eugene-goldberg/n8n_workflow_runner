@@ -107,22 +107,21 @@ RETURN f.name as feature, f.status as status, f.expected_date as expected_date,
 ENHANCED_CYPHER_INSTRUCTIONS = """
 When generating Cypher queries, follow these patterns:
 
-1. ALWAYS check for both label formats:
-   - Spyro RAG: (c:Customer)
-   - LlamaIndex: (c:__Entity__:CUSTOMER)
-   Use: WHERE ('Customer' IN labels(c) OR ('__Entity__' IN labels(c) AND 'CUSTOMER' IN labels(c)))
+1. ALWAYS use the LlamaIndex label format:
+   - LlamaIndex: (c) WHERE ('__Entity__' IN labels(c) AND 'CUSTOMER' IN labels(c))
+   - This is the only format in the database
 
 2. Handle monetary values stored as strings:
    - Values might be stored as '$8M', '$500K', etc.
    - Convert using: toFloat(replace(replace(value, '$', ''), 'M', '')) * 1000000
 
-3. Common entity types and their dual labels:
-   - Customer / CUSTOMER
-   - Product / PRODUCT
-   - Team / TEAM
-   - Risk / RISK
-   - Commitment / COMMITMENT
-   - Feature / FEATURE
+3. Common entity types in LlamaIndex format:
+   - CUSTOMER
+   - PRODUCT
+   - TEAM
+   - RISK
+   - COMMITMENT
+   - FEATURE
 
 4. Handle optional relationships with OPTIONAL MATCH
 

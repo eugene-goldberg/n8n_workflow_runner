@@ -1,0 +1,128 @@
+[
+  {
+    "id": 7,
+    "question": "What are the projected quarterly revenue trends for the next fiscal year?",
+    "has_data": false,
+    "missing": "PROJECTION or FORECAST nodes with quarterly data",
+    "finding": "No projection/forecast nodes found in the graph"
+  },
+  {
+    "id": 12,
+    "question": "What is the average time to resolve critical customer issues by product?",
+    "has_data": true,
+    "missing": "resolution_date or closed_date properties on EVENT nodes",
+    "finding": "Found 2 support events but no resolution dates/times"
+  },
+  {
+    "id": 19,
+    "question": "What is the correlation between team size and project completion rates?",
+    "has_data": false,
+    "missing": "PROJECT nodes and project completion data",
+    "finding": "Found 31 teams (with size data: 15) but only 50 PROJECT nodes"
+  },
+  {
+    "id": 20,
+    "question": "How many critical milestones are at risk of being missed this quarter?",
+    "has_data": false,
+    "missing": "MILESTONE nodes with risk/status properties",
+    "finding": "Found 0 ROADMAPITEM nodes but 6 MILESTONE nodes"
+  },
+  {
+    "id": 25,
+    "question": "What percentage of projects are currently over budget?",
+    "has_data": false,
+    "missing": "budget and actual_cost properties on PROJECT nodes",
+    "finding": "PROJECT nodes exist but 0 have budget property"
+  },
+  {
+    "id": 26,
+    "question": "Which teams have the highest employee satisfaction scores?",
+    "has_data": true,
+    "missing": "EMPLOYEE nodes or employee_satisfaction properties",
+    "finding": "Found 9 teams with satisfaction_score (avg: 4.122222222222222)"
+  },
+  {
+    "id": 28,
+    "question": "How many security incidents have been reported in the last quarter?",
+    "has_data": false,
+    "missing": "EVENT nodes with type='security_incident'",
+    "finding": "Checked all events, found 1 security-related (types: ['security_incident'])"
+  },
+  {
+    "id": 31,
+    "question": "What is the average time from lead to customer conversion?",
+    "has_data": false,
+    "missing": "LEAD nodes and CONVERTED_TO relationships",
+    "finding": "No LEAD entities found (count: 0)"
+  },
+  {
+    "id": 32,
+    "question": "How many customers are using deprecated features?",
+    "has_data": false,
+    "missing": "deprecated or is_deprecated property on FEATURE nodes",
+    "finding": "105 features exist, 0 marked deprecated. Props: ['is_new_feature', 'adoption_rate', 'name', 'released_timeframe', 'triplet_source_id', 'embedding', 'id', 'active_users']"
+  },
+  {
+    "id": 34,
+    "question": "Which SLAs are most frequently violated?",
+    "has_data": true,
+    "missing": "EVENT nodes with type='sla_violation'",
+    "finding": "Found 16 SLA nodes but 0 violation events"
+  },
+  {
+    "id": 39,
+    "question": "What is the average revenue per employee across different departments?",
+    "has_data": true,
+    "missing": "Direct revenue attribution to teams/departments",
+    "finding": "Found 15 teams with employee data (total: 70)"
+  },
+  {
+    "id": 43,
+    "question": "What is the trend in customer acquisition costs over time?",
+    "has_data": false,
+    "missing": "COST nodes with category='acquisition' and time periods",
+    "finding": "Found 0 acquisition costs. Periods: []"
+  },
+  {
+    "id": 44,
+    "question": "How many high-value opportunities are in the pipeline?",
+    "has_data": true,
+    "missing": "value or stage properties on opportunities",
+    "finding": "Found 24 EXPANSION_OPPORTUNITY nodes (used as proxy)"
+  },
+  {
+    "id": 48,
+    "question": "How many days of runway do we have at current burn rate?",
+    "has_data": false,
+    "missing": "FINANCE or CASH nodes with balance data",
+    "finding": "Monthly burn: $8200000.0, but no cash/reserves found. Checked: []"
+  },
+  {
+    "id": 51,
+    "question": "How many critical dependencies exist in our technology stack?",
+    "has_data": true,
+    "missing": "Clear definition of 'critical dependency'",
+    "finding": "Using 19 features with adoption_rate as proxy for dependencies"
+  },
+  {
+    "id": 52,
+    "question": "What percentage of revenue is recurring vs one-time?",
+    "has_data": false,
+    "missing": "source property set to 'recurring' or 'one-time' on REVENUE nodes",
+    "finding": "REVENUE nodes: 44, but source values are: []"
+  },
+  {
+    "id": 53,
+    "question": "Which marketing channels have the highest ROI?",
+    "has_data": false,
+    "missing": "MARKETING_CHANNEL nodes",
+    "finding": "No marketing-related labels found. Checked: []"
+  },
+  {
+    "id": 58,
+    "question": "What percentage of our codebase has technical debt?",
+    "has_data": false,
+    "missing": "CODEBASE or TECHNICAL_DEBT nodes",
+    "finding": "No technical debt metrics found. Nodes with debt properties: []"
+  }
+]

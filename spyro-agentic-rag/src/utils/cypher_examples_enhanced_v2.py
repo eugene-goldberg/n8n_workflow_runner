@@ -83,7 +83,10 @@ ORDER BY f.adoption_rate DESC"""
     # NEW: Risks related to objectives
     {
         "question": "What are the top risks related to achieving Market Expansion objective?",
-        "cypher": """MATCH (o:Objective {name: 'Market Expansion'})<-[:AFFECTS]-(r:Risk)
+        "cypher": """MATCH (o) WHERE ('__Entity__' IN labels(o) AND 'OBJECTIVE' IN labels(o))
+AND o.name = 'Market Expansion'
+MATCH (r)-[:AFFECTS]->(o)
+WHERE ('__Entity__' IN labels(r) AND 'RISK' IN labels(r))
 RETURN r.name as risk, r.severity as severity, 
        r.description as description,
        r.revenue_impact as potential_impact
@@ -103,7 +106,9 @@ ORDER BY
     # NEW: Objectives with risk counts
     {
         "question": "Which company objectives have the highest number of associated risks?",
-        "cypher": """MATCH (o:Objective)<-[:AFFECTS]-(r:Risk)
+        "cypher": """MATCH (o) WHERE ('__Entity__' IN labels(o) AND 'OBJECTIVE' IN labels(o))
+MATCH (r)-[:AFFECTS]->(o)
+WHERE ('__Entity__' IN labels(r) AND 'RISK' IN labels(r))
 WITH o, count(r) as risk_count, 
      collect({name: r.name, severity: r.severity}) as risks
 RETURN o.name as objective, o.priority as priority, 
@@ -227,24 +232,23 @@ RETURN cm.description as commitment, cm.status as status,
 ENHANCED_CYPHER_INSTRUCTIONS = """
 When generating Cypher queries, follow these patterns:
 
-1. ALWAYS check for both label formats:
-   - Spyro RAG: (c:Customer)
-   - LlamaIndex: (c:__Entity__:CUSTOMER)
-   Use: WHERE ('Customer' IN labels(c) OR ('__Entity__' IN labels(c) AND 'CUSTOMER' IN labels(c)))
+1. ALWAYS use the LlamaIndex label format:
+   - LlamaIndex: (c) WHERE ('__Entity__' IN labels(c) AND 'CUSTOMER' IN labels(c))
+   - This is the only format in the database
 
 2. Handle monetary values stored as strings:
    - Values might be stored as '$8M', '$500K', etc.
    - Convert using: toFloat(replace(replace(value, '$', ''), 'M', '')) * 1000000
 
-3. Common entity types and their dual labels:
-   - Customer / CUSTOMER
-   - Product / PRODUCT
-   - Team / TEAM
-   - Risk / RISK
-   - Commitment / COMMITMENT
-   - Feature / FEATURE
-   - Objective (new)
-   - RoadmapItem (new)
+3. Common entity types in LlamaIndex format:
+   - CUSTOMER
+   - PRODUCT
+   - TEAM
+   - RISK
+   - COMMITMENT
+   - FEATURE
+   - OBJECTIVE
+   - ROADMAP_ITEM
 
 4. Handle optional relationships with OPTIONAL MATCH
 

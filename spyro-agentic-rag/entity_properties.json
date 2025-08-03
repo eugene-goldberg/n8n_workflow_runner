@@ -1,0 +1,225 @@
+{
+  "ADOPTION_METRIC": [
+    "col_schema",
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "ARR": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "COMMITMENT": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "COMPANY": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "COMPETITOR": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "CONCERN": [
+    "created_date",
+    "description",
+    "id",
+    "priority",
+    "status",
+    "type"
+  ],
+  "COST": [
+    "amount",
+    "category",
+    "embedding",
+    "id",
+    "monthly_cost",
+    "name",
+    "period",
+    "product",
+    "total_monthly_cost",
+    "triplet_source_id",
+    "updated_at",
+    "value"
+  ],
+  "CUSTOMER": [
+    "api_calls_per_month",
+    "contract_end_date",
+    "contract_length",
+    "contract_start_date",
+    "industry",
+    "monthly_active_users",
+    "name",
+    "primary_product",
+    "region",
+    "size",
+    "subscription_start_date",
+    "updated_at",
+    "usage_growth",
+    "usage_increase_percentage"
+  ],
+  "CUSTOMER_SUCCESS_SCORE": [
+    "customerId",
+    "lastUpdated",
+    "score",
+    "trend"
+  ],
+  "Commitment": [
+    "commitmentId",
+    "description",
+    "due_date",
+    "status"
+  ],
+  "DEADLINE": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "DEPARTMENT": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "Document": [
+    "content",
+    "created",
+    "name",
+    "type"
+  ],
+  "EVENT": [
+    "description",
+    "eventId",
+    "impact",
+    "severity",
+    "timestamp",
+    "type"
+  ],
+  "EXPANSION_OPPORTUNITY": [
+    "expected_close_date",
+    "probability",
+    "product",
+    "value"
+  ],
+  "FEATURE": [
+    "active_users",
+    "adoption_rate",
+    "embedding",
+    "id",
+    "is_new_feature",
+    "name",
+    "released_timeframe",
+    "triplet_source_id"
+  ],
+  "FINANCIAL_METRIC": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "FeatureRequest": [
+    "created_date",
+    "name",
+    "priority",
+    "requester_count",
+    "status"
+  ],
+  "INFRASTRUCTURE": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "ISSUE": [
+    "col_schema",
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "MILESTONE": [
+    "col_schema",
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "OBJECTIVE": [
+    "description",
+    "embedding",
+    "id",
+    "name",
+    "status",
+    "title",
+    "triplet_source_id"
+  ],
+  "OPERATIONAL_COST": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "Objective": [
+    "created_at",
+    "description",
+    "name",
+    "priority",
+    "status"
+  ],
+  "PERSON": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "POC": [
+    "company",
+    "expected_decision_date",
+    "potential_value",
+    "product",
+    "stage",
+    "start_date"
+  ],
+  "PRICING_TIER": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ],
+  "PRODUCT": [
+    "cost_updated_at",
+    "embedding",
+    "id",
+    "monthly_cost",
+    "name",
+    "operational_cost",
+    "triplet_source_id"
+  ],
+  "PROFITABILITY": [
+    "cost",
+    "embedding",
+    "id",
+    "margin",
+    "name",
+    "period",
+    "revenue",
+    "triplet_source_id"
+  ],
+  "PROJECT": [
+    "embedding",
+    "id",
+    "name",
+    "triplet_source_id"
+  ]
+}

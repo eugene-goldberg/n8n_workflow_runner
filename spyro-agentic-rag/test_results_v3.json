@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-08-02 22:55:16.571333",
+  "success_rate": 100.0,
+  "results": [
+    {
+      "id": 1,
+      "question": "What percentage of our ARR is dependent on customers with success scores below 70?",
+      "success": true,
+      "answer_length": 314,
+      "execution_time": 14.08
+    },
+    {
+      "id": 2,
+      "question": "Which customers are at high risk due to low product adoption?",
+      "success": true,
+      "answer_length": 700,
+      "execution_time": 19.95
+    },
+    {
+      "id": 5,
+      "question": "What percentage of customers experienced negative events in the last 90 days?",
+      "success": true,
+      "answer_length": 165,
+      "execution_time": 7.04
+    },
+    {
+      "id": 7,
+      "question": "What are the projected quarterly revenue trends for the next fiscal year?",
+      "success": true,
+      "answer_length": 1033,
+      "execution_time": 24.32
+    },
+    {
+      "id": 9,
+      "question": "How many active risks are unmitigated, and what is their potential financial impact?",
+      "success": true,
+      "answer_length": 322,
+      "execution_time": 2.57
+    },
+    {
+      "id": 10,
+      "question": "What is the customer retention rate across different product lines?",
+      "success": true,
+      "answer_length": 475,
+      "execution_time": 10.09
+    },
+    {
+      "id": 11,
+      "question": "Which product features have the highest usage but lowest satisfaction scores?",
+      "success": true,
+      "answer_length": 731,
+      "execution_time": 9.21
+    }
+  ]
+}

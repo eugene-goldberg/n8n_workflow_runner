@@ -79,21 +79,20 @@ ORDER BY p.name"""
 ]
 
 COMPATIBLE_CYPHER_INSTRUCTIONS = """
-Important notes for generating Cypher queries that work with both Spyro RAG and LlamaIndex schemas:
+Important notes for generating Cypher queries:
 
-1. LABEL MATCHING: Always check for both label formats:
-   - Spyro RAG: (c:Customer)
-   - LlamaIndex: (c:__Entity__:CUSTOMER)
-   - Compatible: (c) WHERE ('Customer' IN labels(c) OR ('__Entity__' IN labels(c) AND 'CUSTOMER' IN labels(c)))
+1. LABEL MATCHING: Always use the LlamaIndex format:
+   - LlamaIndex: (c) WHERE ('__Entity__' IN labels(c) AND 'CUSTOMER' IN labels(c))
+   - This is the only format in the database
 
-2. LABEL MAPPINGS:
-   - Customer/CUSTOMER
-   - Product/PRODUCT
-   - Team/TEAM
-   - Risk/RISK
-   - SaaSSubscription/SUBSCRIPTION
-   - AnnualRecurringRevenue/REVENUE
-   - CustomerSuccessScore/CUSTOMER_SUCCESS_SCORE
+2. ENTITY TYPES IN LLAMAINDEX FORMAT:
+   - CUSTOMER
+   - PRODUCT
+   - TEAM
+   - RISK
+   - SUBSCRIPTION
+   - REVENUE
+   - CUSTOMER_SUCCESS_SCORE
 
 3. RELATIONSHIPS: Same in both schemas (e.g., SUBSCRIBES_TO, HAS_RISK, SUPPORTS)
 
