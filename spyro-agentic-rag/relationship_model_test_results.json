@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-08-03T08:19:04.162053",
+  "model": "relationship-centric",
+  "success_rate": "0/3",
+  "results": [
+    {
+      "id": 53,
+      "question": "Which marketing channels have the highest ROI?",
+      "success": false
+    },
+    {
+      "id": 7,
+      "question": "What are the projected quarterly revenue trends for the next fiscal year?",
+      "success": false
+    },
+    {
+      "id": 52,
+      "question": "What percentage of revenue is recurring vs one-time?",
+      "success": false
+    }
+  ]
+}

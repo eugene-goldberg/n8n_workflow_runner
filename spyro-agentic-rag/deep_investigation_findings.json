@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-08-03T07:56:25.413164",
+  "query_insights": [
+    {
+      "question": "What are the projected quarterly revenue trends for the next fiscal year?",
+      "llm_interpretation": "Agent tried complex pattern matching",
+      "root_cause": "LLM overcomplicates temporal queries",
+      "suggested_fix": "Add temporal reasoning hints to context"
+    }
+  ],
+  "behavior_patterns": "See console output",
+  "recommendations": [
+    "Add query simplification hints to context",
+    "Document self-contained entities clearly",
+    "Provide temporal query patterns",
+    "Consider query rewriting layer"
+  ]
+}

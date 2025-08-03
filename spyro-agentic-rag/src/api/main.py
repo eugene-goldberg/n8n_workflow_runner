@@ -12,7 +12,7 @@ from fastapi import FastAPI, HTTPException, Depends, Header, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from ..agents.spyro_agent_enhanced_fixed import SpyroAgentEnhanced as SpyroAgent, create_agent
+from ..agents.spyro_agent_enhanced_v3 import SpyroAgentEnhanced as SpyroAgent, create_agent
 from ..utils.config import Config
 from ..utils.logging import setup_logging
 

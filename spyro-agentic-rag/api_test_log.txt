@@ -1,0 +1,63 @@
+API Test Results - Individual Query Testing
+===========================================
+
+Q1: ✅ GROUNDED - Total ARR $71.8M found
+Q2: ✅ GROUNDED - Found 3 customers with scores below 50
+Q3: ✅ GROUNDED - Health score distribution provided
+Q4: ❌ GENERIC - Found 58 customers at risk (likely all customers)
+Q5: ✅ GROUNDED - 7.38% of ARR from low success scores
+Q6: ✅ GROUNDED - SpyroSecure 82%, SpyroCloud 78%, SpyroAI 65%
+Q7: ❌ GENERIC - No projections found
+Q8: ✅ GROUNDED - 10 unmitigated risks, $20.4M impact
+Q9: ✅ GROUNDED - 5 customers with declining scores listed
+Q10: ✅ GROUNDED - Average contract value $4.48M
+Q11: ❌ GENERIC - Feature count by stage (88 unspecified)
+Q12: ✅ GROUNDED - 100% customers at risk (58/58)
+Q13: ✅ GROUNDED - SpyroSecure 82%, SpyroCloud 78%, SpyroAI 65%
+Q14: ✅ GROUNDED - 43 low tier, 16 mid tier customers
+Q15: ❌ GENERIC - 2 open integration issues (no details)
+Q16: ❌ GENERIC - No specific features by segment found
+Q17: ✅ GROUNDED - Security Team $1.8M operational cost
+Q18: ✅ GROUNDED - Health score distribution provided
+Q19: ❌ GENERIC - No customers adopted latest features
+Q20: ✅ GROUNDED - No correlation found, specific examples given
+Q21: ✅ GROUNDED - Total ARR $71.8M, segments not specified
+Q22: ❌ GENERIC - One risk per objective (no specifics)
+Q23: ✅ GROUNDED - 100% internal (107 features), 0% customer
+Q24: ✅ GROUNDED - All customers have 0 integration issues
+Q25: ❌ GENERIC - 48.25 days average (no context)
+Q26: ✅ GROUNDED - Enterprise vs Mid-Market adoption rates
+Q27: ✅ GROUNDED - High:6, Medium:3, Critical:1 risks
+Q28: ✅ GROUNDED - 1 objective with 1 unmitigated risk
+Q29: ❌ GENERIC - 58 customers (likely all)
+Q30: ✅ GROUNDED - 10 customers with specific trends listed
+Q31: ❌ GENERIC - 6 teams with 2 projects each (no project names)
+Q32: ✅ GROUNDED - 0% roadmap items delayed
+Q33: ❌ GENERIC - No data on service disruption impact
+Q34: ❌ GENERIC - No adoption data for last quarter
+Q35: ❌ GENERIC - No support ticket volumes recorded
+Q36: ❌ GENERIC - No objectives at risk due to dependencies
+Q37: ❌ GENERIC - No project priority data available
+Q38: ✅ GROUNDED - All products show $0 recurring revenue
+Q39: ✅ GROUNDED - 5 customers below score 60
+Q40: ✅ GROUNDED - Top 10 risks with impacts listed
+Q41: ✅ GROUNDED - XML Export 8%, Legacy API 15%, etc.
+Q42: ❌ GENERIC - No cross-functional dependencies
+Q43: ✅ GROUNDED - 100% on latest version
+Q44: ❌ GENERIC - No objectives blocked by dependencies
+Q45: ❌ GENERIC - No high-value customers at risk
+Q46: ✅ GROUNDED - SpyroCloud 68.13, SpyroSecure 82.67, SpyroAI 62.40
+Q47: ❌ GENERIC - SMB segment found but no growth rates
+Q48: ❌ GENERIC - 107 features blocked (likely all)
+Q49: ✅ GROUNDED - 0% risks have mitigation plans
+Q50: ❌ GENERIC - 5 teams with no deliverables
+Q51: ❌ GENERIC - No correlation data available
+Q52: ✅ GROUNDED - 91.64% recurring, 8.36% one-time
+Q53: ✅ GROUNDED - Email/SEO 700%, Partner 600% ROI
+Q54: ❌ GENERIC - 1 customer with multiple products
+Q55: ✅ GROUNDED - Q1-Q4 2025 projections showing growth
+Q56: ❌ GENERIC - 2 features adopted by 1 customer each
+Q57: ❌ GENERIC - No objectives dependent on vendors
+Q58: ✅ GROUNDED - 0% have executive sponsors
+Q59: ✅ GROUNDED - SpyroCloud $1.85M, SpyroAI $950K support costs
+Q60: ❌ GENERIC - 12 SMB, 46 unspecified stage

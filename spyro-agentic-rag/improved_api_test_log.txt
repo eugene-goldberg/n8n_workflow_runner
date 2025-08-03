@@ -1,0 +1,35 @@
+Improved API Test Results - After Fixes and Data Additions
+==========================================================
+Date: August 3, 2025
+
+Improvements Applied:
+1. Enhanced Cypher examples (v4)
+2. Relationship model fixes
+3. Better filtering for "at risk" queries
+4. Added missing data (support tickets, integration issues, etc.)
+
+Individual Query Results:
+
+Q1-Q10: 9/10 grounded (90%)
+- Q1: ✅ GROUNDED - Total ARR $71.8M
+- Q2: ✅ GROUNDED - 3 customers below 50
+- Q3: ✅ GROUNDED - Health score distribution
+- Q4: ✅ GROUNDED - 3 customers at risk (FIXED! Was 58)
+- Q5: ✅ GROUNDED - 7.38% ARR from low scores
+- Q6: ✅ GROUNDED - Product adoption rates
+- Q7: ❌ GENERIC - Projections still failing
+- Q8: ✅ GROUNDED - 10 risks, $20.4M impact
+- Q9: ✅ GROUNDED - Declining scores list
+- Q10: ✅ GROUNDED - Average contract value
+
+Q11-Q20: 4/9 grounded (44%)
+- Q11: ❌ GENERIC - Feature stages
+- Q12: ✅ GROUNDED - 100% at risk
+- Q13: ❌ GENERIC - Product adoption (duplicate)
+- Q14: ✅ GROUNDED - Revenue tiers
+- Q15: ❌ GENERIC - 2 open issues (no details)
+- Q16: ❌ GENERIC - No feature requests by segment
+- Q17: ✅ GROUNDED - Security Team costs
+- Q18: ✅ GROUNDED - Health distribution
+- Q19: ❌ GENERIC - No latest feature adoption
+- Q20: ❌ GENERIC - No correlation found (despite new data)
