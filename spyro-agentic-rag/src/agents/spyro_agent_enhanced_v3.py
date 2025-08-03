@@ -24,7 +24,7 @@ from neo4j_graphrag.retrievers import (
 )
 
 from ..utils.cypher_examples_enhanced_v3 import ENHANCED_CYPHER_EXAMPLES, CYPHER_GENERATION_INSTRUCTIONS
-from ..utils.neo4j_data_model_context import DATA_MODEL_CONTEXT, QUERY_CONTEXT_HINTS
+from ..utils.neo4j_data_model_context_complete import DATA_MODEL_CONTEXT, QUERY_CONTEXT_HINTS
 from ..utils.config import Config
 from ..utils.logging import setup_logging
 from ..utils.example_formatter import format_instructions, format_examples
