@@ -1,0 +1,1443 @@
+{
+  "timestamp": "20250803_195300",
+  "api_url": "http://localhost:8000",
+  "summary": {
+    "total_questions": 60,
+    "grounded": 34,
+    "ungrounded": 26,
+    "success_rate": 56.666666666666664,
+    "total_time_minutes": 4.196358597278595
+  },
+  "category_stats": {
+    "Revenue Risk Analysis": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Cost & Profitability": {
+      "total": 5,
+      "grounded": 2
+    },
+    "Customer Health": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Customer Commitments & Satisfaction": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Product Performance": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Roadmap & Delivery Risk": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Strategic Risk Assessment": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Operational Risk": {
+      "total": 5,
+      "grounded": 2
+    },
+    "Team Performance": {
+      "total": 5,
+      "grounded": 1
+    },
+    "Project Delivery": {
+      "total": 5,
+      "grounded": 2
+    },
+    "Growth & Expansion": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Competitive Positioning": {
+      "total": 5,
+      "grounded": 2
+    }
+  },
+  "detailed_results": [
+    {
+      "index": 1,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue will be at risk if [Customer X] misses their SLA next month?",
+      "answer": "Based on the query used, the revenue at risk for Customer X if they miss their SLA next month is $0.00. This information is derived from the graph query result where the revenue_at_risk value is shown as $0.00.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.54,
+        "routes_selected": [
+          "graph_query"
+        ],
+        "tools_used": [
+          "GraphRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:48:52.328763",
+        "grounded": true
+      },
+      "elapsed": 3.548617124557495
+    },
+    {
+      "index": 2,
+      "category": "Revenue Risk Analysis",
+      "question": "What percentage of our ARR is dependent on customers with success scores below 70?",
+      "answer": "Based on the query provided, the percentage of ARR dependent on customers with success scores below a certain threshold (in this case, below 70) is calculated. The query calculates the percentage of ARR from customers with success scores below a specified threshold. In this specific case, the percentage of ARR from customers with success scores below 70 is 70.83%.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 1.56,
+        "routes_selected": [
+          "graph_query"
+        ],
+        "tools_used": [
+          "GraphRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:48:54.901387",
+        "grounded": true
+      },
+      "elapsed": 1.5657918453216553
+    },
+    {
+      "index": 3,
+      "category": "Revenue Risk Analysis",
+      "question": "Which customers generate 80% of our revenue, and what are their current risk profiles?",
+      "answer": "The customers that generate 80% of the revenue and their current risk profiles are not explicitly provided in the given context. The queries and results shown are focused on individual customers like \"Healthcare Plus\" and \"FinanceHub\" with their respective revenue percentages, success scores, negative events, and risk profiles. To find the customers that generate 80% of the revenue and their risk profiles, a specific query targeting this information would need to be executed.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 1.71,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:48:57.624054",
+        "grounded": true
+      },
+      "elapsed": 1.718393087387085
+    },
+    {
+      "index": 4,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue is at risk from customers experiencing negative events in the last quarter?",
+      "answer": "Based on the query used, the revenue at risk from customers experiencing negative events in the last quarter (from January 1, 2025, to March 31, 2025) is $0.00. This means that during this period, there is no revenue at risk from customers who have experienced negative events with high or critical severity.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.78,
+        "routes_selected": [
+          "graph_query"
+        ],
+        "tools_used": [
+          "GraphRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:02.411376",
+        "grounded": true
+      },
+      "elapsed": 3.7841570377349854
+    },
+    {
+      "index": 5,
+      "category": "Revenue Risk Analysis",
+      "question": "What is the projected revenue impact if we miss our roadmap deadlines for committed features?",
+      "answer": "Based on the query used to calculate the revenue impact of missing roadmap deadlines for committed features, the projected revenue impact if roadmap deadlines for committed features are missed is $7,996,176.00. This amount represents the total revenue at risk due to delayed roadmap items affecting 16 commitments and 16 customers. The delayed roadmap items include custom threat detection rules, Zero-trust network architecture, Predictive Analytics Engine 2.0, 60% of features, and Cost Analytics Dashboard.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.04,
+        "routes_selected": [
+          "graph_query"
+        ],
+        "tools_used": [
+          "GraphRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:05.456524",
+        "grounded": true
+      },
+      "elapsed": 2.0400712490081787
+    },
+    {
+      "index": 6,
+      "category": "Cost & Profitability",
+      "question": "How much does it cost to run each product across all regions?",
+      "answer": "The total cost to run each product across all regions is as follows:\n- Product: $100,000\n- Threat Intelligence Solution: $100,000\n- Concept: $100,000\n- Big Transformer Model: $75,000\n- Feature Adoption: $100,000\n- DDoS Protection: $100,000\n- Edge Deployment Kit: $100,000\n- SpyroCloud: $444,000\n- SpyroAI: $606,000\n- SpyroSecure: $230,000\n\nThese costs are based on the operational costs associated with each product in the North America region.",
+      "is_grounded": true,
+      "grounding_reason": "References specific entities",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 4.86,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:11.327442",
+        "grounded": true
+      },
+      "elapsed": 4.86657190322876
+    },
+    {
+      "index": 7,
+      "category": "Cost & Profitability",
+      "question": "What is the profitability margin for each product line?",
+      "answer": "I'm sorry, but based on the provided context, there are no results found from the graph query. Therefore, I do not have the specific information regarding the profitability margin for each product line.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no results'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.84,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:15.184907",
+        "grounded": false
+      },
+      "elapsed": 2.8528568744659424
+    },
+    {
+      "index": 8,
+      "category": "Cost & Profitability",
+      "question": "How do operational costs impact profitability for our top 10 customers?",
+      "answer": "The operational costs have a significant impact on the profitability of the top 10 customers. Based on the provided data from the graph results, we can see that the gross profit for each customer is calculated as the annual revenue minus the total operational costs. The profit margin is then calculated as the gross profit divided by the annual revenue, expressed as a percentage.\n\nHere are the impacts of operational costs on profitability for some of the top customers:\n1. Healthcare Plus:\n   - Gross Profit: -$8,012,736\n   - Profit Margin: -288.57%\n\n2. FinanceHub:\n   - Gross Profit: -$2,697,481\n   - Profit Margin: -126.69%\n\n3. CloudFirst:\n   - Gross Profit: -$9,283,076\n   - Profit Margin: -637.42%\n\n4. Global Manufacturing Co:\n   - Gross Profit: -$20,779,890\n   - Profit Margin: -1546.58%\n\nFrom the results, it is evident that high operational costs can lead to negative gross profits and profit margins, impacting the overall profitability of the top customers.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 4.44,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:20.641884",
+        "grounded": true
+      },
+      "elapsed": 4.454517841339111
+    },
+    {
+      "index": 9,
+      "category": "Cost & Profitability",
+      "question": "Which teams have the highest operational costs relative to the revenue they support?",
+      "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Therefore, I do not have specific information on which teams have the highest operational costs relative to the revenue they support.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no results'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 4.05,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:25.709808",
+        "grounded": false
+      },
+      "elapsed": 4.063167095184326
+    },
+    {
+      "index": 10,
+      "category": "Cost & Profitability",
+      "question": "What is the cost-per-customer for each product, and how does it vary by region?",
+      "answer": "The cost-per-customer for each product is as follows:\n\n- **SpyroAI**:\n  - Global region: Cost-per-customer data is not provided in the retrieved context.\n  \n- **SpyroCloud**:\n  - Global region: Cost-per-customer data is not provided in the retrieved context.\n\nUnfortunately, the specific cost-per-customer values for each product in different regions are not available in the provided context.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'not available'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.66,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:30.378765",
+        "grounded": false
+      },
+      "elapsed": 3.6639721393585205
+    },
+    {
+      "index": 11,
+      "category": "Customer Health",
+      "question": "What are the top 5 customers by revenue, and what are their current success scores?",
+      "answer": "I'm unable to provide the current success scores of the top 5 customers by revenue as the information about their success scores is not available in the provided context.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'not available'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.57,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:33.965225",
+        "grounded": false
+      },
+      "elapsed": 2.586326837539673
+    },
+    {
+      "index": 12,
+      "category": "Customer Health",
+      "question": "Which customers have declining success scores, and what events are driving the decline?",
+      "answer": "I'm sorry, but based on the provided context, no specific information is available regarding which customers have declining success scores or the events driving the decline. It seems that no results were found from the graph query. Additional data or a different query may be needed to provide the specific details you are looking for.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no results'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.34,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:38.314386",
+        "grounded": false
+      },
+      "elapsed": 3.3459420204162598
+    },
+    {
+      "index": 13,
+      "category": "Customer Health",
+      "question": "How many customers have success scores below 60, and what is their combined ARR?",
+      "answer": "Based on the retrieved information from the graph query tool, there are 24 customers with success scores below 60, and their combined ARR (Annual Recurring Revenue) is $373,864,422.00.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.58,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:42.895443",
+        "grounded": true
+      },
+      "elapsed": 3.580371379852295
+    },
+    {
+      "index": 14,
+      "category": "Customer Health",
+      "question": "What percentage of customers experienced negative events in the last 90 days?",
+      "answer": "Based on the query used, the percentage of customers who experienced negative events in the last 90 days is 56.9%. This is calculated by dividing the number of customers with negative events by the total number of customers and then multiplying by 100.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 1.42,
+        "routes_selected": [
+          "graph_query"
+        ],
+        "tools_used": [
+          "GraphRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:45.338164",
+        "grounded": true
+      },
+      "elapsed": 1.441037893295288
+    },
+    {
+      "index": 15,
+      "category": "Customer Health",
+      "question": "Which customers are at highest risk of churn based on success scores and recent events?",
+      "answer": "Based on the provided information and the queries used to identify customers at the highest risk of churn, the customers at highest risk of churn are those with a combination of low success scores, recent negative events, and certain commitments. Specifically, customers with success scores below 60, more than 2 recent negative events, or at-risk commitments are considered at higher risk of churn. The churn risk levels are categorized as 'Critical', 'High', 'Medium', or 'Low' based on these criteria.\n\nFrom the data provided:\n1. Healthcare Plus (Customer) is at critical risk of churn with a success score of 46, declining trend, 9 recent negative events, and no at-risk commitments.\n2. FinanceNext Ltd (Customer) is also at critical risk of churn with a success score of 48, declining trend, 13 recent negative events, and no at-risk commitments.\n3. HealthTech Solutions is at critical risk of churn with a success score of 41, declining trend, 3 recent negative events, and no at-risk commitments.\n\nThese customers are identified as being at the highest risk of churn based on their success scores, recent negative events, and commitment statuses.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.25,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:49.596167",
+        "grounded": true
+      },
+      "elapsed": 3.2530786991119385
+    },
+    {
+      "index": 16,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer commitments, and what are the current risks to achieving them?",
+      "answer": "The top customer commitments based on the provided context are as follows:\n\n1. Customer: Global Manufacturing Co (Customer)\n   - Commitment: Data Security Compliance - Global Manufacturing Co (Customer)\n   - Commitment Status: Delayed\n   - Priority: Critical\n   - Risk Level: High Risk\n\n2. Customer: GlobalRetail\n   - Commitment: Data Security Compliance - GlobalRetail\n   - Commitment Status: Delayed\n   - Priority: Critical\n   - Risk Level: High Risk\n\n3. Customer: FinanceNext Ltd (Customer)\n   - Commitment: Data Security Compliance - FinanceNext Ltd (Customer)\n   - Commitment Status: On Track\n   - Priority: Critical\n   - Risk Level: Low Risk\n\n4. Customer: FinanceHub\n   - Commitment: Data Security Compliance - FinanceHub\n   - Commitment Status: On Track\n   - Priority: Critical\n   - Risk Level: Low Risk\n\nThe current risks associated with achieving these commitments are also provided in the context. For example, commitments with a status of \"Delayed\" or \"At Risk\" are categorized as having a \"High Risk\" level, while commitments with no risks or with risks but not delayed or at risk are categorized as having a \"Medium Risk\" or \"Low Risk\" level.",
+      "is_grounded": true,
+      "grounding_reason": "References specific entities",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.24,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:53.840737",
+        "grounded": true
+      },
+      "elapsed": 3.239847183227539
+    },
+    {
+      "index": 17,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which features were promised to customers, and what is their delivery status?",
+      "answer": "I'm sorry, but based on the provided context, there is no specific information available about which features were promised to customers and their delivery status. The information provided includes details about technical milestones, product roadmap delays, features ahead of market readiness, completed features, and features with less than 20% adoption, but it does not directly address which features were promised to customers and their delivery status.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no specific'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.61,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:49:57.457166",
+        "grounded": false
+      },
+      "elapsed": 2.615607976913452
+    },
+    {
+      "index": 18,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer concerns, and what is currently being done to address them?",
+      "answer": "I'm sorry, but based on the information provided in the context, I cannot determine the top customer concerns or what is currently being done to address them. The queries and results shown are related to customer concerns and actions taken, but there is no specific indication of which concerns are considered the top concerns or a summary of actions being taken to address them.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no specific'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 4.22,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:02.688222",
+        "grounded": false
+      },
+      "elapsed": 4.227672100067139
+    },
+    {
+      "index": 19,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "How many customers are waiting for features currently on our roadmap?",
+      "answer": "Based on the retrieved context, there are currently 8 customers waiting for features that are on the roadmap. The sample customers waiting for these features are TechCorp, StartupXYZ, Global Manufacturing Corp, LogiCorp, HealthTech Solutions, and MediaFlow. The features they are waiting for include custom threat detection rules, Zero-trust network architecture, Predictive Analytics Engine 2.0, IoT sensor data processing, Edge computing capabilities, reliance on external APIs, and various analytics and dashboard tools.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.2,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:05.907781",
+        "grounded": true
+      },
+      "elapsed": 2.212606906890869
+    },
+    {
+      "index": 20,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which customers have unmet SLA commitments in the last quarter?",
+      "answer": "Based on the provided context and queries used to retrieve the information, the customers with unmet SLA commitments in the last quarter are as follows:\n\n1. Customer: TechStartup Inc\n   - SLA Metric: support_response\n   - SLA Target: 4\n   - Actual Performance: 3.51\n   - Miss Percentage: 12.18%\n   - Penalty Rate: 15%\n   - Severity: Critical\n\n2. Customer: APAC customers\n   - SLA Metric: data_processing\n   - SLA Target: 99.5\n   - Actual Performance: 88.97\n   - Miss Percentage: 10.58%\n   - Penalty Rate: 5%\n   - Severity: Critical\n\n3. Customer: Global Manufacturing Co\n   - SLA Metric: support_response\n   - SLA Target: 4\n   - Actual Performance: 3.63\n   - Miss Percentage: 9.23%\n   - Penalty Rate: 15%\n   - Severity: Warning\n\n4. Customer: StartupXYZ\n   - SLA Metric: data_processing\n   - SLA Target: 99.5\n   - Actual Performance: 92.18\n   - Miss Percentage: 7.35%\n   - Penalty Rate: 10%\n   - Severity: Warning\n\nThese customers have not met their SLA commitments in the last quarter based on the provided data.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.23,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:10.146012",
+        "grounded": true
+      },
+      "elapsed": 3.2383060455322266
+    },
+    {
+      "index": 21,
+      "category": "Product Performance",
+      "question": "Which products have the highest customer satisfaction scores?",
+      "answer": "Based on the retrieved information from the graph results, the products with the highest customer satisfaction scores are:\n\n1. Transformer (big) model with a score of 94\n2. Concept with a score of 94\n\nThese two products have the highest customer satisfaction scores of 94.",
+      "is_grounded": true,
+      "grounding_reason": "References specific entities",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.81,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:13.960915",
+        "grounded": true
+      },
+      "elapsed": 2.8124988079071045
+    },
+    {
+      "index": 22,
+      "category": "Product Performance",
+      "question": "What features drive the most value for our enterprise customers?",
+      "answer": "I'm sorry, but the context provided does not contain information about the specific features that drive the most value for enterprise customers. If you have access to data or insights on customer preferences, usage patterns, or feedback, analyzing that information could help identify the features that are most valuable to your enterprise customers.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'sorry'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 4.32,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:19.284317",
+        "grounded": false
+      },
+      "elapsed": 4.322309970855713
+    },
+    {
+      "index": 23,
+      "category": "Product Performance",
+      "question": "How many customers use each product, and what is the average subscription value?",
+      "answer": "The number of customers using each product along with the average subscription value for each product are as follows:\n\n1. Real-time Inference:\n   - Customers: 36\n   - Average Monthly Subscription: $37,177.83\n\n2. Federated Learning:\n   - Customers: 27\n   - Average Monthly Subscription: $32,184.53\n\n3. SpyroAI:\n   - Customers: 8\n   - Average Monthly Subscription: $64,744.94\n\n4. Custom Dashboards:\n   - Customers: 8\n   - Average Monthly Subscription: $46,348.10\n\n5. SpyroCloud:\n   - Customers: 17\n   - Average Monthly Subscription: $28,316.90\n\n6. Execution:\n   - Customers: 5\n   - Average Monthly Subscription: $60,394.38\n\n7. Product:\n   - Customers: 6\n   - Average Monthly Subscription: $60,171.67\n\n8. Edge Deployment Kit:\n   - Customers: 4\n   - Average Monthly Subscription: $70,867.10\n\n9. SpyroAI:\n   - Customers: 3\n   - Average Monthly Subscription: $77,129.67\n\n10. Feature Adoption:\n    - Customers: 3\n    - Average Monthly Subscription: $77,129.67\n\nThese details are based on the data retrieved from the queries used to analyze the products in the system.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.24,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:23.542235",
+        "grounded": true
+      },
+      "elapsed": 3.2610349655151367
+    },
+    {
+      "index": 24,
+      "category": "Product Performance",
+      "question": "Which products have the most operational issues impacting customer success?",
+      "answer": "Based on the provided information from the graph results and queries, the products with the most operational issues impacting customer success are as follows:\n\n1. **Product Name: execution**\n   - Operational Issues: 19\n   - Affected Customers: 5\n   - Total Customers: 5\n   - Impact Percentage: 100.0%\n   - Issue Types: service_outage, performance_issue\n\n2. **Product Name: SpyroAI**\n   - Operational Issues: 21\n   - Affected Customers: 6\n   - Total Customers: 8\n   - Impact Percentage: 75.0%\n   - Issue Types: service_outage, performance_issue\n\n3. **Product Name: Feature Adoption**\n   - Operational Issues: 15\n   - Affected Customers: 3\n   - Total Customers: 3\n   - Impact Percentage: 100.0%\n   - Issue Types: service_outage\n\nThese products have the highest number of operational issues impacting customer success based on the data provided.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.73,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:27.295554",
+        "grounded": true
+      },
+      "elapsed": 2.7434518337249756
+    },
+    {
+      "index": 25,
+      "category": "Product Performance",
+      "question": "What is the adoption rate of new features released in the last 6 months?",
+      "answer": "The adoption rates of new features released in the last 6 months are as follows:\n1. Multi-region deployment: \n   - Adoption rate: 77.59%\n2. Real-time Inference:\n   - Adoption rate: 62.07%\n3. Compliance Management:\n   - Adoption rate: 56.9%\n4. Model Versioning:\n   - Adoption rate: 53.45%\n5. Feature Usage Patterns:\n   - Adoption rate: 50.0%\n6. Federated Learning:\n   - Adoption rate: 46.55%\n7. Edge computing capabilities:\n   - Adoption rate: 41.38%\n\nThese adoption rates are based on the data provided for the respective features released in the last 6 months.",
+      "is_grounded": false,
+      "grounding_reason": "Lacks specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.18,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:30.489650",
+        "grounded": true
+      },
+      "elapsed": 2.189718008041382
+    },
+    {
+      "index": 26,
+      "category": "Roadmap & Delivery Risk",
+      "question": "How much future revenue will be at risk if [Feature X] misses its deadline by 3 months?",
+      "answer": "Based on the query used in the context, if \"Feature X\" misses its deadline by 3 months, the future revenue at risk is calculated to be $0.00. This means that if the feature is delayed by 3 months, there is currently no projected impact on future revenue.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 5.49,
+        "routes_selected": [
+          "graph_query"
+        ],
+        "tools_used": [
+          "GraphRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:36.986625",
+        "grounded": true
+      },
+      "elapsed": 5.492330074310303
+    },
+    {
+      "index": 27,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which roadmap items are critical for customer retention?",
+      "answer": "Based on the provided information from the graph results and queries, the roadmap items critical for customer retention are those with a high or critical priority, behind schedule or at risk status, more than 5 dependent customers, or revenue at stake exceeding $1,000,000. \n\nFrom the data provided, the following roadmap items are critical for customer retention:\n1. Roadmap: Predictive Analytics Engine 2.0\n2. Roadmap: 60% of features\n3. Roadmap: Zero-trust network architecture\n4. Roadmap: Cost Analytics Dashboard\n5. Roadmap: custom threat detection rules\n\nThese roadmap items have been identified as critical for customer retention based on the criteria mentioned in the queries and graph results.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.65,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:40.650136",
+        "grounded": true
+      },
+      "elapsed": 2.6578779220581055
+    },
+    {
+      "index": 28,
+      "category": "Roadmap & Delivery Risk",
+      "question": "What percentage of roadmap items are currently behind schedule?",
+      "answer": "Based on the provided context and query used, the percentage of roadmap items that are currently behind schedule is 17.78%. This information is calculated by dividing the count of items behind schedule by the total number of items and then converting it to a percentage. In this case, the behind schedule percentage is 17.78%.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 1.26,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:42.918305",
+        "grounded": true
+      },
+      "elapsed": 1.2627079486846924
+    },
+    {
+      "index": 29,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which teams are responsible for delayed roadmap items?",
+      "answer": "I'm sorry, but based on the information available, there are no specific teams mentioned in the graph query results regarding delayed roadmap items.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no specific'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.75,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:46.671187",
+        "grounded": false
+      },
+      "elapsed": 2.751055955886841
+    },
+    {
+      "index": 30,
+      "category": "Roadmap & Delivery Risk",
+      "question": "How many customer commitments depend on roadmap items at risk?",
+      "answer": "The provided context does not contain the specific information needed to determine how many customer commitments depend on roadmap items at risk. The queries and results focus on customer commitments, their statuses, priorities, and risk levels, but do not provide the exact count of commitments that depend on roadmap items at risk.",
+      "is_grounded": false,
+      "grounding_reason": "Lacks specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 1.4,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:49.081443",
+        "grounded": true
+      },
+      "elapsed": 1.4085919857025146
+    },
+    {
+      "index": 31,
+      "category": "Strategic Risk Assessment",
+      "question": "What are the top risks related to achieving [Objective X]?",
+      "answer": "The top risks related to achieving a specific objective can be determined by analyzing the \"risk_count\" and \"risk_severities\" for each objective in the graph results. The overall risk level is also provided as \"Critical Risk,\" \"High Risk,\" \"Multiple Risks,\" \"Some Risk,\" or \"Low Risk\" based on the severity and count of risks associated with each objective.",
+      "is_grounded": true,
+      "grounding_reason": "References specific entities",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.04,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:52.138583",
+        "grounded": true
+      },
+      "elapsed": 2.052942991256714
+    },
+    {
+      "index": 32,
+      "category": "Strategic Risk Assessment",
+      "question": "Which company objectives have the highest number of associated risks?",
+      "answer": "Based on the provided information from the graph results and queries, the company objectives with the highest number of associated risks are as follows:\n\n1. Objective: Automate compliance tasks\n   - Risk Count: 6\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\n2. Objective: 42\n   - Risk Count: 5\n   - Risk Severities: Critical, High\n   - Overall Risk Level: Critical Risk\n\n3. Objective: Reduced latency by 35% for enterprise customers\n   - Risk Count: 5\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\n4. Objective: Maintain Momentum\n   - Risk Count: 5\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\n5. Objective: Improvements or Pivots\n   - Risk Count: 5\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\nThese objectives have the highest number of associated risks, each with a risk count of 5 or 6 and an overall risk level of Critical Risk.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.67,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:50:56.820610",
+        "grounded": true
+      },
+      "elapsed": 3.6775548458099365
+    },
+    {
+      "index": 33,
+      "category": "Strategic Risk Assessment",
+      "question": "What is the potential revenue impact of our top 5 identified risks?",
+      "answer": "Based on the provided context, the potential revenue impact of the top 5 identified risks are as follows:\n1. Risk 1: $10,000,000.00\n2. Risk 2: $5,000,000.00\n3. Risk 3: $4,000,000.00\n4. Risk 4: $3,000,000.00\n5. Risk 5: $3,000,000.00\n\nThese values represent the potential revenue impact associated with each of the top 5 identified risks.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 4.34,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:02.174771",
+        "grounded": true
+      },
+      "elapsed": 4.347847938537598
+    },
+    {
+      "index": 34,
+      "category": "Strategic Risk Assessment",
+      "question": "Which risks affect multiple objectives or customer segments?",
+      "answer": "The provided context does not contain specific information about which risks affect multiple objectives or customer segments.",
+      "is_grounded": false,
+      "grounding_reason": "Lacks specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 1.29,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:04.472757",
+        "grounded": true
+      },
+      "elapsed": 1.292870044708252
+    },
+    {
+      "index": 35,
+      "category": "Strategic Risk Assessment",
+      "question": "How many high-severity risks are currently without mitigation strategies?",
+      "answer": "Based on the provided query and result, there are currently 0 high-severity risks without mitigation strategies. The query used was to find high-severity risks that are not connected to any mitigation strategies, and the result returned a count of 0 such risks.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.4,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:08.882142",
+        "grounded": true
+      },
+      "elapsed": 3.4048409461975098
+    },
+    {
+      "index": 36,
+      "category": "Operational Risk",
+      "question": "Which teams are understaffed relative to their project commitments?",
+      "answer": "I'm sorry, but the graph query did not return any results, so I am unable to provide specific information about which teams are understaffed relative to their project commitments.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'sorry'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.8,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:12.699441",
+        "grounded": false
+      },
+      "elapsed": 2.81188702583313
+    },
+    {
+      "index": 37,
+      "category": "Operational Risk",
+      "question": "What operational risks could impact product SLAs?",
+      "answer": "I'm sorry, but the provided context does not contain specific information about the operational risks that could impact product SLAs. If you have any other information or details related to this question, please provide them so I can offer a more accurate response.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'sorry'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 7.33,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:21.037771",
+        "grounded": false
+      },
+      "elapsed": 7.3386077880859375
+    },
+    {
+      "index": 38,
+      "category": "Operational Risk",
+      "question": "Which products have the highest operational risk exposure?",
+      "answer": "Based on the provided context, the products with the highest operational risk exposure are as follows:\n\n1. SpyroCloud\n2. SpyroAI for predictive maintenance\n3. SpyroCloud Enterprise Edition\n4. SpyroSecure\n5. SpyroAI\n\nThese products were identified based on the query that retrieves the product name and the maximum operational risk exposure amount associated with each product.",
+      "is_grounded": true,
+      "grounding_reason": "References specific entities",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.04,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:25.092615",
+        "grounded": true
+      },
+      "elapsed": 3.046663999557495
+    },
+    {
+      "index": 39,
+      "category": "Operational Risk",
+      "question": "How do operational risks correlate with customer success scores?",
+      "answer": "I'm sorry, but the graph query did not return any results regarding the correlation between operational risks and customer success scores.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'sorry'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.85,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:28.953357",
+        "grounded": false
+      },
+      "elapsed": 2.8591198921203613
+    },
+    {
+      "index": 40,
+      "category": "Operational Risk",
+      "question": "What percentage of projects are at risk of missing deadlines?",
+      "answer": "The query used to determine the percentage of projects at risk of missing deadlines returned a result of \"nan%\", which stands for \"not a number\". This could indicate that there might be an issue with the data or calculation in the database query. It is recommended to review the data and query logic to ensure accurate results are obtained.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.06,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:33.014487",
+        "grounded": true
+      },
+      "elapsed": 3.062303066253662
+    },
+    {
+      "index": 41,
+      "category": "Team Performance",
+      "question": "Which teams support the most revenue-generating products?",
+      "answer": "Based on the query used and the retrieved context, the team that supports the most revenue-generating products is the \"Product Management\" team, with a total of 3 revenue-generating products.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.24,
+        "routes_selected": [
+          "graph_query"
+        ],
+        "tools_used": [
+          "GraphRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:37.272650",
+        "grounded": true
+      },
+      "elapsed": 3.2509849071502686
+    },
+    {
+      "index": 42,
+      "category": "Team Performance",
+      "question": "What is the revenue-per-team-member for each department?",
+      "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Without specific data on revenue and team members for each department, I am unable to provide the revenue-per-team-member for each department. If you have access to the relevant data, you may need to run a different query or provide additional information to obtain the desired results.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no results'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.3,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:41.591938",
+        "grounded": false
+      },
+      "elapsed": 3.3145370483398438
+    },
+    {
+      "index": 43,
+      "category": "Team Performance",
+      "question": "Which teams are working on the most critical customer commitments?",
+      "answer": "I'm sorry, but based on the provided context, there are no specific details available about which teams are working on the most critical customer commitments. The graph query did not yield any results. Additional information or a different approach may be needed to determine which teams are handling the most critical customer commitments.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no specific'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.95,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:45.551266",
+        "grounded": false
+      },
+      "elapsed": 2.9544899463653564
+    },
+    {
+      "index": 44,
+      "category": "Team Performance",
+      "question": "How are teams allocated across products and projects?",
+      "answer": "I'm sorry, but the information provided does not specify how teams are allocated across products and projects.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'sorry'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.15,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:48.708524",
+        "grounded": false
+      },
+      "elapsed": 2.15578293800354
+    },
+    {
+      "index": 45,
+      "category": "Team Performance",
+      "question": "Which teams have the highest impact on customer success scores?",
+      "answer": "I'm sorry, but the graph query did not return any results, so I cannot provide specific information on which teams have the highest impact on customer success scores.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'sorry'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.19,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:52.910148",
+        "grounded": false
+      },
+      "elapsed": 3.1955909729003906
+    },
+    {
+      "index": 46,
+      "category": "Project Delivery",
+      "question": "Which projects are critical for maintaining current revenue?",
+      "answer": "I'm sorry, but based on the information provided in the context, there is no specific mention of projects critical for maintaining current revenue.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no specific'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 1.7,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:55.619423",
+        "grounded": false
+      },
+      "elapsed": 1.7049751281738281
+    },
+    {
+      "index": 47,
+      "category": "Project Delivery",
+      "question": "What percentage of projects are delivering on schedule?",
+      "answer": "I'm sorry, but based on the provided context, there is no specific information available regarding the percentage of projects that are delivering on schedule.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no specific'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 1.38,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:51:58.011613",
+        "grounded": false
+      },
+      "elapsed": 1.3879258632659912
+    },
+    {
+      "index": 48,
+      "category": "Project Delivery",
+      "question": "Which projects have dependencies that could impact multiple products?",
+      "answer": "I'm sorry, but based on the provided context, there are no specific projects mentioned that have dependencies impacting multiple products.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no specific'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.46,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:02.486010",
+        "grounded": false
+      },
+      "elapsed": 3.469801187515259
+    },
+    {
+      "index": 49,
+      "category": "Project Delivery",
+      "question": "How many projects are blocked by operational constraints?",
+      "answer": "Based on the retrieved context, there are 18 projects that are blocked by operational constraints. This information is derived from the query that counted the number of projects that are blocked by operational constraints in the database.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.25,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:05.745064",
+        "grounded": true
+      },
+      "elapsed": 2.253247022628784
+    },
+    {
+      "index": 50,
+      "category": "Project Delivery",
+      "question": "What is the success rate of projects by team and product area?",
+      "answer": "The success rate of projects by team and product area can be calculated based on the provided query. The success rate is determined by the formula: \n\n\\[ \\text{Success Rate Percentage} = \\frac{(\\text{Completed} + \\text{On Schedule})}{\\text{Total Projects}} \\times 100 \\]\n\nIn the context provided, the success rate percentage is calculated for each team and product area based on the number of completed projects and projects on schedule. The success rate percentage is then ordered in descending order.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.44,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:09.194118",
+        "grounded": true
+      },
+      "elapsed": 2.444288969039917
+    },
+    {
+      "index": 51,
+      "category": "Growth & Expansion",
+      "question": "Which customer segments offer the highest growth potential?",
+      "answer": "Based on the provided data, the customer segments with the highest growth potential are as follows:\n\n1. **Finance**:\n   - Growth Rate: 172.16%\n   - Total Current ARR: $41,882,256.00\n   - Average Customer Value: $1,163,396.00\n   - Customer Count: 36\n\n2. **Retail**:\n   - Growth Rate: 166.99%\n   - Total Current ARR: $84,639,648.00\n   - Average Customer Value: $1,880,881.00\n   - Customer Count: 45\n\n3. **Healthcare**:\n   - Growth Rate: 159.64%\n   - Total Current ARR: $47,618,328.00\n   - Average Customer Value: $1,035,181.00\n   - Customer Count: 46\n\nThese segments show the highest growth potential based on their growth rates.",
+      "is_grounded": true,
+      "grounding_reason": "References specific entities",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.32,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:12.528657",
+        "grounded": true
+      },
+      "elapsed": 2.3279192447662354
+    },
+    {
+      "index": 52,
+      "category": "Growth & Expansion",
+      "question": "What products have the best profitability-to-cost ratio for scaling?",
+      "answer": "Based on the profitability-to-cost ratio calculated for scaling decisions, the products with the best profitability-to-cost ratio for scaling are as follows:\n\n1. SpyroAI with a profitability ratio of 14.0 and profit margin percentage of 93.72%\n2. Transformer (big) model with a profitability ratio of 14.0 and profit margin percentage of 93.36%",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.21,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:15.754842",
+        "grounded": true
+      },
+      "elapsed": 2.222416877746582
+    },
+    {
+      "index": 53,
+      "category": "Growth & Expansion",
+      "question": "Which regions show the most promise for expansion based on current metrics?",
+      "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Therefore, I do not have specific information on which regions show the most promise for expansion based on current metrics. Additional data or analysis may be needed to determine the regions with the most potential for expansion.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'no results'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.82,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:19.583195",
+        "grounded": false
+      },
+      "elapsed": 2.8269617557525635
+    },
+    {
+      "index": 54,
+      "category": "Growth & Expansion",
+      "question": "What features could we develop to increase customer success scores?",
+      "answer": "Based on the information provided in the context, one approach to increase customer success scores could be to develop high-adoption, high-value features. These features were associated with entities such as EnergyCore, large customers, TechStartup Inc (Customer), DataSync International, and Enterprise Customers. By focusing on developing features that cater to the needs and preferences of these entities, you may be able to enhance customer success scores.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.28,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:22.875219",
+        "grounded": true
+      },
+      "elapsed": 2.2909159660339355
+    },
+    {
+      "index": 55,
+      "category": "Growth & Expansion",
+      "question": "Which objectives are most critical for achieving our growth targets?",
+      "answer": "Based on the information provided, the objectives that are most critical for achieving growth targets include:\n1. Entity: High ROI + Growth (Type: PROFITABILITY) with relationships to Security automation features, Multi-region capabilities, Custom analytics dashboards, and Real-time Inference platform.\n2. Entity: $500M revenue by 2027 (Type: REVENUE) with a source of recurring revenue and a relationship to Global Platform Leadership.\n\nThese objectives are crucial for achieving growth targets as they are directly related to profitability and revenue generation, which are key components of driving growth in a business.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.11,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:26.999143",
+        "grounded": true
+      },
+      "elapsed": 3.1200671195983887
+    },
+    {
+      "index": 56,
+      "category": "Competitive Positioning",
+      "question": "How do our SLAs compare to industry standards by product?",
+      "answer": "The SLAs for the product named \"Product\" are compared to industry standards in the 95th percentile. The current performance for this product is 98.78, while the target performance is set at 99.9. This indicates that the product's current performance is higher than the industry benchmark but slightly below the target performance.",
+      "is_grounded": true,
+      "grounding_reason": "References specific entities",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 2.88,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:30.895893",
+        "grounded": true
+      },
+      "elapsed": 2.891512155532837
+    },
+    {
+      "index": 57,
+      "category": "Competitive Positioning",
+      "question": "Which features give us competitive advantage in each market segment?",
+      "answer": "Based on the retrieved information from the graph result, the features that provide a competitive advantage in each market segment are:\n- Real-time Inference\n- API Gateway v3\n- Model Versioning\n- Cost Analytics\n\nThese features contribute to the competitive advantage in the respective market segments.",
+      "is_grounded": false,
+      "grounding_reason": "Lacks specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 4.02,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:35.933155",
+        "grounded": true
+      },
+      "elapsed": 4.031713008880615
+    },
+    {
+      "index": 58,
+      "category": "Competitive Positioning",
+      "question": "What operational improvements would most impact customer satisfaction?",
+      "answer": "I'm sorry, but the context provided does not contain specific information about operational improvements that would most impact customer satisfaction. If you have any other data or details related to this question, please provide them so I can assist you further.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'sorry'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 4.0,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:40.943750",
+        "grounded": false
+      },
+      "elapsed": 4.009835958480835
+    },
+    {
+      "index": 59,
+      "category": "Competitive Positioning",
+      "question": "How can we reduce operational costs while maintaining service quality?",
+      "answer": "I'm sorry, but the context provided does not contain information relevant to reducing operational costs while maintaining service quality. If you have specific data or details related to cost reduction strategies or service quality in your organization, please provide them so I can offer more tailored assistance.",
+      "is_grounded": false,
+      "grounding_reason": "Contains 'sorry'",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 13.4,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:55.351357",
+        "grounded": false
+      },
+      "elapsed": 13.418694019317627
+    },
+    {
+      "index": 60,
+      "category": "Competitive Positioning",
+      "question": "Which customer segments are we best positioned to serve profitably?",
+      "answer": "Based on the information provided in the context, the customer segments that are best positioned to be served profitably are those with a high success score of 80 or above. The segments identified in the graph results with a success score of 80 or above are:\n1. Enterprise\n2. SMB\n3. Mid-Market\n4. Startup\n\nThese segments have been identified based on the query used to filter customers by their success score, indicating that customers in these segments are likely to be profitable to serve.",
+      "is_grounded": true,
+      "grounding_reason": "Contains specific data references",
+      "api_metadata": {
+        "agent_type": "LangGraph",
+        "model": "gpt-3.5-turbo",
+        "execution_time_seconds": 3.18,
+        "routes_selected": [
+          "hybrid"
+        ],
+        "tools_used": [
+          "HybridRetriever"
+        ],
+        "session_id": null,
+        "timestamp": "2025-08-03T19:52:59.559493",
+        "grounded": true
+      },
+      "elapsed": 3.1871747970581055
+    }
+  ]
+}

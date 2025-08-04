@@ -1,0 +1,729 @@
+{
+  "timestamp": "20250803_204310",
+  "api_url": "http://localhost:8000",
+  "improvements": {
+    "multi_strategy_retrieval": true,
+    "improved_synthesis": true,
+    "agentic_behavior": true
+  },
+  "summary": {
+    "total_questions": 60,
+    "grounded": 53,
+    "ungrounded": 7,
+    "success_rate": 88.33333333333333,
+    "total_time_minutes": 6.626479502518972,
+    "improvement_from_previous": 21.633333333333326
+  },
+  "category_stats": {
+    "Revenue Risk Analysis": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Cost & Profitability": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Customer Health": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Customer Commitments & Satisfaction": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Product Performance": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Roadmap & Delivery Risk": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Strategic Risk Assessment": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Operational Risk": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Team Performance": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Project Delivery": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Growth & Expansion": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Competitive Positioning": {
+      "total": 5,
+      "grounded": 5
+    }
+  },
+  "detailed_results": [
+    {
+      "index": 1,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue will be at risk if [Customer X] misses their SLA next month?",
+      "answer": "Based on the information gathered from different sources:\n\n1. The graph query tool indicates that the revenue at risk for Customer X if they miss their SLA next month is $0.00.\n\n2. The vector search tool provides information on various costs per customer in different regions:\n   - Europe: $805,000/month\n   - Europe: $600,000/month\n   - North America: $487,500/month\n   - North America: $400,000/month\n\n3. While there is no direct mention of the revenue at risk for Customer X missing their SLA, we can infer that the potential revenue loss could be significant based on the high costs per customer in different regions.\n\nTherefore, although the exact revenue at risk for Customer X missing their SLA next month is not explicitly stated, the significant operational costs per customer in different regions suggest that any potential revenue loss could have a notable impact on the overall financial performance.",
+      "is_grounded": false,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.172642707824707
+    },
+    {
+      "index": 2,
+      "category": "Revenue Risk Analysis",
+      "question": "What percentage of our ARR is dependent on customers with success scores below 70?",
+      "answer": "Based on the information retrieved, we can calculate the percentage of ARR that is dependent on customers with success scores below 70. \n\nFrom the graph query tool, we have the following relevant data:\n- ARR at risk: $30,954,732.00\n- Total ARR: $43,704,432.00\n- Percentage of ARR at risk: 70.83%\n\nAlthough we don't have a direct percentage for customers with success scores below 70, we can use the provided percentage at risk to estimate that a significant portion of the ARR is dependent on customers with lower success scores.\n\nAdditionally, from the vector search tool, we see various adoption metrics for enterprise customers ranging from 68% to 87%. While these metrics do not directly relate to success scores below 70, they indicate a range of adoption rates among customers which could potentially impact the success scores and, in turn, the ARR dependency.\n\nTherefore, based on the available data, it can be inferred that a substantial portion of the ARR, approximately 70.83%, is dependent on customers with success scores below 70. The adoption metrics for enterprise customers further suggest varying levels of engagement that could influence the success scores and corresponding impact on ARR dependency.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 3.1159849166870117
+    },
+    {
+      "index": 3,
+      "category": "Revenue Risk Analysis",
+      "question": "Which customers generate 80% of our revenue, and what are their current risk profiles?",
+      "answer": "Based on the information retrieved, the customer \"Healthcare Plus\" generates a significant portion of the revenue, with an annual revenue of $2,776,668. This customer accounts for 6.35% of the total revenue. The customer has been assigned varying success scores over different periods, with scores of 46, 75, and 79. Despite the success score fluctuations, the customer consistently maintains a high-risk profile due to experiencing negative events.\n\nAdditionally, the adoption metrics for enterprise customers show that various services like Custom Dashboards, Real-time Inference, Auto-scaling v2, Multi-region Deployment, and AutoML Platform have high adoption rates among different percentages of enterprise customers.\n\nTherefore, to identify the customers generating 80% of the revenue and their current risk profiles, further analysis and aggregation of revenue data along with risk profiles of other customers are required. This analysis should focus on identifying the specific customers contributing to the majority of the revenue and evaluating their risk profiles based on success scores and negative events experienced.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 7.9029381275177
+    },
+    {
+      "index": 4,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue is at risk from customers experiencing negative events in the last quarter?",
+      "answer": "Based on the information retrieved from different sources:\n\n1. The graph query indicates that the revenue at risk from customers experiencing negative events in the last quarter is $0.00.\n\n2. There is a mention of \"Customer Payment Risks\" under the type RISK, which could be related to potential revenue risks associated with customers.\n\n3. The entity \"25% of revenue in EUR/GBP\" under the type REVENUE and source recurring may indicate a portion of revenue that could be impacted by foreign exchange exposure risks.\n\n4. The cost per customer in Europe is $805,000/month, and in North America, it is $487,500/month. These costs per customer could be factors affecting revenue.\n\n5. The entity \"68% of enterprise customers\" under the type ADOPTION_METRIC could also be relevant to understanding potential revenue risks if these customers are impacted by negative events.\n\nConsidering these pieces of information, while the exact total revenue at risk from customers experiencing negative events in the last quarter is not explicitly provided, factors such as customer payment risks, foreign exchange exposure, operational costs per customer, and the adoption rate of enterprise customers could contribute to revenue risks. It would be essential to further analyze the specific impact of these factors on revenue to determine the overall risk amount accurately.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.543745994567871
+    },
+    {
+      "index": 5,
+      "category": "Revenue Risk Analysis",
+      "question": "What is the projected revenue impact if we miss our roadmap deadlines for committed features?",
+      "answer": "Based on the information retrieved from the graph query and semantic search results, missing roadmap deadlines for committed features could have a significant projected revenue impact. The total revenue at risk is calculated to be $7,996,176.00, with 16 commitments affected and 16 customers impacted. The specific delayed items from the roadmap include critical features like custom threat detection rules, Zero-trust network architecture, Predictive Analytics Engine 2.0, 60% of features, and the Cost Analytics Dashboard.\n\nAdditionally, there is a mention of $15M in committed revenue that is associated with a high risk level, indicating the potential financial implications of missing commitments. This underscores the importance of meeting roadmap deadlines to ensure revenue targets are met. Furthermore, the recurring revenue sources, such as the $500M revenue by 2027 linked to Global Platform Leadership, highlight the long-term financial impact of successful roadmap execution.\n\nIn conclusion, missing roadmap deadlines for committed features not only poses a direct risk to revenue but also affects customer commitments and long-term revenue goals. It is crucial to address these delays promptly to mitigate the negative financial consequences and uphold customer satisfaction.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.5780510902404785
+    },
+    {
+      "index": 6,
+      "category": "Cost & Profitability",
+      "question": "How much does it cost to run each product across all regions?",
+      "answer": "Based on the information gathered from the graph queries and vector search results, we can determine the total operational costs for various products in North America:\n\n1. Threat Intelligence Solution: $100,000\n2. Big Transformer Model: $75,000\n3. Feature Adoption: $100,000\n4. DDoS Protection: $100,000\n5. Edge Deployment Kit: $100,000\n6. SpyroCloud: $444,000\n7. SpyroAI: $606,000\n8. SpyroSecure: $230,000\n\nThese values represent the total operational costs per product in North America. By summing up these costs, you can calculate the total cost to run each product across all regions in North America.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.805675745010376
+    },
+    {
+      "index": 7,
+      "category": "Cost & Profitability",
+      "question": "What is the profitability margin for each product line?",
+      "answer": "Based on the information retrieved, there is no direct data available on the profitability margin for each product line. However, we can gather some insights related to profitability and costs:\n\n1. \"Customer Profitability\" is tracked, indicating a focus on understanding the profitability of customers. This suggests a monitoring system may be in place to assess the profitability of different customer segments.\n\n2. Details about costs per customer in Europe and North America are provided ($805,000/month and $487,500/month respectively). While these are not specific to product lines, they give an idea of the operational costs associated with serving customers in different regions.\n\n3. The entity \"Path to Profitability\" is mentioned, which seems to be a project related to achieving profitability. It includes budget and actual cost figures, but no direct information on product line profitability.\n\nTo determine the profitability margin for each product line, further data specifically related to revenues and costs associated with individual product lines would be needed. This could involve analyzing sales data, production costs, marketing expenses, and other relevant financial information tied to each product line to calculate the profitability margin accurately.",
+      "is_grounded": false,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 8.15164303779602
+    },
+    {
+      "index": 8,
+      "category": "Cost & Profitability",
+      "question": "How do operational costs impact profitability for our top 10 customers?",
+      "answer": "Operational costs have a significant impact on the profitability of the top customers. Let's take a look at a few examples:\n\n1. Healthcare Plus:\n   - Annual Revenue: $2,776,668.00\n   - Total Operational Costs: $10,789,404\n   - Gross Profit: -$8,012,736\n   - Profit Margin: -288.57%\n\n2. FinanceHub:\n   - Annual Revenue: $2,129,232.00\n   - Total Operational Costs: $4,826,713\n   - Gross Profit: -$2,697,481\n   - Profit Margin: -126.69%\n\n3. CloudFirst:\n   - Annual Revenue: $1,456,356.00\n   - Total Operational Costs: $10,739,432\n   - Gross Profit: -$9,283,076\n   - Profit Margin: -637.42%\n\n4. Global Manufacturing Co:\n   - Annual Revenue: $1,343,604.00\n   - Total Operational Costs: $22,123,494\n   - Gross Profit: -$20,779,890\n   - Profit Margin: -1546.58%\n\nThese examples demonstrate that high operational costs relative to revenue can lead to negative gross profits and profit margins, impacting overall profitability. It is crucial to manage operational costs effectively to ensure a healthy bottom line for top customers.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.026257753372192
+    },
+    {
+      "index": 9,
+      "category": "Cost & Profitability",
+      "question": "Which teams have the highest operational costs relative to the revenue they support?",
+      "answer": "Based on the information retrieved, we can identify some key data points related to operational costs and revenue:\n\n1. Team Operational Costs:\n- 24/7 SOC Operations in Europe: $420,000/month\n- 24/7 SOC Operations in Asia-Pacific: $350,000/month\n\n2. Revenue:\n- 25% of revenue in EUR/GBP (exact revenue amount not provided)\n- $500M revenue by 2027\n\nWhile the exact comparison of operational costs relative to revenue for specific teams is not explicitly provided in the retrieved information, we can infer that teams with significant operational costs like the ones mentioned above may have a higher operational cost relative to the revenue they support. To determine the teams with the highest operational costs relative to revenue, a more detailed breakdown of revenue and costs for specific teams would be needed.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.226688861846924
+    },
+    {
+      "index": 10,
+      "category": "Cost & Profitability",
+      "question": "What is the cost-per-customer for each product, and how does it vary by region?",
+      "answer": "Based on the information retrieved from the graph query and vector search tools, we can determine the cost-per-customer for the products SpyroAI and SpyroCloud in different regions:\n\n1. SpyroAI:\n   - Cost per Customer: $600,000/month in Europe\n   - Cost per Customer: $400,000/month in North America\n\n2. SpyroCloud:\n   - Cost per Customer information is not directly provided in the available data.\n\nTherefore, for SpyroAI, the cost per customer varies by region, with a higher cost in Europe compared to North America. Unfortunately, specific cost-per-customer data for SpyroCloud in different regions is not available in the retrieved information.",
+      "is_grounded": false,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.225251197814941
+    },
+    {
+      "index": 11,
+      "category": "Customer Health",
+      "question": "What are the top 5 customers by revenue, and what are their current success scores?",
+      "answer": "The top 5 customers by revenue are Healthcare Plus and TechStartup Inc, each generating $4,904,038.00. Unfortunately, the specific success scores for these customers are not directly provided in the retrieved information. However, we do have adoption metrics related to enterprise customers, such as 71% using Multi-region Deployment, 68% using Custom Dashboards, 87% using Auto-scaling v2, 83% using AutoML Platform, and 92% using Real-time Inference. While these metrics are not directly linked to the revenue-generating customers mentioned, they give an indication of the adoption rates of various services among enterprise customers.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.950103759765625
+    },
+    {
+      "index": 12,
+      "category": "Customer Health",
+      "question": "Which customers have declining success scores, and what events are driving the decline?",
+      "answer": "Based on the information retrieved, several enterprise customers are experiencing declining success scores based on adoption metrics related to various features or services. Here are the details:\n\n1. Multi-region Deployment: 71% of enterprise customers are associated with this feature.\n2. Custom Dashboards: 68% of enterprise customers are linked to this feature.\n3. Compliance Automation: 76% of enterprise customers are utilizing this feature.\n4. Real-time Inference: 92% of enterprise customers are using this feature.\n5. Auto-scaling v2: 87% of enterprise customers are utilizing this feature.\n\nThe declining success scores could be attributed to the adoption rates of these specific features or services. By analyzing the adoption metrics for each feature and comparing them over time, it may be possible to identify the events or factors driving the decline in success scores for these customers. Further investigation into the usage patterns, feedback, and performance of these features could provide insights into the reasons behind the declining success scores.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.816841125488281
+    },
+    {
+      "index": 13,
+      "category": "Customer Health",
+      "question": "How many customers have success scores below 60, and what is their combined ARR?",
+      "answer": "Based on the available information:\n\n1. There are 0 customers with success scores below 60.\n2. The combined ARR for these customers is $0.00.\n\nTherefore, there are no customers with success scores below 60, and as a result, their combined ARR is $0.00.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.021103858947754
+    },
+    {
+      "index": 14,
+      "category": "Customer Health",
+      "question": "What percentage of customers experienced negative events in the last 90 days?",
+      "answer": "Based on the information retrieved, we have data on the percentage of customers who experienced negative events in the last 90 days from the graph query tool. It states that out of a total of 58 customers, 33 customers experienced negative events, resulting in a percentage of 56.9% of customers with negative events.\n\nWhile the exact percentage of customers experiencing negative events in the last 90 days is not directly provided in the other sources, we do have information on the adoption rates of enterprise customers for various metrics like real-time inference, auto-scaling v2, multi-region deployment, and AutoML platform. These adoption rates range from 71% to 92% for different metrics.\n\nAlthough we don't have a direct percentage for negative events among customers in the last 90 days from the other results, we can infer that the percentage of customers experiencing negative events (56.9%) is within the range of adoption rates seen in the other metrics provided (71% to 92%). This suggests that a significant portion of customers are affected by negative events, aligning with the data obtained from the graph query tool.\n\nTherefore, while we don't have a specific percentage for negative events among customers from the other results, we can reasonably conclude that the 56.9% figure represents a substantial portion of customers experiencing negative events in the last 90 days based on the comparison with adoption rates of other metrics.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 3.349949836730957
+    },
+    {
+      "index": 15,
+      "category": "Customer Health",
+      "question": "Which customers are at highest risk of churn based on success scores and recent events?",
+      "answer": "Based on the information gathered from the graph queries and vector search results, the customers at the highest risk of churn based on success scores and recent events are:\n\n1. Healthcare Plus:\n   - Success Score: 46\n   - Score Trend: Declining\n   - Recent Negative Events: 9\n   - At-Risk Commitments: 0\n   - Annual Revenue: $2,776,668.00\n   - Churn Risk Level: Critical\n\n2. FinanceNext Ltd:\n   - Success Score: 48\n   - Score Trend: Declining\n   - Recent Negative Events: 13\n   - At-Risk Commitments: 0\n   - Annual Revenue: $1,244,436.00\n   - Churn Risk Level: Critical\n\n3. EduTech:\n   - Success Score: 35.0\n   - Score Trend: Declining\n   - Recent Negative Events: 3\n   - At-Risk Commitments: 0\n   - Annual Revenue: $566,340.00\n   - Churn Risk Level: Critical\n\n4. GlobalRetail:\n   - Success Score: 49\n   - Score Trend: Stable\n   - Recent Negative Events: 2\n   - At-Risk Commitments: 1\n   - Annual Revenue: $545,760.00\n   - Churn Risk Level: Critical\n\n5. HealthTech Solutions:\n   - Success Score: 41.0\n   - Score Trend: Declining\n   - Recent Negative Events: 3\n   - At-Risk Commitments: 0\n   - Annual Revenue: $350,664.00\n   - Churn Risk Level: Critical\n\nThese customers have been identified as being at high risk of churn based on their success scores below 70, declining trends, significant recent negative events, and critical churn risk levels. It would be crucial for the company to take proactive measures to address the issues these customers are facing to mitigate the risk of churn.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.077922105789185
+    },
+    {
+      "index": 16,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer commitments, and what are the current risks to achieving them?",
+      "answer": "The top customer commitments identified include \"Data Security Compliance\" for customers like Global Manufacturing Co, GlobalRetail, FinanceNext Ltd, and FinanceHub. These commitments are classified as having a critical priority level. However, there are risks associated with achieving these commitments, with some being delayed and posing a high risk, particularly in the case of Global Manufacturing Co and GlobalRetail. On the other hand, commitments related to Data Security Compliance for FinanceNext Ltd and FinanceHub are currently on track with a lower risk level.\n\nIn summary, the top customer commitments revolve around Data Security Compliance, with varying statuses ranging from delayed with high risk to on track with low risk, depending on the specific customer. It is crucial for businesses to address these risks effectively to ensure the successful fulfillment of these commitments.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 2.5972938537597656
+    },
+    {
+      "index": 17,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which features were promised to customers, and what is their delivery status?",
+      "answer": "Based on the information retrieved from the graph queries, several customers were promised feature deliveries in Q2. Here are the details of the promised features and their delivery status for each customer:\n\n1. **TechCorp**:\n   - Promised Date: 2025-10-19\n   - Delivery Status: Planned\n   - Deadline Risk: On Track\n\n2. **StartupXYZ**:\n   - Promised Date: 2026-01-27\n   - Delivery Status: Planned\n   - Deadline Risk: On Track\n\n3. **LogiCorp**:\n   - Promised Date: 2025-10-20\n   - Delivery Status: Planned\n   - Deadline Risk: On Track\n\n4. **MediaFlow**:\n   - Promised Date: 2026-01-22\n   - Delivery Status: Planned\n   - Deadline Risk: On Track\n\n5. **HealthTech Solutions**:\n   - Promised Date: 2025-11-24\n   - Delivery Status: Planned\n   - Deadline Risk: On Track\n\n6. **Global Manufacturing Corp**:\n   - Promised Date: 2025-11-22\n   - Delivery Status: Planned\n   - Deadline Risk: On Track\n\nIt appears that all the promised features to these customers are currently in the \"Planned\" status with no reported delays or risks to meeting the promised delivery dates. This information provides an overview of the feature commitments made to customers and their current delivery statuses.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.892556190490723
+    },
+    {
+      "index": 18,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer concerns, and what is currently being done to address them?",
+      "answer": "Based on the information retrieved from the graph queries and vector search results, here are some of the top customer concerns and actions being taken to address them:\n\n1. **TechCorp**:\n   - Concern: SpyroCloud API response times exceed 500ms during peak hours.\n   - Action Taken: Specific actions to address this concern were not explicitly mentioned in the results.\n\n2. **FinanceHub**:\n   - Concern: Need SOC2 compliance certification for SpyroSecure.\n   - Action Taken: Details about actions taken to address this concern were not provided in the results.\n\n3. **StartupXYZ**:\n   - Concerns:\n     - Performance degradation during peak hours.\n     - Missing critical features.\n   - Actions Taken: The specific actions to mitigate these concerns were not directly specified in the retrieved data.\n\nAdditionally, the vector search results highlighted the following relevant information:\n- **Critical Customer Concerns** are associated with **TechCorp**.\n- **Multi-region Deployment** is linked to an **Adoption Metric** affecting **71% of enterprise customers**.\n- **Custom Dashboards** are related to an **Adoption Metric** impacting **68% of enterprise customers**.\n\nWhile the specific actions being taken to address the identified customer concerns were not explicitly provided in the retrieved data, it is evident that issues such as API response times, compliance certifications, performance degradation, and feature gaps are significant concerns for these customers. Further details on the actions being implemented to resolve these concerns would require additional specific data or internal knowledge from the relevant organization.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.609941244125366
+    },
+    {
+      "index": 19,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "How many customers are waiting for features currently on our roadmap?",
+      "answer": "Based on the information gathered from the graph query tool, there are currently 8 customers waiting for features that are on the roadmap. Some of the sample customers waiting for these features include TechCorp, StartupXYZ, Global Manufacturing Corp, LogiCorp, HealthTech Solutions, and MediaFlow.\n\nAdditionally, from the vector search tool results, it is indicated that 60% of features are threatened by product roadmap delays. This could imply that the delays in the roadmap are affecting a significant portion of the features, which might be a factor contributing to the number of customers waiting for these features.\n\nWhile the vector search tool did not provide direct information on the number of customers waiting for features on the roadmap, the insights on the impact of product roadmap delays on features can be correlated with the number of customers waiting for these features. The delays in delivering features could potentially lead to customers waiting for the promised functionalities, as indicated by the graph query results.\n\nTherefore, based on the available information, there are 8 customers currently waiting for features on the roadmap, with a significant portion of features being threatened by delays. This suggests a need to address these delays to meet customer expectations and improve adoption rates among enterprise customers.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 3.662276029586792
+    },
+    {
+      "index": 20,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which customers have unmet SLA commitments in the last quarter?",
+      "answer": "Based on the information retrieved from the graph queries, several customers have unmet SLA commitments in the last quarter. Here are the details of the customers with unmet SLA commitments:\n\n1. **Large Customers**:\n   - SLA Metric: Response Time\n   - SLA Target: 200\n   - Actual Performance: 173.66\n   - Miss Percentage: 13.17%\n   - Penalty Rate: 10%\n   - Severity: Critical\n\n2. **TechStartup Inc**:\n   - SLA Metric: Support Response\n   - SLA Target: 4\n   - Actual Performance: 3.51\n   - Miss Percentage: 12.18%\n   - Penalty Rate: 15%\n   - Severity: Critical\n\n3. **APAC Customers**:\n   - SLA Metric: Data Processing\n   - SLA Target: 99.5\n   - Actual Performance: 88.97\n   - Miss Percentage: 10.58%\n   - Penalty Rate: 5%\n   - Severity: Critical\n\n4. **Global Manufacturing Co**:\n   - SLA Metric: Support Response\n   - SLA Target: 4\n   - Actual Performance: 3.63\n   - Miss Percentage: 9.23%\n   - Penalty Rate: 15%\n   - Severity: Warning\n\n5. **StartupXYZ**:\n   - SLA Metric: Data Processing\n   - SLA Target: 99.5\n   - Actual Performance: 92.18\n   - Miss Percentage: 7.35%\n   - Penalty Rate: 10%\n   - Severity: Warning\n\nThese customers have not met their Service Level Agreement commitments based on the performance metrics recorded in the last quarter. The severity of the unmet commitments ranges from Critical to Warning based on the calculated miss percentages.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.862333059310913
+    },
+    {
+      "index": 21,
+      "category": "Product Performance",
+      "question": "Which products have the highest customer satisfaction scores?",
+      "answer": "Based on the information retrieved, we can infer that products with high uptime rates, such as those with over 99.95% uptime, are likely to have a positive impact on customer satisfaction. The relationship mentioned indicates that the products affect satisfaction. Therefore, it is reasonable to assume that products with high uptime rates like those mentioned may have high customer satisfaction scores.\n\nWhile there is no direct mention of specific products with the highest customer satisfaction scores, the data suggests that products with exceptional uptime performance, like those associated with Global Manufacturing Corp, could be strong contenders for having high customer satisfaction levels. Additionally, considering the relationship between uptime rates and customer satisfaction, it is plausible to conclude that products meeting or exceeding uptime expectations are more likely to result in satisfied customers.\n\nIn summary, based on the available information, products with exceptional uptime performance, such as those with over 99.95% uptime, are likely to have high customer satisfaction scores due to the positive impact of uptime on customer satisfaction.",
+      "is_grounded": false,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.603927135467529
+    },
+    {
+      "index": 22,
+      "category": "Product Performance",
+      "question": "What features drive the most value for our enterprise customers?",
+      "answer": "Based on the information retrieved from the vector search tool, it appears that certain features drive significant value for enterprise customers based on their adoption rates. The features that are highly adopted by enterprise customers include:\n\n1. Multi-region Deployment: Adopted by 71% of enterprise customers.\n2. Auto-scaling v2: Adopted by 87% of enterprise customers.\n3. Real-time Inference: Adopted by 92% of enterprise customers.\n4. Custom Dashboards: Adopted by 68% of enterprise customers.\n5. AutoML Platform: Adopted by 83% of enterprise customers.\n\nThese adoption metrics suggest that these specific features are highly valued by enterprise customers. Therefore, focusing on enhancing and optimizing these features could potentially drive more value for enterprise customers.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.8445799350738525
+    },
+    {
+      "index": 23,
+      "category": "Product Performance",
+      "question": "How many customers use each product, and what is the average subscription value?",
+      "answer": "Based on the information retrieved from the graph queries and vector search, here is a summary of the number of customers using each product and the average subscription values:\n\n1. Real-time Inference:\n   - Number of Customers: 36\n   - Average Monthly Subscription: $37,177.83\n   - Average Annual Subscription: $446,133.9\n\n2. Federated Learning:\n   - Number of Customers: 27\n   - Average Monthly Subscription: $32,184.53\n   - Average Annual Subscription: $386,214.38\n\n3. SpyroAI:\n   - Number of Customers: 8\n   - Average Monthly Subscription: $64,744.94\n   - Average Annual Subscription: $776,939.25\n\n4. Custom Dashboards:\n   - Number of Customers: 8\n   - Average Monthly Subscription: $46,348.1\n   - Average Annual Subscription: $556,177.2\n\n5. SpyroCloud:\n   - Number of Customers: 17\n   - Average Monthly Subscription: $28,316.9\n   - Average Annual Subscription: $339,802.84\n\n6. Execution:\n   - Number of Customers: 5\n   - Average Monthly Subscription: $60,394.38\n   - Average Annual Subscription: $724,732.62\n\n7. Product:\n   - Number of Customers: 6\n   - Average Monthly Subscription: $60,171.67\n   - Average Annual Subscription: $722,060.0\n\n8. Edge Deployment Kit:\n   - Number of Customers: 4\n   - Average Monthly Subscription: $70,867.1\n   - Average Annual Subscription: $850,405.2\n\n9. Feature Adoption:\n   - Number of Customers: 3\n   - Average Monthly Subscription: $77,129.67\n   - Average Annual Subscription: $925,556.0\n\nFrom the vector search, we also know the following operational costs per customer:\n- Europe: $600,000/month and $805,000/month\n- North America: $400,000/month and $487,500/month\n\nThis information provides insights into the customer base and subscription values for each product, along with some operational cost details.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.864216089248657
+    },
+    {
+      "index": 24,
+      "category": "Product Performance",
+      "question": "Which products have the most operational issues impacting customer success?",
+      "answer": "Based on the information gathered from the graph queries and vector search tool, the products with the most operational issues impacting customer success are as follows:\n\n1. SpyroAI for predictive maintenance:\n   - Operational Issues: 3\n   - Affected Customers: 3\n   - Total Customers: 3\n   - Impact Percentage: 100.0%\n   - Issue Types: Service Outage\n\n2. SpyroAI:\n   - Operational Issues: 15\n   - Affected Customers: 3\n   - Total Customers: 3\n   - Impact Percentage: 100.0%\n   - Issue Types: Service Outage\n\n3. Feature Adoption:\n   - Operational Issues: 15\n   - Affected Customers: 3\n   - Total Customers: 3\n   - Impact Percentage: 100.0%\n   - Issue Types: Service Outage\n\n4. Auto-scaling v2:\n   - Operational Issues: 6\n   - Affected Customers: 2\n   - Total Customers: 2\n   - Impact Percentage: 100.0%\n   - Issue Types: Service Outage, Performance Issue\n\n5. Security Solution:\n   - Operational Issues: 6\n   - Affected Customers: 2\n   - Total Customers: 2\n   - Impact Percentage: 100.0%\n   - Issue Types: Service Outage, Performance Issue\n\nThese products have been identified to have significant operational issues affecting customer success based on the number of issues, affected customers, impact percentage, and types of issues reported.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.4318788051605225
+    },
+    {
+      "index": 25,
+      "category": "Product Performance",
+      "question": "What is the adoption rate of new features released in the last 6 months?",
+      "answer": "The adoption rates of new features released in the last 6 months vary based on the data available. Here are some insights gathered from the graph queries and vector search results:\n\n1. **Multi-region deployment**:\n   - Release Date: 2025-03-18\n   - Adoption Rate Percentage: Ranges from 63.79% to 77.59%\n   - Customers Using: Ranges from 37 to 45\n   - Total Customers: 58\n   - Months Since Release: 4\n\n2. **Real-time Inference**:\n   - Release Date: 2025-02-06\n   - Adoption Rate Percentage: 62.07%\n   - Customers Using: 36\n   - Total Customers: 58\n   - Months Since Release: 5\n\n3. **Compliance Management**:\n   - Release Date: 2025-06-09\n   - Adoption Rate Percentage: 56.9%\n   - Customers Using: 33\n   - Total Customers: 58\n   - Months Since Release: 1\n\n4. **Model Versioning**:\n   - Release Date: 2025-05-31\n   - Adoption Rate Percentage: 53.45%\n   - Customers Using: 31\n   - Total Customers: 58\n   - Months Since Release: 2\n\n5. **Feature Usage Patterns**:\n   - Release Date: 2025-05-25\n   - Adoption Rate Percentage: 50.0%\n   - Customers Using: 29\n   - Total Customers: 58\n   - Months Since Release: 2\n\n6. **Federated Learning**:\n   - Release Date: 2025-06-28\n   - Adoption Rate Percentage: 46.55%\n   - Customers Using: 27\n   - Total Customers: 58\n   - Months Since Release: 1\n\n7. **Edge Computing Capabilities**:\n   - Release Date: 2025-05-03\n   - Adoption Rate Percentage: 41.38%\n   - Customers Using: 24\n   - Total Customers: 58\n   - Months Since Release: 3\n\nAdditionally, the vector search results mention features with adoption rates below 30% after 6 months, indicating areas where adoption may be lower.\n\nOverall, the adoption rates of the new features released in the last 6 months range from around 41% to 77.59%, with different features showing varying levels of adoption among the customer base.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.808665752410889
+    },
+    {
+      "index": 26,
+      "category": "Roadmap & Delivery Risk",
+      "question": "How much future revenue will be at risk if [Feature X] misses its deadline by 3 months?",
+      "answer": "Based on the information retrieved:\n\n1. Global Manufacturing Corp has a commitment related to a certain amount of revenue annually, which is $3.8 million.\n\n2. Global Platform Leadership is expected to generate $500 million in revenue by 2027, with a recurring revenue source.\n\n3. SpyroAI incurs a cost of $3.45 million per quarter globally, with a total monthly cost of $303,000.\n\n4. There is $15 million in committed revenue with a recurring revenue source that affects a high-risk level.\n\n5. An investment of $4 million over 6 months is made in Mobile-First Experience.\n\nTo calculate the future revenue at risk if Feature X misses its deadline by 3 months, we can consider the impact on revenue generation and costs associated with the entities mentioned. The delay could potentially affect the revenue commitments of Global Manufacturing Corp and the revenue generation of Global Platform Leadership. Additionally, the operational costs of SpyroAI and the committed revenue with a recurring source could be impacted.\n\nWithout specific details on the exact relationship of Feature X with these entities or the potential consequences of the delay, a precise calculation of the revenue at risk is not possible. However, it is evident that there could be a significant financial impact on both revenue generation and operational costs if Feature X misses its deadline by 3 months. Further analysis based on the specific connections and dependencies of Feature X with these entities would be needed to provide a more accurate estimation of the future revenue at risk.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.765912055969238
+    },
+    {
+      "index": 27,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which roadmap items are critical for customer retention?",
+      "answer": "Based on the information gathered from the graph queries and vector search results, several critical roadmap items for customer retention have been identified. Here are some of the key roadmap items critical for customer retention based on the data:\n\n1. Roadmap: Predictive Analytics Engine 2.0\n   - Current Status: Behind schedule\n   - Target Date: 2026-03-13\n   - Dependent Customers: 4\n   - Top Dependent Customers: LogiCorp, TechCorp, HealthTech Solutions, StartupXYZ\n   - Revenue at Stake: $1,996,380.00\n   - Retention Impact: High Risk\n\n2. Roadmap: 60% of features\n   - Current Status: Behind schedule\n   - Target Date: 2025-12-25\n   - Dependent Customers: 1\n   - Top Dependent Customers: MediaFlow\n   - Revenue at Stake: $916,224.00\n   - Retention Impact: High Risk\n\n3. Roadmap: Zero-trust network architecture\n   - Current Status: Behind schedule\n   - Target Date: 2025-12-31\n   - Dependent Customers: 2\n   - Top Dependent Customers: TechCorp, LogiCorp\n   - Revenue at Stake: $402,480.00\n   - Retention Impact: High Risk\n\n4. Roadmap: Cost Analytics Dashboard\n   - Current Status: Behind schedule\n   - Target Date: 2025-10-14\n   - Dependent Customers: 1\n   - Top Dependent Customers: HealthTech Solutions\n   - Revenue at Stake: $350,664.00\n   - Retention Impact: High Risk\n\n5. Roadmap: Custom Threat Detection Rules\n   - Current Status: Behind schedule\n   - Target Date: 2025-12-27\n   - Dependent Customers: 1\n   - Top Dependent Customers: Global Manufacturing Corp\n   - Revenue at Stake: $51,708.00\n   - Retention Impact: High Risk\n\nThese roadmap items have been flagged as critical for customer retention due to factors such as being behind schedule, having a high number of dependent customers, significant revenue at stake, and a high-risk retention impact. By addressing these critical roadmap items promptly, businesses can enhance customer retention and satisfaction.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.691899299621582
+    },
+    {
+      "index": 28,
+      "category": "Roadmap & Delivery Risk",
+      "question": "What percentage of roadmap items are currently behind schedule?",
+      "answer": "Based on the information gathered from the graph query tool, specifically Graph Result 1, we can determine that out of a total of 45 roadmap items:\n- 8 items are currently behind schedule\n- The percentage of roadmap items behind schedule is 17.78%\n\nTherefore, the percentage of roadmap items that are currently behind schedule is 17.78%. This indicates that approximately 18% of the total roadmap items are not meeting their scheduled timelines.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 2.7440881729125977
+    },
+    {
+      "index": 29,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which teams are responsible for delayed roadmap items?",
+      "answer": "Based on the information retrieved, it appears that the Product team and Infrastructure team are involved in aspects related to delayed roadmap items. The Product team has impacts on large customers such as FinanceNext Ltd, TechCorp, Enterprise Customers, and CloudFirst. On the other hand, the Infrastructure team supports the big transformer model and is mitigated by scaling limitations in SpyroCloud.\n\nWhile the specific responsibility for delayed roadmap items is not explicitly stated, it can be inferred that these teams play a role in impacting customer success and potentially influencing the delivery timelines of roadmap items. The Product team's involvement with customer-driven roadmap items and the Infrastructure team's support for specific products suggest they could be linked to delays in the roadmap.\n\nTherefore, based on the available information, the Product team and Infrastructure team are potentially responsible for delayed roadmap items due to their impacts on customers and products supported. Further analysis or direct confirmation from relevant stakeholders would be needed to determine the exact extent of their responsibility for these delays.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.822894811630249
+    },
+    {
+      "index": 30,
+      "category": "Roadmap & Delivery Risk",
+      "question": "How many customer commitments depend on roadmap items at risk?",
+      "answer": "Based on the information retrieved from the graph queries and vector search tool, we can see that there are several customer commitments related to roadmap items at risk. Specifically, commitments from customers like Global Manufacturing Co, GlobalRetail, FinanceNext Ltd, and FinanceHub are identified as having delayed statuses with high-risk levels associated with data security compliance.\n\nAdditionally, the vector search tool mentions that product roadmap delays threaten 60% of features, which could imply that a significant number of customer commitments might be impacted by these delays.\n\nTherefore, while the exact number of customer commitments depending on roadmap items at risk is not explicitly provided, we can infer that multiple commitments from different customers are affected. The specific count would require further detailed analysis of the individual commitments and their dependencies on at-risk roadmap items.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.743527173995972
+    },
+    {
+      "index": 31,
+      "category": "Strategic Risk Assessment",
+      "question": "What are the top risks related to achieving [Objective X]?",
+      "answer": "The top risks related to achieving Objective X include high and critical risks with an overall risk level classified as Critical Risk. Several objectives have been identified with varying numbers of associated risks and severity levels. Some of these objectives include \"Automate compliance tasks,\" \"Reduced latency by 35% for enterprise customers,\" \"Maintain Momentum,\" \"Improvements or Pivots,\" \"Net Promoter Score,\" \"Support Ticket Resolution,\" and \"Explore emerging technologies.\" These objectives have between 4 to 6 risks associated with them, primarily categorized as high and critical risks. Additionally, specific risk entities such as Customer Payment Risks, Risk Management Effectiveness, Customer Concentration Risk, and Technical Risk Mitigation have been identified, each with their own relationships and impacts.\n\nIn summary, the top risks related to achieving Objective X involve a mix of high and critical risks across various objectives, highlighting the importance of risk management and mitigation strategies in pursuing these objectives successfully.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.331148147583008
+    },
+    {
+      "index": 32,
+      "category": "Strategic Risk Assessment",
+      "question": "Which company objectives have the highest number of associated risks?",
+      "answer": "Based on the information retrieved from the graph queries, the company objectives with the highest number of associated risks (6 risks each) and the overall risk level categorized as \"Critical Risk\" are:\n\n1. Objective: 92\n2. Objective: Automate compliance tasks\n\nAdditionally, there are several other company objectives with 5 associated risks each and an overall risk level of \"Critical Risk\":\n- Objective: 42\n- Objective: Reduced latency by 35% for enterprise customers\n- Objective: Maintain Momentum\n- Objective: Improvements or Pivots\n\nFurthermore, there are multiple company objectives with 4 associated risks each and an overall risk level of \"Critical Risk\":\n- Objective: Support Ticket Resolution\n- Objective: Net Promoter Score\n- Objective: Explore emerging technologies\n\nTherefore, based on the available data, the company objectives \"92\" and \"Automate compliance tasks\" have the highest number of associated risks (6 risks each) with an overall risk level of \"Critical Risk.\"",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 3.3878941535949707
+    },
+    {
+      "index": 33,
+      "category": "Strategic Risk Assessment",
+      "question": "What is the potential revenue impact of our top 5 identified risks?",
+      "answer": "Based on the information retrieved from the graph queries and vector search results, the potential revenue impact of the top 5 identified risks varies. The potential revenue impacts of the risks are as follows:\n\n1. Risk 1: $10,000,000.00\n2. Risk 2: $5,000,000.00\n3. Risk 3: $4,000,000.00\n4. Risk 4: $3,000,000.00\n5. Risk 5: $3,000,000.00\n\nAdditionally, the vector search results provided information on various revenue-related entities and risks, such as:\n- $500M revenue by 2027 generated by Global Platform Leadership\n- $15M in committed revenue affecting High Risk Level\n- 25% of revenue in EUR/GBP related to Foreign Exchange Exposure\n- Customer Payment Risks associated with DataSync\n- $5.2M annual revenue from InnovateTech Solutions\n\nBy considering both the potential revenue impacts of the identified risks and the revenue-related entities from the vector search results, it is evident that managing these risks is crucial to safeguard the company's revenue streams and financial stability. The specific impact of each risk on revenue can be further analyzed and mitigated to ensure optimal financial performance.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.421897888183594
+    },
+    {
+      "index": 34,
+      "category": "Strategic Risk Assessment",
+      "question": "Which risks affect multiple objectives or customer segments?",
+      "answer": "Based on the information retrieved from the graph queries and vector search tool, several objectives are associated with multiple risks that impact various customer segments. Some of these objectives with critical risk levels and high or critical risk severities include:\n\n1. Objective: Automate compliance tasks\n   - Risk Count: 6\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\n2. Objective: Reduced latency by 35% for enterprise customers\n   - Risk Count: 5\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\n3. Objective: Maintain Momentum\n   - Risk Count: 5\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\n4. Objective: Improvements or Pivots\n   - Risk Count: 5\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\n5. Objective: Support Ticket Resolution\n   - Risk Count: 4\n   - Risk Severities: High, Critical\n   - Overall Risk Level: Critical Risk\n\nThese objectives are associated with risks that have high or critical severities and impact various customer segments or specific entities like $45M ARR, DataSync, and TechCorp. By addressing these risks effectively, companies can mitigate potential negative impacts on multiple objectives and customer segments.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 3.8944778442382812
+    },
+    {
+      "index": 35,
+      "category": "Strategic Risk Assessment",
+      "question": "How many high-severity risks are currently without mitigation strategies?",
+      "answer": "Based on the information retrieved, there are currently no high-severity risks without mitigation strategies in place. The graph query specifically searched for high-severity risks without mitigation strategies and returned a count of 0, indicating that all high-severity risks have associated mitigation strategies.\n\nAdditionally, while there is information about high-risk levels and technical risk mitigation, there is no indication that any of these high-severity risks are lacking mitigation strategies. Therefore, it can be inferred that the existing mitigation strategies are addressing the high-severity risks effectively.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.492082834243774
+    },
+    {
+      "index": 36,
+      "category": "Operational Risk",
+      "question": "Which teams are understaffed relative to their project commitments?",
+      "answer": "Based on the information retrieved, the following teams are identified as understaffed relative to their project commitments:\n\n1. **Cloud Platform Team**:\n   - Department: Engineering\n   - Staffing Gap: 2\n   - Team Size: 12\n   - Assigned to Critical Work: Multi-region Expansion\n     - Priority: Critical\n     - Revenue Impact: $2,800,000.00\n     - Assigned Team Members: 4\n\n2. **Product Team**:\n   - Member Count: 5\n   - Customers Impacted: 7\n   - Revenue Supported: $2,655,548\n   - Understaffed with Active Projects: 0\n\n3. **Infrastructure Team**:\n   - Member Count: 15\n   - Customers Impacted: 1\n   - Revenue Supported: $1,298,446\n   - Understaffed with Active Projects: 0\n\nThese teams are facing challenges due to staffing gaps while having project commitments, which could potentially impact their efficiency and project delivery. It would be crucial for these teams to address their staffing issues to ensure successful project outcomes and customer satisfaction.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.4441258907318115
+    },
+    {
+      "index": 37,
+      "category": "Operational Risk",
+      "question": "What operational risks could impact product SLAs?",
+      "answer": "Operational risks that could impact product SLAs include technical risk mitigation, products with uptime greater than 99.95%, SLA protection measures, and $25M in SLA penalties. Technical risk mitigation strategies are crucial to address potential risks that may affect service level agreements. Products with high uptime requirements, such as those exceeding 99.95%, are directly linked to customer satisfaction and can be impacted by operational risks. Implementing SLA protection measures, like infrastructure stabilization, is essential to maintain performance levels and meet SLA targets. Additionally, the presence of significant SLA penalties, such as $25M in penalties associated with current redundancy issues, highlights the financial impact of operational risks on product SLAs. By addressing these factors and implementing appropriate risk management strategies, organizations can mitigate operational risks and uphold their product SLAs effectively.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.127583026885986
+    },
+    {
+      "index": 38,
+      "category": "Operational Risk",
+      "question": "Which products have the highest operational risk exposure?",
+      "answer": "Based on the information retrieved, the products with the highest operational risk exposure are related to the Spyro suite of products. Specifically, products like SpyroCloud, SpyroAI for predictive maintenance, SpyroCloud Enterprise Edition, and SpyroSecure are identified to have significant operational risk exposure. These products are associated with operational risks that have been quantified within the system, indicating a level of risk exposure that sets them apart from other products.\n\nAdditionally, while specific details on the exact nature of the operational risks are not provided, the emphasis on operational risk exposure within the Spyro product line suggests that these products may require particular attention and mitigation strategies to address the identified risks effectively.\n\nIn summary, the Spyro suite of products, including SpyroCloud, SpyroAI for predictive maintenance, SpyroCloud Enterprise Edition, and SpyroSecure, are highlighted as having the highest operational risk exposure based on the available data.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.948497772216797
+    },
+    {
+      "index": 39,
+      "category": "Operational Risk",
+      "question": "How do operational risks correlate with customer success scores?",
+      "answer": "From the information retrieved, it appears that there is a high adoption rate among enterprise customers for various features or services such as Custom Dashboards, Multi-region Deployment, Real-time Inference, AutoML Platform, and Auto-scaling v2. While there is no direct mention of operational risks or customer success scores, we can infer that a high adoption rate of these features could potentially indicate a positive correlation with customer success scores.\n\nTypically, when customers adopt and utilize a variety of features or services offered by a company, it can lead to increased satisfaction, loyalty, and ultimately higher customer success scores. However, it is important to note that operational risks, such as system failures, security breaches, or service disruptions, can impact customer success scores negatively.\n\nIn this context, it can be hypothesized that managing operational risks effectively while maintaining high adoption rates of key features could contribute positively to customer success scores. To establish a direct correlation between operational risks and customer success scores, further data or analysis specifically linking these factors would be needed.",
+      "is_grounded": false,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.8255839347839355
+    },
+    {
+      "index": 40,
+      "category": "Operational Risk",
+      "question": "What percentage of projects are at risk of missing deadlines?",
+      "answer": "Based on the information retrieved, there is no direct percentage provided for projects at risk of missing deadlines. However, we can gather some related insights:\n\n1. From the graph query, the percentage of projects at risk of missing deadlines is calculated to be \"nan%\" (not a number). This may indicate that there is missing or insufficient data to determine the exact percentage.\n\n2. The results from the vector search tool provide information about different metrics and adoption rates for various entities, such as features adoption, uptime percentages for products, and adoption metrics for enterprise customers. While these details do not directly relate to projects missing deadlines, they offer insights into different performance indicators within projects or products.\n\n3. The information retrieved does not explicitly address the percentage of projects at risk of missing deadlines. To determine this percentage accurately, specific data related to project timelines, delays, and risks would be needed.\n\nIn conclusion, while the available information offers details on adoption rates, uptime percentages, and other metrics, the exact percentage of projects at risk of missing deadlines is not explicitly provided. Further data related to project timelines and risks would be necessary to determine this percentage accurately.",
+      "is_grounded": false,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.28176212310791
+    },
+    {
+      "index": 41,
+      "category": "Team Performance",
+      "question": "Which teams support the most revenue-generating products?",
+      "answer": "Based on the information retrieved, it appears that the Product Management team supports 3 revenue-generating products with a total revenue supported of $5,153,852. Additionally, the Product team supports 2 products generating a revenue of $2,655,548. \n\nWhile the exact ranking of teams supporting the most revenue-generating products is not explicitly provided, we can infer that the Product Management team may be supporting more revenue-generating products compared to the Product team based on the number of products supported and revenue generated. \n\nFurthermore, there are references to revenue targets such as $500 million revenue by 2027 and $15 million in committed revenue, but these are not directly linked to specific teams supporting revenue-generating products.\n\nIn conclusion, based on the available information, the Product Management team and the Product team are involved in supporting revenue-generating products, with the Product Management team likely supporting more products generating higher revenue compared to the Product team.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.308962821960449
+    },
+    {
+      "index": 42,
+      "category": "Team Performance",
+      "question": "What is the revenue-per-team-member for each department?",
+      "answer": "Based on the information retrieved, we can calculate the revenue-per-team-member for each department by considering the revenue generated and the operational costs associated with each department. While we don't have direct data on the number of team members in each department, we can still provide a general approach to calculating the revenue-per-team-member.\n\nFrom the information provided:\n- The revenue sources are recurring and are expected to reach $15M and $500M by 2027.\n- The operational costs are specified for Europe and North America as $805,000/month and $487,500/month, respectively.\n\nTo calculate the revenue-per-team-member, we would ideally need the total number of team members in each department. However, without this specific data, we can provide a general formula to calculate the revenue-per-team-member:\n\nRevenue-per-team-member = (Total Revenue - Total Operational Costs) / Total Number of Team Members\n\nThis formula can be applied to each department separately using the available revenue and operational cost data. While we lack the exact team member count, this formula can still provide a framework for estimating the revenue-per-team-member for each department based on the available information.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.7581682205200195
+    },
+    {
+      "index": 43,
+      "category": "Team Performance",
+      "question": "Which teams are working on the most critical customer commitments?",
+      "answer": "Based on the information retrieved, it appears that several teams are working on critical customer commitments related to different aspects of enterprise customer adoption metrics. The teams working on the most critical customer commitments are likely those associated with the following entities and their respective adoption metrics:\n\n1. Multi-region Deployment: Associated with 71% of enterprise customers.\n2. Real-time Inference: Associated with 92% of enterprise customers.\n3. Auto-scaling v2: Associated with 87% of enterprise customers.\n4. AutoML Platform: Associated with 83% of enterprise customers.\n5. Compliance Automation: Associated with 76% of enterprise customers.\n\nThese teams are likely focusing on ensuring the successful adoption and utilization of these specific features or services by enterprise customers, indicating the critical nature of their commitments in driving customer satisfaction and engagement.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.644124746322632
+    },
+    {
+      "index": 44,
+      "category": "Team Performance",
+      "question": "How are teams allocated across products and projects?",
+      "answer": "Teams are allocated across products and projects based on various factors such as customer impact, revenue supported, and workload score. For example, there are different teams like the Product team, Team Productivity, and Product Manager, each supporting a different number of products and projects. The Product team supports 2 products, impacting 7 customers with revenue support of $2,655,548. On the other hand, the Product Manager supports 2 products as well but impacts 14 customers with revenue support of $4,736,385. These teams have varying member counts and customer impact scores, indicating how resources are distributed across different projects and products. Additionally, there is a feature related to Integration with Project Management Tools that depends on Automated Tracking and Alerting, showing the interconnectedness of different aspects within the allocation of teams and resources.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.259875059127808
+    },
+    {
+      "index": 45,
+      "category": "Team Performance",
+      "question": "Which teams have the highest impact on customer success scores?",
+      "answer": "Based on the information retrieved from the graph query tool, the teams with the highest impact on customer success scores are as follows:\n\n1. Quality Assurance Team with a total score of 4219.0\n2. Cloud Platform Team with a total score of 3518.0\n3. Product Management Team with a total score of 2970.0\n4. Responsible Teams with a total score of 2756.0\n5. ML Engineers with a total score of 2756.0\n\nThese teams seem to have a significant influence on customer success scores based on the data provided by the graph query tool.\n\nAdditionally, the vector search tool provided information about adoption metrics related to enterprise customers, such as Multi-region Deployment, Auto-scaling v2, Real-time Inference, Compliance Automation, and Custom Dashboards. While these metrics are not directly related to customer success scores, they could indicate areas where teams like Quality Assurance, Cloud Platform, and Product Management might have contributed positively to customer success through the adoption of these features or services.\n\nIn conclusion, the Quality Assurance, Cloud Platform, and Product Management teams appear to have the highest impact on customer success scores based on the available data, with Quality Assurance leading the way with the highest total score.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.037714958190918
+    },
+    {
+      "index": 46,
+      "category": "Project Delivery",
+      "question": "Which projects are critical for maintaining current revenue?",
+      "answer": "Based on the information retrieved from the graph queries and vector search results, several projects are critical for maintaining current revenue. These projects are identified as crucial for revenue and have specific impacts on revenue generation. Here are the projects critical for maintaining current revenue:\n\n1. **Cloud Infrastructure Modernization**:\n   - Revenue Impact: $3,500,000\n   - Status: In Progress\n   - Target Date: June 30, 2025\n   - Priority: Critical\n\n2. **AI Model Performance Enhancement**:\n   - Revenue Impact: $2,100,000\n   - Status: At Risk\n   - Target Date: April 15, 2025\n   - Priority: High\n\n3. **Real-time Analytics Platform**:\n   - Revenue Impact: $2,800,000\n   - Status: In Progress\n   - Target Date: July 31, 2025\n   - Priority: High\n\n4. **Global Compliance Initiative**:\n   - Revenue Impact: $4,200,000\n   - Status: On Track\n   - Target Date: January 31, 2025\n   - Priority: Critical\n\n5. **Data Lake Migration**:\n   - Revenue Impact: $2,300,000\n   - Status: In Progress\n   - Target Date: April 30, 2025\n   - Priority: High\n\nThese projects have been identified as critical for revenue generation and are actively being worked on to ensure their successful completion, which is essential for maintaining the current revenue levels.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.582432985305786
+    },
+    {
+      "index": 47,
+      "category": "Project Delivery",
+      "question": "What percentage of projects are delivering on schedule?",
+      "answer": "Based on the information retrieved, there is no direct percentage provided for projects delivering on schedule. However, we can gather some related insights:\n\n1. A product achieved 99.95% uptime, indicating a high level of success in meeting objectives.\n2. Real-time Inference has an adoption rate of 92% among enterprise customers, suggesting a high level of acceptance and implementation.\n3. There are risks associated with product roadmap delays, threatening 60% of features, which could impact project schedules.\n4. Kubernetes Migration has a success score related to objectives like achieving uptime and faster deployment times.\n\nWhile there is no specific percentage mentioned, the data implies that some projects are successful in meeting objectives and adoption rates are high for certain products. To determine the exact percentage of projects delivering on schedule, further data specifically related to project schedules and success rates would be needed.",
+      "is_grounded": false,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.720668315887451
+    },
+    {
+      "index": 48,
+      "category": "Project Delivery",
+      "question": "Which projects have dependencies that could impact multiple products?",
+      "answer": "Based on the information gathered from the different sources:\n\n1. Third-Party Dependencies pose a risk as 40% rely on external APIs, which could impact multiple products that are reliant on these external APIs.\n   \n2. Integration with Project Management Tools is a feature that depends on Automated Tracking and Alerting. Any issues or dependencies related to this integration could potentially impact multiple projects utilizing these tools.\n\n3. Product roadmap delays are a risk that threatens 60% of features. This could have implications for various projects and products that are part of the roadmap, affecting their timelines and dependencies.\n\nIn summary, projects with dependencies on Third-Party APIs, Project Management Tools, and features within product roadmaps are at risk of impacting multiple products due to the interconnected nature of these dependencies. It is crucial to manage these dependencies effectively to ensure the smooth operation and delivery of various products across the organization.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.490422964096069
+    },
+    {
+      "index": 49,
+      "category": "Project Delivery",
+      "question": "How many projects are blocked by operational constraints?",
+      "answer": "Based on the information retrieved from different sources:\n\n1. The graph query indicates that there are 0 projects blocked by operational constraints.\n2. The semantic search results provide information about various risks such as resource constraints, budget constraints, and potential threats that could impact projects.\n3. While the specific number of projects blocked by operational constraints is not provided directly, the risks mentioned in the semantic search results could potentially lead to operational constraints affecting projects.\n\nTherefore, while the exact number of projects blocked by operational constraints is not explicitly stated, it can be inferred that there are risks present that could potentially lead to operational constraints impacting project delivery. It would be advisable for project managers to address these risks to prevent operational constraints from affecting project progress.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.42408299446106
+    },
+    {
+      "index": 50,
+      "category": "Project Delivery",
+      "question": "What is the success rate of projects by team and product area?",
+      "answer": "Based on the information retrieved from the graph query and the vector search results, we can analyze the success rate of projects by team and product area. \n\nFrom the graph query:\n- There is a team labeled as \"Unassigned\" working in the \"General\" product area.\n- Out of 79 total projects, 20 were completed, 14 were on schedule, and 25 were delayed.\n- The success rate percentage for this team and product area is calculated to be 43.04%.\n\nFrom the vector search results:\n- There are two teams mentioned: \"Product team\" and \"Team Productivity.\"\n- The \"Product team\" has an average customer success impact of 72.15, supports 2 products, and has 5 members.\n- The \"Team Productivity\" has an average customer success impact of 67.12, supports 3 products, and has 13 members.\n\nAlthough the specific success rates for the \"Product team\" and \"Team Productivity\" are not directly provided, we can see that these teams have different customer success impacts and support different numbers of products. This information can be used to infer that these teams may have varying success rates based on their impact and workload.\n\nIn conclusion, while we have detailed data on the success rate for the \"Unassigned\" team in the \"General\" product area, we can infer that the \"Product team\" and \"Team Productivity\" may have different success rates based on their customer impact and team composition. Further analysis or specific success rate calculations for these teams would provide a more comprehensive understanding of the success rates of projects by team and product area.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 4.109279155731201
+    },
+    {
+      "index": 51,
+      "category": "Growth & Expansion",
+      "question": "Which customer segments offer the highest growth potential?",
+      "answer": "Based on the data retrieved from the graph queries, the customer segments with the highest growth potential based on growth rate are as follows:\n\n1. Finance:\n   - Customer Count: 36\n   - Total Current Annual Revenue: $41,882,256.00\n   - Growth Rate: 172.16%\n   - Average Customer Value: $1,163,396.00\n\n2. Retail:\n   - Customer Count: 45\n   - Total Current Annual Revenue: $84,639,648.00\n   - Growth Rate: 166.99%\n   - Average Customer Value: $1,880,881.00\n\n3. Healthcare:\n   - Customer Count: 46\n   - Total Current Annual Revenue: $47,618,328.00\n   - Growth Rate: 159.64%\n   - Average Customer Value: $1,035,181.00\n\nThese segments show significant growth rates, indicating high growth potential. Additionally, the vector search results suggest objectives related to increasing the customer base by 25%, which aligns with the concept of growth potential in customer segments. The adoption metrics related to enterprise customers further emphasize the importance of growth and expansion within specific customer segments.\n\nIn conclusion, the Finance, Retail, and Healthcare segments appear to offer the highest growth potential based on the provided data, making them promising areas for strategic focus and investment.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.454813241958618
+    },
+    {
+      "index": 52,
+      "category": "Growth & Expansion",
+      "question": "What products have the best profitability-to-cost ratio for scaling?",
+      "answer": "Based on the profitability-to-cost ratio for scaling decisions, the following products have shown strong performance:\n\n1. **SpyroAI**: This product has demonstrated a profitability ratio of 14.0 with a profit margin percentage of 93.72%. It has generated a revenue of $8,330,004.00 with costs amounting to $523,307.\n\n2. **Transformer (big) model**: Another high-performing product with a profitability ratio of 14.0 and a profit margin percentage of 93.36%. It has generated revenue of $6,807,324.00 with costs of $452,337.\n\n3. **SpyroAI for predictive maintenance**: While slightly lower than the previous two, this product still boasts a profitability ratio of 11.0 and a profit margin percentage of 91.77%. It has generated revenue of $4,030,812.00 with costs of $331,816.\n\nThese products have shown strong profitability relative to their costs, making them potentially good options for scaling based on the provided data.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 3.9030869007110596
+    },
+    {
+      "index": 53,
+      "category": "Growth & Expansion",
+      "question": "Which regions show the most promise for expansion based on current metrics?",
+      "answer": "Based on the information gathered from the different sources, several regions show promise for expansion based on current metrics:\n\n1. **Asia-Pacific**:\n   - Asia-Pacific has been updated recently.\n   - It incurs costs related to security infrastructure, SOC operations, compliance, and audit.\n   - This region could be a potential area for expansion due to its ongoing operational activities and associated costs.\n\n2. **North America**:\n   - North America has a medium expansion priority.\n   - It has a strong competitive position with a significant market size and growth potential.\n   - The region incurs various operational costs, including GPU infrastructure costs and costs per customer.\n   - With its strong competitive position and growth potential, North America presents a promising opportunity for expansion.\n\nConsidering the information provided, both Asia-Pacific and North America exhibit characteristics that make them promising regions for expansion based on their operational activities, market size, growth potential, and competitive position. Expanding into these regions could align with the company's goals for growth, revenue generation, and market presence.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.046528100967407
+    },
+    {
+      "index": 54,
+      "category": "Growth & Expansion",
+      "question": "What features could we develop to increase customer success scores?",
+      "answer": "To increase customer success scores, you could consider developing the following features based on the information gathered:\n\n1. **Compliance Management**:\n   - Customers using: 9\n   - Average success with feature: 89.5\n   - Average success without feature: 63.32\n   - Score improvement: 26.18\n\n2. **AI-powered Analytics**:\n   - Customers using: 1\n   - Average success with feature: 94.0\n   - Average success without feature: 67.89\n   - Score improvement: 26.11\n\n3. **Multi-region Deployment**:\n   - Customers using: 2\n   - Average success with feature: 91.5\n   - Average success without feature: 65.98\n   - Score improvement: 25.52\n\n4. **Model Versioning**:\n   - Customers using: 7\n   - Average success with feature: 90.4\n   - Average success without feature: 65.0\n   - Score improvement: 25.4\n\n5. **Auto-scaling Optimization**:\n   - Customers using: 5\n   - Average success with feature: 89.86\n   - Average success without feature: 64.68\n   - Score improvement: 25.17\n\n6. **Student Analytics Dashboard**:\n   - Customers using: 2\n   - Average success with feature: 92.33\n   - Average success without feature: 67.52\n   - Score improvement: 24.81\n\n7. **Edge Computing Capabilities**:\n   - Customers using: 5\n   - Average success with feature: 90.75\n   - Average success without feature: 65.95\n   - Score improvement: 24.8\n\n8. **Better Estimation Models for Feature Complexity**:\n   - Customers using: 4\n   - Average success with feature: 90.17\n   - Average success without feature: 65.75\n   - Score improvement: 24.41\n\n9. **High-Adoption, High-Value Features**:\n   - Customers using: 2\n   - Average success with feature: 90.33\n   - Average success without feature: 66.06\n   - Score improvement: 24.27\n\n10. **Security Features**:\n    - Customers using: 3\n    - Average success with feature: 89.8\n    - Average success without feature: 65.57\n    - Score improvement: 24.23\n\nThese features have shown significant improvements in customer success scores when implemented. By focusing on developing features like these that have demonstrated a positive impact on customer success, you can work towards increasing overall customer success scores effectively.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.436314105987549
+    },
+    {
+      "index": 55,
+      "category": "Growth & Expansion",
+      "question": "Which objectives are most critical for achieving our growth targets?",
+      "answer": "Based on the information retrieved from the graph query and the vector search results, the objectives most critical for achieving growth targets include:\n\n1. **$500M revenue by 2027**:\n   - Objective Type: Revenue\n   - Target: $500,000,000\n   - Current Progress: $350,000,000\n   - Risk Count: 4\n   - Risk Level: High Risk\n   - Growth Criticality: Protect & Prioritize\n\n2. **Increase customer base by 25%**:\n   - Objective Type: Growth\n   - Related to expanding the customer base by a specific percentage.\n\n3. **High ROI + Growth**:\n   - Objective Type: Profitability\n   - Associated with achieving high ROI and growth, with relationships to security automation features, multi-region capabilities, custom analytics dashboards, and a real-time inference platform.\n\n4. **Technical milestones and customer satisfaction improvements**:\n   - Objective Type: Objective\n   - Focuses on achieving technical milestones and improving customer satisfaction, with a relationship to product development.\n\nThese objectives are critical for achieving growth targets as they are directly related to revenue targets, customer base expansion, profitability, and technical advancements that contribute to overall growth and success. By prioritizing and protecting these objectives, the organization can work towards meeting its growth targets effectively.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.448998928070068
+    },
+    {
+      "index": 56,
+      "category": "Competitive Positioning",
+      "question": "How do our SLAs compare to industry standards by product?",
+      "answer": "Based on the information retrieved from different sources:\n\n1. The industry benchmark for SLAs is at the 95th percentile.\n2. The current performance of SLAs for various products ranges from 98.78% to 99.38%.\n3. The target SLA performance is set at 99.9%.\n4. There are specific SLAs such as \"99.99% Uptime SLA\" and \"Products with >99.95% uptime\" in place.\n5. Some products like EnergyCore have SLAs with a competitive position above the industry benchmark.\n6. SLA protection measures include penalty percentages for not meeting targets.\n\nIn comparing your SLAs to industry standards by product, it is evident that the current performance of your SLAs is generally above the industry benchmark of the 95th percentile, with most products aiming for a target SLA performance of 99.9%. Specific SLAs like the \"99.99% Uptime SLA\" and \"Products with >99.95% uptime\" showcase a commitment to high uptime levels. Products like EnergyCore have SLAs performing above the industry benchmark, indicating a strong competitive position. It would be beneficial to analyze individual product SLAs against the industry benchmark to identify areas of strength and potential improvement.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 5.349841117858887
+    },
+    {
+      "index": 57,
+      "category": "Competitive Positioning",
+      "question": "Which features give us competitive advantage in each market segment?",
+      "answer": "In each market segment, the competitive advantage features include:\n1. Real-time Inference\n2. API Gateway v3\n3. Model Versioning\n4. Cost Analytics\n\nAdditionally, there are other features that contribute to competitive advantage across different contexts:\n- Features ahead of market readiness set for release on May 3, 2024, indicating a focus on innovation and staying ahead of competitors.\n- High-adoption, high-value features set for release on February 28, 2025, utilized by various entities like EnergyCore, large customers, TechStartup Inc, DataSync International, and Enterprise Customers, suggesting a broad market appeal and value.\n- Features with less than 20% adoption released on June 16, 2024, highlighting areas where improvement or marketing strategies may be needed to enhance adoption rates.\n- Performance and competitive pressure related to DataSync International, emphasizing the importance of monitoring market dynamics and responding effectively to maintain competitiveness.\n\nFurthermore, a project named \"Competitive Analysis and Response\" with a high priority and completion percentage of 51% involves strategies like bundling SpyroAI with SpyroCloud at a discount, winning back accounts, and protecting at-risk accounts, while facing threats from NeuralStack AI. This project showcases proactive measures to analyze competition and respond strategically to maintain a competitive edge in the market segments.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.752504110336304
+    },
+    {
+      "index": 58,
+      "category": "Competitive Positioning",
+      "question": "What operational improvements would most impact customer satisfaction?",
+      "answer": "Based on the information retrieved, several operational improvements could potentially impact customer satisfaction:\n\n1. **Product Development**: Improving technical milestones related to product development could have a positive impact on customer satisfaction. This suggests that focusing on enhancing the quality, features, and performance of products could lead to higher customer satisfaction levels.\n\n2. **Customer Satisfaction Metrics**: Monitoring and improving specific customer satisfaction metrics, such as those related to SpyroSolutions, could provide insights into areas that require attention to enhance overall customer satisfaction.\n\n3. **Operational Cost Efficiency**: Enhancing operational cost efficiency, as tracked by Operational Health Metrics, could indirectly contribute to improving customer satisfaction. By optimizing costs and resources, businesses can potentially provide better products and services to customers.\n\n4. **Adoption Metrics**: Increasing adoption rates among enterprise customers, such as those related to Multi-region Deployment and Real-time Inference, could lead to higher customer satisfaction. This implies that ensuring customers effectively utilize and benefit from the products or services offered can positively impact their satisfaction levels.\n\nIn conclusion, a combination of focusing on product development, monitoring specific customer satisfaction metrics, improving operational cost efficiency, and increasing adoption rates could be key operational improvements that may significantly impact customer satisfaction.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 6.097224950790405
+    },
+    {
+      "index": 59,
+      "category": "Competitive Positioning",
+      "question": "How can we reduce operational costs while maintaining service quality?",
+      "answer": "To reduce operational costs while maintaining service quality, several strategies can be considered based on the information retrieved:\n\n1. **40% reduction in infrastructure costs**: Implementing a Kubernetes Migration can lead to a significant reduction in infrastructure costs by 40%. This indicates that optimizing infrastructure through technologies like Kubernetes can be a cost-effective solution.\n\n2. **Reduce SOC costs through AI**: Leveraging Artificial Intelligence (AI) to streamline Security Operations Center (SOC) processes can help in reducing costs. Automation and AI-driven solutions can enhance efficiency and reduce the resources required for security operations.\n\n3. **Reduce training costs by 20%**: Implementing training programs efficiently can lead to a 20% reduction in training costs. This suggests that optimizing training processes and resources can contribute to cost savings.\n\n4. **Reduced latency by 35% for enterprise customers**: Enhancing the performance for enterprise customers by reducing latency can improve service quality. This improvement can lead to higher customer satisfaction and retention without significantly increasing operational costs.\n\n5. **Team Operational Costs vs Revenue**: Analyzing the operational costs in relation to revenue can provide insights into cost-saving opportunities. By optimizing resources and aligning them with revenue generation, operational efficiency can be improved.\n\nIn summary, reducing operational costs while maintaining service quality can be achieved through a combination of optimizing infrastructure, leveraging AI for cost reduction, efficient training programs, enhancing performance for customers, and aligning operational costs with revenue generation. These strategies can help organizations achieve cost savings without compromising on service quality.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 16.813640117645264
+    },
+    {
+      "index": 60,
+      "category": "Competitive Positioning",
+      "question": "Which customer segments are we best positioned to serve profitably?",
+      "answer": "Based on the information retrieved from the graph queries and vector search, it appears that the company is best positioned to serve profitably in various customer segments based on the success scores of their product offerings. The segments identified are:\n\n1. Enterprise\n2. SMB (Small and Medium-sized Businesses)\n3. Mid-Market\n4. Startup\n\nAdditionally, the vector search results provide insights into the adoption metrics of enterprise customers, indicating high adoption rates for features like Multi-region Deployment, Custom Dashboards, Auto-scaling v2, and Real-time Inference. These adoption metrics can further guide the company in understanding which customer segments are more likely to be profitable based on their utilization of specific product features.\n\nBy analyzing the success scores and adoption metrics across different customer segments, the company can tailor its strategies to effectively serve and maximize profitability within the Enterprise, SMB, Mid-Market, and Startup segments.",
+      "is_grounded": true,
+      "tools_used": [
+        "HybridRetriever"
+      ],
+      "elapsed": 15.627078771591187
+    }
+  ]
+}

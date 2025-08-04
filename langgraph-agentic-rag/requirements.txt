@@ -1,39 +1,42 @@
-# Core frameworks
-pydantic>=2.5.0
-pydantic-ai>=0.0.9
+# Core LangChain/LangGraph
 langchain>=0.1.0
 langchain-openai>=0.0.5
-langgraph>=0.0.20
-langchain-community>=0.0.10
+langgraph>=0.0.50
+langchain-community>=0.0.20
 
-# Database drivers and integrations
-neo4j>=5.14.0
-langchain-neo4j>=0.1.0
-psycopg2-binary>=2.9.9
-pgvector>=0.2.4
-sqlalchemy>=2.0.0
+# Database backends
+neo4j>=5.0.0
+neo4j-graphrag-python>=0.3.0
+psycopg[binary]>=3.1.0
+pgvector>=0.2.0
 
-# AI and ML
-openai>=1.10.0
-sentence-transformers>=2.2.2
-torch>=2.0.0
+# LangGraph persistence
+langgraph-checkpoint-postgres>=1.0.0
 
-# Async and performance
-asyncio>=3.4.3
-aiohttp>=3.9.0
-redis>=5.0.0
+# Observability
+langsmith>=0.1.0
 
-# Monitoring and logging
-structlog>=24.1.0
-prometheus-client>=0.19.0
+# AI/ML
+openai>=1.0.0
+tiktoken>=0.5.0
+numpy>=1.24.0
 
-# Utilities
+# Data processing
+pandas>=2.0.0
+PyPDF2>=3.0.0
+
+# API framework (optional, for serving)
+fastapi>=0.100.0
+uvicorn>=0.23.0
+
+# Environment management
 python-dotenv>=1.0.0
-httpx>=0.25.0
-tenacity>=8.2.3
 
-# Development
-pytest>=7.4.0
+# Testing
+pytest>=7.0.0
 pytest-asyncio>=0.21.0
+
+# Development tools
 black>=23.0.0
-mypy>=1.7.0
+ruff>=0.1.0
+mypy>=1.0.0

@@ -1,0 +1,8 @@
+{
+  "question": "Which teams are understaffed relative to their project commitments?",
+  "answer": "I'm sorry, but the graph query did not return any results, so I am unable to provide specific information about which teams are understaffed relative to their project commitments.",
+  "is_grounded": false,
+  "elapsed": 4.175143241882324,
+  "timestamp": "2025-08-03T19:58:42.589612",
+  "error": null
+}

@@ -1,0 +1,624 @@
+{
+  "improvements": [
+    {
+      "index": 1,
+      "question": "How much revenue will be at risk if [Customer X] misses their SLA next month?",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 2,
+      "question": "What percentage of our ARR is dependent on customers with success scores below 7...",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 3,
+      "question": "Which customers generate 80% of our revenue, and what are their current risk pro...",
+      "before_grounded": true,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 4,
+      "question": "How much revenue is at risk from customers experiencing negative events in the l...",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 5,
+      "question": "What is the projected revenue impact if we miss our roadmap deadlines for commit...",
+      "before_grounded": true,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 6,
+      "question": "How much does it cost to run each product across all regions?",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 7,
+      "question": "What is the profitability margin for each product line?",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 8,
+      "question": "How do operational costs impact profitability for our top 10 customers?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 9,
+      "question": "Which teams have the highest operational costs relative to the revenue they supp...",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 10,
+      "question": "What is the cost-per-customer for each product, and how does it vary by region?",
+      "before_grounded": false,
+      "after_grounded": true,
+      "improved": true,
+      "before_type": "not_grounded",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 11,
+      "question": "What are the top 5 customers by revenue, and what are their current success scor...",
+      "before_grounded": false,
+      "after_grounded": true,
+      "improved": true,
+      "before_type": "not_grounded",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 12,
+      "question": "Which customers have declining success scores, and what events are driving the d...",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 13,
+      "question": "How many customers have success scores below 60, and what is their combined ARR?",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 14,
+      "question": "What percentage of customers experienced negative events in the last 90 days?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 15,
+      "question": "Which customers are at highest risk of churn based on success scores and recent ...",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 16,
+      "question": "What are the top customer commitments, and what are the current risks to achievi...",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 17,
+      "question": "Which features were promised to customers, and what is their delivery status?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 18,
+      "question": "What are the top customer concerns, and what is currently being done to address ...",
+      "before_grounded": false,
+      "after_grounded": true,
+      "improved": true,
+      "before_type": "not_grounded",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 19,
+      "question": "How many customers are waiting for features currently on our roadmap?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "partial_grounding",
+      "after_type": "partial_grounding"
+    },
+    {
+      "index": 20,
+      "question": "Which customers have unmet SLA commitments in the last quarter?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 21,
+      "question": "Which products have the highest customer satisfaction scores?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "partial_grounding"
+    },
+    {
+      "index": 22,
+      "question": "What features drive the most value for our enterprise customers?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 23,
+      "question": "How many customers use each product, and what is the average subscription value?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 24,
+      "question": "Which products have the most operational issues impacting customer success?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 25,
+      "question": "What is the adoption rate of new features released in the last 6 months?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 26,
+      "question": "How much future revenue will be at risk if [Feature X] misses its deadline by 3 ...",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 27,
+      "question": "Which roadmap items are critical for customer retention?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 28,
+      "question": "What percentage of roadmap items are currently behind schedule?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "partial_grounding",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 29,
+      "question": "Which teams are responsible for delayed roadmap items?",
+      "before_grounded": false,
+      "after_grounded": true,
+      "improved": true,
+      "before_type": "not_grounded",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 30,
+      "question": "How many customer commitments depend on roadmap items at risk?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "partial_grounding",
+      "after_type": "partial_grounding"
+    },
+    {
+      "index": 31,
+      "question": "What are the top risks related to achieving [Objective X]?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 32,
+      "question": "Which company objectives have the highest number of associated risks?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 33,
+      "question": "What is the potential revenue impact of our top 5 identified risks?",
+      "before_grounded": false,
+      "after_grounded": true,
+      "improved": true,
+      "before_type": "not_grounded",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 34,
+      "question": "Which risks affect multiple objectives or customer segments?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 35,
+      "question": "How many high-severity risks are currently without mitigation strategies?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "partial_grounding",
+      "after_type": "partial_grounding"
+    },
+    {
+      "index": 36,
+      "question": "Which teams are understaffed relative to their project commitments?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 37,
+      "question": "What operational risks could impact product SLAs?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 38,
+      "question": "Which products have the highest operational risk exposure?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 39,
+      "question": "How do operational risks correlate with customer success scores?",
+      "before_grounded": false,
+      "after_grounded": true,
+      "improved": true,
+      "before_type": "not_grounded",
+      "after_type": "grounded_structured"
+    },
+    {
+      "index": 40,
+      "question": "What percentage of projects are at risk of missing deadlines?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "partial_grounding",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 41,
+      "question": "Which teams support the most revenue-generating products?",
+      "before_grounded": false,
+      "after_grounded": true,
+      "improved": true,
+      "before_type": "not_grounded",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 42,
+      "question": "What is the revenue-per-team-member for each department?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 43,
+      "question": "Which teams are working on the most critical customer commitments?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 44,
+      "question": "How are teams allocated across products and projects?",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_structured",
+      "after_type": "grounded_structured"
+    },
+    {
+      "index": 45,
+      "question": "Which teams have the highest impact on customer success scores?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 46,
+      "question": "Which projects are critical for maintaining current revenue?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 47,
+      "question": "What percentage of projects are delivering on schedule?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 48,
+      "question": "Which projects have dependencies that could impact multiple products?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 49,
+      "question": "How many projects are blocked by operational constraints?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "partial_grounding",
+      "after_type": "partial_grounding"
+    },
+    {
+      "index": 50,
+      "question": "What is the success rate of projects by team and product area?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 51,
+      "question": "Which customer segments offer the highest growth potential?",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 52,
+      "question": "What products have the best profitability-to-cost ratio for scaling?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 53,
+      "question": "Which regions show the most promise for expansion based on current metrics?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 54,
+      "question": "What features could we develop to increase customer success scores?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 55,
+      "question": "Which objectives are most critical for achieving our growth targets?",
+      "before_grounded": false,
+      "after_grounded": true,
+      "improved": true,
+      "before_type": "not_grounded",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 56,
+      "question": "How do our SLAs compare to industry standards by product?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 57,
+      "question": "Which features give us competitive advantage in each market segment?",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    },
+    {
+      "index": 58,
+      "question": "What operational improvements would most impact customer satisfaction?",
+      "before_grounded": true,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "partial_grounding"
+    },
+    {
+      "index": 59,
+      "question": "How can we reduce operational costs while maintaining service quality?",
+      "before_grounded": false,
+      "after_grounded": false,
+      "improved": false,
+      "before_type": "not_grounded",
+      "after_type": "not_grounded"
+    },
+    {
+      "index": 60,
+      "question": "Which customer segments are we best positioned to serve profitably?",
+      "before_grounded": true,
+      "after_grounded": true,
+      "improved": false,
+      "before_type": "grounded_with_data",
+      "after_type": "grounded_with_data"
+    }
+  ],
+  "category_stats": {
+    "Revenue Risk Analysis": {
+      "total": 5,
+      "before_grounded": 4,
+      "after_grounded": 2,
+      "improved": 0
+    },
+    "Cost & Profitability": {
+      "total": 5,
+      "before_grounded": 2,
+      "after_grounded": 3,
+      "improved": 1
+    },
+    "Customer Health": {
+      "total": 5,
+      "before_grounded": 1,
+      "after_grounded": 2,
+      "improved": 1
+    },
+    "Customer Commitments": {
+      "total": 5,
+      "before_grounded": 0,
+      "after_grounded": 1,
+      "improved": 1
+    },
+    "Product Performance": {
+      "total": 5,
+      "before_grounded": 0,
+      "after_grounded": 0,
+      "improved": 0
+    },
+    "Roadmap & Delivery Risk": {
+      "total": 5,
+      "before_grounded": 1,
+      "after_grounded": 2,
+      "improved": 1
+    },
+    "Strategic Risk Assessment": {
+      "total": 5,
+      "before_grounded": 0,
+      "after_grounded": 1,
+      "improved": 1
+    },
+    "Operational Risk": {
+      "total": 5,
+      "before_grounded": 0,
+      "after_grounded": 1,
+      "improved": 1
+    },
+    "Team Performance": {
+      "total": 5,
+      "before_grounded": 1,
+      "after_grounded": 2,
+      "improved": 1
+    },
+    "Project Delivery": {
+      "total": 5,
+      "before_grounded": 0,
+      "after_grounded": 0,
+      "improved": 0
+    },
+    "Growth & Expansion": {
+      "total": 5,
+      "before_grounded": 1,
+      "after_grounded": 2,
+      "improved": 1
+    },
+    "Competitive Positioning": {
+      "total": 5,
+      "before_grounded": 3,
+      "after_grounded": 2,
+      "improved": 0
+    }
+  },
+  "summary": {
+    "total_questions": 60,
+    "before_grounded": 13,
+    "after_grounded": 18,
+    "improved": 8
+  }
+}

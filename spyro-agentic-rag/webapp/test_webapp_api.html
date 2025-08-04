@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webapp API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>SpyroSolutions Webapp API Test</h1>
+    <button onclick="testAPI()">Test API Connection</button>
+    <div id="result" class="result" style="display:none;"></div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = 'Testing API connection...';
+            resultDiv.className = 'result';
+
+            try {
+                const response = await fetch('http://localhost:8000/query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-API-Key': 'test-key-123'
+                    },
+                    body: JSON.stringify({
+                        question: "What is the total Annual Recurring Revenue (ARR) across all customers?"
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                resultDiv.className = 'result success';
+                resultDiv.textContent = `✅ API Connection Successful!\n\n` +
+                    `Question: ${data.query}\n\n` +
+                    `Answer: ${data.answer}\n\n` +
+                    `Metadata:\n` +
+                    `- Model: ${data.metadata.model}\n` +
+                    `- Execution Time: ${data.metadata.execution_time_seconds}s\n` +
+                    `- Tools Used: ${data.metadata.tools_used.join(', ')}\n` +
+                    `- Grounded: ${data.metadata.grounded ? '✅' : '❌'}\n` +
+                    `- Request ID: ${data.request_id}`;
+
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.textContent = `❌ API Connection Failed!\n\nError: ${error.message}\n\n` +
+                    `Make sure:\n` +
+                    `1. The LangGraph API is running on port 8000\n` +
+                    `2. CORS is enabled on the API\n` +
+                    `3. The API key is correct (test-key-123)`;
+            }
+        }
+    </script>
+</body>
+</html>

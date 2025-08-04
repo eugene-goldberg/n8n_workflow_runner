@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
-import { questionsByCategory } from './businessQuestions';
+import { groundedQuestionsByCategory } from './groundedBusinessQuestions';
 
 interface QueryMetadata {
   agent_type: string;
   model: string;
   execution_time_seconds: number;
-  tokens_used?: number;
-  cost_usd?: number;
-  tools_available: string[];
+  routes_selected: string[];
+  tools_used: string[];
   session_id?: string;
   timestamp: string;
+  grounded: boolean;
+  tokens_used?: number;
+  cost_usd?: number;
 }
 
 interface QueryResponse {
@@ -33,7 +35,7 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [sessionId, setSessionId] = useState<string | null>(null);
-  const [apiKey] = useState('spyro-secret-key-123'); // In production, this should be securely managed
+  const [apiKey] = useState('test-key-123'); // In production, this should be securely managed
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const API_URL = process.env.REACT_APP_API_URL || '';
@@ -86,8 +88,8 @@ function App() {
         setSessionId(data.metadata.session_id);
       }
 
-      // Extract tool information from the answer (if mentioned)
-      const toolsUsed = extractToolsFromAnswer(data.answer);
+      // Use tools from metadata
+      const toolsUsed = data.metadata.tools_used || [];
 
       const assistantMessage: Message = {
         type: 'assistant',
@@ -113,20 +115,6 @@ function App() {
     }
   };
 
-  const extractToolsFromAnswer = (answer: string): string[] => {
-    // Simple extraction based on common patterns in responses
-    const tools = [];
-    if (answer.toLowerCase().includes('graph') || answer.toLowerCase().includes('cypher')) {
-      tools.push('GraphQuery');
-    }
-    if (answer.toLowerCase().includes('vector') || answer.toLowerCase().includes('semantic')) {
-      tools.push('VectorSearch');
-    }
-    if (answer.toLowerCase().includes('hybrid') || answer.toLowerCase().includes('combined')) {
-      tools.push('HybridSearch');
-    }
-    return tools;
-  };
 
   const getToolIcon = (toolName: string) => {
     switch (toolName) {
@@ -158,7 +146,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>🤖 SpyroSolutions Agentic RAG</h1>
-        <p>Autonomous AI agent with intelligent tool selection</p>
+        <p>True agentic AI with multi-strategy retrieval and creative synthesis</p>
       </header>
 
       <div className="container">
@@ -200,6 +188,8 @@ function App() {
                       Model: {message.metadata.model} | 
                       Time: {message.metadata.execution_time_seconds.toFixed(2)}s
                       {message.metadata.tokens_used && ` | Tokens: ${message.metadata.tokens_used}`}
+                      {' | '}
+                      Grounded: {message.metadata.grounded ? '✅' : '❌'}
                     </small>
                   </div>
                 )}
@@ -230,9 +220,9 @@ function App() {
         </div>
 
         <div className="info-section">
-          <h3>Business Questions</h3>
+          <h3>Verified Business Questions (53 grounded answers - 88.3% success rate)</h3>
           <div className="business-questions-container">
-            {Object.entries(questionsByCategory).map(([category, subcategories]) => (
+            {Object.entries(groundedQuestionsByCategory).map(([category, subcategories]) => (
               <div key={category} className="question-category">
                 <h4 className="category-title">{category}</h4>
                 {Object.entries(subcategories).map(([subcategory, questions]) => (

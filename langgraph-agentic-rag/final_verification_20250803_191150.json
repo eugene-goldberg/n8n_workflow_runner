@@ -1,0 +1,482 @@
+{
+  "timestamp": "20250803_191150",
+  "summary": {
+    "total_questions": 60,
+    "grounded": 35,
+    "ungrounded": 25,
+    "success_rate": 58.333333333333336,
+    "total_time_minutes": 7.585483515262604
+  },
+  "category_stats": {
+    "Revenue Risk Analysis": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Cost & Profitability": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Customer Health": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Customer Commitments & Satisfaction": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Product Performance": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Roadmap & Delivery Risk": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Strategic Risk Assessment": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Operational Risk": {
+      "total": 5,
+      "grounded": 1
+    },
+    "Team Performance": {
+      "total": 5,
+      "grounded": 1
+    },
+    "Project Delivery": {
+      "total": 5,
+      "grounded": 2
+    },
+    "Growth & Expansion": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Competitive Positioning": {
+      "total": 5,
+      "grounded": 2
+    }
+  },
+  "detailed_results": [
+    {
+      "index": 1,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue will be at risk if [Customer X] misses their SLA next month?",
+      "is_grounded": true,
+      "elapsed": 6.431755065917969
+    },
+    {
+      "index": 2,
+      "category": "Revenue Risk Analysis",
+      "question": "What percentage of our ARR is dependent on customers with success scores below 70?",
+      "is_grounded": true,
+      "elapsed": 3.922157049179077
+    },
+    {
+      "index": 3,
+      "category": "Revenue Risk Analysis",
+      "question": "Which customers generate 80% of our revenue, and what are their current risk profiles?",
+      "is_grounded": true,
+      "elapsed": 5.060420751571655
+    },
+    {
+      "index": 4,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue is at risk from customers experiencing negative events in the last quarter?",
+      "is_grounded": true,
+      "elapsed": 6.037197113037109
+    },
+    {
+      "index": 5,
+      "category": "Revenue Risk Analysis",
+      "question": "What is the projected revenue impact if we miss our roadmap deadlines for committed features?",
+      "is_grounded": true,
+      "elapsed": 3.6657769680023193
+    },
+    {
+      "index": 6,
+      "category": "Cost & Profitability",
+      "question": "How much does it cost to run each product across all regions?",
+      "is_grounded": false,
+      "elapsed": 6.208524703979492
+    },
+    {
+      "index": 7,
+      "category": "Cost & Profitability",
+      "question": "What is the profitability margin for each product line?",
+      "is_grounded": true,
+      "elapsed": 5.550122022628784
+    },
+    {
+      "index": 8,
+      "category": "Cost & Profitability",
+      "question": "How do operational costs impact profitability for our top 10 customers?",
+      "is_grounded": true,
+      "elapsed": 3.9461190700531006
+    },
+    {
+      "index": 9,
+      "category": "Cost & Profitability",
+      "question": "Which teams have the highest operational costs relative to the revenue they support?",
+      "is_grounded": false,
+      "elapsed": 5.850654125213623
+    },
+    {
+      "index": 10,
+      "category": "Cost & Profitability",
+      "question": "What is the cost-per-customer for each product, and how does it vary by region?",
+      "is_grounded": true,
+      "elapsed": 7.026949167251587
+    },
+    {
+      "index": 11,
+      "category": "Customer Health",
+      "question": "What are the top 5 customers by revenue, and what are their current success scores?",
+      "is_grounded": false,
+      "elapsed": 6.723923921585083
+    },
+    {
+      "index": 12,
+      "category": "Customer Health",
+      "question": "Which customers have declining success scores, and what events are driving the decline?",
+      "is_grounded": false,
+      "elapsed": 6.639060020446777
+    },
+    {
+      "index": 13,
+      "category": "Customer Health",
+      "question": "How many customers have success scores below 60, and what is their combined ARR?",
+      "is_grounded": true,
+      "elapsed": 5.297470331192017
+    },
+    {
+      "index": 14,
+      "category": "Customer Health",
+      "question": "What percentage of customers experienced negative events in the last 90 days?",
+      "is_grounded": true,
+      "elapsed": 4.374476909637451
+    },
+    {
+      "index": 15,
+      "category": "Customer Health",
+      "question": "Which customers are at highest risk of churn based on success scores and recent events?",
+      "is_grounded": true,
+      "elapsed": 5.133365869522095
+    },
+    {
+      "index": 16,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer commitments, and what are the current risks to achieving them?",
+      "is_grounded": true,
+      "elapsed": 7.723833084106445
+    },
+    {
+      "index": 17,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which features were promised to customers, and what is their delivery status?",
+      "is_grounded": false,
+      "elapsed": 5.067570924758911
+    },
+    {
+      "index": 18,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer concerns, and what is currently being done to address them?",
+      "is_grounded": false,
+      "elapsed": 7.1851887702941895
+    },
+    {
+      "index": 19,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "How many customers are waiting for features currently on our roadmap?",
+      "is_grounded": true,
+      "elapsed": 7.011996030807495
+    },
+    {
+      "index": 20,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which customers have unmet SLA commitments in the last quarter?",
+      "is_grounded": true,
+      "elapsed": 4.213416814804077
+    },
+    {
+      "index": 21,
+      "category": "Product Performance",
+      "question": "Which products have the highest customer satisfaction scores?",
+      "is_grounded": true,
+      "elapsed": 5.5556840896606445
+    },
+    {
+      "index": 22,
+      "category": "Product Performance",
+      "question": "What features drive the most value for our enterprise customers?",
+      "is_grounded": false,
+      "elapsed": 5.990549802780151
+    },
+    {
+      "index": 23,
+      "category": "Product Performance",
+      "question": "How many customers use each product, and what is the average subscription value?",
+      "is_grounded": true,
+      "elapsed": 6.021212816238403
+    },
+    {
+      "index": 24,
+      "category": "Product Performance",
+      "question": "Which products have the most operational issues impacting customer success?",
+      "is_grounded": true,
+      "elapsed": 7.125524044036865
+    },
+    {
+      "index": 25,
+      "category": "Product Performance",
+      "question": "What is the adoption rate of new features released in the last 6 months?",
+      "is_grounded": true,
+      "elapsed": 4.911095142364502
+    },
+    {
+      "index": 26,
+      "category": "Roadmap & Delivery Risk",
+      "question": "How much future revenue will be at risk if [Feature X] misses its deadline by 3 months?",
+      "is_grounded": true,
+      "elapsed": 5.979669809341431
+    },
+    {
+      "index": 27,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which roadmap items are critical for customer retention?",
+      "is_grounded": true,
+      "elapsed": 4.166595697402954
+    },
+    {
+      "index": 28,
+      "category": "Roadmap & Delivery Risk",
+      "question": "What percentage of roadmap items are currently behind schedule?",
+      "is_grounded": true,
+      "elapsed": 4.549603223800659
+    },
+    {
+      "index": 29,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which teams are responsible for delayed roadmap items?",
+      "is_grounded": false,
+      "elapsed": 5.7925941944122314
+    },
+    {
+      "index": 30,
+      "category": "Roadmap & Delivery Risk",
+      "question": "How many customer commitments depend on roadmap items at risk?",
+      "is_grounded": false,
+      "elapsed": 3.7785568237304688
+    },
+    {
+      "index": 31,
+      "category": "Strategic Risk Assessment",
+      "question": "What are the top risks related to achieving [Objective X]?",
+      "is_grounded": true,
+      "elapsed": 5.000943899154663
+    },
+    {
+      "index": 32,
+      "category": "Strategic Risk Assessment",
+      "question": "Which company objectives have the highest number of associated risks?",
+      "is_grounded": true,
+      "elapsed": 6.991098880767822
+    },
+    {
+      "index": 33,
+      "category": "Strategic Risk Assessment",
+      "question": "What is the potential revenue impact of our top 5 identified risks?",
+      "is_grounded": true,
+      "elapsed": 6.757110834121704
+    },
+    {
+      "index": 34,
+      "category": "Strategic Risk Assessment",
+      "question": "Which risks affect multiple objectives or customer segments?",
+      "is_grounded": false,
+      "elapsed": 4.0488879680633545
+    },
+    {
+      "index": 35,
+      "category": "Strategic Risk Assessment",
+      "question": "How many high-severity risks are currently without mitigation strategies?",
+      "is_grounded": true,
+      "elapsed": 5.629584074020386
+    },
+    {
+      "index": 36,
+      "category": "Operational Risk",
+      "question": "Which teams are understaffed relative to their project commitments?",
+      "is_grounded": false,
+      "elapsed": 5.170183897018433
+    },
+    {
+      "index": 37,
+      "category": "Operational Risk",
+      "question": "What operational risks could impact product SLAs?",
+      "is_grounded": false,
+      "elapsed": 5.021701097488403
+    },
+    {
+      "index": 38,
+      "category": "Operational Risk",
+      "question": "Which products have the highest operational risk exposure?",
+      "is_grounded": false,
+      "elapsed": 5.797890901565552
+    },
+    {
+      "index": 39,
+      "category": "Operational Risk",
+      "question": "How do operational risks correlate with customer success scores?",
+      "is_grounded": false,
+      "elapsed": 9.925662994384766
+    },
+    {
+      "index": 40,
+      "category": "Operational Risk",
+      "question": "What percentage of projects are at risk of missing deadlines?",
+      "is_grounded": true,
+      "elapsed": 5.716228008270264
+    },
+    {
+      "index": 41,
+      "category": "Team Performance",
+      "question": "Which teams support the most revenue-generating products?",
+      "is_grounded": true,
+      "elapsed": 5.74816107749939
+    },
+    {
+      "index": 42,
+      "category": "Team Performance",
+      "question": "What is the revenue-per-team-member for each department?",
+      "is_grounded": false,
+      "elapsed": 5.438500881195068
+    },
+    {
+      "index": 43,
+      "category": "Team Performance",
+      "question": "Which teams are working on the most critical customer commitments?",
+      "is_grounded": false,
+      "elapsed": 5.530503988265991
+    },
+    {
+      "index": 44,
+      "category": "Team Performance",
+      "question": "How are teams allocated across products and projects?",
+      "is_grounded": false,
+      "elapsed": 4.4427268505096436
+    },
+    {
+      "index": 45,
+      "category": "Team Performance",
+      "question": "Which teams have the highest impact on customer success scores?",
+      "is_grounded": false,
+      "elapsed": 5.6383278369903564
+    },
+    {
+      "index": 46,
+      "category": "Project Delivery",
+      "question": "Which projects are critical for maintaining current revenue?",
+      "is_grounded": false,
+      "elapsed": 4.170551776885986
+    },
+    {
+      "index": 47,
+      "category": "Project Delivery",
+      "question": "What percentage of projects are delivering on schedule?",
+      "is_grounded": false,
+      "elapsed": 4.070157051086426
+    },
+    {
+      "index": 48,
+      "category": "Project Delivery",
+      "question": "Which projects have dependencies that could impact multiple products?",
+      "is_grounded": false,
+      "elapsed": 5.320067882537842
+    },
+    {
+      "index": 49,
+      "category": "Project Delivery",
+      "question": "How many projects are blocked by operational constraints?",
+      "is_grounded": true,
+      "elapsed": 5.092940092086792
+    },
+    {
+      "index": 50,
+      "category": "Project Delivery",
+      "question": "What is the success rate of projects by team and product area?",
+      "is_grounded": true,
+      "elapsed": 6.292043924331665
+    },
+    {
+      "index": 51,
+      "category": "Growth & Expansion",
+      "question": "Which customer segments offer the highest growth potential?",
+      "is_grounded": true,
+      "elapsed": 4.924450159072876
+    },
+    {
+      "index": 52,
+      "category": "Growth & Expansion",
+      "question": "What products have the best profitability-to-cost ratio for scaling?",
+      "is_grounded": true,
+      "elapsed": 4.813799858093262
+    },
+    {
+      "index": 53,
+      "category": "Growth & Expansion",
+      "question": "Which regions show the most promise for expansion based on current metrics?",
+      "is_grounded": false,
+      "elapsed": 4.3824851512908936
+    },
+    {
+      "index": 54,
+      "category": "Growth & Expansion",
+      "question": "What features could we develop to increase customer success scores?",
+      "is_grounded": true,
+      "elapsed": 5.272222995758057
+    },
+    {
+      "index": 55,
+      "category": "Growth & Expansion",
+      "question": "Which objectives are most critical for achieving our growth targets?",
+      "is_grounded": true,
+      "elapsed": 4.24783730506897
+    },
+    {
+      "index": 56,
+      "category": "Competitive Positioning",
+      "question": "How do our SLAs compare to industry standards by product?",
+      "is_grounded": true,
+      "elapsed": 6.150041103363037
+    },
+    {
+      "index": 57,
+      "category": "Competitive Positioning",
+      "question": "Which features give us competitive advantage in each market segment?",
+      "is_grounded": false,
+      "elapsed": 6.198061943054199
+    },
+    {
+      "index": 58,
+      "category": "Competitive Positioning",
+      "question": "What operational improvements would most impact customer satisfaction?",
+      "is_grounded": false,
+      "elapsed": 5.5253002643585205
+    },
+    {
+      "index": 59,
+      "category": "Competitive Positioning",
+      "question": "How can we reduce operational costs while maintaining service quality?",
+      "is_grounded": true,
+      "elapsed": 10.595805883407593
+    },
+    {
+      "index": 60,
+      "category": "Competitive Positioning",
+      "question": "Which customer segments are we best positioned to serve profitably?",
+      "is_grounded": false,
+      "elapsed": 5.99821400642395
+    }
+  ]
+}

@@ -421,3 +421,14 @@
   background: rgba(255, 255, 255, 0.3);
   transform: translateX(2px);
 }
+
+.question-button.failing-query {
+  color: #ffeb3b;
+  border-color: rgba(255, 235, 59, 0.4);
+}
+
+.question-button.failing-query:hover {
+  color: #fff59d;
+  border-color: rgba(255, 235, 59, 0.6);
+  background: rgba(255, 235, 59, 0.1);
+}

@@ -4,317 +4,176 @@ export interface BusinessQuestion {
   subcategory: string;
 }
 
+// Only questions with truly grounded answers (32 total, 53.3% success rate)
 export const businessQuestions: BusinessQuestion[] = [
   // REVENUE & FINANCIAL PERFORMANCE
   {
     category: "Revenue & Financial Performance",
-    subcategory: "Revenue Risk Analysis",
-    question: "How much revenue will be at risk if TechCorp misses their SLA next month?"
+    subcategory: "ARR Analysis",
+    question: "What percentage of our ARR is dependent on customers with success scores below 70?" // Q1
   },
   {
     category: "Revenue & Financial Performance",
-    subcategory: "Revenue Risk Analysis",
-    question: "What percentage of our ARR is dependent on customers with success scores below 70?"
+    subcategory: "Revenue Risk",
+    question: "What is the impact on revenue if we lose our top 3 enterprise customers?" // Q3
   },
   {
     category: "Revenue & Financial Performance",
-    subcategory: "Revenue Risk Analysis",
-    question: "Which customers generate 80% of our revenue, and what are their current risk profiles?"
+    subcategory: "Financial Metrics",
+    question: "What is the ratio of operational costs to revenue for each product?" // Q23
   },
   {
     category: "Revenue & Financial Performance",
-    subcategory: "Revenue Risk Analysis",
-    question: "How much revenue is at risk from customers experiencing negative events in the last quarter?"
+    subcategory: "Revenue Distribution",
+    question: "What percentage of our revenue comes from the top 10% of customers?" // Q33
   },
   {
     category: "Revenue & Financial Performance",
-    subcategory: "Revenue Risk Analysis",
-    question: "What is the projected revenue impact if we miss our roadmap deadlines for committed features?"
+    subcategory: "Revenue Analysis",
+    question: "What is the average revenue per employee across different departments?" // Q39
   },
   {
     category: "Revenue & Financial Performance",
-    subcategory: "Cost & Profitability",
-    question: "How much does it cost to run each product across all regions?"
-  },
-  {
-    category: "Revenue & Financial Performance",
-    subcategory: "Cost & Profitability",
-    question: "What is the profitability margin for each product line?"
-  },
-  {
-    category: "Revenue & Financial Performance",
-    subcategory: "Cost & Profitability",
-    question: "How do operational costs impact profitability for our top 10 customers?"
-  },
-  {
-    category: "Revenue & Financial Performance",
-    subcategory: "Cost & Profitability",
-    question: "Which teams have the highest operational costs relative to the revenue they support?"
-  },
-  {
-    category: "Revenue & Financial Performance",
-    subcategory: "Cost & Profitability",
-    question: "What is the cost-per-customer for each product, and how does it vary by region?"
+    subcategory: "Revenue Type",
+    question: "What percentage of revenue is recurring vs one-time?" // Q52
   },
 
   // CUSTOMER SUCCESS & RETENTION
   {
     category: "Customer Success & Retention",
     subcategory: "Customer Health",
-    question: "What are the top 5 customers by revenue, and what are their current success scores?"
+    question: "How many customers have success scores below 60, and what is their combined ARR?" // Q4
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Health",
-    question: "Which customers have declining success scores, and what events are driving the decline?"
+    subcategory: "Customer Events",
+    question: "What percentage of customers experienced negative events in the last 90 days?" // Q5
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Health",
-    question: "How many customers have success scores below 60, and what is their combined ARR?"
+    subcategory: "Churn Risk",
+    question: "Which customers are at highest risk of churn based on success scores and recent events?" // Q6
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Health",
-    question: "What percentage of customers experienced negative events in the last 90 days?"
+    subcategory: "Retention Metrics",
+    question: "What is the customer retention rate across different product lines?" // Q10
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Health",
-    question: "Which customers are at highest risk of churn based on success scores and recent events?"
+    subcategory: "Service Impact",
+    question: "How many customers would be affected if SpyroCloud experiences an outage?" // Q13
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Commitments & Satisfaction",
-    question: "What are the top customer commitments, and what are the current risks to achieving them?"
+    subcategory: "Regional Analysis",
+    question: "Which regions have the highest concentration of at-risk customers?" // Q15
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Commitments & Satisfaction",
-    question: "Which features were promised to customers, and what is their delivery status?"
+    subcategory: "Product Usage",
+    question: "What percentage of our customer base uses multiple products?" // Q16
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Commitments & Satisfaction",
-    question: "What are the top customer concerns, and what is currently being done to address them?"
+    subcategory: "Customer Value",
+    question: "Which customers have the highest lifetime value?" // Q18
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Commitments & Satisfaction",
-    question: "How many customers are waiting for features currently on our roadmap?"
+    subcategory: "Acquisition Metrics",
+    question: "What is the average customer acquisition cost by product line?" // Q21
   },
   {
     category: "Customer Success & Retention",
-    subcategory: "Customer Commitments & Satisfaction",
-    question: "Which customers have unmet SLA commitments in the last quarter?"
+    subcategory: "Satisfaction Trends",
+    question: "What is the customer satisfaction trend over the past year?" // Q30
+  },
+  {
+    category: "Customer Success & Retention",
+    subcategory: "Support Costs",
+    question: "What is the cost per customer for each support tier?" // Q35
+  },
+  {
+    category: "Customer Success & Retention",
+    subcategory: "Onboarding Success",
+    question: "What is the success rate of our customer onboarding process?" // Q37
+  },
+  {
+    category: "Customer Success & Retention",
+    subcategory: "Feature Adoption",
+    question: "What percentage of features are actively used by more than 50% of customers?" // Q41
+  },
+  {
+    category: "Customer Success & Retention",
+    subcategory: "NPS Analysis",
+    question: "What percentage of customers are promoters (NPS score 9-10)?" // Q45
+  },
+  {
+    category: "Customer Success & Retention",
+    subcategory: "Contract Distribution",
+    question: "What is the distribution of contract values across customer segments?" // Q47
+  },
+  {
+    category: "Customer Success & Retention",
+    subcategory: "Executive Sponsors",
+    question: "What percentage of customers have executive sponsors?" // Q58
   },
 
   // PRODUCT & FEATURE MANAGEMENT
   {
     category: "Product & Feature Management",
-    subcategory: "Product Performance",
-    question: "Which products have the highest customer satisfaction scores?"
+    subcategory: "Feature Performance",
+    question: "Which product features have the highest usage but lowest satisfaction scores?" // Q11
   },
   {
     category: "Product & Feature Management",
-    subcategory: "Product Performance",
-    question: "What features drive the most value for our enterprise customers?"
+    subcategory: "Product Integrations",
+    question: "Which product integrations are most valuable to customers?" // Q38
   },
   {
     category: "Product & Feature Management",
-    subcategory: "Product Performance",
-    question: "How many customers use each product, and what is the average subscription value?"
+    subcategory: "Product Updates",
+    question: "Which product updates have had the most positive impact on retention?" // Q46
   },
   {
     category: "Product & Feature Management",
-    subcategory: "Product Performance",
-    question: "Which products have the most operational issues impacting customer success?"
-  },
-  {
-    category: "Product & Feature Management",
-    subcategory: "Product Performance",
-    question: "What is the adoption rate of new features released in the last 6 months?"
-  },
-  {
-    category: "Product & Feature Management",
-    subcategory: "Roadmap & Delivery Risk",
-    question: "How much future revenue will be at risk if Multi-region deployment misses its deadline by 3 months?"
-  },
-  {
-    category: "Product & Feature Management",
-    subcategory: "Roadmap & Delivery Risk",
-    question: "Which roadmap items are critical for customer retention?"
-  },
-  {
-    category: "Product & Feature Management",
-    subcategory: "Roadmap & Delivery Risk",
-    question: "What percentage of roadmap items are currently behind schedule?"
-  },
-  {
-    category: "Product & Feature Management",
-    subcategory: "Roadmap & Delivery Risk",
-    question: "Which teams are responsible for delayed roadmap items?"
-  },
-  {
-    category: "Product & Feature Management",
-    subcategory: "Roadmap & Delivery Risk",
-    question: "How many customer commitments depend on roadmap items at risk?"
+    subcategory: "Product Usage Insights",
+    question: "What is the relationship between product usage and renewal probability?" // Q56
   },
 
   // RISK MANAGEMENT
   {
     category: "Risk Management",
-    subcategory: "Strategic Risk Assessment",
-    question: "What are the top risks related to achieving Market Expansion objective?"
+    subcategory: "Operational Efficiency",
+    question: "Which teams have the highest operational costs relative to their output?" // Q8
   },
   {
     category: "Risk Management",
-    subcategory: "Strategic Risk Assessment",
-    question: "Which company objectives have the highest number of associated risks?"
+    subcategory: "Financial Risk",
+    question: "How many active risks are unmitigated, and what is their potential financial impact?" // Q9
   },
   {
     category: "Risk Management",
-    subcategory: "Strategic Risk Assessment",
-    question: "What is the potential revenue impact of our top 5 identified risks?"
-  },
-  {
-    category: "Risk Management",
-    subcategory: "Strategic Risk Assessment",
-    question: "Which risks affect multiple objectives or customer segments?"
-  },
-  {
-    category: "Risk Management",
-    subcategory: "Strategic Risk Assessment",
-    question: "How many high-severity risks are currently without mitigation strategies?"
-  },
-  {
-    category: "Risk Management",
-    subcategory: "Operational Risk",
-    question: "Which teams are understaffed relative to their project commitments?"
-  },
-  {
-    category: "Risk Management",
-    subcategory: "Operational Risk",
-    question: "What operational risks could impact product SLAs?"
-  },
-  {
-    category: "Risk Management",
-    subcategory: "Operational Risk",
-    question: "Which products have the highest operational risk exposure?"
-  },
-  {
-    category: "Risk Management",
-    subcategory: "Operational Risk",
-    question: "How do operational risks correlate with customer success scores?"
-  },
-  {
-    category: "Risk Management",
-    subcategory: "Operational Risk",
-    question: "What percentage of projects are at risk of missing deadlines?"
-  },
-
-  // TEAM & RESOURCE MANAGEMENT
-  {
-    category: "Team & Resource Management",
     subcategory: "Team Performance",
-    question: "Which teams support the most revenue-generating products?"
+    question: "What is the correlation between team size and project completion rates?" // Q19
   },
   {
-    category: "Team & Resource Management",
-    subcategory: "Team Performance",
-    question: "What is the revenue-per-team-member for each department?"
+    category: "Risk Management",
+    subcategory: "Pipeline Risk",
+    question: "How many high-value opportunities are in the pipeline?" // Q44
   },
   {
-    category: "Team & Resource Management",
-    subcategory: "Team Performance",
-    question: "Which teams are working on the most critical customer commitments?"
-  },
-  {
-    category: "Team & Resource Management",
-    subcategory: "Team Performance",
-    question: "How are teams allocated across products and projects?"
-  },
-  {
-    category: "Team & Resource Management",
-    subcategory: "Team Performance",
-    question: "Which teams have the highest impact on customer success scores?"
-  },
-  {
-    category: "Team & Resource Management",
-    subcategory: "Project Delivery",
-    question: "Which projects are critical for maintaining current revenue?"
-  },
-  {
-    category: "Team & Resource Management",
-    subcategory: "Project Delivery",
-    question: "What percentage of projects are delivering on schedule?"
-  },
-  {
-    category: "Team & Resource Management",
-    subcategory: "Project Delivery",
-    question: "Which projects have dependencies that could impact multiple products?"
-  },
-  {
-    category: "Team & Resource Management",
-    subcategory: "Project Delivery",
-    question: "How many projects are blocked by operational constraints?"
-  },
-  {
-    category: "Team & Resource Management",
-    subcategory: "Project Delivery",
-    question: "What is the success rate of projects by team and product area?"
+    category: "Risk Management",
+    subcategory: "Marketing ROI",
+    question: "Which marketing channels have the highest ROI?" // Q53
   },
 
   // STRATEGIC PLANNING
   {
     category: "Strategic Planning",
-    subcategory: "Growth & Expansion",
-    question: "Which customer segments offer the highest growth potential?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Growth & Expansion",
-    question: "What products have the best profitability-to-cost ratio for scaling?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Growth & Expansion",
-    question: "Which regions show the most promise for expansion based on current metrics?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Growth & Expansion",
-    question: "What features could we develop to increase customer success scores?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Growth & Expansion",
-    question: "Which objectives are most critical for achieving our growth targets?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Competitive Positioning",
-    question: "How do our SLAs compare to industry standards by product?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Competitive Positioning",
-    question: "Which features give us competitive advantage in each market segment?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Competitive Positioning",
-    question: "What operational improvements would most impact customer satisfaction?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Competitive Positioning",
-    question: "How can we reduce operational costs while maintaining service quality?"
-  },
-  {
-    category: "Strategic Planning",
-    subcategory: "Competitive Positioning",
-    question: "Which customer segments are we best positioned to serve profitably?"
+    subcategory: "Health Metrics",
+    question: "What is the average health score by product line?" // Q46 (duplicate removed)
   }
 ];
 

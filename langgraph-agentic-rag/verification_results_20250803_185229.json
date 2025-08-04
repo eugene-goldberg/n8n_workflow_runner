@@ -1,0 +1,541 @@
+{
+  "timestamp": "20250803_185229",
+  "summary": {
+    "total_questions": 60,
+    "grounded": 39,
+    "ungrounded": 21,
+    "success_rate": 65.0
+  },
+  "category_stats": {
+    "Revenue Risk Analysis": {
+      "total": 5,
+      "grounded": 5
+    },
+    "Cost & Profitability": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Customer Health": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Customer Commitments & Satisfaction": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Product Performance": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Roadmap & Delivery Risk": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Strategic Risk Assessment": {
+      "total": 5,
+      "grounded": 3
+    },
+    "Operational Risk": {
+      "total": 5,
+      "grounded": 1
+    },
+    "Team Performance": {
+      "total": 5,
+      "grounded": 2
+    },
+    "Project Delivery": {
+      "total": 5,
+      "grounded": 2
+    },
+    "Growth & Expansion": {
+      "total": 5,
+      "grounded": 4
+    },
+    "Competitive Positioning": {
+      "total": 5,
+      "grounded": 3
+    }
+  },
+  "detailed_results": [
+    {
+      "index": 1,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue will be at risk if [Customer X] misses their SLA next month?",
+      "answer": "Based on the retrieved context, the revenue at risk for Customer X if they miss their SLA next month is $0.00. This information is derived from the query used to calculate the revenue at risk, which resulted in a value of $0.00 for the specified conditions.",
+      "is_grounded": true,
+      "elapsed": 5.928828954696655
+    },
+    {
+      "index": 2,
+      "category": "Revenue Risk Analysis",
+      "question": "What percentage of our ARR is dependent on customers with success scores below 70?",
+      "answer": "Based on the query used, the percentage of ARR dependent on customers with success scores below a specific threshold (in this case, below $score_threshold) is calculated. The query calculates the percentage of ARR from customers with success scores below the specified threshold. In this specific case, the success score threshold is not explicitly mentioned in the context provided. To determine the percentage of ARR dependent on customers with success scores below 70, you would need to adjust the query to set the $score_threshold to 70.",
+      "is_grounded": true,
+      "elapsed": 4.227503776550293
+    },
+    {
+      "index": 3,
+      "category": "Revenue Risk Analysis",
+      "question": "Which customers generate 80% of our revenue, and what are their current risk profiles?",
+      "answer": "The customers that generate 80% of the revenue and their current risk profiles are not explicitly provided in the given context. The queries and results shown are focused on individual customers like \"Healthcare Plus\" and \"FinanceHub\" with their respective revenue percentages and risk profiles. If you need specific information about customers generating 80% of revenue and their risk profiles, additional data or a different query may be required.",
+      "is_grounded": true,
+      "elapsed": 4.765086889266968
+    },
+    {
+      "index": 4,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue is at risk from customers experiencing negative events in the last quarter?",
+      "answer": "Based on the query used, the revenue at risk from customers experiencing negative events in the last quarter (from January 1, 2025, to March 31, 2025) is $0.00. This means that during this period, there is no revenue at risk from customers who have experienced negative events with a severity of 'high' or 'critical'.",
+      "is_grounded": true,
+      "elapsed": 6.2558510303497314
+    },
+    {
+      "index": 5,
+      "category": "Revenue Risk Analysis",
+      "question": "What is the projected revenue impact if we miss our roadmap deadlines for committed features?",
+      "answer": "Based on the query used to calculate the revenue impact of missing roadmap deadlines for committed features, the projected revenue impact if the roadmap deadlines for committed features are missed is $7,996,176.00. This amount represents the total revenue at risk due to delayed roadmap items.",
+      "is_grounded": true,
+      "elapsed": 3.7584869861602783
+    },
+    {
+      "index": 6,
+      "category": "Cost & Profitability",
+      "question": "How much does it cost to run each product across all regions?",
+      "answer": "To determine the total cost of running each product across all regions, we can sum up the total costs per region for each product from the provided graph results. Here are the total costs for running each product across all regions:\n\n- SpyroAI: $851,000 (606,000 in Europe + 245,000 in North America)\n- SpyroAI for predictive maintenance: $490,000 (245,000 in Europe + 245,000 in North America)\n- SpyroCloud: $888,000 (444,000 in Europe + 444,000 in North America)\n- SpyroCloud Enterprise Edition: $770,000 (385,000 in Europe + 385,000 in North America)\n- SpyroSecure: $460,000 (230,000 in Europe + 230,000 in North America)\n\nThese totals were calculated by summing the costs for each product across Europe and North America as provided in the graph results.",
+      "is_grounded": true,
+      "elapsed": 5.904705762863159
+    },
+    {
+      "index": 7,
+      "category": "Cost & Profitability",
+      "question": "What is the profitability margin for each product line?",
+      "answer": "Based on the information provided in the context, the profitability margin for each product line is as follows:\n\n1. SpyroCloud: Profitability Margin: -2.43\n2. SpyroAI: Profitability Margin: -2.99\n3. SpyroSecure: Profitability Margin: -1.16",
+      "is_grounded": true,
+      "elapsed": 5.365900039672852
+    },
+    {
+      "index": 8,
+      "category": "Cost & Profitability",
+      "question": "How do operational costs impact profitability for our top 10 customers?",
+      "answer": "The operational costs have a significant impact on the profitability of the top 10 customers. Based on the provided data from the graph results, we can see that the gross profit and profit margin for these customers are negative, indicating that the operational costs are higher than the annual revenue for each of these customers. This suggests that reducing operational costs or increasing revenue would be crucial in improving the profitability of these top customers.",
+      "is_grounded": true,
+      "elapsed": 3.6982169151306152
+    },
+    {
+      "index": 9,
+      "category": "Cost & Profitability",
+      "question": "Which teams have the highest operational costs relative to the revenue they support?",
+      "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Therefore, I do not have specific information on which teams have the highest operational costs relative to the revenue they support.",
+      "is_grounded": false,
+      "elapsed": 6.71612811088562
+    },
+    {
+      "index": 10,
+      "category": "Cost & Profitability",
+      "question": "What is the cost-per-customer for each product, and how does it vary by region?",
+      "answer": "The cost-per-customer for each product and how it varies by region can be determined by analyzing the data from the graph results. The queries used in the context retrieve the cost-per-customer information for products in different regions. By examining the results, you can identify the cost-per-customer for each product (SpyroAI and SpyroCloud) and how it varies across different regions.",
+      "is_grounded": true,
+      "elapsed": 5.548696041107178
+    },
+    {
+      "index": 11,
+      "category": "Customer Health",
+      "question": "What are the top 5 customers by revenue, and what are their current success scores?",
+      "answer": "I'm unable to provide the current success scores of the top 5 customers by revenue as the information about their success scores is not available in the provided context.",
+      "is_grounded": false,
+      "elapsed": 4.973685026168823
+    },
+    {
+      "index": 12,
+      "category": "Customer Health",
+      "question": "Which customers have declining success scores, and what events are driving the decline?",
+      "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Therefore, I do not have specific information on which customers have declining success scores or what events are driving the decline. Additional data or a different query may be needed to provide the specific details you are looking for.",
+      "is_grounded": false,
+      "elapsed": 5.880606174468994
+    },
+    {
+      "index": 13,
+      "category": "Customer Health",
+      "question": "How many customers have success scores below 60, and what is their combined ARR?",
+      "answer": "Based on the retrieved context, there are 7 customers with success scores below 60, and their combined ARR is $28,800,000.00.",
+      "is_grounded": true,
+      "elapsed": 5.099441766738892
+    },
+    {
+      "index": 14,
+      "category": "Customer Health",
+      "question": "What percentage of customers experienced negative events in the last 90 days?",
+      "answer": "Based on the provided context and query used, the percentage of customers who experienced negative events in the last 90 days is 56.9%. This is calculated by dividing the number of customers with negative events (33) by the total number of customers (58) and then multiplying by 100 to get the percentage.",
+      "is_grounded": true,
+      "elapsed": 3.21518611907959
+    },
+    {
+      "index": 15,
+      "category": "Customer Health",
+      "question": "Which customers are at highest risk of churn based on success scores and recent events?",
+      "answer": "The customers at highest risk of churn based on success scores and recent events are:\n1. Healthcare Plus (Customer) with a success score of 46, declining score trend, 9 recent negative events, 0 at-risk commitments, and critical churn risk level.\n2. FinanceNext Ltd (Customer) with a success score of 48, stable score trend, 13 recent negative events, 0 at-risk commitments, and critical churn risk level.\n3. EduTech with a success score of 35.0, declining score trend, 3 recent negative events, 0 at-risk commitments, and critical churn risk level.\n4. GlobalRetail with a success score of 49, stable score trend, 2 recent negative events, 1 at-risk commitment, and critical churn risk level.\n5. HealthTech Solutions with a success score of 41.0, declining score trend, 3 recent negative events, 0 at-risk commitments, and critical churn risk level.",
+      "is_grounded": true,
+      "elapsed": 5.080329418182373
+    },
+    {
+      "index": 16,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer commitments, and what are the current risks to achieving them?",
+      "answer": "The top customer commitments based on the provided context are as follows:\n\n1. Customer: Global Manufacturing Co (Customer)\n   - Commitment: Data Security Compliance - Global Manufacturing Co (Customer)\n   - Commitment Status: Delayed\n   - Priority: Critical\n   - Risk Level: High Risk\n\n2. Customer: GlobalRetail\n   - Commitment: Data Security Compliance - GlobalRetail\n   - Commitment Status: Delayed\n   - Priority: Critical\n   - Risk Level: High Risk\n\n3. Customer: FinanceNext Ltd (Customer)\n   - Commitment: Data Security Compliance - FinanceNext Ltd (Customer)\n   - Commitment Status: On Track\n   - Priority: Critical\n   - Risk Level: Low Risk\n\n4. Customer: FinanceHub\n   - Commitment: Data Security Compliance - FinanceHub\n   - Commitment Status: On Track\n   - Priority: Critical\n   - Risk Level: Low Risk\n\nThe current risks associated with achieving these commitments are also provided in the context. For example, commitments with a status of \"Delayed\" are associated with a \"High Risk\" level. Additionally, risks are categorized as \"High Risk,\" \"Medium Risk,\" or \"Low Risk\" based on certain conditions mentioned in the queries.",
+      "is_grounded": true,
+      "elapsed": 6.7086100578308105
+    },
+    {
+      "index": 17,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which features were promised to customers, and what is their delivery status?",
+      "answer": "The features promised to customers are \"Features ahead of market readiness\" with a release date of May 3, 2024, and \"Features with <20% adoption\" with a release date of June 16, 2024. The delivery status of these features is that the \"Features ahead of market readiness\" are at risk of failure, and the \"Features with <20% adoption\" have an adoption rate of less than 20%.",
+      "is_grounded": true,
+      "elapsed": 4.8857972621917725
+    },
+    {
+      "index": 18,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer concerns, and what is currently being done to address them?",
+      "answer": "The top customer concerns based on the retrieved data are as follows:\n1. TechCorp: SpyroCloud API response times exceed 500ms during peak hours\n2. TechCorp: Multi-region deployment capability not available\n3. FinanceHub: Need SOC2 compliance certification for SpyroSecure\n4. StartupXYZ: Performance degradation during peak hours\n5. StartupXYZ: Missing critical features\n\nThe actions being taken to address these concerns are not explicitly mentioned in the provided context.",
+      "is_grounded": false,
+      "elapsed": 5.736540794372559
+    },
+    {
+      "index": 19,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "How many customers are waiting for features currently on our roadmap?",
+      "answer": "Based on the retrieved context from the query results, there are currently 8 customers waiting for features that are on the roadmap. The sample customers waiting for these features are TechCorp, StartupXYZ, Global Manufacturing Corp, LogiCorp, HealthTech Solutions, and MediaFlow. The sample features that these customers are waiting for include custom threat detection rules, Zero-trust network architecture, Predictive Analytics Engine 2.0, IoT sensor data processing, Edge computing capabilities, reliance on external APIs, various other analytics tools, and budgeting tools.",
+      "is_grounded": true,
+      "elapsed": 3.9314260482788086
+    },
+    {
+      "index": 20,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which customers have unmet SLA commitments in the last quarter?",
+      "answer": "Based on the information provided in the queries and graph results, the customers with unmet SLA commitments in the last quarter are:\n1. TechStartup Inc (Customer) for the support_response SLA with a miss percentage of 12.18% and severity level Critical.\n2. APAC customers for the data_processing SLA with a miss percentage of 10.58% and severity level Critical.\n3. Global Manufacturing Co (Customer) for the support_response SLA with a miss percentage of 9.23% and severity level Warning.\n4. StartupXYZ for the data_processing SLA with a miss percentage of 7.35% and severity level Warning.",
+      "is_grounded": true,
+      "elapsed": 4.226732015609741
+    },
+    {
+      "index": 21,
+      "category": "Product Performance",
+      "question": "Which products have the highest customer satisfaction scores?",
+      "answer": "Based on the retrieved information from the graph results, the products with the highest customer satisfaction scores are:\n\n1. Transformer (big) model with a score of 94\n2. Concept with a score of 94\n\nThese two products have the highest customer satisfaction scores of 94.",
+      "is_grounded": true,
+      "elapsed": 4.76413106918335
+    },
+    {
+      "index": 22,
+      "category": "Product Performance",
+      "question": "What features drive the most value for our enterprise customers?",
+      "answer": "I'm sorry, but based on the provided context, no specific information is available regarding the features that drive the most value for enterprise customers.",
+      "is_grounded": false,
+      "elapsed": 4.579462051391602
+    },
+    {
+      "index": 23,
+      "category": "Product Performance",
+      "question": "How many customers use each product, and what is the average subscription value?",
+      "answer": "The number of customers using each product along with the average subscription value for each product are as follows:\n\n1. Real-time Inference:\n   - Customers: 36\n   - Average Monthly Subscription: $37,177.83\n\n2. Federated Learning:\n   - Customers: 27\n   - Average Monthly Subscription: $32,184.53\n\n3. SpyroAI:\n   - Customers: 8\n   - Average Monthly Subscription: $64,744.94\n\n4. Custom Dashboards:\n   - Customers: 8\n   - Average Monthly Subscription: $46,348.10\n\n5. SpyroCloud:\n   - Customers: 17\n   - Average Monthly Subscription: $28,316.90\n\n6. Execution:\n   - Customers: 5\n   - Average Monthly Subscription: $60,394.38\n\n7. Product:\n   - Customers: 6\n   - Average Monthly Subscription: $60,171.67\n\n8. Edge Deployment Kit:\n   - Customers: 4\n   - Average Monthly Subscription: $70,867.10\n\n9. SpyroAI:\n   - Customers: 3\n   - Average Monthly Subscription: $77,129.67\n\n10. Feature Adoption:\n    - Customers: 3\n    - Average Monthly Subscription: $77,129.67\n\nThese details were retrieved from the data provided in the graph results.",
+      "is_grounded": true,
+      "elapsed": 5.777159929275513
+    },
+    {
+      "index": 24,
+      "category": "Product Performance",
+      "question": "Which products have the most operational issues impacting customer success?",
+      "answer": "Based on the provided information and the results from the queries, the products with the most operational issues impacting customer success are as follows:\n\n1. **Product Name: SpyroAI**\n   - Operational Issues: 21\n   - Affected Customers: 6\n   - Total Customers: 8\n   - Impact Percentage: 75.0%\n   - Issue Types: service_outage, performance_issue\n\n2. **Product Name: execution**\n   - Operational Issues: 19\n   - Affected Customers: 5\n   - Total Customers: 5\n   - Impact Percentage: 100.0%\n   - Issue Types: service_outage, performance_issue\n\n3. **Product Name: Feature Adoption**\n   - Operational Issues: 15\n   - Affected Customers: 3\n   - Total Customers: 3\n   - Impact Percentage: 100.0%\n   - Issue Types: service_outage\n\nThese products have been identified to have the most operational issues impacting customer success based on the data provided.",
+      "is_grounded": true,
+      "elapsed": 4.93096399307251
+    },
+    {
+      "index": 25,
+      "category": "Product Performance",
+      "question": "What is the adoption rate of new features released in the last 6 months?",
+      "answer": "The adoption rates of new features released in the last 6 months are as follows:\n1. Multi-region deployment: \n   - Adoption rate: 77.59%\n2. Real-time Inference:\n   - Adoption rate: 62.07%\n3. Compliance Management:\n   - Adoption rate: 56.9%\n4. Model Versioning:\n   - Adoption rate: 53.45%\n5. Feature Usage Patterns:\n   - Adoption rate: 50.0%\n6. Federated Learning:\n   - Adoption rate: 46.55%\n7. Edge computing capabilities:\n   - Adoption rate: 41.38%",
+      "is_grounded": true,
+      "elapsed": 4.613426923751831
+    },
+    {
+      "index": 26,
+      "category": "Roadmap & Delivery Risk",
+      "question": "How much future revenue will be at risk if [Feature X] misses its deadline by 3 months?",
+      "answer": "Based on the query used and the graph result provided, if \"Feature X\" misses its deadline by 3 months, the future revenue at risk is $0.00.",
+      "is_grounded": true,
+      "elapsed": 5.708385944366455
+    },
+    {
+      "index": 27,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which roadmap items are critical for customer retention?",
+      "answer": "The roadmap items critical for customer retention based on the provided data are:\n1. Roadmap: Predictive Analytics Engine 2.0\n2. Roadmap: Zero-trust network architecture",
+      "is_grounded": true,
+      "elapsed": 3.4938488006591797
+    },
+    {
+      "index": 28,
+      "category": "Roadmap & Delivery Risk",
+      "question": "What percentage of roadmap items are currently behind schedule?",
+      "answer": "Based on the provided context and query used, the percentage of roadmap items that are currently behind schedule is 17.78%. This is calculated by dividing the count of items behind schedule by the total number of items and then multiplying by 100, resulting in a rounded percentage of 17.78%.",
+      "is_grounded": true,
+      "elapsed": 3.4324958324432373
+    },
+    {
+      "index": 29,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which teams are responsible for delayed roadmap items?",
+      "answer": "The teams responsible for delayed roadmap items are the Product team and the Infrastructure team. The Product team has a scheduled roadmap item for Q2-Q3 and the Infrastructure team is mitigating scaling limitations in SpyroCloud, which could be contributing to delays in the product roadmap.",
+      "is_grounded": true,
+      "elapsed": 5.162751913070679
+    },
+    {
+      "index": 30,
+      "category": "Roadmap & Delivery Risk",
+      "question": "How many customer commitments depend on roadmap items at risk?",
+      "answer": "The provided context does not contain the specific information about the number of customer commitments that depend on roadmap items at risk.",
+      "is_grounded": false,
+      "elapsed": 3.693324089050293
+    },
+    {
+      "index": 31,
+      "category": "Strategic Risk Assessment",
+      "question": "What are the top risks related to achieving [Objective X]?",
+      "answer": "The top risks related to achieving a specific objective can be determined by analyzing the \"risk_count\" and \"risk_severities\" for each objective. The overall risk level is categorized as \"Critical Risk,\" \"High Risk,\" \"Multiple Risks,\" \"Some Risk,\" or \"Low Risk\" based on the severity and count of risks associated with each objective.",
+      "is_grounded": true,
+      "elapsed": 4.033934116363525
+    },
+    {
+      "index": 32,
+      "category": "Strategic Risk Assessment",
+      "question": "Which company objectives have the highest number of associated risks?",
+      "answer": "Based on the provided context and the results from the queries, the company objectives with the highest number of associated risks are as follows:\n\n1. Objective: Automate compliance tasks - 6 risks\n2. Objective: 42 - 5 risks\n3. Objective: Reduced latency by 35% for enterprise customers - 5 risks\n4. Objective: Maintain Momentum - 5 risks\n5. Objective: Improvements or Pivots - 5 risks\n\nThese objectives have the highest number of associated risks, with 6 risks being the highest count.",
+      "is_grounded": true,
+      "elapsed": 3.542351007461548
+    },
+    {
+      "index": 33,
+      "category": "Strategic Risk Assessment",
+      "question": "What is the potential revenue impact of our top 5 identified risks?",
+      "answer": "I'm sorry, but the graph query did not return any results, so I do not have the specific information on the potential revenue impact of the top 5 identified risks.",
+      "is_grounded": false,
+      "elapsed": 5.682251214981079
+    },
+    {
+      "index": 34,
+      "category": "Strategic Risk Assessment",
+      "question": "Which risks affect multiple objectives or customer segments?",
+      "answer": "The provided context does not contain specific information about which risks affect multiple objectives or customer segments.",
+      "is_grounded": false,
+      "elapsed": 3.2176570892333984
+    },
+    {
+      "index": 35,
+      "category": "Strategic Risk Assessment",
+      "question": "How many high-severity risks are currently without mitigation strategies?",
+      "answer": "Based on the provided query and result, there are currently 0 high-severity risks without mitigation strategies.",
+      "is_grounded": true,
+      "elapsed": 4.782756090164185
+    },
+    {
+      "index": 36,
+      "category": "Operational Risk",
+      "question": "Which teams are understaffed relative to their project commitments?",
+      "answer": "I'm sorry, but the information provided in the context does not specify which teams are understaffed relative to their project commitments.",
+      "is_grounded": false,
+      "elapsed": 4.007673978805542
+    },
+    {
+      "index": 37,
+      "category": "Operational Risk",
+      "question": "What operational risks could impact product SLAs?",
+      "answer": "I'm sorry, but the provided context does not contain specific information about the operational risks that could impact product SLAs.",
+      "is_grounded": false,
+      "elapsed": 5.226970911026001
+    },
+    {
+      "index": 38,
+      "category": "Operational Risk",
+      "question": "Which products have the highest operational risk exposure?",
+      "answer": "I'm sorry, but the information provided in the context does not specify which products have the highest operational risk exposure. Additional data or a different query may be needed to determine the products with the highest operational risk exposure.",
+      "is_grounded": false,
+      "elapsed": 5.2606871128082275
+    },
+    {
+      "index": 39,
+      "category": "Operational Risk",
+      "question": "How do operational risks correlate with customer success scores?",
+      "answer": "The operational risk \"Customer Payment Risks\" has an associated score of 51, indicating a declining trend. This risk is linked to a customer success score with a value of 51. The correlation between operational risks and customer success scores can be further analyzed by examining trends and values over time.",
+      "is_grounded": true,
+      "elapsed": 6.063833951950073
+    },
+    {
+      "index": 40,
+      "category": "Operational Risk",
+      "question": "What percentage of projects are at risk of missing deadlines?",
+      "answer": "I'm sorry, but the graph query did not return any results regarding the percentage of projects at risk of missing deadlines.",
+      "is_grounded": false,
+      "elapsed": 6.015986204147339
+    },
+    {
+      "index": 41,
+      "category": "Team Performance",
+      "question": "Which teams support the most revenue-generating products?",
+      "answer": "Based on the provided context and query, the team that supports the most revenue-generating products is the \"Product Management\" team, with a count of 3 revenue-generating products.",
+      "is_grounded": true,
+      "elapsed": 14.03420901298523
+    },
+    {
+      "index": 42,
+      "category": "Team Performance",
+      "question": "What is the revenue-per-team-member for each department?",
+      "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Without specific data on revenue and team members for each department, I am unable to provide the revenue-per-team-member for each department. If you have access to the relevant data, you may need to run a different query or provide additional information to obtain the desired results.",
+      "is_grounded": false,
+      "elapsed": 5.568792104721069
+    },
+    {
+      "index": 43,
+      "category": "Team Performance",
+      "question": "Which teams are working on the most critical customer commitments?",
+      "answer": "I'm sorry, but based on the provided context, there are no specific teams mentioned that are working on the most critical customer commitments.",
+      "is_grounded": false,
+      "elapsed": 5.454039096832275
+    },
+    {
+      "index": 44,
+      "category": "Team Performance",
+      "question": "How are teams allocated across products and projects?",
+      "answer": "The teams and their respective projects and products allocation are as follows:\n\n1. AI Research Team:\n   - Project: Natural language interface (RM-010)\n   - Status: Planned\n   - Estimated Completion: November 30, 2025\n\n2. AI Research Team:\n   - Project: Custom model training (RM-006)\n   - Status: Planned\n   - Estimated Completion: December 31, 2025\n\n3. AI Research Team:\n   - Project: AI Enhancement Phase 2 (RM-004)\n   - Status: Behind schedule\n   - Estimated Completion: July 31, 2025\n\n4. Security Team:\n   - Project: Zero-trust architecture (RM-007)\n   - Status: In progress\n   - Estimated Completion: August 31, 2025\n\n5. DevOps Team:\n   - Project: Auto-scaling improvements (RM-002)\n   - Status: In progress\n   - Estimated Completion: June 30, 2025\n\n6. Data Science Team:\n   - Project: Real-time prediction engine (RM-005)\n   - Status: In progress\n   - Estimated Completion: September 30, 2025\n\n7. Compliance Team:\n   - Project: Compliance automation (RM-008)\n   - Status: Planned\n   - Estimated Completion: October 31, 2025\n\n8. Cloud Platform Team:\n   - Project: Performance optimization (RM-009)\n   - Status: Completed\n   - Estimated Completion: January 31, 2025\n\n9. Cloud Platform Team:\n   - Project: Advanced monitoring dashboard (RM-003)\n   - Status: Behind schedule\n   - Estimated Completion: May 15, 2025\n\n10. Cloud Platform Team:\n    - Project: Multi-region deployment (RM-001)\n    - Status: Behind schedule\n    - Estimated Completion: March 31, 2025\n\nThese details provide an overview of how different teams are allocated across various projects and products.",
+      "is_grounded": true,
+      "elapsed": 6.920071363449097
+    },
+    {
+      "index": 45,
+      "category": "Team Performance",
+      "question": "Which teams have the highest impact on customer success scores?",
+      "answer": "I'm sorry, but the graph query did not return any results regarding the teams with the highest impact on customer success scores. Additional information or a different query may be needed to determine which teams have the highest impact on customer success scores.",
+      "is_grounded": false,
+      "elapsed": 4.938050031661987
+    },
+    {
+      "index": 46,
+      "category": "Project Delivery",
+      "question": "Which projects are critical for maintaining current revenue?",
+      "answer": "I'm sorry, but the information provided in the context does not specify which projects are critical for maintaining current revenue.",
+      "is_grounded": false,
+      "elapsed": 5.508162021636963
+    },
+    {
+      "index": 47,
+      "category": "Project Delivery",
+      "question": "What percentage of projects are delivering on schedule?",
+      "answer": "I'm sorry, but based on the provided context, there is no specific information available regarding the percentage of projects that are delivering on schedule.",
+      "is_grounded": false,
+      "elapsed": 4.344794988632202
+    },
+    {
+      "index": 48,
+      "category": "Project Delivery",
+      "question": "Which projects have dependencies that could impact multiple products?",
+      "answer": "I'm sorry, but based on the provided context, there are no specific projects mentioned that have dependencies that could impact multiple products.",
+      "is_grounded": false,
+      "elapsed": 4.9516847133636475
+    },
+    {
+      "index": 49,
+      "category": "Project Delivery",
+      "question": "How many projects are blocked by operational constraints?",
+      "answer": "Based on the retrieved context, there are 0 projects blocked by operational constraints.",
+      "is_grounded": true,
+      "elapsed": 4.098037958145142
+    },
+    {
+      "index": 50,
+      "category": "Project Delivery",
+      "question": "What is the success rate of projects by team and product area?",
+      "answer": "Based on the provided query and data, the success rate of projects is calculated by team and product area. The success rate is determined by the formula: (completed + on_schedule) / total_projects * 100. \n\nFor the specific data in the context:\n- The success rate percentage for the team \"Unassigned\" and product area \"General\" is 49.28%. \n- The success rate is calculated based on the number of completed projects, projects on schedule, and total projects for each team and product area. \n\nIf you need more specific success rates for other teams or product areas, you can refer to the data provided in the context or run the query for additional details.",
+      "is_grounded": true,
+      "elapsed": 4.494178056716919
+    },
+    {
+      "index": 51,
+      "category": "Growth & Expansion",
+      "question": "Which customer segments offer the highest growth potential?",
+      "answer": "Based on the provided data, the customer segments with the highest growth potential are as follows:\n\n1. **Finance**:\n   - Growth Rate: 172.16%\n   - Total Current ARR: $41,882,256.00\n   - Average Customer Value: $1,163,396.00\n   - Customer Count: 36\n\n2. **Retail**:\n   - Growth Rate: 166.99%\n   - Total Current ARR: $84,639,648.00\n   - Average Customer Value: $1,880,881.00\n   - Customer Count: 45\n\n3. **Healthcare**:\n   - Growth Rate: 159.64%\n   - Total Current ARR: $47,618,328.00\n   - Average Customer Value: $1,035,181.00\n   - Customer Count: 46\n\nThese segments show the highest growth potential based on their growth rates.",
+      "is_grounded": true,
+      "elapsed": 4.847480058670044
+    },
+    {
+      "index": 52,
+      "category": "Growth & Expansion",
+      "question": "What products have the best profitability-to-cost ratio for scaling?",
+      "answer": "Based on the profitability-to-cost ratio for scaling, the products with the best ratios are as follows:\n\n1. SpyroAI with a profitability ratio of 14.0 and profit margin percentage of 93.72%\n2. Transformer (big) model with a profitability ratio of 14.0 and profit margin percentage of 93.36%",
+      "is_grounded": true,
+      "elapsed": 4.013636112213135
+    },
+    {
+      "index": 53,
+      "category": "Growth & Expansion",
+      "question": "Which regions show the most promise for expansion based on current metrics?",
+      "answer": "I'm sorry, but the graph query did not return any results, so I am unable to provide specific information on which regions show the most promise for expansion based on current metrics. Additional data or a different query may be needed to determine the regions with the most potential for expansion.",
+      "is_grounded": false,
+      "elapsed": 4.546303987503052
+    },
+    {
+      "index": 54,
+      "category": "Growth & Expansion",
+      "question": "What features could we develop to increase customer success scores?",
+      "answer": "Based on the data retrieved from the queries, the following features could be developed to increase customer success scores based on the score improvement values:\n\n1. AI-powered analytics\n2. Compliance Management\n3. Multi-region Deployment\n4. Model Versioning\n5. Auto-scaling Optimization\n6. Student analytics dashboard\n7. Edge computing capabilities\n8. Better Estimation Models for Feature Complexity\n9. high-adoption, high-value features\n10. Security Features\n\nThese features have shown significant score improvements when used by customers, indicating a positive impact on customer success scores. Developing these features further or enhancing existing features in these areas could potentially lead to increased customer success.",
+      "is_grounded": true,
+      "elapsed": 4.57131290435791
+    },
+    {
+      "index": 55,
+      "category": "Growth & Expansion",
+      "question": "Which objectives are most critical for achieving our growth targets?",
+      "answer": "Based on the information provided, the objectives that are most critical for achieving growth targets include:\n1. Entity: High ROI + Growth (Type: PROFITABILITY) with relationships to Security automation features, Multi-region capabilities, Custom analytics dashboards, and Real-time Inference platform.\n2. Entity: $500M revenue by 2027 (Type: REVENUE) with a source of recurring revenue and a relationship to Global Platform Leadership.\n\nThese objectives are crucial for achieving growth targets as they are directly related to profitability and revenue generation, which are key components of driving growth in a business.",
+      "is_grounded": true,
+      "elapsed": 4.744831085205078
+    },
+    {
+      "index": 56,
+      "category": "Competitive Positioning",
+      "question": "How do our SLAs compare to industry standards by product?",
+      "answer": "The provided context does not contain information about industry standards for SLAs by product. To compare your SLAs to industry standards, you would need to gather data on industry benchmarks or standards for SLAs in your specific product domain and then compare your SLAs against those benchmarks.",
+      "is_grounded": false,
+      "elapsed": 5.021378993988037
+    },
+    {
+      "index": 57,
+      "category": "Competitive Positioning",
+      "question": "Which features give us competitive advantage in each market segment?",
+      "answer": "Based on the retrieved context, the features that give a competitive advantage in each market segment are:\n- Real-time Inference\n- API Gateway v3\n- Model Versioning\n- Cost Analytics\n\nThese features are associated with the products in different market segments, providing competitive advantages based on the features offered.",
+      "is_grounded": true,
+      "elapsed": 5.305549144744873
+    },
+    {
+      "index": 58,
+      "category": "Competitive Positioning",
+      "question": "What operational improvements would most impact customer satisfaction?",
+      "answer": "Based on the information provided in the context, it seems that customer satisfaction is measured through a success score (css.score) for different customers. The queries used in the context filter customers based on a success score greater than 80 and then return the customer name and their success score, ordered by the score in descending order.\n\nTo identify operational improvements that would most impact customer satisfaction, you can analyze the data from the graph results. By focusing on customers with high success scores (above 80), such as \"TechStartup Inc\" with a score of 95, \"FinanceNext Ltd\" with a score of 94, \"HealthNet\" with a score of 92, and others, you can identify common factors contributing to their high satisfaction levels.\n\nOperational improvements that could impact customer satisfaction based on this data might include:\n1. Enhancing product or service quality to meet or exceed customer expectations.\n2. Improving customer service and support to address any issues promptly and effectively.\n3. Streamlining processes to ensure smooth interactions and transactions.\n4. Personalizing customer experiences to cater to individual needs and preferences.\n5. Implementing feedback mechanisms to gather insights and continuously improve based on customer input.\n\nBy analyzing the successful customers' profiles and experiences, you can identify specific areas where operational improvements can be made to enhance overall customer satisfaction.",
+      "is_grounded": true,
+      "elapsed": 7.000840902328491
+    },
+    {
+      "index": 59,
+      "category": "Competitive Positioning",
+      "question": "How can we reduce operational costs while maintaining service quality?",
+      "answer": "The query used in the context is focused on retrieving data related to customer success scores, products used, and operational costs. While the context provides information about the specific data retrieved for a customer named HealthNet using the SpyroSecure product, it does not contain details on how to reduce operational costs while maintaining service quality. For specific strategies on reducing operational costs while maintaining service quality, you may need to consult with relevant stakeholders, conduct cost-benefit analyses, optimize processes, consider automation, streamline workflows, negotiate with vendors, or explore other cost-saving measures tailored to your organization's operations and industry.",
+      "is_grounded": false,
+      "elapsed": 8.36876392364502
+    },
+    {
+      "index": 60,
+      "category": "Competitive Positioning",
+      "question": "Which customer segments are we best positioned to serve profitably?",
+      "answer": "Based on the provided information from the graph results, the customer segments that you are best positioned to serve profitably are as follows:\n\n1. AutoDrive with a Profit Margin of 83.0\n2. Customer feedback with a Profit Margin of 79\n3. Spyro Solutions with a Profit Margin of 71\n\nThese customer segments have shown higher profit margins compared to others based on the data provided.",
+      "is_grounded": true,
+      "elapsed": 6.430127143859863
+    }
+  ]
+}

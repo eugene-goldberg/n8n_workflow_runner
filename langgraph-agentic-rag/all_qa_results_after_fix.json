@@ -1,0 +1,430 @@
+{
+  "timestamp": "2025-08-03 16:02:15",
+  "model": "gpt-3.5-turbo",
+  "total_questions": 60,
+  "successful": 60,
+  "failed": 0,
+  "total_time_minutes": 5.426041634877523,
+  "results": [
+    {
+      "index": 1,
+      "question": "How much revenue will be at risk if [Customer X] misses their SLA next month?",
+      "answer": "Based on the query used, the result shows that the RevenueAtRisk for Customer X is 0. This means that currently, there is no revenue at risk for Customer X if they were to miss their SLA next month.",
+      "success": true,
+      "elapsed": 4.032361030578613
+    },
+    {
+      "index": 2,
+      "question": "What percentage of our ARR is dependent on customers with success scores below 70?",
+      "answer": "I'm sorry, but the information needed to answer your question is not available in the provided context.",
+      "success": true,
+      "elapsed": 3.4360339641571045
+    },
+    {
+      "index": 3,
+      "question": "Which customers generate 80% of our revenue, and what are their current risk profiles?",
+      "answer": "I'm sorry, but based on the provided context, no specific information is available regarding which customers generate 80% of the revenue or their current risk profiles. It seems that no results were found from the graph query. Additional data or a different query may be needed to provide the requested information.",
+      "success": true,
+      "elapsed": 4.438292980194092
+    },
+    {
+      "index": 4,
+      "question": "How much revenue is at risk from customers experiencing negative events in the last quarter?",
+      "answer": "Based on the query used, the revenue at risk from customers experiencing negative events in the last quarter (from January 1, 2025, to March 31, 2025) is 0. This means that during this period, there is no revenue at risk from customers experiencing negative events with high or critical severity.",
+      "success": true,
+      "elapsed": 4.748783826828003
+    },
+    {
+      "index": 5,
+      "question": "What is the projected revenue impact if we miss our roadmap deadlines for committed features?",
+      "answer": "The provided context does not contain information related to projected revenue impact if roadmap deadlines for committed features are missed.",
+      "success": true,
+      "elapsed": 3.091292142868042
+    },
+    {
+      "index": 6,
+      "question": "How much does it cost to run each product across all regions?",
+      "answer": "To determine the total cost of running each product across all regions, we can sum up the total costs per region for each product from the provided graph results. Here are the total costs for running each product across all regions:\n\n- SpyroAI: $851,000 (606,000 in Europe + 245,000 in North America)\n- SpyroAI for predictive maintenance: $490,000 (245,000 in Europe + 245,000 in North America)\n- SpyroCloud: $888,000 (444,000 in Europe + 444,000 in North America)\n- SpyroCloud Enterprise Edition: $770,000 (385,000 in Europe + 385,000 in North America)\n- SpyroSecure: $460,000 (230,000 in Europe + 230,000 in North America)",
+      "success": true,
+      "elapsed": 4.518304109573364
+    },
+    {
+      "index": 7,
+      "question": "What is the profitability margin for each product line?",
+      "answer": "Based on the information provided in the context, the profitability margin for each product line is as follows:\n\n1. SpyroCloud: Profitability Margin of -2.43\n2. SpyroAI: Profitability Margin of -2.99\n3. SpyroSecure: Profitability Margin of -1.16",
+      "success": true,
+      "elapsed": 3.8933398723602295
+    },
+    {
+      "index": 8,
+      "question": "How do operational costs impact profitability for our top 10 customers?",
+      "answer": "I'm sorry, but the graph query did not return any results, so we do not have specific information on how operational costs impact profitability for our top 10 customers.",
+      "success": true,
+      "elapsed": 3.589637041091919
+    },
+    {
+      "index": 9,
+      "question": "Which teams have the highest operational costs relative to the revenue they support?",
+      "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Therefore, I do not have specific information on which teams have the highest operational costs relative to the revenue they support.",
+      "success": true,
+      "elapsed": 3.987556219100952
+    },
+    {
+      "index": 10,
+      "question": "What is the cost-per-customer for each product, and how does it vary by region?",
+      "answer": "The cost-per-customer for each product is as follows:\n\n1. **SpyroAI**:\n   - Cost Per Customer: $303,000\n   - Region: Global\n\n2. **SpyroCloud**:\n   - Cost Per Customer: $303,000\n   - Region: Global\n\nBased on the provided information from the graph results, the cost-per-customer for both **SpyroAI** and **SpyroCloud** products is the same at $303,000, and the region for both products is Global. There is no variation in the cost-per-customer by region for these products in the given context.",
+      "success": true,
+      "elapsed": 4.535567283630371
+    },
+    {
+      "index": 11,
+      "question": "What are the top 5 customers by revenue, and what are their current success scores?",
+      "answer": "The provided context only includes information about the top 5 customers by revenue in a database query result. There is no mention of their current success scores. To determine the current success scores of these customers, you would need to access a different data source or system that contains this specific information.",
+      "success": true,
+      "elapsed": 3.1455681324005127
+    },
+    {
+      "index": 12,
+      "question": "Which customers have declining success scores, and what events are driving the decline?",
+      "answer": "I'm sorry, but no specific information regarding customers with declining success scores and the events driving the decline was found in the graph query results. You may need to run a different query or analyze the data in another way to obtain this information.",
+      "success": true,
+      "elapsed": 3.4428539276123047
+    },
+    {
+      "index": 13,
+      "question": "How many customers have success scores below 60, and what is their combined ARR?",
+      "answer": "Based on the retrieved context, there are 7 customers with success scores below 60, and their combined ARR is $28,800,000.",
+      "success": true,
+      "elapsed": 3.863858938217163
+    },
+    {
+      "index": 14,
+      "question": "What percentage of customers experienced negative events in the last 90 days?",
+      "answer": "I'm sorry, but the information needed to determine the percentage of customers who experienced negative events in the last 90 days is not available in the provided context.",
+      "success": true,
+      "elapsed": 2.574190139770508
+    },
+    {
+      "index": 15,
+      "question": "Which customers are at highest risk of churn based on success scores and recent events?",
+      "answer": "I'm sorry, but based on the provided context, no specific information is available regarding which customers are at highest risk of churn based on success scores and recent events. It seems that no results were found from the graph query. Additional data or a different query may be needed to determine which customers are at highest risk of churn.",
+      "success": true,
+      "elapsed": 4.368200063705444
+    },
+    {
+      "index": 16,
+      "question": "What are the top customer commitments, and what are the current risks to achieving them?",
+      "answer": "I'm sorry, but based on the provided context, no specific information about the top customer commitments or the current risks to achieving them was found in the graph query results. It seems that the graph query did not yield any relevant data regarding this specific inquiry. If you have more details or data sources, please provide them so I can assist you further.",
+      "success": true,
+      "elapsed": 2.9745349884033203
+    },
+    {
+      "index": 17,
+      "question": "Which features were promised to customers, and what is their delivery status?",
+      "answer": "I'm sorry, but based on the provided context, there is no specific information available about which features were promised to customers and their delivery status. The information provided in the context mainly focuses on technical milestones, product roadmap delays, features ahead of market readiness, completed features, and features with adoption rates. If you need details about promised features and their delivery status, you may need to refer to additional sources or data related to customer commitments and feature delivery timelines.",
+      "success": true,
+      "elapsed": 3.2650811672210693
+    },
+    {
+      "index": 18,
+      "question": "What are the top customer concerns, and what is currently being done to address them?",
+      "answer": "The top customer concerns based on the retrieved data are:\n\n1. Support response time for RetailPlus and EduTech customers.\n2. Integration complexity for Global Manufacturing Co, FinanceNext Ltd, and DataSync customers.\n\nThe actions currently being taken to address these concerns are not explicitly mentioned in the provided context.",
+      "success": true,
+      "elapsed": 3.0889530181884766
+    },
+    {
+      "index": 19,
+      "question": "How many customers are waiting for features currently on our roadmap?",
+      "answer": "Based on the retrieved context, there are currently 0 customers waiting for features that are on your roadmap.",
+      "success": true,
+      "elapsed": 4.433099746704102
+    },
+    {
+      "index": 20,
+      "question": "Which customers have unmet SLA commitments in the last quarter?",
+      "answer": "I'm sorry, but based on the provided context, there are no specific results available from the graph query regarding which customers have unmet SLA commitments in the last quarter. Additional information or a different query may be needed to determine this.",
+      "success": true,
+      "elapsed": 4.138258934020996
+    },
+    {
+      "index": 21,
+      "question": "Which products have the highest customer satisfaction scores?",
+      "answer": "Based on the information provided in the graph results, the products with the highest customer satisfaction scores are:\n\n1. Transformer (big) model with a score of 94\n2. Concept with a score of 94\n\nThese two products have the highest customer satisfaction scores of 94.",
+      "success": true,
+      "elapsed": 3.8824310302734375
+    },
+    {
+      "index": 22,
+      "question": "What features drive the most value for our enterprise customers?",
+      "answer": "I'm sorry, but the context provided does not contain information about the specific features that drive the most value for enterprise customers. If you have access to data or insights from customer feedback, usage analytics, or market research, analyzing that information could help identify the features that are most valuable to your enterprise customers.",
+      "success": true,
+      "elapsed": 3.225648880004883
+    },
+    {
+      "index": 23,
+      "question": "How many customers use each product, and what is the average subscription value?",
+      "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Therefore, I do not have the specific information regarding the number of customers using each product or the average subscription value. If you have access to a different source or method to retrieve this data, please provide more details so I can assist you further.",
+      "success": true,
+      "elapsed": 3.9391210079193115
+    },
+    {
+      "index": 24,
+      "question": "Which products have the most operational issues impacting customer success?",
+      "answer": "I'm sorry, but based on the provided context, no specific information is available regarding which products have the most operational issues impacting customer success. It seems that the graph query did not yield any results. Additional data or a different query may be needed to determine which products are experiencing the most operational issues affecting customer success.",
+      "success": true,
+      "elapsed": 3.7530879974365234
+    },
+    {
+      "index": 25,
+      "question": "What is the adoption rate of new features released in the last 6 months?",
+      "answer": "I'm sorry, but based on the provided context, there are no specific results available from the graph query regarding the adoption rate of new features released in the last 6 months. Additional data or a different query may be needed to determine the adoption rate accurately.",
+      "success": true,
+      "elapsed": 3.0779776573181152
+    },
+    {
+      "index": 26,
+      "question": "How much future revenue will be at risk if [Feature X] misses its deadline by 3 months?",
+      "answer": "Based on the query used in the context, the future revenue at risk for Feature X missing its deadline by 3 months is calculated to be 0. This means that if Feature X misses its deadline by 3 months, there is currently no projected impact on future revenue.",
+      "success": true,
+      "elapsed": 4.127430200576782
+    },
+    {
+      "index": 27,
+      "question": "Which roadmap items are critical for customer retention?",
+      "answer": "I'm sorry, but the context provided does not contain information about specific roadmap items critical for customer retention. If you have a list of roadmap items or specific details about the project, I can help analyze them to determine which ones might be critical for customer retention.",
+      "success": true,
+      "elapsed": 2.4496288299560547
+    },
+    {
+      "index": 28,
+      "question": "What percentage of roadmap items are currently behind schedule?",
+      "answer": "I'm sorry, but the information needed to determine the percentage of roadmap items currently behind schedule was not found in the graph query results.",
+      "success": true,
+      "elapsed": 2.290041923522949
+    },
+    {
+      "index": 29,
+      "question": "Which teams are responsible for delayed roadmap items?",
+      "answer": "The teams responsible for delayed roadmap items are the Product team and the Infrastructure team. The Product team is associated with the delayed roadmap item \"Product roadmap delays\" which threatens 60% of features, and the Infrastructure team is linked to mitigating scaling limitations in SpyroCloud, which could be contributing to the delays.",
+      "success": true,
+      "elapsed": 2.0413661003112793
+    },
+    {
+      "index": 30,
+      "question": "How many customer commitments depend on roadmap items at risk?",
+      "answer": "Based on the retrieved context, there are 0 customer commitments that depend on roadmap items at risk. The query result shows that the value for `customer_commitments_at_risk` is 0, indicating that there are no customer commitments currently at risk due to depending on roadmap items that are also at risk.",
+      "success": true,
+      "elapsed": 3.5270979404449463
+    },
+    {
+      "index": 31,
+      "question": "What are the top risks related to achieving [Objective X]?",
+      "answer": "I'm sorry, but no specific information regarding the top risks related to achieving \"Objective X\" was found in the graph query results. If you have specific risks or details related to \"Objective X\" that you would like to explore, please provide more context or details for further assistance.",
+      "success": true,
+      "elapsed": 3.4681522846221924
+    },
+    {
+      "index": 32,
+      "question": "Which company objectives have the highest number of associated risks?",
+      "answer": "I'm sorry, but the graph query did not return any results, so I cannot provide specific information on which company objectives have the highest number of associated risks.",
+      "success": true,
+      "elapsed": 2.607023000717163
+    },
+    {
+      "index": 33,
+      "question": "What is the potential revenue impact of our top 5 identified risks?",
+      "answer": "Based on the query used, the potential revenue impact of the top 5 identified risks is 0.",
+      "success": true,
+      "elapsed": 3.7972640991210938
+    },
+    {
+      "index": 34,
+      "question": "Which risks affect multiple objectives or customer segments?",
+      "answer": "I'm sorry, but no specific information regarding which risks affect multiple objectives or customer segments was found in the retrieved context.",
+      "success": true,
+      "elapsed": 2.862346887588501
+    },
+    {
+      "index": 35,
+      "question": "How many high-severity risks are currently without mitigation strategies?",
+      "answer": "Based on the query used and the graph result provided, there are currently 0 high-severity risks without mitigation strategies.",
+      "success": true,
+      "elapsed": 3.6542301177978516
+    },
+    {
+      "index": 36,
+      "question": "Which teams are understaffed relative to their project commitments?",
+      "answer": "I'm sorry, but the information provided in the context does not specify which teams are understaffed relative to their project commitments.",
+      "success": true,
+      "elapsed": 3.3988921642303467
+    },
+    {
+      "index": 37,
+      "question": "What operational risks could impact product SLAs?",
+      "answer": "I'm sorry, but the context provided does not contain information about specific operational risks that could impact product SLAs.",
+      "success": true,
+      "elapsed": 2.587038040161133
+    },
+    {
+      "index": 38,
+      "question": "Which products have the highest operational risk exposure?",
+      "answer": "I'm sorry, but based on the provided context, there are no specific products mentioned or identified as having the highest operational risk exposure. Additional information or data may be needed to determine which products have the highest operational risk exposure.",
+      "success": true,
+      "elapsed": 2.6848671436309814
+    },
+    {
+      "index": 39,
+      "question": "How do operational risks correlate with customer success scores?",
+      "answer": "The operational risk \"Customer Payment Risks\" has an associated customer success score with a value of 51. The last updated timestamp for this correlation is August 3, 2025, at 20:58:58 UTC. The trend for this correlation is \"Declining\".",
+      "success": true,
+      "elapsed": 4.360388994216919
+    },
+    {
+      "index": 40,
+      "question": "What percentage of projects are at risk of missing deadlines?",
+      "answer": "I'm sorry, but the information needed to determine the percentage of projects at risk of missing deadlines is not available in the provided context.",
+      "success": true,
+      "elapsed": 3.1400272846221924
+    },
+    {
+      "index": 41,
+      "question": "Which teams support the most revenue-generating products?",
+      "answer": "Based on the provided context and query, the team that supports the most revenue-generating products is the \"Product Management\" team, which supports 3 revenue-generating products.",
+      "success": true,
+      "elapsed": 3.087825059890747
+    },
+    {
+      "index": 42,
+      "question": "What is the revenue-per-team-member for each department?",
+      "answer": "I'm sorry, but based on the provided context, no specific information about the revenue-per-team-member for each department is available.",
+      "success": true,
+      "elapsed": 3.7426459789276123
+    },
+    {
+      "index": 43,
+      "question": "Which teams are working on the most critical customer commitments?",
+      "answer": "I'm sorry, but the graph query did not return any results, so I am unable to provide specific information about which teams are working on the most critical customer commitments.",
+      "success": true,
+      "elapsed": 4.296593904495239
+    },
+    {
+      "index": 44,
+      "question": "How are teams allocated across products and projects?",
+      "answer": "The teams and their respective projects and products allocation are as follows:\n\n1. AI Research Team:\n   - Project: Natural language interface (RM-010)\n   - Status: Planned\n   - Estimated Completion: November 30, 2025\n\n2. AI Research Team:\n   - Project: Custom model training (RM-006)\n   - Status: Planned\n   - Estimated Completion: December 31, 2025\n\n3. AI Research Team:\n   - Project: AI Enhancement Phase 2 (RM-004)\n   - Status: Behind schedule\n   - Estimated Completion: July 31, 2025\n\n4. Security Team:\n   - Project: Zero-trust architecture (RM-007)\n   - Status: In progress\n   - Estimated Completion: August 31, 2025\n\n5. DevOps Team:\n   - Project: Auto-scaling improvements (RM-002)\n   - Status: In progress\n   - Estimated Completion: June 30, 2025\n\n6. Data Science Team:\n   - Project: Real-time prediction engine (RM-005)\n   - Status: In progress\n   - Estimated Completion: September 30, 2025\n\n7. Compliance Team:\n   - Project: Compliance automation (RM-008)\n   - Status: Planned\n   - Estimated Completion: October 31, 2025\n\n8. Cloud Platform Team:\n   - Project: Performance optimization (RM-009)\n   - Status: Completed\n   - Estimated Completion: January 31, 2025\n\n9. Cloud Platform Team:\n   - Project: Advanced monitoring dashboard (RM-003)\n   - Status: Behind schedule\n   - Estimated Completion: May 15, 2025\n\n10. Cloud Platform Team:\n    - Project: Multi-region deployment (RM-001)\n    - Status: Behind schedule\n    - Estimated Completion: March 31, 2025\n\nThese allocations provide an overview of how different teams are distributed across various projects and products within the organization.",
+      "success": true,
+      "elapsed": 6.736809968948364
+    },
+    {
+      "index": 45,
+      "question": "Which teams have the highest impact on customer success scores?",
+      "answer": "I'm sorry, but the graph query did not return any results, so I am unable to provide specific information on which teams have the highest impact on customer success scores.",
+      "success": true,
+      "elapsed": 2.3318300247192383
+    },
+    {
+      "index": 46,
+      "question": "Which projects are critical for maintaining current revenue?",
+      "answer": "I'm sorry, but the information provided in the context does not specify which projects are critical for maintaining current revenue.",
+      "success": true,
+      "elapsed": 2.176900863647461
+    },
+    {
+      "index": 47,
+      "question": "What percentage of projects are delivering on schedule?",
+      "answer": "I'm sorry, but based on the provided context, there is no specific information available regarding the percentage of projects that are delivering on schedule.",
+      "success": true,
+      "elapsed": 2.043911933898926
+    },
+    {
+      "index": 48,
+      "question": "Which projects have dependencies that could impact multiple products?",
+      "answer": "I'm sorry, but based on the provided context, there are no specific projects mentioned that have dependencies that could impact multiple products. The graph query did not yield any results. Additional information or a different approach may be needed to identify projects with such dependencies.",
+      "success": true,
+      "elapsed": 3.259516954421997
+    },
+    {
+      "index": 49,
+      "question": "How many projects are blocked by operational constraints?",
+      "answer": "Based on the retrieved context, there are 0 projects blocked by operational constraints according to Graph Result 1.",
+      "success": true,
+      "elapsed": 2.4975008964538574
+    },
+    {
+      "index": 50,
+      "question": "What is the success rate of projects by team and product area?",
+      "answer": "I'm sorry, but based on the provided context, no specific information about the success rate of projects by team and product area is available. The graph query did not yield any results. To determine the success rate of projects by team and product area, you may need to explore other data sources or conduct a different type of query or analysis.",
+      "success": true,
+      "elapsed": 3.0165579319000244
+    },
+    {
+      "index": 51,
+      "question": "Which customer segments offer the highest growth potential?",
+      "answer": "Based on the provided information from the graph results, the customer segments with the highest total revenue are as follows:\n\n1. GlobalRetail - Total Revenue: $9,000,000.0\n2. TechCorp - Total Revenue: $8,000,000.0\n3. AutoDrive - Total Revenue: $7,500,000.0\n\nThese customer segments, particularly GlobalRetail, TechCorp, and AutoDrive, have demonstrated the highest revenue generation potential and could be considered as having the highest growth potential based on their revenue performance.",
+      "success": true,
+      "elapsed": 4.03652811050415
+    },
+    {
+      "index": 52,
+      "question": "What products have the best profitability-to-cost ratio for scaling?",
+      "answer": "I'm sorry, but based on the provided context, there were no results found from the graph query. Therefore, I do not have specific information on which products have the best profitability-to-cost ratio for scaling.",
+      "success": true,
+      "elapsed": 3.8945021629333496
+    },
+    {
+      "index": 53,
+      "question": "Which regions show the most promise for expansion based on current metrics?",
+      "answer": "I'm sorry, but the graph query did not return any results, so I do not have specific information on which regions show the most promise for expansion based on current metrics.",
+      "success": true,
+      "elapsed": 2.337717056274414
+    },
+    {
+      "index": 54,
+      "question": "What features could we develop to increase customer success scores?",
+      "answer": "I'm sorry, but based on the provided context, there is no specific information available about the features that could be developed to increase customer success scores.",
+      "success": true,
+      "elapsed": 1.9829039573669434
+    },
+    {
+      "index": 55,
+      "question": "Which objectives are most critical for achieving our growth targets?",
+      "answer": "Based on the information provided, the objectives that are most critical for achieving growth targets include:\n1. Entity: High ROI + Growth (Type: PROFITABILITY) with relationships to Security automation features, Multi-region capabilities, Custom analytics dashboards, and Real-time Inference platform.\n2. Entity: $500M revenue by 2027 (Type: REVENUE) with a source of recurring revenue and a relationship to Global Platform Leadership.\n\nThese objectives are directly related to profitability and revenue generation, which are crucial for achieving growth targets.",
+      "success": true,
+      "elapsed": 2.3492002487182617
+    },
+    {
+      "index": 56,
+      "question": "How do our SLAs compare to industry standards by product?",
+      "answer": "The SLA performance for the product in the provided context is 98.78%, with a target of 99.9% and a penalty percentage of 5. To compare your SLAs to industry standards by product, you would need to gather industry benchmark data or standards for SLA performance targets and penalties for similar products. This comparison would help you assess how your SLAs measure up against industry norms.",
+      "success": true,
+      "elapsed": 3.601806163787842
+    },
+    {
+      "index": 57,
+      "question": "Which features give us competitive advantage in each market segment?",
+      "answer": "The features that give a competitive advantage in each market segment are:\n- In the market segment with the Competitive_Advantage of Real-time Inference, API Gateway v3, Model Versioning, and Cost Analytics are the features providing a competitive advantage.",
+      "success": true,
+      "elapsed": 3.7178192138671875
+    },
+    {
+      "index": 58,
+      "question": "What operational improvements would most impact customer satisfaction?",
+      "answer": "Based on the retrieved context from the graph queries, it appears that customer satisfaction scores are being retrieved for different customers based on a certain threshold score of greater than 80. The customers mentioned in the results have varying satisfaction scores, with some scoring higher than others.\n\nTo determine the operational improvements that would most impact customer satisfaction, you can analyze the data further by considering the following steps:\n1. Identify patterns: Look for commonalities among customers with high satisfaction scores. Analyze factors such as service quality, response time, product offerings, etc.\n2. Customer feedback: Gather feedback from customers with lower satisfaction scores to pinpoint areas for improvement.\n3. Benchmarking: Compare the satisfaction scores of different customers to identify areas where operational improvements can make a significant impact.\n4. Process optimization: Streamline processes that directly impact customer experience, such as order fulfillment, customer support, and product delivery.\n5. Training and development: Invest in training programs to enhance employee skills and ensure consistent service quality.\n6. Personalization: Tailor services to meet individual customer needs and preferences for a more personalized experience.\n\nBy analyzing the data and implementing improvements in these areas, you can enhance operational efficiency and positively impact customer satisfaction levels.",
+      "success": true,
+      "elapsed": 4.366063117980957
+    },
+    {
+      "index": 59,
+      "question": "How can we reduce operational costs while maintaining service quality?",
+      "answer": "I'm sorry, but the provided context does not contain specific information or suggestions on how to reduce operational costs while maintaining service quality.",
+      "success": true,
+      "elapsed": 2.9726243019104004
+    },
+    {
+      "index": 60,
+      "question": "Which customer segments are we best positioned to serve profitably?",
+      "answer": "Based on the information retrieved from the graph query results, the customer segments that have success scores above 80, indicating they are potentially profitable to serve, are:\n\n1. HealthNet with a success score of 92.0\n2. CloudFirst with a success score of 88.0\n3. TechStartup Inc (Customer) with success scores of 95, 95, and 88\n\nThese customer segments have success scores above 80, suggesting they are performing well and could be profitable to serve.",
+      "success": true,
+      "elapsed": 4.5343852043151855
+    }
+  ]
+}

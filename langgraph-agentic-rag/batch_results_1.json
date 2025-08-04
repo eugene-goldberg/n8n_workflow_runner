@@ -1,0 +1,72 @@
+[
+  {
+    "index": 1,
+    "question": "How much revenue will be at risk if [Customer X] misses their SLA next month?",
+    "answer": "Based on the query used, if Customer X misses their SLA next month, the revenue at risk is $0.00. This information is derived from the result of the query that calculated the sum of the impact amount of risks associated with Customer X missing their SLA in the specified time frame.",
+    "is_grounded": true,
+    "elapsed": 4.579011917114258
+  },
+  {
+    "index": 2,
+    "question": "What percentage of our ARR is dependent on customers with success scores below 70?",
+    "answer": "Based on the query used, the percentage of ARR dependent on customers with success scores below a specific threshold (referred to as `$score_threshold` in the query) is calculated. However, the specific threshold value of 70 mentioned in your question is not directly provided in the context. To determine the percentage of ARR dependent on customers with success scores below 70, you would need to adjust the query to use a score threshold of 70.",
+    "is_grounded": true,
+    "elapsed": 1.7577497959136963
+  },
+  {
+    "index": 3,
+    "question": "Which customers generate 80% of our revenue, and what are their current risk profiles?",
+    "answer": "The customers that generate 80% of the revenue and their current risk profiles are not explicitly provided in the given context. The queries and results shown are focused on individual customers like \"Healthcare Plus\" and \"FinanceHub\" with their respective revenue percentages and risk profiles. If you need information on customers generating 80% of revenue and their risk profiles, additional data or a specific query targeting that criteria would be required.",
+    "is_grounded": true,
+    "elapsed": 1.8160579204559326
+  },
+  {
+    "index": 4,
+    "question": "How much revenue is at risk from customers experiencing negative events in the last quarter?",
+    "answer": "Based on the query used, the revenue at risk from customers experiencing negative events in the last quarter (from January 1, 2025, to March 31, 2025) is $0.00. This means that during this period, there was no revenue at risk from customers experiencing negative events with high or critical severity.",
+    "is_grounded": true,
+    "elapsed": 5.422713756561279
+  },
+  {
+    "index": 5,
+    "question": "What is the projected revenue impact if we miss our roadmap deadlines for committed features?",
+    "answer": "Based on the query used to calculate the revenue impact of missing roadmap deadlines for committed features, the projected revenue impact if the roadmap deadlines for committed features are missed is $7,996,176.00. This amount represents the total revenue at risk due to delayed roadmap items.",
+    "is_grounded": true,
+    "elapsed": 2.101627826690674
+  },
+  {
+    "index": 6,
+    "question": "How much does it cost to run each product across all regions?",
+    "answer": "To determine the total cost of running each product across all regions, we can sum up the total cost per region for each product from the provided graph results. Here are the total costs for running each product across all regions:\n\n- SpyroAI: $851,000 (606,000 in Europe + 245,000 in North America)\n- SpyroAI for predictive maintenance: $490,000 (245,000 in Europe + 245,000 in North America)\n- SpyroCloud: $888,000 (444,000 in Europe + 444,000 in North America)\n- SpyroCloud Enterprise Edition: $770,000 (385,000 in Europe + 385,000 in North America)\n- SpyroSecure: $460,000 (230,000 in Europe + 230,000 in North America)\n\nThese totals were calculated by summing up the costs for each product across Europe and North America as provided in the graph results.",
+    "is_grounded": true,
+    "elapsed": 4.5871827602386475
+  },
+  {
+    "index": 7,
+    "question": "What is the profitability margin for each product line?",
+    "answer": "Based on the information provided in the context, the profitability margin for each product line is as follows:\n\n1. SpyroCloud: Profitability Margin of -2.43\n2. SpyroAI: Profitability Margin of -2.99\n3. SpyroSecure: Profitability Margin of -1.16",
+    "is_grounded": true,
+    "elapsed": 3.234971046447754
+  },
+  {
+    "index": 8,
+    "question": "How do operational costs impact profitability for our top 10 customers?",
+    "answer": "The operational costs have a significant impact on the profitability of the top 10 customers. Based on the provided data from the graph results, we can see that the gross profit for each customer is calculated as the annual revenue minus the total operational costs. The profit margin is then calculated as the gross profit divided by the annual revenue, expressed as a percentage.\n\nHere are some examples from the graph results:\n1. Healthcare Plus (Customer):\n   - Gross Profit: -$4,789,335\n   - Profit Margin: -172.48%\n\n2. FinanceHub:\n   - Gross Profit: -$1,149,821\n   - Profit Margin: -54.0%\n\n3. CloudFirst:\n   - Gross Profit: -$5,927,301\n   - Profit Margin: -407.0%\n\n4. Global Manufacturing Co (Customer):\n   - Gross Profit: -$12,198,336\n   - Profit Margin: -907.88%\n\nFrom these results, it is evident that high operational costs can lead to negative gross profits and profit margins, indicating a significant impact on the overall profitability of the top customers.",
+    "is_grounded": true,
+    "elapsed": 3.2025160789489746
+  },
+  {
+    "index": 9,
+    "question": "Which teams have the highest operational costs relative to the revenue they support?",
+    "answer": "I'm sorry, but based on the provided context, it seems that no results were found from the graph query. Therefore, I do not have specific information on which teams have the highest operational costs relative to the revenue they support.",
+    "is_grounded": false,
+    "elapsed": 4.03426718711853
+  },
+  {
+    "index": 10,
+    "question": "What is the cost-per-customer for each product, and how does it vary by region?",
+    "answer": "The cost-per-customer for each product is provided in the graph results, but the specific values are not included in the context provided. The queries used in the context retrieve the product name, cost per customer, and region from the database, but the exact cost-per-customer values for SpyroAI and SpyroCloud in different regions are not explicitly stated. To obtain the detailed cost-per-customer values for each product and how they vary by region, you would need to refer to the specific data retrieved from the database using the queries mentioned in the context.",
+    "is_grounded": true,
+    "elapsed": 5.195853233337402
+  }
+]

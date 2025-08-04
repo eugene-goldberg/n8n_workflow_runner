@@ -1,0 +1,271 @@
+{
+  "total_grounded": 40,
+  "categories": {
+    "Revenue Risk Analysis": [
+      "How much revenue will be at risk if [Customer X] misses their SLA next month?",
+      "What percentage of our ARR is dependent on customers with success scores below 70?",
+      "Which customers generate 80% of our revenue, and what are their current risk profiles?",
+      "How much revenue is at risk from customers experiencing negative events in the last quarter?",
+      "What is the projected revenue impact if we miss our roadmap deadlines for committed features?"
+    ],
+    "Cost & Profitability": [
+      "How much does it cost to run each product across all regions?",
+      "How do operational costs impact profitability for our top 10 customers?",
+      "What is the cost-per-customer for each product, and how does it vary by region?"
+    ],
+    "Customer Health": [
+      "What are the top 5 customers by revenue, and what are their current success scores?",
+      "Which customers have declining success scores, and what events are driving the decline?",
+      "How many customers have success scores below 60, and what is their combined ARR?",
+      "What percentage of customers experienced negative events in the last 90 days?",
+      "Which customers are at highest risk of churn based on success scores and recent events?"
+    ],
+    "Customer Commitments & Satisfaction": [
+      "What are the top customer commitments, and what are the current risks to achieving them?",
+      "What are the top customer concerns, and what is currently being done to address them?",
+      "How many customers are waiting for features currently on our roadmap?",
+      "Which customers have unmet SLA commitments in the last quarter?"
+    ],
+    "Product Performance": [
+      "Which products have the highest customer satisfaction scores?",
+      "How many customers use each product, and what is the average subscription value?",
+      "Which products have the most operational issues impacting customer success?",
+      "What is the adoption rate of new features released in the last 6 months?"
+    ],
+    "Roadmap & Delivery Risk": [
+      "Which roadmap items are critical for customer retention?",
+      "What percentage of roadmap items are currently behind schedule?"
+    ],
+    "Strategic Risk Assessment": [
+      "What are the top risks related to achieving [Objective X]?",
+      "Which company objectives have the highest number of associated risks?",
+      "What is the potential revenue impact of our top 5 identified risks?",
+      "How many high-severity risks are currently without mitigation strategies?"
+    ],
+    "Operational Risk": [
+      "Which teams are understaffed relative to their project commitments?",
+      "Which products have the highest operational risk exposure?",
+      "What percentage of projects are at risk of missing deadlines?"
+    ],
+    "Team Performance": [
+      "Which teams support the most revenue-generating products?"
+    ],
+    "Project Delivery": [
+      "Which projects are critical for maintaining current revenue?",
+      "How many projects are blocked by operational constraints?",
+      "What is the success rate of projects by team and product area?"
+    ],
+    "Growth & Expansion": [
+      "Which customer segments offer the highest growth potential?",
+      "What products have the best profitability-to-cost ratio for scaling?",
+      "What features could we develop to increase customer success scores?",
+      "Which objectives are most critical for achieving our growth targets?"
+    ],
+    "Competitive Positioning": [
+      "How do our SLAs compare to industry standards by product?",
+      "Which customer segments are we best positioned to serve profitably?"
+    ]
+  },
+  "detailed_list": [
+    {
+      "index": 1,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue will be at risk if [Customer X] misses their SLA next month?"
+    },
+    {
+      "index": 2,
+      "category": "Revenue Risk Analysis",
+      "question": "What percentage of our ARR is dependent on customers with success scores below 70?"
+    },
+    {
+      "index": 3,
+      "category": "Revenue Risk Analysis",
+      "question": "Which customers generate 80% of our revenue, and what are their current risk profiles?"
+    },
+    {
+      "index": 4,
+      "category": "Revenue Risk Analysis",
+      "question": "How much revenue is at risk from customers experiencing negative events in the last quarter?"
+    },
+    {
+      "index": 5,
+      "category": "Revenue Risk Analysis",
+      "question": "What is the projected revenue impact if we miss our roadmap deadlines for committed features?"
+    },
+    {
+      "index": 6,
+      "category": "Cost & Profitability",
+      "question": "How much does it cost to run each product across all regions?"
+    },
+    {
+      "index": 8,
+      "category": "Cost & Profitability",
+      "question": "How do operational costs impact profitability for our top 10 customers?"
+    },
+    {
+      "index": 10,
+      "category": "Cost & Profitability",
+      "question": "What is the cost-per-customer for each product, and how does it vary by region?"
+    },
+    {
+      "index": 11,
+      "category": "Customer Health",
+      "question": "What are the top 5 customers by revenue, and what are their current success scores?"
+    },
+    {
+      "index": 12,
+      "category": "Customer Health",
+      "question": "Which customers have declining success scores, and what events are driving the decline?"
+    },
+    {
+      "index": 13,
+      "category": "Customer Health",
+      "question": "How many customers have success scores below 60, and what is their combined ARR?"
+    },
+    {
+      "index": 14,
+      "category": "Customer Health",
+      "question": "What percentage of customers experienced negative events in the last 90 days?"
+    },
+    {
+      "index": 15,
+      "category": "Customer Health",
+      "question": "Which customers are at highest risk of churn based on success scores and recent events?"
+    },
+    {
+      "index": 16,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer commitments, and what are the current risks to achieving them?"
+    },
+    {
+      "index": 18,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "What are the top customer concerns, and what is currently being done to address them?"
+    },
+    {
+      "index": 19,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "How many customers are waiting for features currently on our roadmap?"
+    },
+    {
+      "index": 20,
+      "category": "Customer Commitments & Satisfaction",
+      "question": "Which customers have unmet SLA commitments in the last quarter?"
+    },
+    {
+      "index": 21,
+      "category": "Product Performance",
+      "question": "Which products have the highest customer satisfaction scores?"
+    },
+    {
+      "index": 23,
+      "category": "Product Performance",
+      "question": "How many customers use each product, and what is the average subscription value?"
+    },
+    {
+      "index": 24,
+      "category": "Product Performance",
+      "question": "Which products have the most operational issues impacting customer success?"
+    },
+    {
+      "index": 25,
+      "category": "Product Performance",
+      "question": "What is the adoption rate of new features released in the last 6 months?"
+    },
+    {
+      "index": 27,
+      "category": "Roadmap & Delivery Risk",
+      "question": "Which roadmap items are critical for customer retention?"
+    },
+    {
+      "index": 28,
+      "category": "Roadmap & Delivery Risk",
+      "question": "What percentage of roadmap items are currently behind schedule?"
+    },
+    {
+      "index": 31,
+      "category": "Strategic Risk Assessment",
+      "question": "What are the top risks related to achieving [Objective X]?"
+    },
+    {
+      "index": 32,
+      "category": "Strategic Risk Assessment",
+      "question": "Which company objectives have the highest number of associated risks?"
+    },
+    {
+      "index": 33,
+      "category": "Strategic Risk Assessment",
+      "question": "What is the potential revenue impact of our top 5 identified risks?"
+    },
+    {
+      "index": 35,
+      "category": "Strategic Risk Assessment",
+      "question": "How many high-severity risks are currently without mitigation strategies?"
+    },
+    {
+      "index": 36,
+      "category": "Operational Risk",
+      "question": "Which teams are understaffed relative to their project commitments?"
+    },
+    {
+      "index": 38,
+      "category": "Operational Risk",
+      "question": "Which products have the highest operational risk exposure?"
+    },
+    {
+      "index": 40,
+      "category": "Operational Risk",
+      "question": "What percentage of projects are at risk of missing deadlines?"
+    },
+    {
+      "index": 41,
+      "category": "Team Performance",
+      "question": "Which teams support the most revenue-generating products?"
+    },
+    {
+      "index": 46,
+      "category": "Project Delivery",
+      "question": "Which projects are critical for maintaining current revenue?"
+    },
+    {
+      "index": 49,
+      "category": "Project Delivery",
+      "question": "How many projects are blocked by operational constraints?"
+    },
+    {
+      "index": 50,
+      "category": "Project Delivery",
+      "question": "What is the success rate of projects by team and product area?"
+    },
+    {
+      "index": 51,
+      "category": "Growth & Expansion",
+      "question": "Which customer segments offer the highest growth potential?"
+    },
+    {
+      "index": 52,
+      "category": "Growth & Expansion",
+      "question": "What products have the best profitability-to-cost ratio for scaling?"
+    },
+    {
+      "index": 54,
+      "category": "Growth & Expansion",
+      "question": "What features could we develop to increase customer success scores?"
+    },
+    {
+      "index": 55,
+      "category": "Growth & Expansion",
+      "question": "Which objectives are most critical for achieving our growth targets?"
+    },
+    {
+      "index": 56,
+      "category": "Competitive Positioning",
+      "question": "How do our SLAs compare to industry standards by product?"
+    },
+    {
+      "index": 60,
+      "category": "Competitive Positioning",
+      "question": "Which customer segments are we best positioned to serve profitably?"
+    }
+  ]
+}

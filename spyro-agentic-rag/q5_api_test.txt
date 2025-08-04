@@ -1,0 +1,9 @@
+Q5: What percentage of our ARR comes from customers with low success scores?
+--------------------------------------------------------------------------------
+Status: SUCCESS
+Execution Time: 17.5s
+
+Answer:
+Approximately 7.38% of our Annual Recurring Revenue (ARR) comes from customers with low success scores.
+
+✅ GROUNDED - Answer contains specific data from Neo4j

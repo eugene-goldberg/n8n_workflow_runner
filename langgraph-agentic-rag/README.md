@@ -1,104 +1,120 @@
 # LangGraph Agentic RAG System
 
-An advanced Retrieval-Augmented Generation system built with LangGraph, implementing explicit state machines, deterministic routing, and self-correction mechanisms for intelligent query handling across vector and graph databases.
+A production-grade agentic RAG (Retrieval-Augmented Generation) system built with LangGraph, featuring a hybrid pgvector + Neo4j architecture for enhanced reasoning and reliability.
 
-## Architecture
+## Architecture Overview
 
-This system implements the expert-recommended architectural triad:
-- **Neo4j**: For structured relationships and multi-hop queries
-- **PostgreSQL with pgvector**: For semantic similarity search
-- **LangGraph Agent**: Explicit state machine orchestration with deterministic routing
+This system implements a sophisticated dual-memory architecture:
+- **Associative Memory** (pgvector/Neo4j Vector Index): Semantic similarity search
+- **Declarative Memory** (Neo4j Knowledge Graph): Explicit relationships and graph traversal
 
 ## Key Features
 
-- **Deterministic Routing**: Rule-based query classification for predictable tool selection
-- **Explicit State Machines**: Observable, debuggable workflows using LangGraph
-- **Self-Correction Loops**: Grade → Reflect → Rewrite cycles for improved accuracy
-- **Advanced Hybrid Patterns**: Sequential and parallel retrieval with fusion/reranking
-- **Business Entity Recognition**: Specialized routing for SaaS metrics and entities
+- **Dynamic Retrieval Strategies**: Intelligent routing between vector search, graph queries, and hybrid approaches
+- **Automated Knowledge Graph Construction**: Using neo4j-graphrag-python for entity/relation extraction
+- **Stateful Agent Control**: LangGraph-based orchestration with persistent memory
+- **Self-Correction Loops**: Automatic error recovery and reflection
+- **Human-in-the-Loop**: Critical decision points with approval workflows
+- **Production Observability**: Full tracing with LangSmith integration
 
 ## Project Structure
 
 ```
 langgraph-agentic-rag/
-├── app/
-│   ├── agent/          # LangGraph workflows and state management
-│   ├── tools/          # Tool implementations (vector, graph, hybrid)
-│   ├── schemas/        # Pydantic models and data schemas
-│   └── monitoring/     # Metrics and performance tracking
-├── tests/              # Unit and integration tests
-├── scripts/            # Deployment and utility scripts
-└── requirements.txt    # Python dependencies
+├── src/
+│   ├── agents/          # LangGraph agent implementations
+│   ├── ingestion/       # Knowledge graph construction pipeline
+│   ├── retrievers/      # Vector, graph, and hybrid retrievers
+│   ├── tools/           # Agent tools for search and QA
+│   ├── state/           # State management and checkpointers
+│   └── evaluation/      # Evaluation framework
+├── config/              # Configuration files
+├── notebooks/           # Example notebooks
+├── tests/               # Test suite
+└── scripts/             # Utility scripts
 ```
 
-## Installation
+## Tech Stack
 
+- **LangGraph**: Agentic orchestration and state management
+- **Neo4j**: Graph database for knowledge storage
+- **PostgreSQL + pgvector**: Vector similarity search
+- **neo4j-graphrag-python**: Automated KG construction
+- **LangSmith**: Observability and evaluation
+
+## Getting Started
+
+1. Install dependencies:
 ```bash
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
 pip install -r requirements.txt
+```
 
-# Set up environment variables
+2. Set up databases:
+```bash
+# PostgreSQL with pgvector
+docker run -d --name pgvector \
+  -e POSTGRES_PASSWORD=password \
+  -p 5432:5432 \
+  ankane/pgvector
+
+# Neo4j
+docker run -d --name neo4j \
+  -e NEO4J_AUTH=neo4j/password \
+  -p 7474:7474 -p 7687:7687 \
+  neo4j:latest
+```
+
+3. Configure environment:
+```bash
 cp .env.example .env
-# Edit .env with your credentials
+# Edit .env with your API keys and database connections
 ```
 
-## Configuration
-
-Create a `.env` file with:
-
+4. Run the ingestion pipeline:
 ```bash
-# LLM Configuration
-OPENAI_API_KEY=your-key-here
-LLM_MODEL=gpt-4o
-
-# Neo4j Configuration
-NEO4J_URI=bolt://localhost:7687
-NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=your-password
-
-# PostgreSQL Configuration
-POSTGRES_DSN=postgresql://user:password@localhost:5432/dbname
-
-# Redis Configuration (for caching)
-REDIS_URL=redis://localhost:6379
+python -m src.ingestion.pipeline
 ```
 
-## Usage
-
-```python
-from app.agent import AgenticRAG
-
-# Initialize the agent
-agent = AgenticRAG()
-
-# Process a query
-result = await agent.query("How much revenue is at risk if Disney churns?")
-
-# The agent will:
-# 1. Route to appropriate strategy (graph for business entities)
-# 2. Execute retrieval with self-correction if needed
-# 3. Rerank and synthesize results
-# 4. Generate final answer
-```
-
-## Deployment
-
-Deploy to remote server:
-
+5. Start the agent:
 ```bash
-./scripts/deploy.sh user@host:/path/to/deployment
+python -m src.agents.main
 ```
 
-## Development Status
+## Architecture Details
 
-- [x] Project structure and dependencies
-- [ ] Core state machine implementation
-- [ ] Deterministic router
-- [ ] Tool implementations
-- [ ] Self-correction mechanisms
-- [ ] Advanced hybrid patterns
-- [ ] Monitoring and analytics
+### 1. Knowledge Backbone
+
+The system uses a hybrid approach combining:
+- pgvector for efficient semantic search on unstructured text
+- Neo4j for storing structured entities and relationships
+- Automated entity extraction via LLM-based pipelines
+
+### 2. Retrieval Strategies
+
+Multiple retriever types are available:
+- **VectorRetriever**: Pure semantic search
+- **HybridRetriever**: Combined vector + keyword search
+- **VectorCypherRetriever**: Graph traversal from vector-found entry points
+
+### 3. Agent Control Flow
+
+LangGraph StateGraph implements:
+- Dynamic routing based on query analysis
+- Tool selection and execution
+- Self-correction on errors
+- Human approval for critical actions
+
+### 4. Production Features
+
+- PostgreSQL-based state persistence
+- LangSmith tracing for all agent actions
+- Evaluation framework with LLM-as-judge
+- Active learning from production failures
+
+## Development
+
+See [DEVELOPMENT.md](./docs/DEVELOPMENT.md) for detailed development guidelines.
+
+## License
+
+MIT
